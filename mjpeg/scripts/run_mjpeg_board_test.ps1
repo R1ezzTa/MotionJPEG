@@ -26,7 +26,7 @@ try {
         & "$VivadoRoot/bin/unwrapped/win64.o/vivado.exe" -mode batch -source scripts/build_mjpeg_board_test.tcl -log "$taskBuild/build.log" -journal "$taskBuild/build.jou" -tclargs $taskProjectRoot $taskBuild
         if ($LASTEXITCODE -ne 0 -or !(Test-Path -LiteralPath "$taskBuild/BUILD_PASS.txt")) { throw 'Self-test bitstream build failed.' }
         Get-FileHash -LiteralPath @((Get-ChildItem "$taskProjectRoot/rtl" -File -Recurse).FullName + (Get-ChildItem "$taskProjectRoot/data/board_test" -File).FullName + "$taskProjectRoot/constraints/davinci_mjpeg_board_test.xdc" + "$taskBuild/davinci_mjpeg_board_test.bit") -Algorithm SHA256 | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_hashes.json" -Encoding utf8
-        Set-Content -LiteralPath "$taskReports/latest_build.txt" -Value $taskBuild -Encoding utf8
+        [System.IO.File]::WriteAllText("$taskReports/latest_build.txt", $taskBuild + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
         Write-Output "MJPEG_TEST_BITSTREAM=$taskBuild/davinci_mjpeg_board_test.bit"
     }
     else {

@@ -1,5 +1,7 @@
 """Verify FPGA JPEGs and report the same one-second FPS shown on the board."""
 import argparse, csv, hashlib, io, json, time
+from collections import deque
+import struct
 from pathlib import Path
 from functools import lru_cache
 from PIL import Image
@@ -31,6 +33,37 @@ class BoardRecords:
     """Telemetry is independent of JPEG packet boundaries, never JPEG payload."""
     def __init__(self, read_exact):
         self.read_exact=read_exact; self.rates=[]; self.timings=[]; self.in_stream=False
+        self.packet_events=deque()
+        self.buffered_reader=getattr(read_exact,'__self__',None)
+
+    def next_packet(self):
+        """Read a whole bus packet, retaining telemetry interleaved between words."""
+        if self.packet_events: return self.packet_events.popleft()
+        kind,value=self.next()
+        if kind!='word': return kind,value
+        data,nbytes,last=value
+        if nbytes!=4 or last or data>>16!=0x4d4a or data>>12&15!=1:
+            raise ValueError('Invalid packet header')
+        packet_kind=data>>10&3;count=data&31
+        if packet_kind>1 or count>16 or packet_kind==1 and count:
+            raise ValueError('Invalid packet kind/length')
+        length=7 if packet_kind==1 else 2+(count+3)//4
+        words=[value]
+        if hasattr(self.buffered_reader,'rewind'):
+            block=self.read_exact(5*(length-1))
+            records=list(struct.iter_unpack('<IB',block))
+            if all(flag&0xf0==0 and 1<=flag&7<=4 for _,flag in records):
+                words.extend((word,flag&7,bool(flag&8)) for word,flag in records)
+                return 'packet',words
+            # Control records can occur at any word boundary in existing captures.
+            self.buffered_reader.rewind(len(block))
+        while len(words)<length:
+            kind,value=self.next()
+            if kind=='word': words.append(value)
+            elif kind in ('fps','timing'): self.packet_events.append((kind,value))
+            else: raise ValueError('Stream boundary inside packet')
+        self.packet_events.append(('packet',words))
+        return self.packet_events.popleft()
 
     def next(self):
         if self.in_stream:

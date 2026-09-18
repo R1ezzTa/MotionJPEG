@@ -1,0 +1,65 @@
+{
+  "version": "1.1.0",
+  "baseline_commit": "bdf2e8d69cee9b7eb61177f917cff6ec106d8a82",
+  "bitstream_sha256": "a68d494818c91721d610dea6c9484d419c8d04c8e2beba27c7b728f072b1b955",
+  "actual_board_verified_frames": 2307,
+  "final_total_compressed": 2307,
+  "comparison": [
+    {
+      "width": 640,
+      "height": 480,
+      "baseline_fps": 4.450228507188113,
+      "coalesced_word_fps": 24.68299092726969,
+      "final_fps": 26.732051034156626,
+      "speedup": 6.006894025998529,
+      "host_batch_speedup": 1.0830150654320885,
+      "frames": 802,
+      "wire_expansion": 1.8760606515942715,
+      "raw_mbytes_s": 3.8711016086589427
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "baseline_fps": 1.4776703100401365,
+      "coalesced_word_fps": 8.405754753423125,
+      "final_fps": 9.195096236853567,
+      "speedup": 6.22269810415546,
+      "host_batch_speedup": 1.0939048909449796,
+      "frames": 276,
+      "wire_expansion": 1.8753577459118396,
+      "raw_mbytes_s": 3.9703838863615113
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "baseline_fps": 0.6662758498258868,
+      "coalesced_word_fps": 3.7669552028786897,
+      "final_fps": 4.010469343589672,
+      "speedup": 6.019232641611878,
+      "host_batch_speedup": 1.0646448199131462,
+      "frames": 121,
+      "wire_expansion": 1.875162385174041,
+      "raw_mbytes_s": 3.884653926818194
+    }
+  ],
+  "core": {
+    "clock_hz": 50000000,
+    "width": 1920,
+    "height": 1080,
+    "frames": 2,
+    "jpeg_bytes_per_frame": 516557,
+    "jpeg_sha256": "8f1047b6b5313fbf6e14f37a8434ebff1d438418eadd1ee431a09c35a61d8b95",
+    "core_simulated_fps": 23.56837444679133,
+    "core_mpix_s": 48.871381252866506,
+    "mean_feed_ms": 42.1098,
+    "mean_total_ms": 42.42974,
+    "input_wait_fraction": 0.01514659295460914,
+    "output_always_ready": true,
+    "continuous_pixel_input": true,
+    "passed": true
+  },
+  "hardware_capture_bytes": {
+    "hardware_throughput_20260918": 326972757,
+    "hardware_throughput_batched_20260918": 352517677
+  }
+}

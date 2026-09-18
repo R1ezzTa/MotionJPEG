@@ -73,6 +73,8 @@ source F:/zju/dasanshangkecheng/HDL/mjpeg/scripts/activate_mjpeg_board_test.tcl
 
 ## 当前阶段
 
+`1.1.0` 已完成首轮吞吐优化：JPEG 短 beat 聚合、加速 FT245 异步写周期和主机批量解析。最终上板实测 VGA 26.732 fps、720p 9.195 fps、1080p 4.010 fps，相比 1.0.0 约提高 6 倍；两轮合计 2,307 帧全部通过参考和解码验证。独立编码核在连续输入、输出始终可接收的 50 MHz 仿真条件下为 23.568 fps。实现、证据和剩余限制见 [吞吐优化记录](docs/吞吐优化记录.md)。
+
 已有可下载的模拟摄像头 MJPEG 测试设计。独立构建和下载使用 `scripts/run_mjpeg_board_test.ps1`，主机接收使用 `host/board_test_receiver.py`；具体接法、测试范围和结果见 [MJPEG模拟摄像头上板测试](docs/MJPEG模拟摄像头上板测试.md)。真实 DVP、SCCB、DDR 和高速 USB FIFO 尚待集成。
 
 官方 `constraints/reference/DaVinci_FPGA_IO.xdc` 保留为参考。实际板级测试使用 `constraints/davinci_mjpeg_board_test.xdc`，只包含当前需要的端口。

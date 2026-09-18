@@ -19,7 +19,8 @@ if {$action eq "Help"} {
 
     if {$action eq "Program"} {
         set pointer [open [file join $project_root reports mjpeg_board_test latest_build.txt] r]
-        set output_directory [file normalize [string trim [read $pointer]]]
+        fconfigure $pointer -encoding utf-8
+        set output_directory [file normalize [string trim [read $pointer] "\ufeff \t\r\n"]]
         close $pointer
         if {![file exists [file join $output_directory BUILD_PASS.txt]]} { error "Build pass marker missing." }
         set bitstream [file join $output_directory davinci_mjpeg_board_test.bit]

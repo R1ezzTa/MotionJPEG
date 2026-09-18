@@ -15,7 +15,7 @@ module tb_davinci_mjpeg_fifo_test;
         .usb_rd_n(rd_n),.usb_wr_n(wr_n),.usb_oe_n(oe_n),.usb_siwu_n(siwu_n),.led(led),
         .seg_sel(seg_sel),.seg_led(seg_led));
     integer capture,bytes_seen=0,cycles=0,marker;
-    time data_changed=0,wr_low=0,rd_low=0;
+    time data_changed=0,wr_low=0,wr_high=0,rd_low=0;
     integer monitor_ticks=0,monitor_in=0,monitor_ok=0,monitor_bad=0,monitor_total=0,monitor_windows=0,rate_trace;
     initial rate_trace=$fopen("fps_expected.csv","w");
     initial #1 $fwrite(rate_trace,"window,input_fps,compressed_fps,failed_fps,total_compressed\n");
@@ -34,7 +34,10 @@ module tb_davinci_mjpeg_fifo_test;
         end
         if(dut.display.bcd_value!=0 && !$onehot0(~seg_sel)) $fatal(1,"Display digit collision");
     end
-    always @(data) data_changed=$time;
+    always @(data) begin
+        if(rst_n && wr_low!=0 && $time-wr_low<5) $fatal(1,"FIFO data hold");
+        data_changed=$time;
+    end
     always @(negedge rd_n) begin
         rd_low=$time;
         if (!wr_n || !rx_pending) $fatal(1,"Invalid FIFO read");
@@ -43,9 +46,13 @@ module tb_davinci_mjpeg_fifo_test;
         if ($time-rd_low<30) $fatal(1,"RD pulse too short");
         rx_pending=0;
     end
-    always @(posedge wr_n) if (rst_n && wr_low!=0 && $time-wr_low<30) $fatal(1,"WR pulse too short");
+    always @(posedge wr_n) if (rst_n && wr_low!=0) begin
+        if($time-wr_low<30) $fatal(1,"WR pulse too short");
+        wr_high=$time;
+    end
     always @(negedge wr_n) begin
         wr_low=$time;
+        if(wr_high!=0 && $time-wr_high<49) $fatal(1,"FIFO write recovery");
         if (!rd_n || txe_n || $isunknown(data)) $fatal(1,"Invalid FIFO write/bus collision");
         if ($time-data_changed<5) $fatal(1,"FIFO data setup");
         $fwrite(capture,"%c",data); bytes_seen=bytes_seen+1;
@@ -65,6 +72,7 @@ module tb_davinci_mjpeg_fifo_test;
         repeat(10) @(negedge clk); rst_n=1; repeat(10) @(negedge clk);
         trigger(); wait(led[2]); repeat(20) @(negedge clk);
         trigger(); wait(!led[2]); wait(led[2]); repeat(20) @(negedge clk);
+        wait(monitor_windows>=1);
         repeat(10000) @(negedge clk);
         if(monitor_total!=18 || monitor_windows<1) $fatal(1,"FPS should count 18 complete frames, not payload packets");
         $fclose(capture);$fclose(rate_trace);

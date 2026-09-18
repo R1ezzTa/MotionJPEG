@@ -68,7 +68,7 @@ module mjpeg_board_test_engine #(
     wire [31:0] m_data;
     wire [2:0] m_bytes;
     wire m_valid, m_ready, m_packet_last;
-    mjpeg_synth_top #(.CHANNELS(1),.MAX_WIDTH(1920)) codec(
+    mjpeg_synth_top #(.CHANNELS(1),.MAX_WIDTH(1920),.COALESCE(1)) codec(
         .clk(sys_clk),.rst_n(rst_n),.cfg_cmd(cfg_cmd),.cfg_channel(2'd0),
         .cfg_data(cfg_data),.cfg_valid(cfg_valid),.cfg_ready(cfg_ready),
         .s_data(pixel),.s_valid(state==PSEND),.s_ready(s_ready),

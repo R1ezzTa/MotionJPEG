@@ -17,12 +17,13 @@ Index  File Name                       Used_In      File_Type  Library         N
 14     mjpeg_channel.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_channel.v
 15     mjpeg_encoder.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_encoder.v
 16     mjpeg_packetizer.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_packetizer.v
-17     mjpeg_synth_top.v               Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_synth_top.v
-18     quantize.v                      Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/quant/quantize.v
-19     raster_to_mcu422.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/frontend/raster_to_mcu422.v
-20     symbol_encoder.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/symbol_encoder.v
-21     zigzag_buffer.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/zigzag_buffer.v
-22     davinci_mjpeg_board_test_top.v  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/davinci_mjpeg_board_test_top.v
+17     mjpeg_payload_coalescer.v       Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_payload_coalescer.v
+18     mjpeg_synth_top.v               Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_synth_top.v
+19     quantize.v                      Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/quant/quantize.v
+20     raster_to_mcu422.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/frontend/raster_to_mcu422.v
+21     symbol_encoder.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/symbol_encoder.v
+22     zigzag_buffer.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/zigzag_buffer.v
+23     davinci_mjpeg_board_test_top.v  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/davinci_mjpeg_board_test_top.v
 
 
 Missing instances for 'synthesis' with fileset 'sources_1':

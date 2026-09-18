@@ -18,6 +18,10 @@ set task_tb [file join $project_root tb tb_fps_peripherals.sv]
 if {[llength [get_files -quiet $task_tb]]==0} {add_files -fileset sim_1 -norecurse $task_tb}
 set task_tb [file join $project_root tb tb_mjpeg_progressive.sv]
 if {[llength [get_files -quiet $task_tb]]==0} {add_files -fileset sim_1 -norecurse $task_tb}
+foreach task_tb_name {tb_mjpeg_payload_coalescer.sv tb_mjpeg_core_throughput.sv} {
+    set task_tb [file join $project_root tb $task_tb_name]
+    if {[llength [get_files -quiet $task_tb]]==0} {add_files -fileset sim_1 -norecurse $task_tb}
+}
 set_property TOP tb_davinci_mjpeg_fifo_test [get_filesets sim_1]
 set_property GENERIC {} [get_filesets sim_1]
 update_compile_order -fileset sources_1

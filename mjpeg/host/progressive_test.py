@@ -28,7 +28,11 @@ class CaptureReader:
         result=self.block[self.pos:self.pos+n];self.pos+=n;self.offset+=n
         return result
 
-def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,replay=False):
+    def rewind(self,n):
+        if not 0<=n<=self.pos: raise ValueError('Invalid buffered capture rewind')
+        self.pos-=n;self.offset-=n
+
+def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,replay=False,packet_batches=True):
     expected=(ROOT/'data/progressive_test'/f'{w}x{h}.expected.jpg').read_bytes()
     receiver=Receiver();frames=[];timings=[];started=False;ended=False;stopped=False;idle=0;first_jpeg=None
     start_offset=reader.offset;rate_start=len(records.rates)
@@ -40,13 +44,13 @@ def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,rep
         if not replay and not stopped and len(frames)>=min_frames and time.monotonic()-began>=seconds:
             stream.write(b'S');stream.flush();stopped=True
             print(f'STOP {w}x{h}; drain final frame and wait END1',flush=True)
-        kind,value=records.next()
+        kind,value=records.next_packet() if packet_batches else records.next()
         if kind=='start':
             if started: raise ValueError('Unexpected phase preamble')
             started=True
-        elif kind=='word':
+        elif kind in ('word','packet'):
             if not started or ended: raise ValueError('JPEG outside active phase')
-            frame=receiver.word(*value)
+            frame=receiver.packet_words(value) if kind=='packet' else receiver.word(*value)
             if frame is None: continue
             if (frame.frame_id,frame.width,frame.height,frame.gray,frame.status)!=(first_id+len(frames),w,h,False,0):
                 raise ValueError(f'Frame metadata/sequence/status {frame.frame_id}')
@@ -99,7 +103,7 @@ def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,rep
             'window_fps_values':sorted(set(r['compressed_fps'] for r in rates)),
             'idle_windows_verified':2,'wire_start_offset':start_offset,'wire_end_offset':reader.offset,
             'wire_expansion':(reader.offset-start_offset)/sum(f['length'] for f in frames),
-            'passed':True,'host_elapsed_seconds':time.monotonic()-began}
+            'host_packet_batches':packet_batches,'passed':True,'host_elapsed_seconds':time.monotonic()-began}
     (phase_dir/'result.json').write_text(json.dumps(result,indent=2))
     print(f"PHASE PASS {w}x{h}: {len(frames)} frames; {fps:.3f} fps" if fps else f'PHASE PASS {w}x{h}',flush=True)
     return result
@@ -108,6 +112,7 @@ def main():
     p=argparse.ArgumentParser();source=p.add_mutually_exclusive_group(required=True)
     source.add_argument('--ftdi',action='store_true');source.add_argument('--capture',type=Path)
     p.add_argument('--library');p.add_argument('--simulation',action='store_true')
+    p.add_argument('--word-records',action='store_true',help='Use the original per-word parser for throughput comparisons')
     p.add_argument('--seconds',type=float,default=30);p.add_argument('--min-frames',type=int,default=6)
     p.add_argument('--first-id',type=int,default=0);p.add_argument('--output',type=Path,required=True)
     p.add_argument('--timing-expected',type=Path);args=p.parse_args()
@@ -124,7 +129,7 @@ def main():
     results=[];first_id=args.first_id
     try:
         for w,h,command in plan:
-            result=phase(records,reader,stream,w,h,command,first_id,args.output,args.seconds,args.min_frames,replay=bool(args.capture))
+            result=phase(records,reader,stream,w,h,command,first_id,args.output,args.seconds,args.min_frames,replay=bool(args.capture),packet_batches=not args.word_records)
             results.append(result);first_id+=result['frames']
             (args.output/'results.json').write_text(json.dumps(results,indent=2))
         if args.capture:

@@ -2,7 +2,8 @@
 // the package IO budget. Configuration and transport use separate 32-bit buses.
 module mjpeg_synth_top #(
     parameter CHANNELS = 2,
-    MAX_WIDTH = 1920
+    MAX_WIDTH = 1920,
+    COALESCE = 0
 ) (
     input clk,
     input rst_n,
@@ -128,19 +129,41 @@ module mjpeg_synth_top #(
         .desc_gray     (descriptor_gray),
         .desc_status   (descriptor_status)
     );
+    wire [127:0] packed_payload;
+    wire [4:0] packed_bytes;
+    wire packed_first,packed_last,packed_valid,packed_ready,collector_idle;
+    wire [1:0] packed_channel;
+    wire [31:0] packed_id;
+    wire packet_desc_ready;
+    assign descriptor_ready=packet_desc_ready && collector_idle;
+    generate if(COALESCE) begin : aggregate
+        mjpeg_payload_coalescer collector(
+            .clk(clk),.rst_n(rst_n),.s_data(payload),.s_bytes(payload_bytes),
+            .s_first(payload_first),.s_last(payload_last),.s_valid(payload_valid),.s_ready(payload_ready),
+            .s_channel(payload_channel),.s_frame_id(payload_id),.flush(descriptor_valid),
+            .m_data(packed_payload),.m_bytes(packed_bytes),.m_first(packed_first),.m_last(packed_last),
+            .m_valid(packed_valid),.m_ready(packed_ready),.m_channel(packed_channel),.m_frame_id(packed_id),
+            .idle(collector_idle));
+    end else begin : unaggregated
+        assign packed_payload=payload;assign packed_bytes=payload_bytes;
+        assign packed_first=payload_first;assign packed_last=payload_last;
+        assign packed_valid=payload_valid;assign payload_ready=packed_ready;
+        assign packed_channel=payload_channel;assign packed_id=payload_id;
+        assign collector_idle=1;
+    end endgenerate
     mjpeg_packetizer transport (
         .clk           (clk),
         .rst_n         (rst_n),
-        .s_data        (payload),
-        .s_bytes       (payload_bytes),
-        .s_first       (payload_first),
-        .s_last        (payload_last),
-        .s_valid       (payload_valid),
-        .s_ready       (payload_ready),
-        .s_channel     (payload_channel),
-        .s_frame_id    (payload_id),
-        .desc_valid    (descriptor_valid),
-        .desc_ready    (descriptor_ready),
+        .s_data        (packed_payload),
+        .s_bytes       (packed_bytes),
+        .s_first       (packed_first),
+        .s_last        (packed_last),
+        .s_valid       (packed_valid),
+        .s_ready       (packed_ready),
+        .s_channel     (packed_channel),
+        .s_frame_id    (packed_id),
+        .desc_valid    (descriptor_valid && collector_idle),
+        .desc_ready    (packet_desc_ready),
         .desc_channel  (descriptor_channel),
         .desc_frame_id (descriptor_id),
         .desc_length   (descriptor_length),

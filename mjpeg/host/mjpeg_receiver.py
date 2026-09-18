@@ -5,6 +5,7 @@ belongs to the transport endpoint and can feed this same receiver.
 """
 
 import csv, json, sys
+import struct
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -31,6 +32,15 @@ class Receiver:
         self.packet = []
         self.frames = {}
 
+    def packet_words(self, words):
+        if self.packet or not 2 <= len(words) <= 7:
+            raise ValueError('Invalid complete packet boundary')
+        if not words[-1][2] or any(last for _, _, last in words[:-1]):
+            raise ValueError('Invalid packet last flags')
+        if any(not 0 <= data < 2**32 or not 1 <= nbytes <= 4 for data, nbytes, _ in words):
+            raise ValueError('Invalid bus word')
+        return self._decode_packet([(data, nbytes) for data, nbytes, _ in words])
+
     def word(self, data, nbytes, packet_last):
         if not 0 <= data < 2**32 or not 1 <= nbytes <= 4:
             raise ValueError("Invalid bus word")
@@ -41,6 +51,9 @@ class Receiver:
             return None
         words = self.packet
         self.packet = []
+        return self._decode_packet(words)
+
+    def _decode_packet(self, words):
         if len(words) < 2 or words[0][1] != 4 or words[1][1] != 4:
             raise ValueError("Truncated header")
         header = words[0][0]
@@ -69,12 +82,17 @@ class Receiver:
             if key not in self.frames or self.frames[key][1]:
                 raise ValueError("Frame order")
             frame = self.frames[key]
-            remaining = count
-            for data, nbytes in words[2:]:
-                if nbytes != min(remaining, 4):
+            if count == 16:
+                if any(n != 4 for _, n in words[2:]):
                     raise ValueError("Partial payload word")
-                frame[0].extend(data.to_bytes(4, "little")[:nbytes])
-                remaining -= nbytes
+                frame[0].extend(struct.pack('<4I', *(data for data, _ in words[2:])))
+            else:
+                remaining = count
+                for data, nbytes in words[2:]:
+                    if nbytes != min(remaining, 4):
+                        raise ValueError("Partial payload word")
+                    frame[0].extend(data.to_bytes(4, "little")[:nbytes])
+                    remaining -= nbytes
             if len(frame[0]) > self.limit:
                 raise ValueError("Frame exceeds receive limit")
             if last:

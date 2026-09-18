@@ -1,6 +1,9 @@
 # Preserve the exact validated source/vector bytes and their SHA-256 hashes.
 # Disable automatic newline conversion, including on Windows checkouts.
 * -text
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Keep Vivado reports exactly as emitted, including alignment and blank lines.
+*.rpt -whitespace
 
 *.jpg binary
 *.jpeg binary

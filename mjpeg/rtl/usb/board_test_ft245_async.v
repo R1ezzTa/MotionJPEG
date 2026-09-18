@@ -1,5 +1,6 @@
-// Conservative FT245 asynchronous FIFO timing at 50MHz; EEPROM unchanged.
-// Data setup=40ns, RD#/WR# active=80ns, recovery/turnaround >=80ns.
+// FT245 asynchronous FIFO timing at 50MHz; EEPROM unchanged.
+// Write setup=20ns, pulse=40ns, hold=40ns, inactive interval >=80ns.
+// Read pulse/recovery remain 80ns. Write acceptance interval >=120ns.
 module board_test_ft245_async(
     input clk,rst_n,
     inout [7:0] usb_data,
@@ -30,13 +31,13 @@ module board_test_ft245_async(
             case (state)
                 IDLE: begin
                     if (!rxf_sync[1]) begin state<=RD;count<=3; end
-                    else if (tx_valid && tx_ready) begin held_data<=tx_data;state<=SETUP;count<=1; end
+                    else if (tx_valid && tx_ready) begin held_data<=tx_data;state<=SETUP;count<=0; end
                 end
                 RD: if (count==0) begin rx_data<=usb_data;rx_valid<=1;state<=RECOVER;count<=3; end
                     else count<=count-1'b1;
                 RECOVER: if (count==0) state<=IDLE; else count<=count-1'b1;
-                SETUP: if (count==0) begin state<=WR;count<=3; end else count<=count-1'b1;
-                WR: if (count==0) begin state<=HOLD;count<=3; end else count<=count-1'b1;
+                SETUP: if (count==0) begin state<=WR;count<=1; end else count<=count-1'b1;
+                WR: if (count==0) begin state<=HOLD;count<=1; end else count<=count-1'b1;
                 HOLD: if (count==0) state<=IDLE; else count<=count-1'b1;
                 default: state<=IDLE;
             endcase
