@@ -1,0 +1,376 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Sep 17 22:32:15 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_drc -file drc_synthesis.rpt
+| Design       : mjpeg_synth_top
+| Device       : xc7z010clg400-1
+| Speed File   : -1
+| Design State : Synthesized
+------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: mjpeg_synth_top
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 67
++-----------+----------+----------------------------+------------+
+| Rule      | Severity | Description                | Violations |
++-----------+----------+----------------------------+------------+
+| CHECK-3   | Warning  | Report rule limit reached  | 2          |
+| DPIP-1    | Warning  | Input pipelining           | 18         |
+| DPOP-2    | Warning  | MREG Output pipelining     | 6          |
+| REQP-1839 | Warning  | RAMB36 async control check | 20         |
+| REQP-1840 | Warning  | RAMB18 async control check | 20         |
+| ZPS7-1    | Warning  | PS7 block required         | 1          |
++-----------+----------+----------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+CHECK-3#1 Warning
+Report rule limit reached  
+REQP-1839 rule limit reached: 20 violations have been found.
+Related violations: <none>
+
+CHECK-3#2 Warning
+Report rule limit reached  
+REQP-1840 rule limit reached: 20 violations have been found.
+Related violations: <none>
+
+DPIP-1#1 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/b_reg[0] input encoder/channels[0].channel/core/dct/engine/b_reg[0]/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#2 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/b_reg[1] input encoder/channels[0].channel/core/dct/engine/b_reg[1]/C[47:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#3 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[0] input encoder/channels[0].channel/core/dct/engine/z_reg[0]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#4 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[0] input encoder/channels[0].channel/core/dct/engine/z_reg[0]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#5 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[1] input encoder/channels[0].channel/core/dct/engine/z_reg[1]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#6 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[1] input encoder/channels[0].channel/core/dct/engine/z_reg[1]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#7 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[2] input encoder/channels[0].channel/core/dct/engine/z_reg[2]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#8 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[2] input encoder/channels[0].channel/core/dct/engine/z_reg[2]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#9 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[3] input encoder/channels[0].channel/core/dct/engine/z_reg[3]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#10 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[3] input encoder/channels[0].channel/core/dct/engine/z_reg[3]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#11 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[4] input encoder/channels[0].channel/core/dct/engine/z_reg[4]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#12 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[4] input encoder/channels[0].channel/core/dct/engine/z_reg[4]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#13 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[5] input encoder/channels[0].channel/core/dct/engine/z_reg[5]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#14 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[5] input encoder/channels[0].channel/core/dct/engine/z_reg[5]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#15 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[6] input encoder/channels[0].channel/core/dct/engine/z_reg[6]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#16 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[6] input encoder/channels[0].channel/core/dct/engine/z_reg[6]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#17 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[7] input encoder/channels[0].channel/core/dct/engine/z_reg[7]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#18 Warning
+Input pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/z_reg[7] input encoder/channels[0].channel/core/dct/engine/z_reg[7]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPOP-2#1 Warning
+MREG Output pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/p_reg[0] multiplier stage encoder/channels[0].channel/core/dct/engine/p_reg[0]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#2 Warning
+MREG Output pipelining  
+DSP encoder/channels[0].channel/core/dct/engine/p_reg[3] multiplier stage encoder/channels[0].channel/core/dct/engine/p_reg[3]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#3 Warning
+MREG Output pipelining  
+DSP encoder/channels[0].channel/core/quant/p_0_out multiplier stage encoder/channels[0].channel/core/quant/p_0_out/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#4 Warning
+MREG Output pipelining  
+DSP encoder/channels[0].channel/core/quant/p_0_out__0 multiplier stage encoder/channels[0].channel/core/quant/p_0_out__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#5 Warning
+MREG Output pipelining  
+DSP encoder/channels[0].channel/core/quant/p_0_out__1 multiplier stage encoder/channels[0].channel/core/quant/p_0_out__1/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#6 Warning
+MREG Output pipelining  
+DSP encoder/channels[0].channel/core/quant/p_0_out__2 multiplier stage encoder/channels[0].channel/core/quant/p_0_out__2/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+REQP-1839#1 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#2 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[11]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#3 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[12]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#4 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[13]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#5 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#6 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#7 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[9]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#8 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/y_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#9 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/y_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#10 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[13] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[11]) which is driven by a register (encoder/channels[0].channel/core/front/y_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#11 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#12 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[11]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#13 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[12]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#14 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[13]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#15 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#16 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#17 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/x_reg[9]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#18 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/y_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#19 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/y_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#20 Warning
+RAMB36 async control check  
+The RAMB36E1 encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0 has an input control pin encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/mem_reg_0/ADDRARDADDR[14] (net: encoder/channels[0].channel/core/front/banks[0].lanes[0].ram/wr_addr[12]) which is driven by a register (encoder/channels[0].channel/core/front/y_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#1 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[10] (net: encoder/channels[0].channel/sel0[5]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#2 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[11] (net: encoder/channels[0].channel/sel0[6]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#3 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[5] (net: encoder/channels[0].channel/sel0[0]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#4 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[6] (net: encoder/channels[0].channel/sel0[1]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#5 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[7] (net: encoder/channels[0].channel/sel0[2]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#6 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[8] (net: encoder/channels[0].channel/sel0[3]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#7 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRARDADDR[9] (net: encoder/channels[0].channel/sel0[4]) which is driven by a register (encoder/channels[0].channel/restore_index_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#8 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[10] (net: encoder/channels[0].channel/q_addr[5]) which is driven by a register (q_addr_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#9 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[11] (net: encoder/channels[0].channel/q_addr[6]) which is driven by a register (q_addr_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#10 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[5] (net: encoder/channels[0].channel/q_addr[0]) which is driven by a register (q_addr_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#11 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[6] (net: encoder/channels[0].channel/q_addr[1]) which is driven by a register (q_addr_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#12 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[7] (net: encoder/channels[0].channel/q_addr[2]) which is driven by a register (q_addr_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#13 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[8] (net: encoder/channels[0].channel/q_addr[3]) which is driven by a register (q_addr_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#14 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ADDRBWRADDR[9] (net: encoder/channels[0].channel/q_addr[4]) which is driven by a register (q_addr_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#15 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ENARDEN (net: encoder/channels[0].channel/table_cache_reg_i_1_n_0) which is driven by a register (encoder/channels[0].channel/recovery_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#16 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/ENARDEN (net: encoder/channels[0].channel/table_cache_reg_i_1_n_0) which is driven by a register (encoder/channels[0].channel/recovery_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#17 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/WEBWE[3] (net: encoder/channels[0].channel/p_12_in) which is driven by a register (q_value_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#18 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/WEBWE[3] (net: encoder/channels[0].channel/p_12_in) which is driven by a register (q_value_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#19 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/WEBWE[3] (net: encoder/channels[0].channel/p_12_in) which is driven by a register (q_value_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#20 Warning
+RAMB18 async control check  
+The RAMB18E1 encoder/channels[0].channel/table_cache_reg has an input control pin encoder/channels[0].channel/table_cache_reg/WEBWE[3] (net: encoder/channels[0].channel/p_12_in) which is driven by a register (q_value_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+ZPS7-1#1 Warning
+PS7 block required  
+The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+Related violations: <none>
+
+

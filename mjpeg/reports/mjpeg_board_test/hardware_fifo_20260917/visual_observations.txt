@@ -1,0 +1,6 @@
+decode_preview.jpg inspected once after metadata check (JPEG, 780x310, 34493 bytes).
+Left: gray_ramp is a dark gray gradient, 16x16, JPEG 622 bytes.
+Middle: color_noise contains multicolor noise blocks, 32x24, JPEG 1752 bytes.
+Right: color_flat is a uniform brown-orange field, 16x8, JPEG 615 bytes.
+Three panels and captions are fully visible and readable; this preview is assembled
+from actual FPGA-output JPEGs decoded by Pillow, enlarged with nearest-neighbor scaling.

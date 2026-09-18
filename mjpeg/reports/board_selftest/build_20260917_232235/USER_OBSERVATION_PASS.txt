@@ -1,0 +1,5 @@
+2026-09-17: User confirmed all expected board observations.
+LED0/LED1 alternate every nominal 0.5 seconds; LED3 stays on.
+LED2 turns on while KEY0 is held; all four user LEDs turn off while RESET is held.
+JTAG configuration and LED/key/reset board bring-up passed.
+This does not validate camera capture, JPEG encoding, USB FIFO transfer or DDR.

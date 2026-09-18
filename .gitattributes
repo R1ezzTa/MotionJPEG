@@ -1,0 +1,8 @@
+# Preserve the exact validated source/vector bytes and their SHA-256 hashes.
+# Disable automatic newline conversion, including on Windows checkouts.
+* -text
+
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.pdf binary

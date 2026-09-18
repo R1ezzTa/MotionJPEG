@@ -1,0 +1,9 @@
+Viewed once: work/image-previews/progressive_fhd_640.jpg, JPEG 640x360, 68,083 bytes.
+This is a reduced preview of the actual FPGA's decoded 1920x1080 first frame.
+Observed a complete rectangular colour pattern with smooth gradients inside
+repeating diagonal bands/diamond shapes. Colours cover the full frame, with
+regular wrap boundaries expected from the modulo-256 ramp. No missing region,
+black/unwritten rows, or unexpected discontinuous line shifts were visible.
+Full frame correctness is additionally established by byte-for-byte equality
+with the independent CPU JPEG reference and full Pillow decoding.
+Physical seven-segment appearance has not been observed; user away from board.

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "gray_zero",
+    "width": 8,
+    "height": 8,
+    "gray": 1,
+    "quality": 75,
+    "bytes": 600,
+    "luma_psnr": 99,
+    "stuffed": 0
+  },
+  {
+    "name": "gray_ramp",
+    "width": 16,
+    "height": 16,
+    "gray": 1,
+    "quality": 85,
+    "bytes": 622,
+    "luma_psnr": 56.65,
+    "stuffed": 0
+  },
+  {
+    "name": "gray_noise",
+    "width": 32,
+    "height": 24,
+    "gray": 1,
+    "quality": 100,
+    "bytes": 1820,
+    "luma_psnr": 58.6,
+    "stuffed": 21
+  },
+  {
+    "name": "color_mcu",
+    "width": 16,
+    "height": 8,
+    "gray": 0,
+    "quality": 85,
+    "bytes": 629,
+    "luma_psnr": 32.93,
+    "stuffed": 0
+  },
+  {
+    "name": "color_flat",
+    "width": 16,
+    "height": 8,
+    "gray": 0,
+    "quality": 75,
+    "bytes": 615,
+    "luma_psnr": 48.13,
+    "stuffed": 0
+  },
+  {
+    "name": "color_noise",
+    "width": 32,
+    "height": 24,
+    "gray": 0,
+    "quality": 90,
+    "bytes": 1752,
+    "luma_psnr": 24.37,
+    "stuffed": 1
+  },
+  {
+    "name": "wide",
+    "width": 1920,
+    "height": 16,
+    "gray": 0,
+    "quality": 75,
+    "bytes": 6878,
+    "luma_psnr": 21.25,
+    "stuffed": 25
+  },
+  {
+    "name": "tall",
+    "width": 32,
+    "height": 1080,
+    "gray": 0,
+    "quality": 85,
+    "bytes": 9118,
+    "luma_psnr": 21.98,
+    "stuffed": 52
+  },
+  {
+    "name": "fhd",
+    "width": 1920,
+    "height": 1080,
+    "gray": 0,
+    "quality": 85,
+    "bytes": 516557,
+    "luma_psnr": 22.04,
+    "stuffed": 2872
+  }
+]

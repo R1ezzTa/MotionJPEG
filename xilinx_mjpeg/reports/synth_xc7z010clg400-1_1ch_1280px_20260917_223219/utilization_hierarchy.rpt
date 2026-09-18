@@ -1,0 +1,68 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Sep 17 22:32:09 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file utilization_hierarchy.rpt
+| Design       : mjpeg_synth_top
+| Device       : 7z010clg400-1
+| Design State : Synthesized
+------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------+------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|             Instance            |               Module               | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++---------------------------------+------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| mjpeg_synth_top                 |                              (top) |      10160 |      10147 |       0 |   13 | 16223 |     24 |      1 |         42 |
+|   (mjpeg_synth_top)             |                              (top) |         17 |         17 |       0 |    0 |   121 |      0 |      0 |          0 |
+|   encoder                       |                      mjpeg_encoder |       9980 |       9967 |       0 |   13 | 15790 |     24 |      1 |         42 |
+|     (encoder)                   |                      mjpeg_encoder |          7 |          7 |       0 |    0 |     9 |      0 |      0 |          0 |
+|     channels[0].channel         |                      mjpeg_channel |       9315 |       9302 |       0 |   13 | 14712 |     24 |      1 |         42 |
+|       (channels[0].channel)     |                      mjpeg_channel |         91 |         91 |       0 |    0 |   339 |      0 |      1 |          0 |
+|       core                      |                       jpeg_encoder |       9224 |       9211 |       0 |   13 | 14373 |     24 |      0 |         42 |
+|         (core)                  |                       jpeg_encoder |        228 |        228 |       0 |    0 |    43 |      0 |      0 |          0 |
+|         dct                     |                             dct8x8 |       2001 |       1997 |       0 |    4 |  4542 |      0 |      0 |         38 |
+|           (dct)                 |                             dct8x8 |        724 |        724 |       0 |    0 |  4530 |      0 |      0 |          0 |
+|           engine                |                              dct1d |       1277 |       1273 |       0 |    4 |    12 |      0 |      0 |         38 |
+|         format                  |                     jpeg_formatter |        253 |        253 |       0 |    0 |   286 |      0 |      0 |          0 |
+|         formatter_input_buffer  | jpeg_stream_buffer__parameterized2 |        201 |        201 |       0 |    0 |   270 |      0 |      0 |          0 |
+|         front                   |                   raster_to_mcu422 |        321 |        321 |       0 |    0 |   185 |     16 |      0 |          0 |
+|           (front)               |                   raster_to_mcu422 |        228 |        228 |       0 |    0 |   185 |      0 |      0 |          0 |
+|           banks[0].lanes[0].ram |                     line_group_ram |          1 |          1 |       0 |    0 |     0 |      2 |      0 |          0 |
+|           banks[0].lanes[1].ram |                   line_group_ram_0 |          3 |          3 |       0 |    0 |     0 |      2 |      0 |          0 |
+|           banks[0].lanes[2].ram |     line_group_ram__parameterized0 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[0].lanes[3].ram |   line_group_ram__parameterized0_1 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[0].lanes[4].ram |   line_group_ram__parameterized0_2 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[0].lanes[5].ram |   line_group_ram__parameterized0_3 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[1].lanes[0].ram |                   line_group_ram_4 |          1 |          1 |       0 |    0 |     0 |      2 |      0 |          0 |
+|           banks[1].lanes[1].ram |                   line_group_ram_5 |         20 |         20 |       0 |    0 |     0 |      2 |      0 |          0 |
+|           banks[1].lanes[2].ram |   line_group_ram__parameterized0_6 |         27 |         27 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[1].lanes[3].ram |   line_group_ram__parameterized0_7 |          9 |          9 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[1].lanes[4].ram |   line_group_ram__parameterized0_8 |          9 |          9 |       0 |    0 |     0 |      1 |      0 |          0 |
+|           banks[1].lanes[5].ram |   line_group_ram__parameterized0_9 |         19 |         19 |       0 |    0 |     0 |      1 |      0 |          0 |
+|         huff                    |                    huffman_encoder |       1251 |       1251 |       0 |    0 |   923 |      8 |      0 |          0 |
+|         huff_input_buffer       | jpeg_stream_buffer__parameterized0 |        127 |        127 |       0 |    0 |   196 |      0 |      0 |          0 |
+|         huff_output_buffer      | jpeg_stream_buffer__parameterized1 |        265 |        265 |       0 |    0 |   302 |      0 |      0 |          0 |
+|         packer                  |                     entropy_packer |       1270 |       1270 |       0 |    0 |   804 |      0 |      0 |          0 |
+|         quant                   |                           quantize |       1727 |       1718 |       0 |    9 |  4209 |      0 |      0 |          4 |
+|         scan_order              |                      zigzag_buffer |       1278 |       1278 |       0 |    0 |  2374 |      0 |      0 |          0 |
+|         symbols_core            |                     symbol_encoder |        306 |        306 |       0 |    0 |   239 |      0 |      0 |          0 |
+|     channels[0].channel_output  |                 jpeg_stream_buffer |        263 |        263 |       0 |    0 |   339 |      0 |      0 |          0 |
+|     descriptor_arbiter          |      mjpeg_arbiter__parameterized0 |        222 |        222 |       0 |    0 |   362 |      0 |      0 |          0 |
+|       (descriptor_arbiter)      |      mjpeg_arbiter__parameterized0 |        168 |        168 |       0 |    0 |    18 |      0 |      0 |          0 |
+|       output_buffer             | jpeg_stream_buffer__parameterized4 |         54 |         54 |       0 |    0 |   344 |      0 |      0 |          0 |
+|     payload_arbiter             |                      mjpeg_arbiter |        173 |        173 |       0 |    0 |   368 |      0 |      0 |          0 |
+|       (payload_arbiter)         |                      mjpeg_arbiter |          0 |          0 |       0 |    0 |    28 |      0 |      0 |          0 |
+|       output_buffer             | jpeg_stream_buffer__parameterized3 |        173 |        173 |       0 |    0 |   340 |      0 |      0 |          0 |
+|   transport                     |                   mjpeg_packetizer |        163 |        163 |       0 |    0 |   312 |      0 |      0 |          0 |
++---------------------------------+------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+
+

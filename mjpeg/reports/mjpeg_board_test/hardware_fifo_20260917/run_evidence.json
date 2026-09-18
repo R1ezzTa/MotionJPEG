@@ -1,0 +1,34 @@
+{
+  "time_local": "2026-09-17T23:55:24",
+  "board": "Davinci XC7A35T-FGG484-2",
+  "clock_hz": 50000000,
+  "jtag_serial": "210512180081",
+  "usb_serial": "FTB7MA1D",
+  "usb_mode": "FT245 asynchronous FIFO",
+  "bitstream": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\mjpeg_board_test\\build_20260917_234814\\davinci_mjpeg_board_test.bit",
+  "bitstream_sha256": "3f7f1ccd9847a0ee2958338a8c9ed0f7ee76fbab3d21930b29323a8f714ef1f0",
+  "hardware_capture_sha256": "7d2a138d69c34b078fd4d3127df5d66584f37eaa4b8d61b989ef40c960d7dc3d",
+  "hardware_frames": 27,
+  "frame_ids": [
+    0,
+    26
+  ],
+  "jpeg_bytes": 26901,
+  "usb_bytes": 348582,
+  "all_reference_equal": true,
+  "all_decoded": true,
+  "timestamps_strictly_increasing": true,
+  "baseline_files_hash_equal": 22,
+  "simulation_frames": 18,
+  "setup_slack_ns": 9.075,
+  "hold_slack_ns": 0.055,
+  "drc_errors": 0,
+  "drc_warnings": 66,
+  "limitations": [
+    "ROM source obeys backpressure; physical DVP/SCCB not tested",
+    "Small images only; no 1080p60 claim",
+    "No DDR or synchronous USB FIFO tested",
+    "No mid-stream reset recovery test",
+    "Ubuntu backend not tested"
+  ]
+}
