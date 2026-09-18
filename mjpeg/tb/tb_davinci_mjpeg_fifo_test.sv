@@ -10,15 +10,31 @@ module tb_davinci_mjpeg_fifo_test;
     wire [7:0] seg_led;
     assign data=(!rd_n && rx_pending) ? 8'h47 : 8'bz;
     // Shorten one-second windows only for simulation. Hardware remains 50MHz.
-    davinci_mjpeg_board_test_top #(.CLOCK_HZ(1000000)) dut(
+    davinci_mjpeg_board_test_top #(.CLOCK_HZ(1000000),.SYNC_FIFO(0),.USE_MMCM(0)) dut(
         .sys_clk(clk),.sys_rst_n(rst_n),.usb_data(data),.usb_rxf_n(!rx_pending),.usb_txe_n(txe_n),
         .usb_rd_n(rd_n),.usb_wr_n(wr_n),.usb_oe_n(oe_n),.usb_siwu_n(siwu_n),.led(led),
         .seg_sel(seg_sel),.seg_led(seg_led));
     integer capture,bytes_seen=0,cycles=0,marker;
     time data_changed=0,wr_low=0,wr_high=0,rd_low=0;
     integer monitor_ticks=0,monitor_in=0,monitor_ok=0,monitor_bad=0,monitor_total=0,monitor_windows=0,rate_trace;
+    integer link_ticks=0,accepted_bytes=0,link_trace;
     initial rate_trace=$fopen("fps_expected.csv","w");
     initial #1 $fwrite(rate_trace,"window,input_fps,compressed_fps,failed_fps,total_compressed\n");
+    initial link_trace=$fopen("link_expected.csv","w");
+    initial #1 $fwrite(link_trace,"window,cycles,writes,write_busy_cycles,txe_wait_cycles,upstream_empty_cycles,rx_cycles\n");
+    always @(posedge clk) if(dut.rst_n) begin
+        link_ticks=link_ticks+1;
+        accepted_bytes=accepted_bytes+(dut.tx_valid && dut.tx_ready);
+        #1;
+        if(dut.link_stats_valid) begin
+            if(link_ticks!=1000000 || dut.link_stats_data[95:64]!=accepted_bytes ||
+                dut.link_stats_data[63:32]!=link_ticks) $fatal(1,"Link counters differ from independent clocks/byte handshakes");
+            $fwrite(link_trace,"%0d,%0d,%0d,%0d,%0d,%0d,%0d\n",dut.link_stats_data[31:0],link_ticks,
+                accepted_bytes,dut.link_stats_data[127:96],dut.link_stats_data[159:128],
+                dut.link_stats_data[191:160],dut.link_stats_data[223:192]);
+            link_ticks=0;accepted_bytes=0;
+        end
+    end
     always @(posedge clk) if(dut.engine.rst_n) begin
         monitor_ticks=monitor_ticks+1;
         monitor_in=monitor_in+dut.engine.input_frame;monitor_ok=monitor_ok+dut.engine.success_frame;
@@ -75,7 +91,7 @@ module tb_davinci_mjpeg_fifo_test;
         wait(monitor_windows>=1);
         repeat(10000) @(negedge clk);
         if(monitor_total!=18 || monitor_windows<1) $fatal(1,"FPS should count 18 complete frames, not payload packets");
-        $fclose(capture);$fclose(rate_trace);
+        $fclose(capture);$fclose(rate_trace);$fclose(link_trace);
         marker=$fopen("SIM_PASS.txt","w");
         $fdisplay(marker,"FT245 async FIFO capture: 18 frames, %0d bytes, backpressure/setup/pulse/turnaround checks passed",bytes_seen);
         $fclose(marker);$finish;

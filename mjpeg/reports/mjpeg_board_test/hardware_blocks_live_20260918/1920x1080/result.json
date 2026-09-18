@@ -1,0 +1,53 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "pixels": 2073600,
+  "quality": 85,
+  "frames": 360,
+  "first_frame_id": 3206,
+  "last_frame_id": 3565,
+  "jpeg_bytes_per_frame": 516557,
+  "jpeg_sha256": "8f1047b6b5313fbf6e14f37a8434ebff1d438418eadd1ee431a09c35a61d8b95",
+  "start_interval_fps": 11.976572681556744,
+  "pixel_rate_mpix_s": 24.834621112476064,
+  "mean_feed_ms": 82.94396,
+  "mean_jpeg_end_ms": 83.40305655555555,
+  "mean_descriptor_end_ms": 83.48856116666666,
+  "input_wait_fraction": 0.0,
+  "output_wait_fraction": 0.37825192461279167,
+  "window_fps_values": [
+    0,
+    3,
+    10,
+    11,
+    12
+  ],
+  "idle_windows_verified": 2,
+  "wire_start_offset": 375573985,
+  "wire_end_offset": 563742713,
+  "wire_expansion": 1.0118746065024984,
+  "host_packet_batches": true,
+  "receive_only": false,
+  "reference_verified": true,
+  "passed": true,
+  "host_elapsed_seconds": 33.07376329999897,
+  "host_cpu_seconds": 6.109375,
+  "host_cpu_fraction": 0.18471968081117005,
+  "steady_link_windows": 29,
+  "link_totals": {
+    "cycles": 1450000000,
+    "writes": 181542257,
+    "write_busy_cycles": 907711290,
+    "txe_wait_cycles": 45288827,
+    "upstream_empty_cycles": 315457626,
+    "rx_cycles": 0
+  },
+  "link_cycle_fractions": {
+    "writes": 0.12520155655172413,
+    "write_busy_cycles": 0.6260077862068966,
+    "txe_wait_cycles": 0.031233673793103447,
+    "upstream_empty_cycles": 0.21755698344827587,
+    "rx_cycles": 0.0
+  },
+  "steady_wire_mbytes_s": 6.260077827586207
+}

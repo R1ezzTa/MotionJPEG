@@ -1,0 +1,1 @@
+This draft build was intentionally cancelled before bitstream/programming. The endpoint RAM was dissolved into registers because its write was inside an asynchronous-reset process (90.41% synthesized LUTs, 87.06% FFs). RAM ports and endpoint control were corrected, simulated again, and superseded by build_20260918_123426. No hardware test used this draft.

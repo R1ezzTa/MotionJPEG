@@ -1,29 +1,35 @@
 Source compile order for 'synthesis' with fileset 'sources_1' in source management mode 'All':
 Index  File Name                       Used_In      File_Type  Library         Ngc Wrapper  Full Path Name
 -----  ------------------------------  -----------  ---------  --------------  -----------  -------------------------------------------------------------------------
-1      board_test_ft245_async.v        Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_ft245_async.v
-2      board_test_gradient.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/board_test_gradient.v
-3      davinci_fps_display.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/davinci_fps_display.v
-4      dct1d.v                         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct1d.v
-5      dct8x8.v                        Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct8x8.v
-6      entropy_packer.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/entropy_packer.v
-7      frame_rate_meter.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/frame_rate_meter.v
-8      huffman_encoder.v               Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/huffman_encoder.v
-9      jpeg_encoder.v                  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/jpeg_encoder.v
-10     jpeg_formatter.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/format/jpeg_formatter.v
-11     jpeg_stream_buffer.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/jpeg_stream_buffer.v
-12     line_group_ram.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/line_group_ram.v
-13     mjpeg_arbiter.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_arbiter.v
-14     mjpeg_channel.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_channel.v
-15     mjpeg_encoder.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_encoder.v
-16     mjpeg_packetizer.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_packetizer.v
-17     mjpeg_payload_coalescer.v       Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_payload_coalescer.v
-18     mjpeg_synth_top.v               Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_synth_top.v
-19     quantize.v                      Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/quant/quantize.v
-20     raster_to_mcu422.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/frontend/raster_to_mcu422.v
-21     symbol_encoder.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/symbol_encoder.v
-22     zigzag_buffer.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/zigzag_buffer.v
-23     davinci_mjpeg_board_test_top.v  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/davinci_mjpeg_board_test_top.v
+1      board_test_async_fifo.v         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_async_fifo.v
+2      board_test_block_transport.v    Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_block_transport.v
+3      board_test_cdc_snapshot.v       Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_cdc_snapshot.v
+4      board_test_core_clock.v         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/board_test_core_clock.v
+5      board_test_ft245_async.v        Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_ft245_async.v
+6      board_test_ft245_sync.v         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_ft245_sync.v
+7      board_test_gradient.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/board_test_gradient.v
+8      board_test_usb_clock_guard.v    Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/usb/board_test_usb_clock_guard.v
+9      davinci_fps_display.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/davinci_fps_display.v
+10     dct1d.v                         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct1d.v
+11     dct8x8.v                        Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct8x8.v
+12     entropy_packer.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/entropy_packer.v
+13     frame_rate_meter.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/frame_rate_meter.v
+14     huffman_encoder.v               Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/huffman_encoder.v
+15     jpeg_encoder.v                  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/jpeg_encoder.v
+16     jpeg_formatter.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/format/jpeg_formatter.v
+17     jpeg_stream_buffer.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/jpeg_stream_buffer.v
+18     line_group_ram.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/line_group_ram.v
+19     mjpeg_arbiter.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_arbiter.v
+20     mjpeg_channel.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_channel.v
+21     mjpeg_encoder.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_encoder.v
+22     mjpeg_packetizer.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_packetizer.v
+23     mjpeg_payload_coalescer.v       Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_payload_coalescer.v
+24     mjpeg_synth_top.v               Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_synth_top.v
+25     quantize.v                      Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/quant/quantize.v
+26     raster_to_mcu422.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/frontend/raster_to_mcu422.v
+27     symbol_encoder.v                Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/symbol_encoder.v
+28     zigzag_buffer.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/zigzag_buffer.v
+29     davinci_mjpeg_board_test_top.v  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/top/davinci_mjpeg_board_test_top.v
 
 
 Missing instances for 'synthesis' with fileset 'sources_1':

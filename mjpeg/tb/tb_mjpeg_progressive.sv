@@ -7,6 +7,8 @@ module tb_mjpeg_progressive;
     always #10 clk=~clk;
     wire [7:0] tx_data;
     wire tx_valid;
+    wire [7:0] block_data;
+    wire block_valid,engine_ready;
     wire [3:0] led;
     integer cycles=0,completed=0,capture,trace,marker;
     reg tx_ready=1;
@@ -14,7 +16,10 @@ module tb_mjpeg_progressive;
     mjpeg_board_test_engine #(.CLOCK_HZ(10000),.VGA_WIDTH(48),.VGA_HEIGHT(16),
         .HD_WIDTH(64),.HD_HEIGHT(24),.FHD_WIDTH(96),.FHD_HEIGHT(32)) dut(
         .sys_clk(clk),.sys_rst_n(rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
-        .tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(tx_ready),.led(led),.compressed_fps(),.fps_sample_valid());
+        .tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(engine_ready),.led(led),.compressed_fps(),.fps_sample_valid());
+    board_test_block_transport blocks(.clk(clk),.rst_n(dut.rst_n),
+        .s_data(tx_data),.s_valid(tx_valid),.s_ready(engine_ready),
+        .m_data(block_data),.m_valid(block_valid),.m_ready(tx_ready),.stats_valid(1'b0),.stats_data(224'd0));
     reg [15:0] gx=0,gy=0;
     wire [15:0] gp;
     board_test_gradient generator(.x(gx),.y(gy),.pixel(gp));
@@ -22,24 +27,40 @@ module tb_mjpeg_progressive;
     integer tick=0,start_tick=0,feed_tick=0,jpeg_tick=0,wait_in=0,wait_out=0;
     integer packet_word=0,packet_id=0;
     reg packet_descriptor=0,packet_last_payload=0,inflight=0;
+    reg pixel_stalled=0,feeding=0;
+    reg [18:0] held_pixel;
+    integer pixel_stall_cycles=0,accepted_pixels=0;
     reg [7:0] expected_y,expected_c;
     always @(posedge clk) begin
         cycles=cycles+1;
         if(cycles>1000000) $fatal(1,"Progressive watchdog");
         if(dut.rst_n) begin
-            if(tx_valid && tx_ready) $fwrite(capture,"%c",tx_data);
+            if(block_valid && tx_ready) $fwrite(capture,"%c",block_data);
             if(led[3]) $fatal(1,"Unexpected codec error");
+            if(pixel_stalled && (!dut.codec.s_valid ||
+               {dut.codec.s_eof,dut.codec.s_eol,dut.codec.s_sof,dut.codec.s_data}!==held_pixel))
+                $fatal(1,"Pixel or raster markers changed under backpressure");
+            if(feeding && !dut.codec.s_valid) $fatal(1,"Bubble in one-cycle pixel supply");
+            pixel_stalled=dut.codec.s_valid && !dut.codec.s_ready;
+            held_pixel={dut.codec.s_eof,dut.codec.s_eol,dut.codec.s_sof,dut.codec.s_data};
+            pixel_stall_cycles=pixel_stall_cycles+pixel_stalled;
             if(dut.codec.s_valid && dut.codec.s_ready) begin
                 if(dut.codec.s_sof) begin
                     reference_x=0;reference_y=0;start_tick=tick;inflight=1;
                     wait_in=0;wait_out=0;feed_tick=0;jpeg_tick=0;
+                    feeding=1;accepted_pixels=0;
                 end
+                accepted_pixels=accepted_pixels+1;
                 expected_y=(3*reference_x+2*reference_y)&255;
                 expected_c=reference_x%2 ? (reference_x/2+3*reference_y+160)&255 : (reference_x+reference_y+80)&255;
                 if(dut.codec.s_data!=={expected_c,expected_y}) $fatal(1,"Gradient changed under stalls or coordinate error");
                 if(dut.codec.s_eol!==(reference_x==dut.width-1) ||
                    dut.codec.s_eof!==((reference_x==dut.width-1)&&(reference_y==dut.height-1))) $fatal(1,"Raster frame markers");
-                if(dut.codec.s_eof) feed_tick=tick-start_tick;
+                if(dut.codec.s_eof) begin
+                    feed_tick=tick-start_tick;feeding=0;
+                    if(accepted_pixels!=dut.width*dut.height ||
+                       feed_tick-wait_in!=dut.width*dut.height-1) $fatal(1,"One-cycle pixel cadence/count");
+                end
                 if(reference_x==dut.width-1) begin reference_x=0;reference_y=reference_y+1; end
                 else reference_x=reference_x+1;
             end
@@ -94,10 +115,11 @@ module tb_mjpeg_progressive;
         end
         repeat(10) @(negedge clk);rst_n=1;repeat(10) @(negedge clk);
         run_phase("V",2);run_phase("H",4);run_phase("F",6);
-        wait(dut.remaining==0 && !dut.telemetry_active && !dut.telemetry_pending && !dut.end_pending);
+        wait(dut.remaining==0 && !dut.telemetry_active && !dut.telemetry_pending && !dut.end_pending &&
+            blocks.out_state==0 && !blocks.control_pending && blocks.bank_ready==0 && !blocks.record_pending);
         $fwrite(trace,"\n]\n");$fclose(trace);$fclose(capture);
         marker=$fopen("PROGRESSIVE_SIM_PASS.txt","w");
-        $fdisplay(marker,"Six graduated colour frames, pixel/marker/stall checks, stop commands and independent frame timings passed");
+        $fdisplay(marker,"Six one-cycle graduated frames, full pixel count/cadence, stable data/markers during %0d stalled input cycles, stop and independent frame timings passed",pixel_stall_cycles);
         $fclose(marker);$finish;
     end
 endmodule

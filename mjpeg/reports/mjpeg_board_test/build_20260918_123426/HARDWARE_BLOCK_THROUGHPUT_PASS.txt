@@ -1,0 +1,8 @@
+Actual Davinci XC7A35T, 50 MHz, FT245 asynchronous FIFO, EEPROM unchanged.
+Live validation: 3566 frames (IDs 0-3565); receive-only then full offline validation: 3567 frames (IDs 3566-7132).
+All 7133 JPEGs match independent references byte for byte and fully decode. Pixel timing accounting, continuous IDs, lengths, FPGA FPS totals, zero failed frames and two stopped idle windows per resolution passed.
+VGA 79.955 fps, 720p 26.886 fps, 1080p 11.977 fps. Live/deferred FPS differ by less than 0.001%.
+FPGA link counters account for every clock without overlap. Full-HD steady cycles: write acceptance + write timing about 75.12%, TXE wait 3.12%, upstream empty 21.76%, RX 0%.
+1080p pixel feed: 82.94396 ms, input wait zero, matching the source's two cycles/pixel budget. Current bottleneck is the simulated pixel source; async write budget is the next ceiling after input improvement.
+Build/source/bitstream hashes checked against current RTL. Aggregate evidence: block_throughput_evidence.json.
+FPGA left configured, stopped and idle; cumulative success count 7133. Seven-segment display expected 000000; physical appearance not visually confirmed.

@@ -6,7 +6,7 @@
 // Periodic telemetry uses flags 0x80..0x85 and may appear between bus records.
 module mjpeg_board_test_engine #(
     parameter CLOCK_HZ=50000000,VGA_WIDTH=640,VGA_HEIGHT=480,
-    HD_WIDTH=1280,HD_HEIGHT=720,FHD_WIDTH=1920,FHD_HEIGHT=1080
+    HD_WIDTH=1280,HD_HEIGHT=720,FHD_WIDTH=1920,FHD_HEIGHT=1080,SMALL_END=0
 )(
     input sys_clk, sys_rst_n,
     input [7:0] rx_data, input rx_valid,
@@ -42,13 +42,17 @@ module mjpeg_board_test_engine #(
     reg [15:0] pixel;
     wire [15:0] gradient_pixel;
     board_test_gradient gradient(.x(x),.y(y),.pixel(gradient_pixel));
+    // Raster coordinates advance only on valid/ready. The combinational
+    // gradient therefore supplies the next pixel each clock and holds under
+    // backpressure. The small ROM keeps its synchronous read cycle.
+    wire [15:0] source_pixel=(resolution!=0)?gradient_pixel:pixel;
     reg [28:0] q;
     initial begin
         $readmemh("data/board_test/pixels.mem",pixels);
         $readmemh("data/board_test/quant.mem",quant);
     end
     always @(posedge sys_clk) begin
-        if (state==PREAD) pixel<=(resolution!=0)?gradient_pixel:pixels[pixel_base+pixel_index[10:0]];
+        if (state==PREAD) pixel<=pixels[pixel_base+pixel_index[10:0]];
         if (state==QREAD) q<=quant[(resolution!=0)?{2'd0,q_index}:{test_case,q_index}];
     end
     reg [2:0] cfg_cmd;
@@ -71,7 +75,7 @@ module mjpeg_board_test_engine #(
     mjpeg_synth_top #(.CHANNELS(1),.MAX_WIDTH(1920),.COALESCE(1)) codec(
         .clk(sys_clk),.rst_n(rst_n),.cfg_cmd(cfg_cmd),.cfg_channel(2'd0),
         .cfg_data(cfg_data),.cfg_valid(cfg_valid),.cfg_ready(cfg_ready),
-        .s_data(pixel),.s_valid(state==PSEND),.s_ready(s_ready),
+        .s_data(source_pixel),.s_valid(state==PSEND),.s_ready(s_ready),
         .s_sof(pixel_index==0),.s_eol(x==width-1),.s_eof(pixel_index==pixel_count-1),.s_abort(1'b0),
         .m_data(m_data),.m_bytes(m_bytes),.m_valid(m_valid),.m_ready(m_ready),
         .m_packet_last(m_packet_last),.busy(busy),.tables_ready(tables_ready),.config_error(config_error));
@@ -213,7 +217,7 @@ module mjpeg_board_test_engine #(
             end
             if(state==FINISH && remaining==0 && tx_ready && !m_valid && !busy &&
                !telemetry_active && !telemetry_pending && !timing_active && !timing_pending)
-                end_pending<=resolution!=0;
+                end_pending<=(resolution!=0)||SMALL_END;
             if(end_pending && remaining==0 && !telemetry_active && !telemetry_pending && !timing_active && !timing_pending) begin
                 record<={8'ha0,32'h31444e45};remaining<=5;end_pending<=0; // END1
             end
@@ -245,14 +249,16 @@ module mjpeg_board_test_engine #(
                     if (q_index==127) state<=TABLES;
                     else begin q_index<=q_index+1'b1; state<=QREAD; end
                 end
-                TABLES: if (tables_ready && !config_error) begin pixel_index<=0; x<=0;y<=0; state<=PREAD; end
+                TABLES: if (tables_ready && !config_error) begin
+                    pixel_index<=0;x<=0;y<=0;state<=(resolution!=0)?PSEND:PREAD;
+                end
                 PREAD: state<=PSEND;
                 PSEND: if (s_ready) begin
                     if (pixel_index==pixel_count-1) state<=WAIT_DESC;
                     else begin
                         pixel_index<=pixel_index+1'b1;
                         if(x==width-1) begin x<=0;y<=y+1'b1; end else x<=x+1'b1;
-                        state<=PREAD;
+                        state<=(resolution!=0)?PSEND:PREAD;
                     end
                 end
                 WAIT_DESC: if (descriptor_done) begin
@@ -274,34 +280,90 @@ module mjpeg_board_test_engine #(
     assign led={error_seen,done,(state!=IDLE),tables_ready};
 endmodule
 
-// Physical board top, using FT232H's existing asynchronous FT245 FIFO mode.
-module davinci_mjpeg_board_test_top #(parameter CLOCK_HZ=50000000)(
-    input sys_clk, sys_rst_n,
+// Physical board top. The default uses synchronous FT245 + dual-clock queues.
+// SYNC_FIFO=0 preserves the previous asynchronous transport for regression.
+module davinci_mjpeg_board_test_top #(
+    parameter CLOCK_HZ=100000000,USB_CLOCK_HZ=60000000,SYNC_FIFO=1,USE_MMCM=1,
+    VGA_WIDTH=640,VGA_HEIGHT=480,HD_WIDTH=1280,HD_HEIGHT=720,FHD_WIDTH=1920,FHD_HEIGHT=1080
+)(
+    input sys_clk, sys_rst_n,usb_clk_60m,
     inout [7:0] usb_data,
     input usb_rxf_n, usb_txe_n,
     output usb_rd_n, usb_wr_n, usb_oe_n, usb_siwu_n,
     output [3:0] led,output [5:0] seg_sel,output [7:0] seg_led
 );
+    wire core_clk,core_clock_locked;
+    generate if(USE_MMCM) begin: multiplied_clock
+        board_test_core_clock clock_generator(.ref_clk(sys_clk),.rst_n(sys_rst_n),
+            .core_clk(core_clk),.locked(core_clock_locked));
+    end else begin: bypass_clock
+        // Only for legacy simulation with an externally supplied core clock.
+        assign core_clk=sys_clk;
+        assign core_clock_locked=sys_rst_n;
+    end endgenerate
     wire [7:0] rx_data,tx_data;
     wire rx_valid,tx_valid,tx_ready;
-    wire rst_n;
+    wire [7:0] engine_tx_data;
+    wire engine_tx_valid,engine_tx_ready,link_stats_valid;
+    wire [223:0] link_stats_data;
+    wire rst_n,run_rst_n;
     (* ASYNC_REG="TRUE" *) reg [2:0] reset_pipe=0;
-    always @(posedge sys_clk or negedge sys_rst_n)
-        if (!sys_rst_n) reset_pipe<=0;
+    always @(posedge core_clk or negedge run_rst_n)
+        if (!run_rst_n) reset_pipe<=0;
         else reset_pipe<={reset_pipe[1:0],1'b1};
     assign rst_n=reset_pipe[2];
-    board_test_ft245_async link(
-        .clk(sys_clk),.rst_n(rst_n),.usb_data(usb_data),.usb_rxf_n(usb_rxf_n),.usb_txe_n(usb_txe_n),
+    generate if(SYNC_FIFO) begin: synchronous
+        wire usb_clk,usb_rst_n;
+        BUFG usb_clock_buffer(.I(usb_clk_60m),.O(usb_clk));
+        board_test_usb_clock_guard #(.TIMEOUT_CYCLES(USE_MMCM?100000:50000)) clock_guard(
+            .sys_clk(core_clk),.usb_clk(usb_clk),.sys_rst_n(core_clock_locked),.run_rst_n(run_rst_n));
+        (* ASYNC_REG="TRUE" *) reg [2:0] usb_reset_pipe=0;
+        always @(posedge usb_clk or negedge run_rst_n)
+            if(!run_rst_n) usb_reset_pipe<=0;
+            else usb_reset_pipe<={usb_reset_pipe[1:0],1'b1};
+        assign usb_rst_n=usb_reset_pipe[2];
+        wire [7:0] usb_tx_data,usb_rx_data;
+        wire usb_tx_valid,usb_tx_ready,usb_rx_valid,usb_rx_ready;
+        wire usb_stats_valid;
+        wire [223:0] usb_stats_data;
+        // 8 KiB TX and 256-byte command FIFO. BRAM ports have local clocks.
+        board_test_async_fifo #(.ADDRESS_BITS(13)) tx_fifo(
+            .wclk(core_clk),.wrst_n(rst_n),.s_data(tx_data),.s_valid(tx_valid),.s_ready(tx_ready),
+            .rclk(usb_clk),.rrst_n(usb_rst_n),.m_data(usb_tx_data),.m_valid(usb_tx_valid),.m_ready(usb_tx_ready));
+        board_test_async_fifo #(.ADDRESS_BITS(8),.RAM_STYLE("distributed")) rx_fifo(
+            .wclk(usb_clk),.wrst_n(usb_rst_n),.s_data(usb_rx_data),.s_valid(usb_rx_valid),.s_ready(usb_rx_ready),
+            .rclk(core_clk),.rrst_n(rst_n),.m_data(rx_data),.m_valid(rx_valid),.m_ready(1'b1));
+        board_test_ft245_sync #(.CLOCK_HZ(USB_CLOCK_HZ)) link(
+            .clk(usb_clk),.rst_n(usb_rst_n),.usb_data(usb_data),.usb_rxf_n(usb_rxf_n),.usb_txe_n(usb_txe_n),
+            .usb_rd_n(usb_rd_n),.usb_wr_n(usb_wr_n),.usb_oe_n(usb_oe_n),.usb_siwu_n(usb_siwu_n),
+            .rx_data(usb_rx_data),.rx_valid(usb_rx_valid),.rx_ready(usb_rx_ready),
+            .tx_data(usb_tx_data),.tx_valid(usb_tx_valid),.tx_ready(usb_tx_ready),
+            .stats_valid(usb_stats_valid),.stats_data(usb_stats_data));
+        board_test_cdc_snapshot stats_mailbox(
+            .s_clk(usb_clk),.s_rst_n(usb_rst_n),.s_valid(usb_stats_valid),.s_data(usb_stats_data),
+            .m_clk(core_clk),.m_rst_n(rst_n),.m_valid(link_stats_valid),.m_data(link_stats_data));
+    end else begin: asynchronous
+    assign run_rst_n=core_clock_locked;
+    board_test_ft245_async #(.CLOCK_HZ(CLOCK_HZ)) link(
+        .clk(core_clk),.rst_n(rst_n),.usb_data(usb_data),.usb_rxf_n(usb_rxf_n),.usb_txe_n(usb_txe_n),
         .usb_rd_n(usb_rd_n),.usb_wr_n(usb_wr_n),.usb_oe_n(usb_oe_n),.usb_siwu_n(usb_siwu_n),
-        .rx_data(rx_data),.rx_valid(rx_valid),.tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(tx_ready));
+        .rx_data(rx_data),.rx_valid(rx_valid),.tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(tx_ready),
+        .stats_valid(link_stats_valid),.stats_data(link_stats_data));
+    end endgenerate
+    board_test_block_transport blocks(
+        .clk(core_clk),.rst_n(rst_n),.s_data(engine_tx_data),.s_valid(engine_tx_valid),.s_ready(engine_tx_ready),
+        .m_data(tx_data),.m_valid(tx_valid),.m_ready(tx_ready),
+        .stats_valid(link_stats_valid),.stats_data(link_stats_data));
     wire [31:0] compressed_fps;
     wire fps_sample_valid;
-    mjpeg_board_test_engine #(.CLOCK_HZ(CLOCK_HZ)) engine(
-        .sys_clk(sys_clk),.sys_rst_n(sys_rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
-        .tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(tx_ready),.led(led),
+    mjpeg_board_test_engine #(.CLOCK_HZ(CLOCK_HZ),.SMALL_END(1),
+        .VGA_WIDTH(VGA_WIDTH),.VGA_HEIGHT(VGA_HEIGHT),.HD_WIDTH(HD_WIDTH),.HD_HEIGHT(HD_HEIGHT),
+        .FHD_WIDTH(FHD_WIDTH),.FHD_HEIGHT(FHD_HEIGHT)) engine(
+        .sys_clk(core_clk),.sys_rst_n(run_rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
+        .tx_data(engine_tx_data),.tx_valid(engine_tx_valid),.tx_ready(engine_tx_ready),.led(led),
         .compressed_fps(compressed_fps),.fps_sample_valid(fps_sample_valid));
     davinci_fps_display #(.CLOCK_HZ(CLOCK_HZ)) display(
-        .clk(sys_clk),.rst_n(rst_n),.fps(compressed_fps),.update_valid(fps_sample_valid),
+        .clk(core_clk),.rst_n(rst_n),.fps(compressed_fps),.update_valid(fps_sample_valid),
         .seg_sel(seg_sel),.seg_led(seg_led),.bcd_value());
 endmodule
 

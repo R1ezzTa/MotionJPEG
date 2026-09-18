@@ -1,6 +1,7 @@
 param(
     [ValidateSet('Build','Help','Program','State')][string]$Action = 'Build',
-    [string]$VivadoRoot = 'F:/Xilinx/Vivado/2020.1'
+    [string]$VivadoRoot = 'F:/Xilinx/Vivado/2020.1',
+    [string]$SynthesisBuild = ''
 )
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/vivado_env.ps1" -VivadoRoot $VivadoRoot
@@ -23,9 +24,44 @@ try {
     if ($Action -eq 'Build') {
         $taskBuild = Join-Path $taskReports ('build_' + (Get-Date -Format yyyyMMdd_HHmmss))
         New-Item -ItemType Directory -Path $taskBuild | Out-Null
-        & "$VivadoRoot/bin/unwrapped/win64.o/vivado.exe" -mode batch -source scripts/build_mjpeg_board_test.tcl -log "$taskBuild/build.log" -journal "$taskBuild/build.jou" -tclargs $taskProjectRoot $taskBuild
+        $taskSourceFiles=@((Get-ChildItem "$taskProjectRoot/rtl" -File -Recurse).FullName + (Get-ChildItem "$taskProjectRoot/data/board_test" -File).FullName + "$taskProjectRoot/constraints/davinci_mjpeg_board_test.xdc" + "$taskProjectRoot/constraints/davinci_mjpeg_cdc.xdc")
+        $taskSourceHashes=Get-FileHash -LiteralPath $taskSourceFiles -Algorithm SHA256
+        $taskSourceHashes | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_input_hashes.json" -Encoding utf8
+        $taskTclArgs=@($taskProjectRoot,$taskBuild)
+        $taskCheckpointHash=$null
+        if($SynthesisBuild){
+            $taskReuseRoot=(Resolve-Path -LiteralPath $SynthesisBuild).Path
+            $taskReuseHashes=Get-Content -LiteralPath "$taskReuseRoot/build_input_hashes.json" -Raw | ConvertFrom-Json
+            if($taskReuseHashes.Count -ne $taskSourceHashes.Count){
+                throw 'Cannot reuse synthesis: source file set changed'
+            }
+            # A synthesis checkpoint may be reused only when all netlist inputs
+            # match; implementation-only CDC constraints are reapplied afresh.
+            $taskCdcPath=(Get-Item -LiteralPath "$taskProjectRoot/constraints/davinci_mjpeg_cdc.xdc").FullName
+            foreach($taskHash in $taskSourceHashes){
+                if($taskHash.Path -eq $taskCdcPath){continue}
+                $taskOldHash=@($taskReuseHashes | Where-Object {$_.Path -eq $taskHash.Path})
+                if($taskOldHash.Count -ne 1 -or $taskOldHash[0].Hash -ne $taskHash.Hash){
+                    throw "Cannot reuse synthesis: source mismatch $($taskHash.Path)"
+                }
+            }
+            $taskCheckpointHash=Get-FileHash -LiteralPath "$taskReuseRoot/synthesized.dcp" -Algorithm SHA256
+            $taskCheckpointHash | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/reused_synthesis.json" -Encoding utf8
+            $taskTclArgs+=@($taskCheckpointHash.Path)
+        }
+        & "$VivadoRoot/bin/unwrapped/win64.o/vivado.exe" -mode batch -source scripts/build_mjpeg_board_test.tcl -log "$taskBuild/build.log" -journal "$taskBuild/build.jou" -tclargs @taskTclArgs
         if ($LASTEXITCODE -ne 0 -or !(Test-Path -LiteralPath "$taskBuild/BUILD_PASS.txt")) { throw 'Self-test bitstream build failed.' }
-        Get-FileHash -LiteralPath @((Get-ChildItem "$taskProjectRoot/rtl" -File -Recurse).FullName + (Get-ChildItem "$taskProjectRoot/data/board_test" -File).FullName + "$taskProjectRoot/constraints/davinci_mjpeg_board_test.xdc" + "$taskBuild/davinci_mjpeg_board_test.bit") -Algorithm SHA256 | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_hashes.json" -Encoding utf8
+        if($taskCheckpointHash -and (Get-FileHash -LiteralPath $taskCheckpointHash.Path -Algorithm SHA256).Hash -ne $taskCheckpointHash.Hash){
+            Remove-Item -LiteralPath "$taskBuild/BUILD_PASS.txt"
+            throw 'Reused synthesis checkpoint changed during build'
+        }
+        foreach($taskHash in $taskSourceHashes){
+            if((Get-FileHash -LiteralPath $taskHash.Path -Algorithm SHA256).Hash -ne $taskHash.Hash){
+                Remove-Item -LiteralPath "$taskBuild/BUILD_PASS.txt"
+                throw "Source changed during build: $($taskHash.Path)"
+            }
+        }
+        Get-FileHash -LiteralPath @($taskSourceFiles + "$taskBuild/davinci_mjpeg_board_test.bit") -Algorithm SHA256 | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_hashes.json" -Encoding utf8
         [System.IO.File]::WriteAllText("$taskReports/latest_build.txt", $taskBuild + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
         Write-Output "MJPEG_TEST_BITSTREAM=$taskBuild/davinci_mjpeg_board_test.bit"
     }

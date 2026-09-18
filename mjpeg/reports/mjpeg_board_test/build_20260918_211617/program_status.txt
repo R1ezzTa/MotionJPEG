@@ -1,0 +1,32 @@
+MJPEG_TEST_JTAG_TARGETS=  1  Digilent JTAG-HS1 210512180081
+     2  xc7a35t (idcode 0362d093 irlen 6 fpga)
+MJPEG_TEST_PROGRAMMING_BITSTREAM=F:/zju/dasanshangkecheng/HDL/mjpeg/reports/mjpeg_board_test/build_20260918_211617/davinci_mjpeg_board_test.bit
+MJPEG_TEST_FPGA_CONFIGURED=FPGA is configured
+MJPEG_TEST_CONFIG_STATUS=CONFIG STATUS: 1343257084
+                               CRC ERROR (Bits [0]): 0
+                        DECRYPTOR ENABLE (Bits [1]): 0
+                         PLL LOCK STATUS (Bits [2]): 1
+                        DCI MATCH STATUS (Bits [3]): 1
+             END OF STARTUP (EOS) STATUS (Bits [4]): 1
+                        GTS_CFG_B STATUS (Bits [5]): 1
+                              GWE STATUS (Bits [6]): 1
+                            GHIGH STATUS (Bits [7]): 1
+                           MODE PIN M[0] (Bits [8]): 1
+                           MODE PIN M[1] (Bits [9]): 0
+                          MODE PIN M[2] (Bits [10]): 0
+          INIT_B INTERNAL SIGNAL STATUS (Bits [11]): 1
+                             INIT_B PIN (Bits [12]): 1
+            DONE INTERNAL SIGNAL STATUS (Bits [13]): 1
+                               DONE PIN (Bits [14]): 1
+                           IDCODE ERROR (Bits [15]): 0
+                         SECURITY ERROR (Bits [16]): 0
+  SYSTEM MONITOR OVER-TEMP ALARM STATUS (Bits [17]): 0
+     CFG STARTUP STATE MACHINE PHASE (Bits [20:18]): 4
+                            RESERVED (Bits [24:21]): 0
+             CFG BUS WIDTH DETECTION (Bits [26:25]): 0
+                             HMAC ERROR (Bits [27]): 0
+                             PUDC_B PIN (Bits [28]): 1
+                       BAD PACKET ERROR (Bits [29]): 0
+                             CFGBVS PIN (Bits [30]): 1
+                               RESERVED (Bits [31]): 0
+MJPEG_TEST_PROGRAM_PASSED=F:/zju/dasanshangkecheng/HDL/mjpeg/reports/mjpeg_board_test/build_20260918_211617/davinci_mjpeg_board_test.bit

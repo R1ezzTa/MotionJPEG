@@ -1,0 +1,33 @@
+{
+  "width": 96,
+  "height": 32,
+  "pixels": 3072,
+  "quality": 85,
+  "frames": 2,
+  "first_frame_id": 4,
+  "last_frame_id": 5,
+  "jpeg_bytes_per_frame": 1411,
+  "jpeg_sha256": "d3f68fcaea4a3ed5342fb4b9dec188ee25702e01b13b8e3fa377ffa2678505cf",
+  "start_interval_fps": 6598.046978094484,
+  "pixel_rate_mpix_s": 20.269200316706254,
+  "mean_feed_ms": 0.12284,
+  "mean_jpeg_end_ms": 0.14294,
+  "mean_descriptor_end_ms": 0.14378,
+  "input_wait_fraction": 0.0,
+  "output_wait_fraction": 0.36256781193490056,
+  "window_fps_values": [
+    0,
+    1
+  ],
+  "idle_windows_verified": 2,
+  "wire_start_offset": 3694,
+  "wire_end_offset": 6856,
+  "wire_expansion": 1.1204819277108433,
+  "host_packet_batches": true,
+  "receive_only": false,
+  "reference_verified": true,
+  "passed": true,
+  "host_elapsed_seconds": 0.004913099999612314,
+  "host_cpu_seconds": 0.015625,
+  "host_cpu_fraction": 3.1802731475510266
+}

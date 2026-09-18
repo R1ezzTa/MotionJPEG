@@ -116,24 +116,31 @@ class BoardRecords:
 def read_session(records, root, dest, session, expected_id):
     while True:
         kind,value=records.next()
-        if kind=='fps': continue
+        if kind in ('fps','link'): continue
         if kind!='start': raise ValueError('Missing MJBT preamble')
         break
     receiver=Receiver(); metadata=[]; bus_rows=[]
     for index in range(9):
         while True:
             kind,value=records.next()
-            if kind=='fps': continue
-            if kind!='word': raise ValueError('Unexpected stream preamble')
-            data,nbytes,last=value
-            bus_rows.append(f'{data:08x},{nbytes},{int(last)}\n')
-            frame=receiver.word(data,nbytes,last)
+            if kind in ('fps','link','chunk'): continue
+            if kind=='frame': frame=value
+            elif kind=='word':
+                data,nbytes,last=value
+                bus_rows.append(f'{data:08x},{nbytes},{int(last)}\n')
+                frame=receiver.word(data,nbytes,last)
+            else: raise ValueError('Unexpected stream boundary')
             if frame is not None: break
         if frame.frame_id != expected_id+index: raise ValueError('Unexpected frame sequence')
         metadata.append(verify_frame(frame,index,root,dest,session))
     if receiver.frames or receiver.packet: raise ValueError('Partial frame remains')
     (dest/f'session{session}_bus.csv').write_text('data,bytes,last\n'+''.join(bus_rows))
-    records.in_stream=False
+    if hasattr(records,'links'):
+        while True:
+            kind,_=records.next()
+            if kind=='end': break
+            if kind not in ('fps','link'): raise ValueError('Unexpected data after nine frames')
+    else: records.in_stream=False
     return metadata
 
 def read_live(records, stream, root, dest, duration, expected_id, capture=False):
@@ -149,12 +156,13 @@ def read_live(records, stream, root, dest, duration, expected_id, capture=False)
         if kind=='start':
             if started: raise ValueError('Unexpected second live preamble')
             started=True
-        elif kind=='word':
+        elif kind in ('word','frame'):
             if not started: raise ValueError('JPEG before live preamble')
-            frame=receiver.word(*value)
+            frame=value if kind=='frame' else receiver.word(*value)
             if frame is not None:
                 if frame.frame_id!=expected_id+len(frames): raise ValueError('Live frame sequence')
                 frames.append(verify_frame(frame,len(frames),root,dest,0,save=len(frames)<3))
+        elif kind in ('chunk','link','timing','end'): continue
         else:
             if value['failed_fps']: raise ValueError('FPGA reports failed compression')
             if stopped and started and frames and value['input_fps']==value['compressed_fps']==0:
@@ -176,7 +184,10 @@ def main():
     p.add_argument('--live',action='store_true',help='C/S continuous camera mode; verify every frame, save first three images')
     p.add_argument('--duration',type=float,default=10,help='Continuous encoding seconds before S (then wait two idle windows)')
     p.add_argument('--first-id',type=int,default=0)
+    p.add_argument('--blocks',action='store_true',help='Use 1 KB MBLK transport')
+    p.add_argument('--sync-fifo',action='store_true',help='Select volatile FT245 synchronous mode on the data chip')
     p.add_argument('--fps-expected',type=Path,help='Compare every simulated telemetry snapshot against the independent TB trace')
+    p.add_argument('--link-expected',type=Path,help='Compare transmitted link counters with independent TB clocks and byte handshakes')
     p.add_argument('--output',type=Path,required=True); args=p.parse_args()
     root=Path(__file__).resolve().parents[1]; args.output.mkdir(parents=True,exist_ok=True)
     if args.live and (not (args.ftdi or args.capture) or args.duration<=0):
@@ -191,7 +202,7 @@ def main():
     else:
         if args.ftdi:
             from ftdi_fifo import FtdiFifo
-            stream=FtdiFifo(library=args.library)
+            stream=FtdiFifo(library=args.library,synchronous=args.sync_fifo)
             print(f'FTDI DATA CHIP FTB7MA1D open, EEPROM word0={stream.eeprom_word0:#06x}',flush=True)
             (args.output/'ftdi_info.json').write_text(json.dumps(stream.eeprom_info,indent=2))
         else:
@@ -203,7 +214,10 @@ def main():
             while len(data)<n and time.monotonic()<deadline: data.extend(stream.read(n-len(data)))
             if len(data)!=n: raise TimeoutError(f'Board read timed out: {len(data)}/{n} bytes')
             raw.extend(data); return bytes(data)
-    records=BoardRecords(read_exact)
+    if args.blocks:
+        from block_records import BlockRecords
+        records=BlockRecords(read_exact)
+    else: records=BoardRecords(read_exact)
     try:
         if args.live:
             all_frames=read_live(records,stream,root,args.output,args.duration,args.first_id,capture=bool(args.capture))
@@ -217,17 +231,22 @@ def main():
                 print(f'SESSION {session} PASS: 9 FPGA JPEGs match references and decode',flush=True)
             if args.capture:
                 while stream.tell()<len(stream.getbuffer()):
-                    if records.next()[0]!='fps': raise ValueError('Trailing non-telemetry simulation data')
+                    if records.next()[0] not in ('fps','link'): raise ValueError('Trailing non-telemetry simulation data')
         if args.fps_expected:
             with args.fps_expected.open() as trace:
                 expected=[{k:int(v) for k,v in row.items()} for row in csv.DictReader(trace)]
             if records.rates!=expected: raise ValueError('USB FPS snapshots differ from independent simulation events')
+        if args.link_expected:
+            with args.link_expected.open() as trace:
+                expected=[{k:int(v) for k,v in row.items()} for row in csv.DictReader(trace)]
+            if records.links!=expected: raise ValueError('USB link snapshots differ from independent simulation clocks/bytes')
     finally:
         if args.live and not args.capture:
             stream.write(b'S'); stream.flush()
         stream.close(); (args.output/('usb_capture.bin' if args.ftdi else 'uart_capture.bin')).write_bytes(raw)
     (args.output/'frames.json').write_text(json.dumps(all_frames,indent=2))
     (args.output/'fps.json').write_text(json.dumps(records.rates,indent=2))
+    if hasattr(records,'links'): (args.output/'link_windows.json').write_text(json.dumps(records.links,indent=2))
     (args.output/'VERIFY_PASS.txt').write_text(f'{len(all_frames)} JPEG frames: byte-for-byte reference match, metadata/sequence valid, Pillow decode passed.\n')
     print(f'VERIFIED {len(all_frames)} frames',flush=True)
 

@@ -1,0 +1,481 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Fri Sep 18 12:39:27 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/mjpeg_board_test/build_20260918_123426/timing_routed.rpt
+| Design       : davinci_mjpeg_board_test_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (11)
+6. checking no_output_delay (28)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (11)
+-------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 11 input ports with no input delay but user has a false path constraint. (MEDIUM)
+
+
+6. checking no_output_delay (28)
+--------------------------------
+ There are 0 ports with no output delay specified.
+
+ There are 28 ports with no output delay but user has a false path constraint (MEDIUM)
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      8.105        0.000                      0                48815        0.057        0.000                      0                48815        9.146        0.000                       0                 19504  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock    Waveform(ns)       Period(ns)      Frequency(MHz)
+-----    ------------       ----------      --------------
+sys_clk  {0.000 10.000}     20.000          50.000          
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+sys_clk             8.305        0.000                      0                43120        0.057        0.000                      0                43120        9.146        0.000                       0                 19504  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group         From Clock         To Clock               WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------         ----------         --------               -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+**async_default**  sys_clk            sys_clk                  8.105        0.000                      0                 5695        0.965        0.000                      0                 5695  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk
+  To Clock:  sys_clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        8.305ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.057ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        9.146ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             8.305ns  (required time - arrival time)
+  Source:                 engine/codec/encoder/payload_arbiter/output_buffer/head_reg[135]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            engine/codec/aggregate.collector/data_reg[85]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            20.000ns  (sys_clk rise@20.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        11.633ns  (logic 3.617ns (31.093%)  route 8.016ns (68.907%))
+  Logic Levels:           15  (CARRY4=5 LUT3=4 LUT4=1 LUT6=5)
+  Clock Path Skew:        -0.096ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.441ns = ( 24.441 - 20.000 ) 
+    Source Clock Delay      (SCD):    4.712ns
+    Clock Pessimism Removal (CPR):    0.175ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.121    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.202 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       1.510     4.712    engine/codec/encoder/payload_arbiter/output_buffer/sys_clk_IBUF_BUFG
+    SLICE_X32Y135        FDRE                                         r  engine/codec/encoder/payload_arbiter/output_buffer/head_reg[135]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X32Y135        FDRE (Prop_fdre_C_Q)         0.379     5.091 r  engine/codec/encoder/payload_arbiter/output_buffer/head_reg[135]/Q
+                         net (fo=2, routed)           0.945     6.036    engine/codec/encoder/payload_arbiter/output_buffer/Q[4]
+    SLICE_X32Y130        LUT6 (Prop_lut6_I0_O)        0.105     6.141 r  engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_20/O
+                         net (fo=1, routed)           0.000     6.141    engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_20_n_0
+    SLICE_X32Y130        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.440     6.581 r  engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_12/CO[3]
+                         net (fo=1, routed)           0.000     6.581    engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_12_n_0
+    SLICE_X32Y131        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.098     6.679 r  engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_8/CO[3]
+                         net (fo=1, routed)           0.000     6.679    engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_8_n_0
+    SLICE_X32Y132        CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.190     6.869 f  engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_7/CO[2]
+                         net (fo=1, routed)           0.363     7.232    engine/codec/encoder/payload_arbiter/output_buffer/aggregate.collector/same_frame0
+    SLICE_X36Y132        LUT6 (Prop_lut6_I2_O)        0.261     7.493 f  engine/codec/encoder/payload_arbiter/output_buffer/i___0_i_6/O
+                         net (fo=2, routed)           0.380     7.873    engine/codec/aggregate.collector/data[255]_i_4_0
+    SLICE_X34Y131        LUT6 (Prop_lut6_I5_O)        0.105     7.978 r  engine/codec/aggregate.collector/i___0_i_5/O
+                         net (fo=2, routed)           0.473     8.450    engine/codec/aggregate.collector/i___0_i_5_n_0
+    SLICE_X33Y128        LUT6 (Prop_lut6_I4_O)        0.105     8.555 r  engine/codec/aggregate.collector/data[255]_i_4/O
+                         net (fo=266, routed)         0.867     9.422    engine/codec/aggregate.collector/pop
+    SLICE_X34Y133        LUT3 (Prop_lut3_I2_O)        0.105     9.527 r  engine/codec/aggregate.collector/count[4]_i_5/O
+                         net (fo=1, routed)           0.000     9.527    engine/codec/aggregate.collector/count[4]_i_5_n_0
+    SLICE_X34Y133        CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.316     9.843 r  engine/codec/aggregate.collector/count_reg[4]_i_3/CO[3]
+                         net (fo=1, routed)           0.000     9.843    engine/codec/aggregate.collector/count_reg[4]_i_3_n_0
+    SLICE_X34Y134        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.257    10.100 f  engine/codec/aggregate.collector/count_reg[5]_i_2/O[1]
+                         net (fo=169, routed)         1.424    11.524    engine/codec/encoder/payload_arbiter/output_buffer/next_data2[5]
+    SLICE_X51Y146        LUT6 (Prop_lut6_I5_O)        0.245    11.769 f  engine/codec/encoder/payload_arbiter/output_buffer/data[165]_i_6/O
+                         net (fo=3, routed)           0.645    12.414    engine/codec/encoder/payload_arbiter/output_buffer/data[165]_i_6_n_0
+    SLICE_X51Y141        LUT3 (Prop_lut3_I0_O)        0.126    12.540 f  engine/codec/encoder/payload_arbiter/output_buffer/data[245]_i_7/O
+                         net (fo=3, routed)           1.141    13.681    engine/codec/encoder/payload_arbiter/output_buffer/data[245]_i_7_n_0
+    SLICE_X37Y134        LUT3 (Prop_lut3_I0_O)        0.286    13.967 f  engine/codec/encoder/payload_arbiter/output_buffer/data[213]_i_5/O
+                         net (fo=2, routed)           1.188    15.154    engine/codec/encoder/payload_arbiter/output_buffer/data[213]_i_5_n_0
+    SLICE_X54Y140        LUT4 (Prop_lut4_I0_O)        0.295    15.449 r  engine/codec/encoder/payload_arbiter/output_buffer/data[213]_i_2/O
+                         net (fo=2, routed)           0.591    16.041    engine/codec/encoder/payload_arbiter/output_buffer/count_reg[3]_93
+    SLICE_X55Y138        LUT3 (Prop_lut3_I1_O)        0.304    16.345 r  engine/codec/encoder/payload_arbiter/output_buffer/data[85]_i_1/O
+                         net (fo=1, routed)           0.000    16.345    engine/codec/aggregate.collector/data_reg[181]_1[77]
+    SLICE_X55Y138        FDCE                                         r  engine/codec/aggregate.collector/data_reg[85]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)   20.000    20.000 r  
+    R4                                                0.000    20.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000    20.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366    21.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.599    22.965    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077    23.042 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       1.399    24.441    engine/codec/aggregate.collector/sys_clk_IBUF_BUFG
+    SLICE_X55Y138        FDCE                                         r  engine/codec/aggregate.collector/data_reg[85]/C
+                         clock pessimism              0.175    24.616    
+                         clock uncertainty           -0.035    24.580    
+    SLICE_X55Y138        FDCE (Setup_fdce_C_D)        0.069    24.649    engine/codec/aggregate.collector/data_reg[85]
+  -------------------------------------------------------------------
+                         required time                         24.649    
+                         arrival time                         -16.345    
+  -------------------------------------------------------------------
+                         slack                                  8.305    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.057ns  (arrival time - required time)
+  Source:                 engine/timebase_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            engine/report_total_reg[2]/D
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             sys_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        0.423ns  (logic 0.287ns (67.783%)  route 0.136ns (32.217%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.265ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.085ns
+    Source Clock Delay      (SCD):    1.567ns
+    Clock Pessimism Removal (CPR):    0.254ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         0.269     0.269 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.900    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.926 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       0.641     1.567    engine/sys_clk_IBUF_BUFG
+    SLICE_X35Y107        FDCE                                         r  engine/timebase_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y107        FDCE (Prop_fdce_C_Q)         0.141     1.708 r  engine/timebase_reg[1]/Q
+                         net (fo=4, routed)           0.136     1.844    engine/timebase_reg[1]
+    SLICE_X37Y107        CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.146     1.990 r  engine/report_total_reg[3]_i_1/O[2]
+                         net (fo=3, routed)           0.000     1.990    engine/feed_ticks0[2]
+    SLICE_X37Y107        FDCE                                         r  engine/report_total_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         0.457     0.457 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.141    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.170 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       0.915     2.085    engine/sys_clk_IBUF_BUFG
+    SLICE_X37Y107        FDCE                                         r  engine/report_total_reg[2]/C
+                         clock pessimism             -0.254     1.832    
+    SLICE_X37Y107        FDCE (Hold_fdce_C_D)         0.102     1.934    engine/report_total_reg[2]
+  -------------------------------------------------------------------
+                         required time                         -1.934    
+                         arrival time                           1.990    
+  -------------------------------------------------------------------
+                         slack                                  0.057    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         sys_clk
+Waveform(ns):       { 0.000 10.000 }
+Period(ns):         20.000
+Sources:            { sys_clk }
+
+Check Type        Corner  Lib Pin      Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
+Min Period        n/a     DSP48E1/CLK  n/a            3.272         20.000      16.728     DSP48_X1Y28   engine/codec/encoder/channels[0].channel/core/quant/p_0_out__1/CLK
+Low Pulse Width   Fast    SRL16E/CLK   n/a            0.854         10.000      9.146      SLICE_X30Y94  engine/codec/encoder/channels[0].channel/core/quant/meta5_reg[1]_srl5_engine_codec_encoder_channels_c_6/CLK
+High Pulse Width  Slow    SRL16E/CLK   n/a            0.854         10.000      9.146      SLICE_X52Y47  engine/codec/encoder/channels[0].channel/core/dct/engine/t2_reg[0]_srl2_engine_codec_encoder_channels_c_0/CLK
+
+
+
+---------------------------------------------------------------------------------------------------
+Path Group:  **async_default**
+From Clock:  sys_clk
+  To Clock:  sys_clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        8.105ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.965ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             8.105ns  (required time - arrival time)
+  Source:                 engine/codec/encoder/channels[0].channel/recovery_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            engine/codec/encoder/channels[0].channel/core/packer/reservoir_reg[108]/CLR
+                            (recovery check against rising-edge clock sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             **async_default**
+  Path Type:              Recovery (Max at Slow Process Corner)
+  Requirement:            20.000ns  (sys_clk rise@20.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        11.491ns  (logic 0.505ns (4.395%)  route 10.986ns (95.605%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.133ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.514ns = ( 24.514 - 20.000 ) 
+    Source Clock Delay      (SCD):    4.548ns
+    Clock Pessimism Removal (CPR):    0.167ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.121    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.202 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       1.346     4.548    engine/codec/encoder/channels[0].channel/sys_clk_IBUF_BUFG
+    SLICE_X47Y82         FDCE                                         r  engine/codec/encoder/channels[0].channel/recovery_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y82         FDCE (Prop_fdce_C_Q)         0.379     4.927 r  engine/codec/encoder/channels[0].channel/recovery_reg[1]/Q
+                         net (fo=68, routed)          2.461     7.388    engine/codec/encoder/channels[0].channel/core/huff/recovery[1]
+    SLICE_X15Y76         LUT3 (Prop_lut3_I1_O)        0.126     7.514 f  engine/codec/encoder/channels[0].channel/core/huff/input_rows[0].pending_i_2/O
+                         net (fo=2279, routed)        8.525    16.039    engine/codec/encoder/channels[0].channel/core/packer/m_frame_end_reg_0
+    SLICE_X0Y148         FDCE                                         f  engine/codec/encoder/channels[0].channel/core/packer/reservoir_reg[108]/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)   20.000    20.000 r  
+    R4                                                0.000    20.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000    20.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366    21.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.599    22.965    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077    23.042 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       1.472    24.514    engine/codec/encoder/channels[0].channel/core/packer/sys_clk_IBUF_BUFG
+    SLICE_X0Y148         FDCE                                         r  engine/codec/encoder/channels[0].channel/core/packer/reservoir_reg[108]/C
+                         clock pessimism              0.167    24.681    
+                         clock uncertainty           -0.035    24.645    
+    SLICE_X0Y148         FDCE (Recov_fdce_C_CLR)     -0.501    24.144    engine/codec/encoder/channels[0].channel/core/packer/reservoir_reg[108]
+  -------------------------------------------------------------------
+                         required time                         24.144    
+                         arrival time                         -16.039    
+  -------------------------------------------------------------------
+                         slack                                  8.105    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.965ns  (arrival time - required time)
+  Source:                 engine/codec/encoder/channels[0].channel/recovery_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            engine/codec/encoder/channels[0].channel/core/dct/m_valid_reg/CLR
+                            (removal check against rising-edge clock sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             **async_default**
+  Path Type:              Removal (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk rise@0.000ns - sys_clk rise@0.000ns)
+  Data Path Delay:        1.062ns  (logic 0.190ns (17.885%)  route 0.872ns (82.115%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        0.257ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.988ns
+    Source Clock Delay      (SCD):    1.481ns
+    Clock Pessimism Removal (CPR):    0.250ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         0.269     0.269 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.900    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.926 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       0.556     1.481    engine/codec/encoder/channels[0].channel/sys_clk_IBUF_BUFG
+    SLICE_X47Y82         FDCE                                         r  engine/codec/encoder/channels[0].channel/recovery_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y82         FDCE (Prop_fdce_C_Q)         0.141     1.622 f  engine/codec/encoder/channels[0].channel/recovery_reg[0]/Q
+                         net (fo=60, routed)          0.686     2.308    engine/codec/encoder/channels[0].channel/core/huff/recovery[0]
+    SLICE_X15Y76         LUT3 (Prop_lut3_I2_O)        0.049     2.357 f  engine/codec/encoder/channels[0].channel/core/huff/input_rows[0].pending_i_2/O
+                         net (fo=2279, routed)        0.187     2.544    engine/codec/encoder/channels[0].channel/core/dct/result_valid_reg
+    SLICE_X15Y75         FDCE                                         f  engine/codec/encoder/channels[0].channel/core/dct/m_valid_reg/CLR
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         0.457     0.457 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.141    sys_clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.170 r  sys_clk_IBUF_BUFG_inst/O
+                         net (fo=19503, routed)       0.817     1.988    engine/codec/encoder/channels[0].channel/core/dct/sys_clk_IBUF_BUFG
+    SLICE_X15Y75         FDCE                                         r  engine/codec/encoder/channels[0].channel/core/dct/m_valid_reg/C
+                         clock pessimism             -0.250     1.738    
+    SLICE_X15Y75         FDCE (Remov_fdce_C_CLR)     -0.159     1.579    engine/codec/encoder/channels[0].channel/core/dct/m_valid_reg
+  -------------------------------------------------------------------
+                         required time                         -1.579    
+                         arrival time                           2.544    
+  -------------------------------------------------------------------
+                         slack                                  0.965    
+
+
+
+
+

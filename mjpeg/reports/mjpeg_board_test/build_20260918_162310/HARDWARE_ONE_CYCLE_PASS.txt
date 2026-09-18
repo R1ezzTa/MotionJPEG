@@ -1,0 +1,10 @@
+Davinci XC7A35T at 50 MHz, one-cycle gradient pixel supply with valid/ready hold, small ROM two-cycle mode retained.
+Actual JTAG programming passed CRC=0, DONE=1, EOS=1. Setup/hold final path checks +6.149ns/+0.069ns; DRC zero errors.
+Live IDs 0-4526: 4527 frames. Receive-only IDs 4527-9053: 4527 frames, all verified offline against references and fully decoded.
+All 9054 frames passed pixel timing accounting, dimensions, sequence, descriptor lengths/status, FPGA FPS totals, zero failures, END and two stopped idle windows per phase.
+VGA 101.404 fps, 720p 34.177 fps, 1080p 15.239 fps; about 27% above two-cycle/large-block baseline.
+Full-HD steady cycle accounting: accept/write timing 95.58%, TXE wait 3.98%, upstream empty 0.44%, RX 0%. Raw link 7.965MB/s.
+Full-HD feed 64.895ms, input wait 36.09%; non-wait span exactly (1920*1080-1)/50MHz = 41.47198ms. Supply is one cycle/pixel; current limiter is asynchronous output.
+Live/receive-only FPGA timestamp FPS differ by less than 0.001%; host validation is not the observed limiter.
+Current build/source/bitstream hashes verified. Summary: one_cycle_throughput_evidence.json.
+FPGA left configured, stopped and idle, cumulative successes 9054, seven-segment display expected 000000 (not visually confirmed).

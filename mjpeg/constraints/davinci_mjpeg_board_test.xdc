@@ -1,5 +1,8 @@
-# Davinci A35T: FT232H in its current asynchronous FT245 FIFO mode.
+# Davinci A35T: 50MHz reference -> MMCM core 100MHz / FT245 CLKOUT 60MHz.
+# Vivado derives the 10ns core clock from the MMCM configuration.
 create_clock -name sys_clk -period 20.000 [get_ports sys_clk]
+create_clock -name usb_clk -period 16.667 [get_ports usb_clk_60m]
+set_property -dict {PACKAGE_PIN Y4 IOSTANDARD LVCMOS33} [get_ports usb_clk_60m]
 set_property -dict {PACKAGE_PIN R4 IOSTANDARD LVCMOS33} [get_ports sys_clk]
 set_property -dict {PACKAGE_PIN U2 IOSTANDARD LVCMOS33} [get_ports sys_rst_n]
 set_property -dict {PACKAGE_PIN AB5 IOSTANDARD LVCMOS33} [get_ports {usb_data[0]}]
@@ -35,10 +38,17 @@ set_property -dict {PACKAGE_PIN K13 IOSTANDARD LVCMOS33} [get_ports {seg_led[4]}
 set_property -dict {PACKAGE_PIN G13 IOSTANDARD LVCMOS33} [get_ports {seg_led[5]}]
 set_property -dict {PACKAGE_PIN H14 IOSTANDARD LVCMOS33} [get_ports {seg_led[6]}]
 set_property -dict {PACKAGE_PIN J14 IOSTANDARD LVCMOS33} [get_ports {seg_led[7]}]
-# Async bus read is held stable by RD# for 80ns before sampling, after the
-# chip's <=14ns data-access time. Status flags enter two-flop synchronizers.
-set_false_path -from [get_ports {sys_rst_n usb_rxf_n usb_txe_n usb_data[*]}]
-set_false_path -to [get_ports {led[*] seg_sel[*] seg_led[*] usb_data[*] usb_rd_n usb_wr_n usb_oe_n usb_siwu_n}]
+# FT232H table 4.1: output clock-to-data/flags <=9ns; FPGA write data,
+# WR#/RD#/OE# setup >=7.5ns, hold >=0ns. Add 0.5ns board skew allowance.
+# Unlike the asynchronous build, the USB I/O paths are explicitly timed.
+set_input_delay -clock usb_clk -max 9.500 [get_ports {usb_data[*] usb_rxf_n usb_txe_n}]
+set_input_delay -clock usb_clk -min -0.500 [get_ports {usb_data[*] usb_rxf_n usb_txe_n}]
+set_output_delay -clock usb_clk -max 8.000 [get_ports {usb_data[*] usb_wr_n usb_rd_n usb_oe_n}]
+set_output_delay -clock usb_clk -min -0.500 [get_ports {usb_data[*] usb_wr_n usb_rd_n usb_oe_n}]
+set_clock_uncertainty 0.150 [get_clocks usb_clk]
+set_false_path -from [get_ports sys_rst_n]
+set_false_path -to [get_ports {led[*] seg_sel[*] seg_led[*] usb_siwu_n}]
+# Internal CDC constraints are applied after synthesis in davinci_mjpeg_cdc.xdc.
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property BITSTREAM.CONFIG.UNUSEDPIN PULLUP [current_design]

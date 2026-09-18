@@ -1,0 +1,29 @@
+[
+  {
+    "window": 4,
+    "cycles": 14400,
+    "writes": 1950,
+    "write_busy_cycles": 151,
+    "txe_wait_cycles": 275,
+    "upstream_empty_cycles": 12015,
+    "rx_cycles": 9
+  },
+  {
+    "window": 5,
+    "cycles": 14400,
+    "writes": 64,
+    "write_busy_cycles": 5,
+    "txe_wait_cycles": 11,
+    "upstream_empty_cycles": 14320,
+    "rx_cycles": 0
+  },
+  {
+    "window": 6,
+    "cycles": 14400,
+    "writes": 64,
+    "write_busy_cycles": 14,
+    "txe_wait_cycles": 11,
+    "upstream_empty_cycles": 14311,
+    "rx_cycles": 0
+  }
+]

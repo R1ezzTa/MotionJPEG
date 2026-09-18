@@ -1,9 +1,9 @@
-"""Minimal D2XX async FIFO readback; targets only the board data-chip serial."""
+"""D2XX asynchronous/synchronous FIFO; targets only the board data chip."""
 import ctypes as c
 import os,time
 
 class FtdiFifo:
-    def __init__(self,serial='FTB7MA1D',library=None):
+    def __init__(self,serial='FTB7MA1D',library=None,synchronous=False):
         self.dll=(c.WinDLL if os.name=='nt' else c.CDLL)(library or ('ftd2xx.dll' if os.name=='nt' else 'libftd2xx.so'))
         self.handle=c.c_void_p(); self.buffer=bytearray(); self.timeout=0.2
         signatures={
@@ -13,6 +13,7 @@ class FtdiFifo:
             'FT_SetTimeouts':[c.c_void_p,c.c_uint32,c.c_uint32],
             'FT_SetLatencyTimer':[c.c_void_p,c.c_ubyte],
             'FT_SetUSBParameters':[c.c_void_p,c.c_uint32,c.c_uint32],
+            'FT_SetFlowControl':[c.c_void_p,c.c_ushort,c.c_ubyte,c.c_ubyte],
             'FT_Purge':[c.c_void_p,c.c_uint32],
             'FT_GetQueueStatus':[c.c_void_p,c.POINTER(c.c_uint32)],
             'FT_Read':[c.c_void_p,c.c_void_p,c.c_uint32,c.POINTER(c.c_uint32)],
@@ -25,9 +26,10 @@ class FtdiFifo:
         try:
             # Reset only volatile bit-mode to the EEPROM-selected FIFO interface.
             self.check(self.dll.FT_SetBitMode(self.handle,0,0),'FT_SetBitMode(reset)')
-            self.check(self.dll.FT_SetTimeouts(self.handle,200,2000),'FT_SetTimeouts')
-            self.check(self.dll.FT_SetLatencyTimer(self.handle,2),'FT_SetLatencyTimer')
-            self.check(self.dll.FT_SetUSBParameters(self.handle,65536,65536),'FT_SetUSBParameters')
+            if synchronous:
+                # CLKOUT stops in reset mode. Give the FPGA clock-loss guard
+                # time to flush both domains before selecting synchronous mode.
+                time.sleep(0.01)
             word=c.c_ushort();self.check(self.dll.FT_ReadEE(self.handle,0,c.byref(word)),'FT_ReadEE')
             self.eeprom_word0=word.value
             # FT_EEPROM_232H layout from the official D2XX guide, 44 bytes.
@@ -41,6 +43,16 @@ class FtdiFifo:
             self.eeprom_info['serial']=strings[3].value.decode()
             if self.eeprom_info['IsFifo']!=1 or any(values[offset] for offset in (36,37,38)):
                 raise ValueError('Board FT232H EEPROM is not configured for FT245 FIFO')
+            if synchronous:
+                # Volatile interface selection only: never program EEPROM.
+                self.check(self.dll.FT_SetBitMode(self.handle,0xff,0x40),'FT_SetBitMode(sync FIFO)')
+                time.sleep(0.05)
+                self.check(self.dll.FT_SetFlowControl(self.handle,0x0100,0,0),'FT_SetFlowControl')
+            self.check(self.dll.FT_SetTimeouts(self.handle,200,2000),'FT_SetTimeouts')
+            self.check(self.dll.FT_SetLatencyTimer(self.handle,2),'FT_SetLatencyTimer')
+            self.check(self.dll.FT_SetUSBParameters(self.handle,65536,65536),'FT_SetUSBParameters')
+            self.eeprom_info['transport']='FT245 synchronous FIFO' if synchronous else 'FT245 asynchronous FIFO'
+            self.eeprom_info['link_clock_hz']=60000000 if synchronous else 50000000
             self.reset_input_buffer()
         except Exception:
             self.close();raise

@@ -1,0 +1,290 @@
+[
+  {
+    "window": 1,
+    "cycles": 60000000,
+    "writes": 21316912,
+    "write_busy_cycles": 41175,
+    "txe_wait_cycles": 4413747,
+    "upstream_empty_cycles": 34228160,
+    "rx_cycles": 6
+  },
+  {
+    "window": 2,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43610,
+    "txe_wait_cycles": 4684620,
+    "upstream_empty_cycles": 32694333,
+    "rx_cycles": 0
+  },
+  {
+    "window": 3,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43622,
+    "txe_wait_cycles": 4692368,
+    "upstream_empty_cycles": 32686573,
+    "rx_cycles": 0
+  },
+  {
+    "window": 4,
+    "cycles": 60000000,
+    "writes": 22577415,
+    "write_busy_cycles": 43606,
+    "txe_wait_cycles": 4724428,
+    "upstream_empty_cycles": 32654551,
+    "rx_cycles": 0
+  },
+  {
+    "window": 5,
+    "cycles": 60000000,
+    "writes": 22577459,
+    "write_busy_cycles": 43613,
+    "txe_wait_cycles": 4696691,
+    "upstream_empty_cycles": 32682237,
+    "rx_cycles": 0
+  },
+  {
+    "window": 6,
+    "cycles": 60000000,
+    "writes": 22577759,
+    "write_busy_cycles": 43615,
+    "txe_wait_cycles": 4680466,
+    "upstream_empty_cycles": 32698160,
+    "rx_cycles": 0
+  },
+  {
+    "window": 7,
+    "cycles": 60000000,
+    "writes": 22576646,
+    "write_busy_cycles": 43609,
+    "txe_wait_cycles": 4686515,
+    "upstream_empty_cycles": 32693230,
+    "rx_cycles": 0
+  },
+  {
+    "window": 8,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43603,
+    "txe_wait_cycles": 4708712,
+    "upstream_empty_cycles": 32670248,
+    "rx_cycles": 0
+  },
+  {
+    "window": 9,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43606,
+    "txe_wait_cycles": 4712911,
+    "upstream_empty_cycles": 32666046,
+    "rx_cycles": 0
+  },
+  {
+    "window": 10,
+    "cycles": 60000000,
+    "writes": 22577400,
+    "write_busy_cycles": 43603,
+    "txe_wait_cycles": 4704265,
+    "upstream_empty_cycles": 32674732,
+    "rx_cycles": 0
+  },
+  {
+    "window": 11,
+    "cycles": 60000000,
+    "writes": 22578041,
+    "write_busy_cycles": 43598,
+    "txe_wait_cycles": 4710035,
+    "upstream_empty_cycles": 32668326,
+    "rx_cycles": 0
+  },
+  {
+    "window": 12,
+    "cycles": 60000000,
+    "writes": 22576810,
+    "write_busy_cycles": 43597,
+    "txe_wait_cycles": 4730488,
+    "upstream_empty_cycles": 32649105,
+    "rx_cycles": 0
+  },
+  {
+    "window": 13,
+    "cycles": 60000000,
+    "writes": 22577028,
+    "write_busy_cycles": 43597,
+    "txe_wait_cycles": 4693460,
+    "upstream_empty_cycles": 32685915,
+    "rx_cycles": 0
+  },
+  {
+    "window": 14,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43606,
+    "txe_wait_cycles": 4697797,
+    "upstream_empty_cycles": 32681160,
+    "rx_cycles": 0
+  },
+  {
+    "window": 15,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43615,
+    "txe_wait_cycles": 4698427,
+    "upstream_empty_cycles": 32680521,
+    "rx_cycles": 0
+  },
+  {
+    "window": 16,
+    "cycles": 60000000,
+    "writes": 22577188,
+    "write_busy_cycles": 43602,
+    "txe_wait_cycles": 4684140,
+    "upstream_empty_cycles": 32695070,
+    "rx_cycles": 0
+  },
+  {
+    "window": 17,
+    "cycles": 60000000,
+    "writes": 22577504,
+    "write_busy_cycles": 43615,
+    "txe_wait_cycles": 4682877,
+    "upstream_empty_cycles": 32696004,
+    "rx_cycles": 0
+  },
+  {
+    "window": 18,
+    "cycles": 60000000,
+    "writes": 22577150,
+    "write_busy_cycles": 43602,
+    "txe_wait_cycles": 4706898,
+    "upstream_empty_cycles": 32672350,
+    "rx_cycles": 0
+  },
+  {
+    "window": 19,
+    "cycles": 60000000,
+    "writes": 22577032,
+    "write_busy_cycles": 43602,
+    "txe_wait_cycles": 4695293,
+    "upstream_empty_cycles": 32684073,
+    "rx_cycles": 0
+  },
+  {
+    "window": 20,
+    "cycles": 60000000,
+    "writes": 22577842,
+    "write_busy_cycles": 43602,
+    "txe_wait_cycles": 4698265,
+    "upstream_empty_cycles": 32680291,
+    "rx_cycles": 0
+  },
+  {
+    "window": 21,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43596,
+    "txe_wait_cycles": 4695184,
+    "upstream_empty_cycles": 32683783,
+    "rx_cycles": 0
+  },
+  {
+    "window": 22,
+    "cycles": 60000000,
+    "writes": 22577016,
+    "write_busy_cycles": 43600,
+    "txe_wait_cycles": 4671141,
+    "upstream_empty_cycles": 32708243,
+    "rx_cycles": 0
+  },
+  {
+    "window": 23,
+    "cycles": 60000000,
+    "writes": 22577512,
+    "write_busy_cycles": 43596,
+    "txe_wait_cycles": 4686653,
+    "upstream_empty_cycles": 32692239,
+    "rx_cycles": 0
+  },
+  {
+    "window": 24,
+    "cycles": 60000000,
+    "writes": 22577314,
+    "write_busy_cycles": 43602,
+    "txe_wait_cycles": 4692195,
+    "upstream_empty_cycles": 32686889,
+    "rx_cycles": 0
+  },
+  {
+    "window": 25,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43606,
+    "txe_wait_cycles": 4677692,
+    "upstream_empty_cycles": 32701265,
+    "rx_cycles": 0
+  },
+  {
+    "window": 26,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43601,
+    "txe_wait_cycles": 4685999,
+    "upstream_empty_cycles": 32692963,
+    "rx_cycles": 0
+  },
+  {
+    "window": 27,
+    "cycles": 60000000,
+    "writes": 22577138,
+    "write_busy_cycles": 43593,
+    "txe_wait_cycles": 4688673,
+    "upstream_empty_cycles": 32690596,
+    "rx_cycles": 0
+  },
+  {
+    "window": 28,
+    "cycles": 60000000,
+    "writes": 22577309,
+    "write_busy_cycles": 43610,
+    "txe_wait_cycles": 4703742,
+    "upstream_empty_cycles": 32675339,
+    "rx_cycles": 0
+  },
+  {
+    "window": 29,
+    "cycles": 60000000,
+    "writes": 22577395,
+    "write_busy_cycles": 43597,
+    "txe_wait_cycles": 4687675,
+    "upstream_empty_cycles": 32691333,
+    "rx_cycles": 0
+  },
+  {
+    "window": 30,
+    "cycles": 60000000,
+    "writes": 22577437,
+    "write_busy_cycles": 43601,
+    "txe_wait_cycles": 4682191,
+    "upstream_empty_cycles": 32696771,
+    "rx_cycles": 0
+  },
+  {
+    "window": 31,
+    "cycles": 60000000,
+    "writes": 1276109,
+    "write_busy_cycles": 2466,
+    "txe_wait_cycles": 266248,
+    "upstream_empty_cycles": 58455173,
+    "rx_cycles": 4
+  },
+  {
+    "window": 32,
+    "cycles": 60000000,
+    "writes": 64,
+    "write_busy_cycles": 2,
+    "txe_wait_cycles": 0,
+    "upstream_empty_cycles": 59999934,
+    "rx_cycles": 0
+  }
+]

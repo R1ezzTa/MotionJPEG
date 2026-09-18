@@ -31,5 +31,6 @@ try {
     Copy-Item -LiteralPath $taskCapture,SIM_PASS.txt,xsim.log,xvlog.log,xelab.log -Destination $taskReport
     Copy-Item -LiteralPath PERIPHERALS_PASS.txt -Destination $taskReport
     if(Test-Path fps_expected.csv){Copy-Item -LiteralPath fps_expected.csv -Destination $taskReport}
+    if(Test-Path link_expected.csv){Copy-Item -LiteralPath link_expected.csv -Destination $taskReport}
     Write-Output "SIMULATION_CAPTURE=$taskReport/$taskCapture"
 } finally {Pop-Location; Write-Output "SIM_BUILD=$taskBuild"}

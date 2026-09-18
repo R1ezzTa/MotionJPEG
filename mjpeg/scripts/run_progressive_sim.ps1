@@ -15,6 +15,12 @@ try {
     if($LASTEXITCODE -ne 0){throw 'Progressive TB compile failed'}
     & "$taskBin/xvlog.exe" --sv tb/tb_mjpeg_payload_coalescer.sv
     if($LASTEXITCODE -ne 0){throw 'Coalescer TB compile failed'}
+    & "$taskBin/xvlog.exe" --sv tb/tb_mjpeg_block_transport.sv
+    if($LASTEXITCODE -ne 0){throw 'Block TB compile failed'}
+    & "$taskBin/xelab.exe" tb_mjpeg_block_transport -s blocks --debug off --timescale 1ns/1ps
+    if($LASTEXITCODE -ne 0){throw 'Block elaboration failed'}
+    & "$taskBin/xsim.exe" blocks -runall -onfinish quit
+    if($LASTEXITCODE -ne 0 -or !(Test-Path BLOCK_TRANSPORT_PASS.txt)){throw 'Block simulation failed'}
     & "$taskBin/xelab.exe" tb_mjpeg_payload_coalescer -s coalescer --debug off --timescale 1ns/1ps
     if($LASTEXITCODE -ne 0){throw 'Coalescer elaboration failed'}
     & "$taskBin/xsim.exe" coalescer -runall -onfinish quit
@@ -27,5 +33,6 @@ try {
     New-Item -ItemType Directory -Force -Path $taskReport | Out-Null
     Copy-Item -LiteralPath progressive_capture.bin,timing_expected.json,PROGRESSIVE_SIM_PASS.txt,xsim.log,xvlog.log,xelab.log -Destination $taskReport
     Copy-Item -LiteralPath COALESCER_PASS.txt -Destination $taskReport
+    Copy-Item -LiteralPath BLOCK_TRANSPORT_PASS.txt,block_unit_capture.bin -Destination $taskReport
     Write-Output "PROGRESSIVE_SIM_CAPTURE=$taskReport/progressive_capture.bin"
 } finally {Pop-Location;Write-Output "PROGRESSIVE_SIM_BUILD=$taskBuild"}
