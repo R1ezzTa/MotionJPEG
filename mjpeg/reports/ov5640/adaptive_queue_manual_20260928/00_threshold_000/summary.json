@@ -1,0 +1,23 @@
+{
+  "index": 0,
+  "threshold": 0,
+  "adaptive": false,
+  "frames": 120,
+  "decoded_frames": 120,
+  "starts": 1,
+  "ends": 1,
+  "median_fps": 30.001947126368503,
+  "mean_fps": 30.001950605812116,
+  "duration_seconds": 4.054598000002443,
+  "transport_payload_bytes": 64731447,
+  "reconstructed_jpeg_bytes": 62299887,
+  "payload_vs_reconstructed_ratio": 1.039029926330364,
+  "payload_mb_per_second": 16.183913962806205,
+  "wire_bytes": 65499399,
+  "wire_mb_per_second": 16.15435093687723,
+  "reused_groups": 0,
+  "total_groups": 486000,
+  "keyframes": 4,
+  "camera_fifo_overflows": 0,
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_queue_manual_20260928\\00_threshold_000"
+}
