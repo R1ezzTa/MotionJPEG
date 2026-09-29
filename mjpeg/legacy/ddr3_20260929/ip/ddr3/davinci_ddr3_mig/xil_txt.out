@@ -1,0 +1,4 @@
+SET_ERROR_CODE 0
+SET_XMDF_PATH ./davinci_ddr3_mig_xmdf.tcl
+SET_PARAMETER component_name davinci_ddr3_mig
+SET_PARAMETER xml_input_file  ./davinci_ddr3_mig/mig.prj
