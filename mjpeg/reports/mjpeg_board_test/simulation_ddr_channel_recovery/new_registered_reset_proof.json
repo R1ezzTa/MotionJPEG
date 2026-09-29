@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "inspected_build": "full_20260928_000109",
+  "inspected_checkpoint": "mjpeg/reports/ddr3/full_20260928_000109/synthesized.dcp",
+  "checkpoint_sha256": "bcd456b06432ff4dde3a2633b49dcc52659f27cdace98e8ada0070bf9d078d8a",
+  "method": "Read-only Vivado open_checkpoint and all_fanin over all128 actual quantizer loaded register asyncCLR pins",
+  "async_clear_pins_checked": 128,
+  "core_reset_register": "engine/codec/encoder/channels[0].channel/core_reset_reg",
+  "core_reset_register_primitive": "FDCE",
+  "other_reset_startpoint": "engine/reset_pipe_reg[2]",
+  "reset_combiner": "engine/codec/encoder/channels[0].channel/core/active_i_3",
+  "reset_combiner_primitive": "LUT2",
+  "reset_combiner_init": "4'hB",
+  "recovery_state_registers_in_async_clear_cone": 0,
+  "registered_reset_present_for_all_loaded_flags": true,
+  "physical_pulse_measured": false,
+  "note": "The previous direct multibit recovery-state asynchronous-reset decode is absent in this synthesized checkpoint. This is a structural netlist verification, not a measurement of physical reset pulses or final-board acceptance."
+}

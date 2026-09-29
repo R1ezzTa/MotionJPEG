@@ -1,0 +1,20 @@
+{
+  "source_installed_build": "full_20260927_233229",
+  "inspected_checkpoint": "mjpeg/reports/ddr3/full_20260927_233229/synthesized.dcp",
+  "checkpoint_sha256": "b05c2a6f7926b6c348b0eeaf69358e85040de84afddc0aeace950aee19e68d5c",
+  "method": "Read-only Vivado open_checkpoint and all_fanin to actual quantizer loaded register asynchronous CLR pins",
+  "recovery_state_encoding": "Two FDCE state bits, sequential binary 00=NORMAL,01=RESET_CORE,10=READ_TABLE,11=WRITE_TABLE; not one-hot recoded",
+  "reset_decode_cell": "engine/codec/encoder/channels[0].channel/core/active_i_3",
+  "reset_decode_primitive": "LUT3",
+  "reset_decode_init": "8'h75",
+  "input_I0": "global synchronized rst_n",
+  "input_I1": "channel recovery_reg[1]",
+  "input_I2": "channel recovery_reg[0]",
+  "affected_async_clear_registers": 128,
+  "hazard": "At WRITE_TABLE 11 to NORMAL 00, if recovery bit1 falls before bit0, the decode temporarily sees01 and asserts asynchronous CLR after all128 entries were replayed",
+  "logical_effect": "A CLR pulse can erase quantizer loaded flags while channel returns NORMAL; tables_ready stays false with busy false and no replay trigger",
+  "recommended_fix": "Use a dedicated registered core_reset bit. Assert it on abort_now and deassert it in the RESET_CORE branch; core_rst_n=rst_n&&!core_reset. Never derive an asynchronous reset from multibit state decoding.",
+  "physical_pulse_measured": false,
+  "physical_failure_uniquely_proven": false,
+  "notes": "This is a demonstrated structural reset hazard consistent with the raw hardware failure syndrome, not an oscilloscope/ILA pulse measurement. The original zero-delay FSM/table replay logic can still pass ordinary RTL simulation."
+}

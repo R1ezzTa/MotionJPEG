@@ -1,0 +1,36 @@
+RECOVERY CELLS count=4
+engine/codec/encoder/channels[0].channel/recovery_reg[0] REF=FDCE
+engine/codec/encoder/channels[0].channel/recovery_reg[1] REF=FDCE
+engine/codec/encoder/channels[0].channel/recovery_reg_i_1 REF=LUT2
+engine/codec/encoder/channels[0].channel/ddr_spatial_transport.skip/recovery_reg_reg REF=FDRE
+QUANT RESET PINS count=128
+SINK engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[0]/CLR
+STARTPOINTS engine/codec/encoder/channels[0].channel/recovery_reg[0]/C engine/codec/encoder/channels[0].channel/recovery_reg[1]/C engine/reset_pipe_reg[2]/C
+CONE engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[0] FDCE
+CONE engine/codec/encoder/channels[0].channel/core/active_i_3 LUT3
+ INIT 8'h75
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/O engine/codec/encoder/channels[0].channel/core/reset_pipe_reg[2]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I0 engine/codec/encoder/channels[0].channel/core/out[0]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I1 engine/codec/encoder/channels[0].channel/core/recovery[1]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I2 engine/codec/encoder/channels[0].channel/core/recovery[0]
+CONE engine/codec/encoder/channels[0].channel/recovery_reg[0] FDCE
+CONE engine/codec/encoder/channels[0].channel/recovery_reg[1] FDCE
+CONE engine/reset_pipe_reg[2] FDCE
+SINK engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[100]/CLR
+STARTPOINTS engine/codec/encoder/channels[0].channel/recovery_reg[0]/C engine/codec/encoder/channels[0].channel/recovery_reg[1]/C engine/reset_pipe_reg[2]/C
+CONE engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[100] FDCE
+CONE engine/codec/encoder/channels[0].channel/core/active_i_3 LUT3
+ INIT 8'h75
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/O engine/codec/encoder/channels[0].channel/core/reset_pipe_reg[2]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I0 engine/codec/encoder/channels[0].channel/core/out[0]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I1 engine/codec/encoder/channels[0].channel/core/recovery[1]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I2 engine/codec/encoder/channels[0].channel/core/recovery[0]
+CONE engine/codec/encoder/channels[0].channel/recovery_reg[0] FDCE
+CONE engine/codec/encoder/channels[0].channel/recovery_reg[1] FDCE
+CONE engine/reset_pipe_reg[2] FDCE
+NAMED_RESET_NETS engine/codec/encoder/channels[0].channel/core/core_rst_n engine/codec/encoder/channels[0].channel/core/dct/core_rst_n engine/codec/encoder/channels[0].channel/core/dct/engine/core_rst_n engine/codec/encoder/channels[0].channel/core/quant/core_rst_n engine/codec/encoder/channels[0].channel/core/scan_order/core_rst_n
+RESET DRIVER/LOAD engine/codec/encoder/channels[0].channel/core/dct/core_rst_n engine/codec/encoder/channels[0].channel/core/quant/core_rst_n engine/codec/encoder/channels[0].channel/core/scan_order/core_rst_n
+RESET DRIVER/LOAD engine/codec/encoder/channels[0].channel/core/dct/engine/core_rst_n engine/codec/encoder/channels[0].channel/core/dct/core_rst_n
+RESET DRIVER/LOAD engine/codec/encoder/channels[0].channel/core/dct/engine/input_rows[0].pending_i_2/I0 engine/codec/encoder/channels[0].channel/core/dct/engine/core_rst_n
+RESET DRIVER/LOAD engine/codec/encoder/channels[0].channel/core/quant/input_rows[0].pending_i_3/O engine/codec/encoder/channels[0].channel/core/quant/core_rst_n
+RESET DRIVER/LOAD engine/codec/encoder/channels[0].channel/core/scan_order/adjust6[0]_i_1/I4 engine/codec/encoder/channels[0].channel/core/scan_order/correction_num5[0][15]_i_1/I4 engine/codec/encoder/channels[0].channel/core/scan_order/num1[0][15]_i_1/I4 engine/codec/encoder/channels[0].channel/core/scan_order/num2[0][15]_i_1/I4 engine/codec/encoder/channels[0].channel/core/scan_order/num3[0][15]_i_1/I4 engine/codec/encoder/channels[0].channel/core/scan_order/num4[0][15]_i_1/I4 engine/codec/encoder/channels[0].channel/core/scan_order/core_rst_n

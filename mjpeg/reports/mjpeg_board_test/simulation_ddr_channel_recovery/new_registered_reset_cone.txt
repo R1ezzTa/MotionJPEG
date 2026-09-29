@@ -1,0 +1,31 @@
+CHECKPOINT F:/zju/dasanshangkecheng/HDL/mjpeg/reports/ddr3/full_20260928_000109/synthesized.dcp
+QUANT_ASYNC_CLEAR_PINS 128
+REGISTERED_CORE_RESET_PRESENT 1
+RECOVERY_STATE_IN_RESET_CONE 0
+UNIQUE_RESET_NETS {engine/codec/encoder/channels[0].channel/core/quant/m_data_reg[0]_0}
+SINK engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[0]/CLR
+STARTPOINTS engine/reset_pipe_reg[2]/C engine/codec/encoder/channels[0].channel/core_reset_reg/C
+CONE engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[0] REF=FDCE
+CONE engine/codec/encoder/channels[0].channel/core/active_i_3 REF=LUT2
+ INIT 4'hB
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/O engine/codec/encoder/channels[0].channel/core/core_reset_reg
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I0 engine/codec/encoder/channels[0].channel/core/result_tag_reg[0]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I1 engine/codec/encoder/channels[0].channel/core/out[0]
+CONE engine/reset_pipe_reg[2] REF=FDCE
+CONE engine/codec/encoder/channels[0].channel/core_reset_reg REF=FDCE
+SINK engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[100]/CLR
+STARTPOINTS engine/reset_pipe_reg[2]/C engine/codec/encoder/channels[0].channel/core_reset_reg/C
+CONE engine/codec/encoder/channels[0].channel/core/quant/loaded_reg[100] REF=FDCE
+CONE engine/codec/encoder/channels[0].channel/core/active_i_3 REF=LUT2
+ INIT 4'hB
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/O engine/codec/encoder/channels[0].channel/core/core_reset_reg
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I0 engine/codec/encoder/channels[0].channel/core/result_tag_reg[0]
+ PIN engine/codec/encoder/channels[0].channel/core/active_i_3/I1 engine/codec/encoder/channels[0].channel/core/out[0]
+CONE engine/reset_pipe_reg[2] REF=FDCE
+CONE engine/codec/encoder/channels[0].channel/core_reset_reg REF=FDCE
+CORE_RESET_FF engine/codec/encoder/channels[0].channel/core_reset_reg FDCE
+ FF_PIN engine/codec/encoder/channels[0].channel/core_reset_reg/Q engine/codec/encoder/channels[0].channel/core_reset_reg_n_0
+ FF_PIN engine/codec/encoder/channels[0].channel/core_reset_reg/C engine/codec/encoder/channels[0].channel/core_clk
+ FF_PIN engine/codec/encoder/channels[0].channel/core_reset_reg/CE engine/codec/encoder/channels[0].channel/<const1>
+ FF_PIN engine/codec/encoder/channels[0].channel/core_reset_reg/CLR engine/codec/encoder/channels[0].channel/reset_pipe_reg[2]
+ FF_PIN engine/codec/encoder/channels[0].channel/core_reset_reg/D engine/codec/encoder/channels[0].channel/ddr_spatial_transport.skip_n_276

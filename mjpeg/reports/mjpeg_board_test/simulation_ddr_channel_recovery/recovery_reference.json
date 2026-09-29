@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "overflow_aborts": 2,
+  "q_replay_writes_per_abort": 128,
+  "all_actual_quantizer_q_and_reciprocal_ram_entries_checked_by_tb": true,
+  "exactly_two_core_reset_edges_in_logical_simulation": true,
+  "held_ddr_write_and_masked_drain_covered": true,
+  "complete_spj2_reconstruction": true,
+  "complete_q85_dqt": true,
+  "pillow_load": true,
+  "frames": [
+    {
+      "frame_id": 1,
+      "keyframe": true,
+      "groups": 2,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 822,
+      "transport_bytes": 845,
+      "net_saved_bytes": -23,
+      "threshold": 32
+    },
+    {
+      "frame_id": 3,
+      "keyframe": true,
+      "groups": 2,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 822,
+      "transport_bytes": 845,
+      "net_saved_bytes": -23,
+      "threshold": 32
+    }
+  ],
+  "note": "Logical integration simulation with real channel/core/DDR cache. Physical combinational reset glitches are not modeled or claimed measured."
+}
