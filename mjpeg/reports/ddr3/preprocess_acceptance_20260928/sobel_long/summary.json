@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "error": null,
+  "phases": [
+    {
+      "mode": "sobel",
+      "binary_threshold": 128,
+      "edge_threshold": 8,
+      "frames": 1800,
+      "independently_decoded_frames": 1800,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001960335426208,
+      "max_frame_interval_ms": 33.33116,
+      "mean_jpeg_bytes": 405039.53,
+      "jpeg_mb_per_second": 12.151979913339675,
+      "wire_bytes": 737755738,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 167,
+        "mean_level": 9.64710262345679,
+        "near_black_fraction": 0.8005261381172839,
+        "near_white_fraction": 0.0
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sobel_long\\00_sobel_b128_e8"
+    }
+  ],
+  "denoise_strength": 0,
+  "independently_decoded_frames": 1800,
+  "seconds_per_setting": 60.0,
+  "actions": [
+    {
+      "seconds": 0.2640286999999262,
+      "command": "l"
+    },
+    {
+      "seconds": 0.26406470000006266,
+      "command": "S"
+    },
+    {
+      "seconds": 1.21821900000009,
+      "command": "3"
+    },
+    {
+      "seconds": 1.2182989000000362,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 1.2183654000000388,
+      "command": "B80\nE08\nM03\n"
+    },
+    {
+      "seconds": 2.2156420000001162,
+      "command": "C"
+    },
+    {
+      "seconds": 62.22058270000002,
+      "command": "S"
+    },
+    {
+      "seconds": 62.2622808000001,
+      "command": "l"
+    },
+    {
+      "seconds": 62.26232929999992,
+      "command": "S"
+    }
+  ],
+  "note": "Sequential live scenes; grayscale/binary/edges change image content. JPEG may introduce grey edge pixels."
+}

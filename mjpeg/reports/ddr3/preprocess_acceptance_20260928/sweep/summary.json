@@ -1,0 +1,43 @@
+{
+  "passed": false,
+  "error": "AssertionError: Failed frame",
+  "phases": [],
+  "denoise_strength": 0,
+  "independently_decoded_frames": 0,
+  "seconds_per_setting": 3.0,
+  "actions": [
+    {
+      "seconds": 0.3004353999999978,
+      "command": "l"
+    },
+    {
+      "seconds": 0.30049230000000193,
+      "command": "S"
+    },
+    {
+      "seconds": 1.2521820999999989,
+      "command": "3"
+    },
+    {
+      "seconds": 1.2522340999999813,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 1.2523032,
+      "command": "B80\nE20\nM00\n"
+    },
+    {
+      "seconds": 1.25237469999999,
+      "command": "C"
+    },
+    {
+      "seconds": 1.4374494999999854,
+      "command": "l"
+    },
+    {
+      "seconds": 1.4375134000000003,
+      "command": "S"
+    }
+  ],
+  "note": "Sequential live scenes; grayscale/binary/edges change image content. JPEG may introduce grey edge pixels."
+}
