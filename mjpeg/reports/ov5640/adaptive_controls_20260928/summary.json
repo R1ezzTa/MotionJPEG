@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "error": null,
+  "decoded_frames": 690,
+  "adaptive": true,
+  "skip_threshold": 60,
+  "starts": 2,
+  "ends": 2,
+  "qualities": {
+    "60": {
+      "frames": 120,
+      "mean_jpeg_bytes": 229345.60833333334,
+      "median_fps": 30.001947126368503
+    },
+    "75": {
+      "frames": 120,
+      "mean_jpeg_bytes": 322158.4583333333,
+      "median_fps": 30.001947126368503
+    },
+    "85": {
+      "frames": 450,
+      "mean_jpeg_bytes": 493671.32,
+      "median_fps": 30.001947126368503
+    }
+  },
+  "actions": [
+    {
+      "seconds": 1.1679996000020765,
+      "command": "T3C\n"
+    },
+    {
+      "seconds": 1.1680652999930317,
+      "command": "A1\n"
+    },
+    {
+      "seconds": 1.1681240999896545,
+      "command": "C"
+    },
+    {
+      "seconds": 5.173562799987849,
+      "command": "1"
+    },
+    {
+      "seconds": 9.180824899987783,
+      "command": "2"
+    },
+    {
+      "seconds": 13.173335300001781,
+      "command": "3"
+    },
+    {
+      "seconds": 17.172374199988553,
+      "command": "S"
+    },
+    {
+      "seconds": 19.16980489999696,
+      "command": "C"
+    },
+    {
+      "seconds": 21.175159199992777,
+      "command": "L"
+    },
+    {
+      "seconds": 26.176129399987985,
+      "command": "S"
+    }
+  ],
+  "camera_fifo_overflows": 0,
+  "light_readback_on": true,
+  "automatic_off_seen_before_stop": true,
+  "physical_buttons_tested": false,
+  "physical_light_observed": false,
+  "spatial": {
+    "reconstructed_jpeg_bytes": 288332582,
+    "transport_payload_bytes": 275786000,
+    "reused_groups": 427000,
+    "total_groups": 2794500,
+    "keyframes": 23
+  }
+}
