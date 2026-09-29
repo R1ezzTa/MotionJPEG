@@ -1,0 +1,82 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Sun Sep 27 22:49:23 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_cdc -details -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/ddr3/selftest_20260927_224809/cdc_synth.rpt
+| Design       : davinci_ddr3_selftest_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+----------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+ID      Severity  Count  Description
+------  --------  -----  ---------------------------------------------------------------
+CDC-3   Info          6  1-bit synchronized with ASYNC_REG property
+CDC-6   Warning       2  Multi-bit synchronized with ASYNC_REG property
+CDC-8   Warning       1  Asynchronous reset synchronized with missing ASYNC_REG property
+CDC-9   Info          1  Asynchronous reset synchronized with ASYNC_REG property
+CDC-10  Critical      2  Combinational logic detected before a synchronizer
+
+Source Clock: core_raw
+Destination Clock: clk_div2_bufg_in_1
+CDC Type: User Ignored
+
+Row  ID      Severity  Description                                         Depth  Exception   Source (From)                  Destination (To)
+---  ------  --------  --------------------------------------------------  -----  ----------  -----------------------------  ----------------------------------------------------------------------------------------
+  1  CDC-10  Critical  Combinational logic detected before a synchronizer     13  False Path  clock_guard/clock_alive_reg/C  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/rstdiv2_sync_r_reg[0]/PRE
+
+Source Clock: mem_refclk_1
+Destination Clock: clk_pll_i_1
+CDC Type: User Ignored
+
+Row  ID     Severity  Description                                 Depth  Exception   Source (From)                                                                                                                                                                                                             Destination (To)
+---  -----  --------  ------------------------------------------  -----  ----------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      3  False Path  memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/MEMREFCLK  memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_calib_top/dqsfind_calib_left.u_ddr_phy_dqs_found_cal_hr/pi_dqs_found_lanes_r1_reg[2]/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property      3  False Path  memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/MEMREFCLK  memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_calib_top/dqsfind_calib_left.u_ddr_phy_dqs_found_cal_hr/pi_dqs_found_lanes_r1_reg[3]/D
+
+Source Clock: usb_clk
+Destination Clock: core_raw
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                     Depth  Exception                Source (From)                           Destination (To)
+---  -----  --------  ----------------------------------------------  -----  -----------------------  --------------------------------------  -----------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property          2  False Path               clock_guard/heartbeat_counter_reg[6]/C  clock_guard/heartbeat_sync_reg[0]/D
+  2  CDC-6  Warning   Multi-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  tx_fifo/rgray_reg[8:0]/C                tx_fifo/rgray_w1_reg[8:0]/D
+  3  CDC-3  Info      1-bit synchronized with ASYNC_REG property          2  Max Delay Datapath Only  tx_fifo/rbin_reg[9]/C                   tx_fifo/rgray_w1_reg[9]/D
+
+Source Clock: clk_pll_i_1
+Destination Clock: ddr_ref_raw
+CDC Type: Safely Timed
+
+Row  ID     Severity  Description                                 Depth  Exception                Source (From)                                                                             Destination (To)
+---  -----  --------  ------------------------------------------  -----  -----------------------  ----------------------------------------------------------------------------------------  ----------------------------------------------------------------------------------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      2  Max Delay Datapath Only  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/rstdiv0_sync_r1_reg_rep/C  memory/controller/u_davinci_ddr3_mig_mig/temp_mon_enabled.u_tempmon/xadc_supplied_temperature.rst_r1_reg/D
+
+Source Clock: core_raw
+Destination Clock: ddr_ref_raw
+CDC Type: User Ignored
+
+Row  ID     Severity  Description                                                      Depth  Exception   Source (From)                  Destination (To)
+---  -----  --------  ---------------------------------------------------------------  -----  ----------  -----------------------------  ------------------------------------------------------------------------------------
+  1  CDC-8  Warning   Asynchronous reset synchronized with missing ASYNC_REG property     15  False Path  clock_guard/clock_alive_reg/C  memory/controller/u_davinci_ddr3_mig_mig/u_iodelay_ctrl/rst_ref_sync_r_reg[0][0]/PRE
+
+Source Clock: core_raw
+Destination Clock: mmcm_ps_clk_bufg_in_1
+CDC Type: User Ignored
+
+Row  ID      Severity  Description                                         Depth  Exception   Source (From)                  Destination (To)
+---  ------  --------  --------------------------------------------------  -----  ----------  -----------------------------  ------------------------------------------------------------------------------------
+  1  CDC-10  Critical  Combinational logic detected before a synchronizer     13  False Path  clock_guard/clock_alive_reg/C  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/rst_sync_r_reg[0]/PRE
+
+Source Clock: core_raw
+Destination Clock: usb_clk
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception                Source (From)                  Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  -----------------------  -----------------------------  ---------------------------
+  1  CDC-6  Warning   Multi-bit synchronized with ASYNC_REG property               2  Max Delay Datapath Only  tx_fifo/wgray_reg[8:0]/C       tx_fifo/wgray_r1_reg[8:0]/D
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Max Delay Datapath Only  tx_fifo/wbin_reg[9]/C          tx_fifo/wgray_r1_reg[9]/D
+  3  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      3  False Path               clock_guard/clock_alive_reg/C  usb_reset_pipe_reg[0]/CLR
+
