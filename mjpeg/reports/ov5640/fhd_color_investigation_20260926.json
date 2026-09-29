@@ -1,0 +1,35 @@
+{
+  "note": "Neutral wall region; scene-based comparison, not colorimetry calibration",
+  "observations": [
+    {
+      "source": "progressive_20260926_184403/fhd15/capture/camera0_frame200.jpg",
+      "wall_roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        244.80070476190477,
+        149.65933333333334,
+        254.98333333333332
+      ],
+      "green_to_red_blue_mean": 0.598896010779818
+    },
+    {
+      "source": "progressive_20260926_185257/fhd15/capture/camera0_frame200.jpg",
+      "wall_roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        242.72826666666666,
+        150.12041904761904,
+        254.99068571428572
+      ],
+      "green_to_red_blue_mean": 0.6032336857155377
+    }
+  ]
+}

@@ -1,24 +1,26 @@
 Source compile order for 'synthesis' with fileset 'sources_1' in source management mode 'All':
-Index  File Name                  Used_In      File_Type  Library         Ngc Wrapper  Full Path Name
------  -------------------------  -----------  ---------  --------------  -----------  -----------------------------------------------------------------------
-1      dct1d.v                    Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct1d.v
-2      dct8x8.v                   Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct8x8.v
-3      entropy_packer.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/entropy_packer.v
-4      huffman_encoder.v          Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/huffman_encoder.v
-5      jpeg_encoder.v             Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/jpeg_encoder.v
-6      jpeg_formatter.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/format/jpeg_formatter.v
-7      jpeg_stream_buffer.v       Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/jpeg_stream_buffer.v
-8      line_group_ram.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/line_group_ram.v
-9      mjpeg_arbiter.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_arbiter.v
-10     mjpeg_channel.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_channel.v
-11     mjpeg_encoder.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_encoder.v
-12     mjpeg_packetizer.v         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_packetizer.v
-13     mjpeg_payload_coalescer.v  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_payload_coalescer.v
-14     quantize.v                 Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/quant/quantize.v
-15     raster_to_mcu422.v         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/frontend/raster_to_mcu422.v
-16     symbol_encoder.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/symbol_encoder.v
-17     zigzag_buffer.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/zigzag_buffer.v
-18     mjpeg_synth_top.v          Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_synth_top.v
+Index  File Name                   Used_In      File_Type  Library         Ngc Wrapper  Full Path Name
+-----  --------------------------  -----------  ---------  --------------  -----------  -----------------------------------------------------------------------
+1      dct1d.v                     Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct1d.v
+2      dct8x8.v                    Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/dct/dct8x8.v
+3      entropy_packer.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/entropy_packer.v
+4      huffman_encoder.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/huffman_encoder.v
+5      jpeg_coefficient_decoder.v  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/jpeg_coefficient_decoder.v
+6      jpeg_encoder.v              Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/jpeg_encoder.v
+7      jpeg_formatter.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/format/jpeg_formatter.v
+8      jpeg_spatial_skip.v         Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/jpeg_spatial_skip.v
+9      jpeg_stream_buffer.v        Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/jpeg_stream_buffer.v
+10     line_group_ram.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/common/line_group_ram.v
+11     mjpeg_arbiter.v             Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_arbiter.v
+12     mjpeg_channel.v             Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_channel.v
+13     mjpeg_encoder.v             Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_encoder.v
+14     mjpeg_packetizer.v          Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_packetizer.v
+15     mjpeg_payload_coalescer.v   Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_payload_coalescer.v
+16     quantize.v                  Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/quant/quantize.v
+17     raster_to_mcu422.v          Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/frontend/raster_to_mcu422.v
+18     symbol_encoder.v            Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/symbol_encoder.v
+19     zigzag_buffer.v             Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/core/entropy/zigzag_buffer.v
+20     mjpeg_synth_top.v           Synth & Sim  Verilog    xil_defaultlib  No           F:/zju/dasanshangkecheng/HDL/mjpeg/rtl/video/mjpeg_synth_top.v
 
 
 Missing instances for 'synthesis' with fileset 'sources_1':
