@@ -1,0 +1,24 @@
+{
+  "mode": "binary",
+  "binary_threshold": 128,
+  "edge_threshold": 32,
+  "frames": 90,
+  "independently_decoded_frames": 90,
+  "starts": 1,
+  "ends": 1,
+  "mean_fps": 30.001933068370644,
+  "max_frame_interval_ms": 33.33119,
+  "mean_jpeg_bytes": 218043.3,
+  "jpeg_mb_per_second": 6.54172049260666,
+  "wire_bytes": 19861069,
+  "active_confirmed": true,
+  "first_frame_statistics": {
+    "max_rgb_channel_difference": 0,
+    "min_level": 0,
+    "max_level": 255,
+    "mean_level": 38.04697723765432,
+    "near_black_fraction": 0.8506404320987654,
+    "near_white_fraction": 0.14901089891975308
+  },
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\03_binary_b128_e32"
+}
