@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "frames": [
+    {
+      "keyframe": true,
+      "groups": 4050,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 560675,
+      "transport_bytes": 580938,
+      "net_saved_bytes": -20263,
+      "threshold": 32,
+      "frame_id": 0,
+      "ticks": 720225,
+      "memory_reads_total": 0,
+      "memory_writes_total": 4050,
+      "ideal_cache_fps": 138.84549967024194
+    },
+    {
+      "keyframe": false,
+      "groups": 4050,
+      "reused": 4050,
+      "omitted_group_bytes": 568162,
+      "jpeg_bytes": 560675,
+      "transport_bytes": 12776,
+      "net_saved_bytes": 547899,
+      "threshold": 32,
+      "frame_id": 1,
+      "ticks": 1889117,
+      "memory_reads_total": 4050,
+      "memory_writes_total": 4050,
+      "ideal_cache_fps": 52.93478381698963
+    }
+  ],
+  "all_positions": 4050,
+  "threshold": 32,
+  "note": "Captured real-camera high-frequency entropy reused exactly on second simulated input. Native-memory cache-only test with random stalls, not live-camera full-path throughput."
+}
