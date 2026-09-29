@@ -1,0 +1,424 @@
+{
+  "passed": true,
+  "error": null,
+  "phases": [
+    {
+      "mode": "color",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.00193590019649,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 478529.6777777778,
+      "jpeg_mb_per_second": 14.356816719030569,
+      "wire_bytes": 43579531,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 135,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 44.10740596064815,
+        "near_black_fraction": 0.4344261188271605,
+        "near_white_fraction": 7.040895061728395e-05
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\00_color_b128_e32"
+    },
+    {
+      "mode": "gray",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.0019344842835,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 358426.4,
+      "jpeg_mb_per_second": 10.753485370237593,
+      "wire_bytes": 32643628,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 50.99286265432099,
+        "near_black_fraction": 0.34080680941358027,
+        "near_white_fraction": 8.005401234567901e-05
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\01_gray_b128_e32"
+    },
+    {
+      "mode": "binary",
+      "binary_threshold": 64,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001933776327057,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 298387.44444444444,
+      "jpeg_mb_per_second": 8.952200347909692,
+      "wire_bytes": 27176750,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 75.76220486111112,
+        "near_black_fraction": 0.7028419174382716,
+        "near_white_fraction": 0.29669077932098764
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\02_binary_b64_e32"
+    },
+    {
+      "mode": "binary",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001933068370644,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 218043.3,
+      "jpeg_mb_per_second": 6.54172049260666,
+      "wire_bytes": 19861069,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 38.04697723765432,
+        "near_black_fraction": 0.8506404320987654,
+        "near_white_fraction": 0.14901089891975308
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\03_binary_b128_e32"
+    },
+    {
+      "mode": "binary",
+      "binary_threshold": 192,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.0019332706439,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 51181.4,
+      "jpeg_mb_per_second": 1.5355409474981336,
+      "wire_bytes": 4667506,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 0.6392573302469136,
+        "near_black_fraction": 0.9975038580246913,
+        "near_white_fraction": 0.002474922839506173
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\04_binary_b192_e32"
+    },
+    {
+      "mode": "sobel",
+      "binary_threshold": 128,
+      "edge_threshold": 8,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001932764960763,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 380057.6,
+      "jpeg_mb_per_second": 11.40246256201235,
+      "wire_bytes": 34613236,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 184,
+        "mean_level": 8.530574845679013,
+        "near_black_fraction": 0.8350376157407408,
+        "near_white_fraction": 0.0
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\05_sobel_b128_e8"
+    },
+    {
+      "mode": "sobel",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.00193195586778,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 157073.32222222222,
+      "jpeg_mb_per_second": 4.712503125393205,
+      "wire_bytes": 14309451,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 176,
+        "mean_level": 1.9139009452160494,
+        "near_black_fraction": 0.9655912422839507,
+        "near_white_fraction": 0.0
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\06_sobel_b128_e32"
+    },
+    {
+      "mode": "sobel",
+      "binary_threshold": 128,
+      "edge_threshold": 64,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.0019320570044,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 71626.25555555556,
+      "jpeg_mb_per_second": 2.1489260526754115,
+      "wire_bytes": 6529143,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 215,
+        "mean_level": 0.4619999035493827,
+        "near_black_fraction": 0.9950106095679012,
+        "near_white_fraction": 0.0
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\07_sobel_b128_e64"
+    },
+    {
+      "mode": "color",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001931551321302,
+      "max_frame_interval_ms": 33.33119,
+      "mean_jpeg_bytes": 478260.97777777776,
+      "jpeg_mb_per_second": 14.348753118956886,
+      "wire_bytes": 43555160,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 137,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 43.476630497685186,
+        "near_black_fraction": 0.44560956790123457,
+        "near_white_fraction": 7.089120370370371e-05
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\08_color_b128_e32"
+    }
+  ],
+  "denoise_strength": 0,
+  "independently_decoded_frames": 810,
+  "seconds_per_setting": 3.0,
+  "actions": [
+    {
+      "seconds": 0.24156419999962964,
+      "command": "l"
+    },
+    {
+      "seconds": 0.2416388999999981,
+      "command": "S"
+    },
+    {
+      "seconds": 1.193816799999695,
+      "command": "3"
+    },
+    {
+      "seconds": 1.1938811999998507,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 1.1939439999996466,
+      "command": "B80\nE20\nM00\n"
+    },
+    {
+      "seconds": 1.194025299999339,
+      "command": "C"
+    },
+    {
+      "seconds": 4.196783699999287,
+      "command": "S"
+    },
+    {
+      "seconds": 5.194264599999769,
+      "command": "3"
+    },
+    {
+      "seconds": 5.194299699999647,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 5.194344900000033,
+      "command": "B80\nE20\nM01\n"
+    },
+    {
+      "seconds": 6.192651499999556,
+      "command": "C"
+    },
+    {
+      "seconds": 9.196577499999876,
+      "command": "S"
+    },
+    {
+      "seconds": 10.194500599999628,
+      "command": "3"
+    },
+    {
+      "seconds": 10.194564499999615,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 10.194625999999516,
+      "command": "B40\nE20\nM02\n"
+    },
+    {
+      "seconds": 11.192888699999457,
+      "command": "C"
+    },
+    {
+      "seconds": 14.196218899999621,
+      "command": "S"
+    },
+    {
+      "seconds": 15.195374199999605,
+      "command": "3"
+    },
+    {
+      "seconds": 15.195408999999927,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 15.19545509999989,
+      "command": "B80\nE20\nM02\n"
+    },
+    {
+      "seconds": 16.19391379999979,
+      "command": "C"
+    },
+    {
+      "seconds": 19.202192099999593,
+      "command": "S"
+    },
+    {
+      "seconds": 20.195074199999908,
+      "command": "3"
+    },
+    {
+      "seconds": 20.195142799999303,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 20.195194099999753,
+      "command": "BC0\nE20\nM02\n"
+    },
+    {
+      "seconds": 21.194239199999174,
+      "command": "C"
+    },
+    {
+      "seconds": 24.207604100000026,
+      "command": "S"
+    },
+    {
+      "seconds": 25.193900699999176,
+      "command": "3"
+    },
+    {
+      "seconds": 25.193950299999415,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 25.193987699999525,
+      "command": "B80\nE08\nM03\n"
+    },
+    {
+      "seconds": 26.192792999999256,
+      "command": "C"
+    },
+    {
+      "seconds": 29.195876099999623,
+      "command": "S"
+    },
+    {
+      "seconds": 30.19514469999922,
+      "command": "3"
+    },
+    {
+      "seconds": 30.195192700000007,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 30.19523239999944,
+      "command": "B80\nE20\nM03\n"
+    },
+    {
+      "seconds": 31.193377799999325,
+      "command": "C"
+    },
+    {
+      "seconds": 34.20612379999966,
+      "command": "S"
+    },
+    {
+      "seconds": 35.19529639999928,
+      "command": "3"
+    },
+    {
+      "seconds": 35.195355500000005,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 35.195413199999166,
+      "command": "B80\nE40\nM03\n"
+    },
+    {
+      "seconds": 36.193836599999486,
+      "command": "C"
+    },
+    {
+      "seconds": 39.212363799999366,
+      "command": "S"
+    },
+    {
+      "seconds": 40.195663699999386,
+      "command": "3"
+    },
+    {
+      "seconds": 40.19569759999922,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 40.1957438999998,
+      "command": "B80\nE20\nM00\n"
+    },
+    {
+      "seconds": 41.19337579999956,
+      "command": "C"
+    },
+    {
+      "seconds": 44.19876839999961,
+      "command": "S"
+    },
+    {
+      "seconds": 44.24056589999964,
+      "command": "l"
+    },
+    {
+      "seconds": 44.24062199999935,
+      "command": "S"
+    }
+  ],
+  "note": "Sequential live scenes; grayscale/binary/edges change image content. JPEG may introduce grey edge pixels."
+}
