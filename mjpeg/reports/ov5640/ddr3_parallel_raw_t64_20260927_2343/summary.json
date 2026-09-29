@@ -1,0 +1,1770 @@
+{
+  "finished": "2026-09-27T23:45:33.175862+08:00",
+  "error": null,
+  "requested_seconds": 6.0,
+  "threshold": 64,
+  "quality": 85,
+  "collect_frames": false,
+  "decoded_or_viewed_images": false,
+  "starts": 1,
+  "ends": 1,
+  "frames": 161,
+  "abort_frames": [],
+  "frames_after_first_abort": null,
+  "median_fps": 30.001974129897746,
+  "usb_read_bytes": 12816667,
+  "parsed_wire_bytes": 12816631,
+  "unread_buffer_bytes": 36,
+  "actions": [
+    {
+      "seconds": 0.12432740000076592,
+      "command": "S"
+    },
+    {
+      "seconds": 0.12439560000348138,
+      "command": "l"
+    },
+    {
+      "seconds": 1.0764646000025095,
+      "command": "3"
+    },
+    {
+      "seconds": 1.076580200002354,
+      "command": "T40\n"
+    },
+    {
+      "seconds": 1.0766317000015988,
+      "command": "C"
+    },
+    {
+      "seconds": 7.080330300006608,
+      "command": "S"
+    },
+    {
+      "seconds": 7.080379999999423,
+      "command": "l"
+    },
+    {
+      "seconds": 8.07548400000087,
+      "command": "S"
+    },
+    {
+      "seconds": 8.075562400001218,
+      "command": "l"
+    }
+  ],
+  "final_stopped_camera": {
+    "seconds": 8.075403100003314,
+    "flags": 2687102985,
+    "chip_id": 22080,
+    "config_index": 283,
+    "pclk_ticks": 584886084,
+    "received_frames": 161,
+    "dropped_frames": 73,
+    "overflow_count": 0,
+    "dvp_byte_count": 485156828,
+    "frame_sync_count": 234,
+    "raw8": true,
+    "sampling_ready": true,
+    "board_controls": true,
+    "threshold_capable": true,
+    "threshold_requested": 64,
+    "run_requested": false,
+    "quality": 85,
+    "quality_requested": 85,
+    "quality_pending": false,
+    "window": 8,
+    "init_done": true,
+    "init_error": false,
+    "capture_active": false,
+    "tables_ready": true,
+    "codec_busy": false,
+    "config_error": false,
+    "streaming": false,
+    "light_requested": false,
+    "light_on": false,
+    "light_error": false,
+    "light_busy": false
+  },
+  "camera_status": [
+    {
+      "flags": 2418667521,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 59885119,
+      "received_frames": 0,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 49687680,
+      "frame_sync_count": 24,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 32,
+      "run_requested": false,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 1,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": false,
+      "tables_ready": false,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": false,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687234125,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 134885258,
+      "received_frames": 29,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 111895680,
+      "frame_sync_count": 54,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 2,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687234125,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 209885397,
+      "received_frames": 56,
+      "dropped_frames": 27,
+      "overflow_count": 0,
+      "dvp_byte_count": 174103680,
+      "frame_sync_count": 84,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 3,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687234125,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 284885536,
+      "received_frames": 80,
+      "dropped_frames": 33,
+      "overflow_count": 0,
+      "dvp_byte_count": 236311680,
+      "frame_sync_count": 114,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 4,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687234125,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 359885673,
+      "received_frames": 107,
+      "dropped_frames": 36,
+      "overflow_count": 0,
+      "dvp_byte_count": 298519937,
+      "frame_sync_count": 144,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 5,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687234141,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 434885810,
+      "received_frames": 133,
+      "dropped_frames": 40,
+      "overflow_count": 0,
+      "dvp_byte_count": 360732234,
+      "frame_sync_count": 174,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 6,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": true,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687234141,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 509885947,
+      "received_frames": 160,
+      "dropped_frames": 43,
+      "overflow_count": 0,
+      "dvp_byte_count": 422944531,
+      "frame_sync_count": 204,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 7,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": true,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    {
+      "flags": 2687102985,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 584886084,
+      "received_frames": 161,
+      "dropped_frames": 73,
+      "overflow_count": 0,
+      "dvp_byte_count": 485156828,
+      "frame_sync_count": 234,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 64,
+      "run_requested": false,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 8,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": false,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": false,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  ],
+  "fps": [
+    {
+      "window": 1,
+      "input_fps": 0,
+      "compressed_fps": 0,
+      "failed_fps": 0,
+      "total_compressed": 0
+    },
+    {
+      "window": 2,
+      "input_fps": 29,
+      "compressed_fps": 29,
+      "failed_fps": 0,
+      "total_compressed": 29
+    },
+    {
+      "window": 3,
+      "input_fps": 27,
+      "compressed_fps": 27,
+      "failed_fps": 0,
+      "total_compressed": 56
+    },
+    {
+      "window": 4,
+      "input_fps": 24,
+      "compressed_fps": 24,
+      "failed_fps": 0,
+      "total_compressed": 80
+    },
+    {
+      "window": 5,
+      "input_fps": 27,
+      "compressed_fps": 27,
+      "failed_fps": 0,
+      "total_compressed": 107
+    },
+    {
+      "window": 6,
+      "input_fps": 27,
+      "compressed_fps": 26,
+      "failed_fps": 0,
+      "total_compressed": 133
+    },
+    {
+      "window": 7,
+      "input_fps": 27,
+      "compressed_fps": 27,
+      "failed_fps": 0,
+      "total_compressed": 160
+    },
+    {
+      "window": 8,
+      "input_fps": 0,
+      "compressed_fps": 1,
+      "failed_fps": 0,
+      "total_compressed": 161
+    }
+  ],
+  "timings": [
+    {
+      "frame_id": 0,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3241713,
+      "total_ticks": 3241755,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1028192
+    },
+    {
+      "frame_id": 1,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247398,
+      "total_ticks": 3247440,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103880
+    },
+    {
+      "frame_id": 2,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248152,
+      "total_ticks": 3248194,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 109482
+    },
+    {
+      "frame_id": 3,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249006,
+      "total_ticks": 3249048,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 114008
+    },
+    {
+      "frame_id": 4,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248353,
+      "total_ticks": 3248395,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106684
+    },
+    {
+      "frame_id": 5,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248966,
+      "total_ticks": 3249008,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103098
+    },
+    {
+      "frame_id": 6,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248079,
+      "total_ticks": 3248121,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 93036
+    },
+    {
+      "frame_id": 7,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247901,
+      "total_ticks": 3247943,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 111676
+    },
+    {
+      "frame_id": 8,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248682,
+      "total_ticks": 3248724,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 108121
+    },
+    {
+      "frame_id": 9,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248756,
+      "total_ticks": 3248798,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99154
+    },
+    {
+      "frame_id": 10,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248875,
+      "total_ticks": 3248917,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103953
+    },
+    {
+      "frame_id": 11,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248951,
+      "total_ticks": 3248993,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104292
+    },
+    {
+      "frame_id": 12,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248303,
+      "total_ticks": 3248345,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106155
+    },
+    {
+      "frame_id": 13,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247519,
+      "total_ticks": 3247561,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107309
+    },
+    {
+      "frame_id": 14,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248209,
+      "total_ticks": 3248251,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 108378
+    },
+    {
+      "frame_id": 15,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247782,
+      "total_ticks": 3247824,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107065
+    },
+    {
+      "frame_id": 16,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248837,
+      "total_ticks": 3248879,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105288
+    },
+    {
+      "frame_id": 17,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249272,
+      "total_ticks": 3249314,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97659
+    },
+    {
+      "frame_id": 18,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3248446,
+      "total_ticks": 3248488,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106003
+    },
+    {
+      "frame_id": 19,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248167,
+      "total_ticks": 3248209,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103417
+    },
+    {
+      "frame_id": 20,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248778,
+      "total_ticks": 3248820,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 96909
+    },
+    {
+      "frame_id": 21,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248734,
+      "total_ticks": 3248776,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97365
+    },
+    {
+      "frame_id": 22,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247949,
+      "total_ticks": 3247991,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102095
+    },
+    {
+      "frame_id": 23,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248705,
+      "total_ticks": 3248747,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 95303
+    },
+    {
+      "frame_id": 24,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249333,
+      "total_ticks": 3249375,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104911
+    },
+    {
+      "frame_id": 25,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248378,
+      "total_ticks": 3248420,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98615
+    },
+    {
+      "frame_id": 26,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248432,
+      "total_ticks": 3248474,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104207
+    },
+    {
+      "frame_id": 27,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247935,
+      "total_ticks": 3247977,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99065
+    },
+    {
+      "frame_id": 28,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248719,
+      "total_ticks": 3248761,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99161
+    },
+    {
+      "frame_id": 29,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247719,
+      "total_ticks": 3247761,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 95806
+    },
+    {
+      "frame_id": 30,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3241643,
+      "total_ticks": 3241877,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031328
+    },
+    {
+      "frame_id": 31,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247930,
+      "total_ticks": 3247972,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99422
+    },
+    {
+      "frame_id": 32,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248180,
+      "total_ticks": 3248222,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103960
+    },
+    {
+      "frame_id": 33,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248448,
+      "total_ticks": 3248490,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102325
+    },
+    {
+      "frame_id": 34,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248768,
+      "total_ticks": 3248810,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 90613
+    },
+    {
+      "frame_id": 35,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248451,
+      "total_ticks": 3248493,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 96513
+    },
+    {
+      "frame_id": 36,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249078,
+      "total_ticks": 3249120,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104982
+    },
+    {
+      "frame_id": 37,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249836,
+      "total_ticks": 3249946,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 113021
+    },
+    {
+      "frame_id": 38,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249472,
+      "total_ticks": 3249514,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 108121
+    },
+    {
+      "frame_id": 39,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248672,
+      "total_ticks": 3248714,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110037
+    },
+    {
+      "frame_id": 40,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247720,
+      "total_ticks": 3247762,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98708
+    },
+    {
+      "frame_id": 41,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247938,
+      "total_ticks": 3247980,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97853
+    },
+    {
+      "frame_id": 42,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248316,
+      "total_ticks": 3248358,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106731
+    },
+    {
+      "frame_id": 43,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249418,
+      "total_ticks": 3249460,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99479
+    },
+    {
+      "frame_id": 44,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248136,
+      "total_ticks": 3248178,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 95457
+    },
+    {
+      "frame_id": 45,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248015,
+      "total_ticks": 3248057,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104183
+    },
+    {
+      "frame_id": 46,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249050,
+      "total_ticks": 3249092,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110857
+    },
+    {
+      "frame_id": 47,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248340,
+      "total_ticks": 3248382,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 108185
+    },
+    {
+      "frame_id": 48,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248321,
+      "total_ticks": 3248363,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107956
+    },
+    {
+      "frame_id": 49,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248490,
+      "total_ticks": 3248532,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102227
+    },
+    {
+      "frame_id": 50,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249083,
+      "total_ticks": 3249125,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104156
+    },
+    {
+      "frame_id": 51,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248192,
+      "total_ticks": 3248234,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103520
+    },
+    {
+      "frame_id": 52,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248488,
+      "total_ticks": 3248530,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 111992
+    },
+    {
+      "frame_id": 53,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3250195,
+      "total_ticks": 3250237,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99312
+    },
+    {
+      "frame_id": 54,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248739,
+      "total_ticks": 3248781,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 94198
+    },
+    {
+      "frame_id": 55,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248218,
+      "total_ticks": 3248260,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103290
+    },
+    {
+      "frame_id": 56,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248631,
+      "total_ticks": 3249614,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99204
+    },
+    {
+      "frame_id": 57,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247731,
+      "total_ticks": 3247773,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106157
+    },
+    {
+      "frame_id": 58,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248223,
+      "total_ticks": 3248265,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102146
+    },
+    {
+      "frame_id": 59,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248763,
+      "total_ticks": 3248805,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102811
+    },
+    {
+      "frame_id": 60,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3241632,
+      "total_ticks": 3242495,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031609
+    },
+    {
+      "frame_id": 61,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248820,
+      "total_ticks": 3248862,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 96773
+    },
+    {
+      "frame_id": 62,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3250253,
+      "total_ticks": 3250295,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110226
+    },
+    {
+      "frame_id": 63,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248741,
+      "total_ticks": 3248783,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 111035
+    },
+    {
+      "frame_id": 64,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248134,
+      "total_ticks": 3248176,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 92079
+    },
+    {
+      "frame_id": 65,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248708,
+      "total_ticks": 3248750,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 101537
+    },
+    {
+      "frame_id": 66,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248472,
+      "total_ticks": 3248514,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103782
+    },
+    {
+      "frame_id": 67,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248980,
+      "total_ticks": 3249022,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102976
+    },
+    {
+      "frame_id": 68,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249635,
+      "total_ticks": 3249677,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103411
+    },
+    {
+      "frame_id": 69,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249369,
+      "total_ticks": 3249411,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102362
+    },
+    {
+      "frame_id": 70,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248787,
+      "total_ticks": 3248829,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 111624
+    },
+    {
+      "frame_id": 71,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249998,
+      "total_ticks": 3250040,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 115939
+    },
+    {
+      "frame_id": 72,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3250190,
+      "total_ticks": 3250232,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103342
+    },
+    {
+      "frame_id": 73,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249278,
+      "total_ticks": 3249320,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103718
+    },
+    {
+      "frame_id": 74,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248970,
+      "total_ticks": 3249012,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102708
+    },
+    {
+      "frame_id": 75,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247875,
+      "total_ticks": 3247917,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106849
+    },
+    {
+      "frame_id": 76,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248126,
+      "total_ticks": 3248168,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110612
+    },
+    {
+      "frame_id": 77,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249613,
+      "total_ticks": 3249655,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107068
+    },
+    {
+      "frame_id": 78,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247902,
+      "total_ticks": 3247944,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100193
+    },
+    {
+      "frame_id": 79,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249387,
+      "total_ticks": 3249429,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105168
+    },
+    {
+      "frame_id": 80,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249106,
+      "total_ticks": 3249148,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104160
+    },
+    {
+      "frame_id": 81,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248096,
+      "total_ticks": 3248138,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97650
+    },
+    {
+      "frame_id": 82,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249058,
+      "total_ticks": 3249100,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100368
+    },
+    {
+      "frame_id": 83,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247679,
+      "total_ticks": 3247721,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97355
+    },
+    {
+      "frame_id": 84,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247856,
+      "total_ticks": 3247898,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102533
+    },
+    {
+      "frame_id": 85,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248766,
+      "total_ticks": 3248808,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106457
+    },
+    {
+      "frame_id": 86,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248029,
+      "total_ticks": 3248071,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100609
+    },
+    {
+      "frame_id": 87,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249813,
+      "total_ticks": 3250868,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 108406
+    },
+    {
+      "frame_id": 88,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249608,
+      "total_ticks": 3249650,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110406
+    },
+    {
+      "frame_id": 89,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249205,
+      "total_ticks": 3249247,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103630
+    },
+    {
+      "frame_id": 90,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3241594,
+      "total_ticks": 3241636,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1017588
+    },
+    {
+      "frame_id": 91,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247613,
+      "total_ticks": 3247655,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106414
+    },
+    {
+      "frame_id": 92,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3248336,
+      "total_ticks": 3248378,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100482
+    },
+    {
+      "frame_id": 93,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249877,
+      "total_ticks": 3249919,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107773
+    },
+    {
+      "frame_id": 94,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248290,
+      "total_ticks": 3248332,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 111902
+    },
+    {
+      "frame_id": 95,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248803,
+      "total_ticks": 3248845,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105015
+    },
+    {
+      "frame_id": 96,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248273,
+      "total_ticks": 3248315,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99629
+    },
+    {
+      "frame_id": 97,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247913,
+      "total_ticks": 3247955,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 113769
+    },
+    {
+      "frame_id": 98,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248757,
+      "total_ticks": 3248799,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110932
+    },
+    {
+      "frame_id": 99,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249103,
+      "total_ticks": 3249145,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103113
+    },
+    {
+      "frame_id": 100,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249120,
+      "total_ticks": 3249162,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103061
+    },
+    {
+      "frame_id": 101,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248274,
+      "total_ticks": 3248316,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98835
+    },
+    {
+      "frame_id": 102,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248145,
+      "total_ticks": 3248187,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98711
+    },
+    {
+      "frame_id": 103,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3248208,
+      "total_ticks": 3248250,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 111214
+    },
+    {
+      "frame_id": 104,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248084,
+      "total_ticks": 3248126,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 104069
+    },
+    {
+      "frame_id": 105,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247884,
+      "total_ticks": 3247926,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102316
+    },
+    {
+      "frame_id": 106,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248680,
+      "total_ticks": 3248722,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 101399
+    },
+    {
+      "frame_id": 107,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248186,
+      "total_ticks": 3248228,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105105
+    },
+    {
+      "frame_id": 108,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247730,
+      "total_ticks": 3247772,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98501
+    },
+    {
+      "frame_id": 109,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247294,
+      "total_ticks": 3247336,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 109063
+    },
+    {
+      "frame_id": 110,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248238,
+      "total_ticks": 3248280,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107081
+    },
+    {
+      "frame_id": 111,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3247865,
+      "total_ticks": 3247907,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106277
+    },
+    {
+      "frame_id": 112,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248257,
+      "total_ticks": 3248299,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99754
+    },
+    {
+      "frame_id": 113,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248466,
+      "total_ticks": 3248508,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97890
+    },
+    {
+      "frame_id": 114,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249607,
+      "total_ticks": 3249649,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 115967
+    },
+    {
+      "frame_id": 115,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249145,
+      "total_ticks": 3249187,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110077
+    },
+    {
+      "frame_id": 116,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248268,
+      "total_ticks": 3248310,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 109073
+    },
+    {
+      "frame_id": 117,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248949,
+      "total_ticks": 3248991,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107097
+    },
+    {
+      "frame_id": 118,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248218,
+      "total_ticks": 3248260,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98183
+    },
+    {
+      "frame_id": 119,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248327,
+      "total_ticks": 3248369,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102668
+    },
+    {
+      "frame_id": 120,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3241735,
+      "total_ticks": 3242616,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1020476
+    },
+    {
+      "frame_id": 121,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248325,
+      "total_ticks": 3248367,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106149
+    },
+    {
+      "frame_id": 122,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248367,
+      "total_ticks": 3248409,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107030
+    },
+    {
+      "frame_id": 123,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249351,
+      "total_ticks": 3249393,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103292
+    },
+    {
+      "frame_id": 124,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3250354,
+      "total_ticks": 3250396,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99782
+    },
+    {
+      "frame_id": 125,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248044,
+      "total_ticks": 3248086,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105040
+    },
+    {
+      "frame_id": 126,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249223,
+      "total_ticks": 3249265,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100406
+    },
+    {
+      "frame_id": 127,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249091,
+      "total_ticks": 3249133,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106099
+    },
+    {
+      "frame_id": 128,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249628,
+      "total_ticks": 3249670,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110277
+    },
+    {
+      "frame_id": 129,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249157,
+      "total_ticks": 3249199,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 106838
+    },
+    {
+      "frame_id": 130,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248858,
+      "total_ticks": 3248900,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 97106
+    },
+    {
+      "frame_id": 131,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249275,
+      "total_ticks": 3249317,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103921
+    },
+    {
+      "frame_id": 132,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249576,
+      "total_ticks": 3249618,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102404
+    },
+    {
+      "frame_id": 133,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248395,
+      "total_ticks": 3248437,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99449
+    },
+    {
+      "frame_id": 134,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248493,
+      "total_ticks": 3248535,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103015
+    },
+    {
+      "frame_id": 135,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249039,
+      "total_ticks": 3249081,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107115
+    },
+    {
+      "frame_id": 136,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248928,
+      "total_ticks": 3248970,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 116437
+    },
+    {
+      "frame_id": 137,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248698,
+      "total_ticks": 3248740,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105414
+    },
+    {
+      "frame_id": 138,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248658,
+      "total_ticks": 3248700,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100085
+    },
+    {
+      "frame_id": 139,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248174,
+      "total_ticks": 3248252,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100226
+    },
+    {
+      "frame_id": 140,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248078,
+      "total_ticks": 3248120,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100607
+    },
+    {
+      "frame_id": 141,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249004,
+      "total_ticks": 3249046,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 95863
+    },
+    {
+      "frame_id": 142,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3250220,
+      "total_ticks": 3250262,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110891
+    },
+    {
+      "frame_id": 143,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248132,
+      "total_ticks": 3248174,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 108164
+    },
+    {
+      "frame_id": 144,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248843,
+      "total_ticks": 3248885,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100330
+    },
+    {
+      "frame_id": 145,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248998,
+      "total_ticks": 3249040,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103005
+    },
+    {
+      "frame_id": 146,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249400,
+      "total_ticks": 3249442,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102675
+    },
+    {
+      "frame_id": 147,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248493,
+      "total_ticks": 3248535,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98661
+    },
+    {
+      "frame_id": 148,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3249725,
+      "total_ticks": 3249767,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 105710
+    },
+    {
+      "frame_id": 149,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248806,
+      "total_ticks": 3248848,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 98873
+    },
+    {
+      "frame_id": 150,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3241594,
+      "total_ticks": 3241636,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030314
+    },
+    {
+      "frame_id": 151,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248787,
+      "total_ticks": 3248829,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100291
+    },
+    {
+      "frame_id": 152,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248918,
+      "total_ticks": 3249781,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 110209
+    },
+    {
+      "frame_id": 153,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248180,
+      "total_ticks": 3248222,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 99256
+    },
+    {
+      "frame_id": 154,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248863,
+      "total_ticks": 3248905,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103786
+    },
+    {
+      "frame_id": 155,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248791,
+      "total_ticks": 3248833,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102842
+    },
+    {
+      "frame_id": 156,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248550,
+      "total_ticks": 3248592,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 92389
+    },
+    {
+      "frame_id": 157,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3249183,
+      "total_ticks": 3249225,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 102925
+    },
+    {
+      "frame_id": 158,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3248218,
+      "total_ticks": 3248260,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 103095
+    },
+    {
+      "frame_id": 159,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248253,
+      "total_ticks": 3248295,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 100730
+    },
+    {
+      "frame_id": 160,
+      "feed_ticks": 3224101,
+      "jpeg_ticks": 3248229,
+      "total_ticks": 3248271,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 107871
+    }
+  ],
+  "usb_link": [
+    {
+      "window": 1,
+      "cycles": 60000000,
+      "writes": 68,
+      "write_busy_cycles": 2,
+      "txe_wait_cycles": 0,
+      "upstream_empty_cycles": 59999919,
+      "rx_cycles": 11
+    },
+    {
+      "window": 2,
+      "cycles": 60000000,
+      "writes": 2263355,
+      "write_busy_cycles": 4362,
+      "txe_wait_cycles": 480206,
+      "upstream_empty_cycles": 57252047,
+      "rx_cycles": 30
+    },
+    {
+      "window": 3,
+      "cycles": 60000000,
+      "writes": 2135657,
+      "write_busy_cycles": 4112,
+      "txe_wait_cycles": 479267,
+      "upstream_empty_cycles": 57380964,
+      "rx_cycles": 0
+    },
+    {
+      "window": 4,
+      "cycles": 60000000,
+      "writes": 1977112,
+      "write_busy_cycles": 3806,
+      "txe_wait_cycles": 410822,
+      "upstream_empty_cycles": 57608260,
+      "rx_cycles": 0
+    },
+    {
+      "window": 5,
+      "cycles": 60000000,
+      "writes": 2148694,
+      "write_busy_cycles": 4145,
+      "txe_wait_cycles": 471983,
+      "upstream_empty_cycles": 57375178,
+      "rx_cycles": 0
+    },
+    {
+      "window": 6,
+      "cycles": 60000000,
+      "writes": 2094896,
+      "write_busy_cycles": 4034,
+      "txe_wait_cycles": 450411,
+      "upstream_empty_cycles": 57450659,
+      "rx_cycles": 0
+    },
+    {
+      "window": 7,
+      "cycles": 60000000,
+      "writes": 2134216,
+      "write_busy_cycles": 4118,
+      "txe_wait_cycles": 457364,
+      "upstream_empty_cycles": 57404302,
+      "rx_cycles": 0
+    }
+  ],
+  "eeprom_info": {
+    "IsFifo": 1,
+    "IsFifoTar": 0,
+    "IsFastSer": 0,
+    "IsFT1248": 0,
+    "DriverType": 1,
+    "serial": "FTB7MA1D",
+    "transport": "FT245 synchronous FIFO",
+    "link_clock_hz": 60000000
+  }
+}
