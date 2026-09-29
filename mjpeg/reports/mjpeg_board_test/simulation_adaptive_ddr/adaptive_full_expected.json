@@ -1,0 +1,131 @@
+[
+  {
+    "frame": 0,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": true,
+    "copies": 0,
+    "last_copied": false,
+    "last_metadata": [
+      0,
+      0
+    ],
+    "last_comparison": null
+  },
+  {
+    "frame": 1,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 4049,
+    "last_copied": false,
+    "last_metadata": [
+      1,
+      0
+    ],
+    "last_comparison": {
+      "peak": 28,
+      "total": 28,
+      "safe": true,
+      "reason": "learning"
+    }
+  },
+  {
+    "frame": 2,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 4050,
+    "last_copied": true,
+    "last_metadata": [
+      2,
+      1
+    ],
+    "last_comparison": {
+      "peak": 28,
+      "total": 28,
+      "safe": true,
+      "reason": "copy"
+    }
+  },
+  {
+    "frame": 3,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 1,
+    "last_copied": true,
+    "last_metadata": [
+      3,
+      2
+    ],
+    "last_comparison": {
+      "peak": 28,
+      "total": 28,
+      "safe": true,
+      "reason": "copy"
+    }
+  },
+  {
+    "frame": 4,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 4049,
+    "last_copied": false,
+    "last_metadata": [
+      3,
+      0
+    ],
+    "last_comparison": null
+  },
+  {
+    "frame": 5,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 4050,
+    "last_copied": true,
+    "last_metadata": [
+      3,
+      1
+    ],
+    "last_comparison": {
+      "peak": 28,
+      "total": 28,
+      "safe": true,
+      "reason": "copy"
+    }
+  },
+  {
+    "frame": 6,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 1,
+    "last_copied": true,
+    "last_metadata": [
+      3,
+      2
+    ],
+    "last_comparison": {
+      "peak": 28,
+      "total": 28,
+      "safe": true,
+      "reason": "copy"
+    }
+  },
+  {
+    "frame": 7,
+    "adaptive": 1,
+    "ceiling": 60,
+    "keyframe": false,
+    "copies": 4049,
+    "last_copied": false,
+    "last_metadata": [
+      3,
+      0
+    ],
+    "last_comparison": null
+  }
+]
