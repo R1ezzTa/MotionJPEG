@@ -1,0 +1,563 @@
+{
+  "passed": true,
+  "comparison": "offline same input, not measured board bandwidth",
+  "source": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_diag_20260927_232137\\usb_capture.bin",
+  "frames": 12,
+  "thresholds": [
+    0,
+    32,
+    64
+  ],
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "groups_per_frame": 4050,
+  "slot_bytes": 8192,
+  "refresh_period_frames": 30,
+  "original_same_input_jpeg_bytes": 6677510,
+  "totals": {
+    "0": {
+      "original_same_input_jpeg_bytes": 6677510,
+      "spj2_payload_bytes": 6920666,
+      "net_saved_bytes": -243156,
+      "net_reduction_percent": -3.6414172348674834,
+      "reused_groups": 0,
+      "total_groups": 48600,
+      "keyframes": 1,
+      "output_differs_from_current_frames": 0,
+      "frames": [
+        {
+          "frame_id": 0,
+          "threshold": 0,
+          "keyframe": true,
+          "jpeg_bytes": 560675,
+          "spj2_bytes": 580938,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 1,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 556094,
+          "spj2_bytes": 576357,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 2,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 558857,
+          "spj2_bytes": 579120,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 3,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 554255,
+          "spj2_bytes": 574518,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 4,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 560156,
+          "spj2_bytes": 580419,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 5,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 554091,
+          "spj2_bytes": 574354,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 6,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 556577,
+          "spj2_bytes": 576840,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 7,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 553037,
+          "spj2_bytes": 573300,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 8,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 556618,
+          "spj2_bytes": 576881,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 9,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 554732,
+          "spj2_bytes": 574995,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 10,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 558244,
+          "spj2_bytes": 578507,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 11,
+          "threshold": 0,
+          "keyframe": false,
+          "jpeg_bytes": 554174,
+          "spj2_bytes": 574437,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        }
+      ]
+    },
+    "32": {
+      "original_same_input_jpeg_bytes": 6677510,
+      "spj2_payload_bytes": 6288836,
+      "net_saved_bytes": 388674,
+      "net_reduction_percent": 5.820642724608427,
+      "reused_groups": 6563,
+      "total_groups": 48600,
+      "keyframes": 1,
+      "output_differs_from_current_frames": 11,
+      "frames": [
+        {
+          "frame_id": 0,
+          "threshold": 32,
+          "keyframe": true,
+          "jpeg_bytes": 560675,
+          "spj2_bytes": 580938,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 1,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 556094,
+          "spj2_bytes": 516050,
+          "reused_groups": 620,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 2,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 558857,
+          "spj2_bytes": 518967,
+          "reused_groups": 608,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 3,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 554255,
+          "spj2_bytes": 514830,
+          "reused_groups": 623,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 4,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 560156,
+          "spj2_bytes": 521028,
+          "reused_groups": 600,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 5,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 554091,
+          "spj2_bytes": 518265,
+          "reused_groups": 590,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 6,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 556577,
+          "spj2_bytes": 520136,
+          "reused_groups": 585,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 7,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 553037,
+          "spj2_bytes": 520414,
+          "reused_groups": 574,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 8,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 556618,
+          "spj2_bytes": 519979,
+          "reused_groups": 585,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 9,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 554732,
+          "spj2_bytes": 518082,
+          "reused_groups": 600,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 10,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 558244,
+          "spj2_bytes": 520609,
+          "reused_groups": 600,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 11,
+          "threshold": 32,
+          "keyframe": false,
+          "jpeg_bytes": 554174,
+          "spj2_bytes": 519538,
+          "reused_groups": 578,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        }
+      ]
+    },
+    "64": {
+      "original_same_input_jpeg_bytes": 6677510,
+      "spj2_payload_bytes": 1291557,
+      "net_saved_bytes": 5385953,
+      "net_reduction_percent": 80.65810459287968,
+      "reused_groups": 41030,
+      "total_groups": 48600,
+      "keyframes": 1,
+      "output_differs_from_current_frames": 11,
+      "frames": [
+        {
+          "frame_id": 0,
+          "threshold": 64,
+          "keyframe": true,
+          "jpeg_bytes": 560675,
+          "spj2_bytes": 580938,
+          "reused_groups": 0,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": true
+        },
+        {
+          "frame_id": 1,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 556094,
+          "spj2_bytes": 61647,
+          "reused_groups": 3747,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 2,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 558857,
+          "spj2_bytes": 61311,
+          "reused_groups": 3748,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 3,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 554255,
+          "spj2_bytes": 62387,
+          "reused_groups": 3745,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 4,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 560156,
+          "spj2_bytes": 66618,
+          "reused_groups": 3719,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 5,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 554091,
+          "spj2_bytes": 69100,
+          "reused_groups": 3702,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 6,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 556577,
+          "spj2_bytes": 68294,
+          "reused_groups": 3708,
+          "total_groups": 4050,
+          "tail_4049_copy": false,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 7,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 553037,
+          "spj2_bytes": 72615,
+          "reused_groups": 3678,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 8,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 556618,
+          "spj2_bytes": 67422,
+          "reused_groups": 3712,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 9,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 554732,
+          "spj2_bytes": 62164,
+          "reused_groups": 3747,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 10,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 558244,
+          "spj2_bytes": 61499,
+          "reused_groups": 3751,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        },
+        {
+          "frame_id": 11,
+          "threshold": 64,
+          "keyframe": false,
+          "jpeg_bytes": 554174,
+          "spj2_bytes": 57562,
+          "reused_groups": 3773,
+          "total_groups": 4050,
+          "tail_4049_copy": true,
+          "restored_equals_current": false
+        }
+      ]
+    }
+  },
+  "source_frames": [
+    {
+      "frame_id": 0,
+      "timestamp": 103362160,
+      "jpeg_bytes": 560675,
+      "jpeg_sha256": "2e4f761d03ffffc10a116e8b59a39f228ce45a8468e4c2ad9e2e6f3d78413e51",
+      "groups": 4050,
+      "coefficient_decode_seconds": 1.6823533999995561
+    },
+    {
+      "frame_id": 1,
+      "timestamp": 106695275,
+      "jpeg_bytes": 556094,
+      "jpeg_sha256": "08c2758a0e9586bf9706172860fe8b1a7693ac7ecc3fe96d1ba1a03f9bbd3970",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.151621000004525
+    },
+    {
+      "frame_id": 2,
+      "timestamp": 110028391,
+      "jpeg_bytes": 558857,
+      "jpeg_sha256": "7c44bbfd48921814060541b0ac90243c481bb6ab10fb887dbce25368ace6d224",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.495992300006037
+    },
+    {
+      "frame_id": 3,
+      "timestamp": 113361507,
+      "jpeg_bytes": 554255,
+      "jpeg_sha256": "fe52a1e48e0b345eb7be2339b55f30eec474b5d306a327ab90ae0b89539b4bda",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.3787833000023966
+    },
+    {
+      "frame_id": 4,
+      "timestamp": 116694623,
+      "jpeg_bytes": 560156,
+      "jpeg_sha256": "f22dcc9b0b3734730c06e9118b57b9cca6bf845ca6c74abca6cea6d1286664fb",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.485140800003137
+    },
+    {
+      "frame_id": 5,
+      "timestamp": 120027739,
+      "jpeg_bytes": 554091,
+      "jpeg_sha256": "14eacff7c45fdced9f139ebd98959027c4a3d14766aa38c04cdb6ffe6a3bac87",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.0392300999956205
+    },
+    {
+      "frame_id": 6,
+      "timestamp": 123360854,
+      "jpeg_bytes": 556577,
+      "jpeg_sha256": "1faac487a3be113d5d812669a7768e55c95e9db2e0e547920246ed3183dc71c8",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.252081700004055
+    },
+    {
+      "frame_id": 7,
+      "timestamp": 126693970,
+      "jpeg_bytes": 553037,
+      "jpeg_sha256": "11fe18278a09f5ccdb5ca0c8b9477b50ddbc501d8d6e2ca3ac7934e12ec2a419",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.2656742000035592
+    },
+    {
+      "frame_id": 8,
+      "timestamp": 130027086,
+      "jpeg_bytes": 556618,
+      "jpeg_sha256": "67363cc83267401d18cee9193c68c97113f3203b50fd2947a13d9aad065d7d42",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.394897600002878
+    },
+    {
+      "frame_id": 9,
+      "timestamp": 133360202,
+      "jpeg_bytes": 554732,
+      "jpeg_sha256": "0738f660526670d3ad472ba1e3409389b9ed156658149028528d38d69002c7ec",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.3683622000025935
+    },
+    {
+      "frame_id": 10,
+      "timestamp": 136693318,
+      "jpeg_bytes": 558244,
+      "jpeg_sha256": "c5a009be3adad29bf1c1fc701152b62b90aeeddfe3d74e957ed24faae085467f",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.318225299997721
+    },
+    {
+      "frame_id": 11,
+      "timestamp": 140026434,
+      "jpeg_bytes": 554174,
+      "jpeg_sha256": "e568b648d463d9510e131870a4a86c4a23865c7fd3c478aa882f3f4c9e89c6b3",
+      "groups": 4050,
+      "coefficient_decode_seconds": 2.2290654000025825
+    }
+  ],
+  "median_input_fps": 30.001956127539515,
+  "wall_seconds": 28.979998100003286,
+  "notes": [
+    "Every model sees exactly the same reconstructed original JPEG input and Q85 DQT.",
+    "T0 compares complete group bytes exactly. T32/T64 compare max absolute dequantized DCT difference.",
+    "Nonzero quantized-DCT dead zone is lossy, not a pixel error bound.",
+    "COPY retains last actually emitted same-position group; reference updates only on DATA.",
+    "All 4050 positions and final index4049 are verified on each restored output; Pillow loads all outputs without viewing.",
+    "Original JPEG versus SPJ2 includes all SPJ2 record/header overhead, excludes both MBLK framing and USB physical overhead.",
+    "Refresh cadence is every30 frames; selected short clip includes the first keyframe, but no second scheduled refresh.",
+    "At most one current coefficient frame and two threshold reference frames are retained; no whole-clip coefficient cache."
+  ]
+}

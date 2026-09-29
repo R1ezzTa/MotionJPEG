@@ -1,0 +1,65 @@
+{
+  "method": "Existing neutral-wall ROI from previous session; numeric diagnostics only, no repeated image viewing. Not calibrated colorimetry.",
+  "observations": [
+    {
+      "source": "progressive_20260926_190204/fhd15/capture/camera0_frame200.jpg",
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        242.11474285714286,
+        144.8490095238095,
+        254.95059047619048
+      ],
+      "stddev_rgb": [
+        6.322649819767244,
+        6.8983173911092885,
+        0.4921833126383048
+      ],
+      "green_to_red_blue": 0.5828167840732251
+    },
+    {
+      "source": "progressive_20260926_190204/fhd30_raw/capture/camera0_frame300.jpg",
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        138.86638095238095,
+        208.63403809523808,
+        150.9808
+      ],
+      "stddev_rgb": [
+        8.067878298278137,
+        7.274026557585197,
+        8.643309161701982
+      ],
+      "green_to_red_blue": 1.4396140573781506
+    },
+    {
+      "source": "progressive_fhd30_60s_20260926_191740/camera0_frame4.jpg",
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        119.74097142857143,
+        159.33474285714286,
+        133.51146666666668
+      ],
+      "stddev_rgb": [
+        8.615377691698331,
+        8.058267838246822,
+        9.201857055913216
+      ],
+      "green_to_red_blue": 1.2583076716301813
+    }
+  ]
+}
