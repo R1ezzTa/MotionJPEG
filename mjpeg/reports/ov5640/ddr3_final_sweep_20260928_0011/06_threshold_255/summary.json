@@ -1,0 +1,22 @@
+{
+  "index": 6,
+  "threshold": 255,
+  "frames": 120,
+  "decoded_frames": 120,
+  "starts": 1,
+  "ends": 1,
+  "median_fps": 30.001974129897746,
+  "mean_fps": 30.001977155506292,
+  "duration_seconds": 4.049821200002043,
+  "transport_payload_bytes": 3701613,
+  "reconstructed_jpeg_bytes": 64156350,
+  "payload_vs_reconstructed_ratio": 0.057696751763465344,
+  "payload_mb_per_second": 0.9254642388710426,
+  "wire_bytes": 3754365,
+  "wire_mb_per_second": 0.9270446310069458,
+  "reused_groups": 469800,
+  "total_groups": 486000,
+  "keyframes": 4,
+  "camera_fifo_overflows": 0,
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\06_threshold_255"
+}
