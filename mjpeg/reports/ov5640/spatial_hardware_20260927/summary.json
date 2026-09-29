@@ -1,0 +1,42 @@
+{
+  "passed": false,
+  "error": "AssertionError: ",
+  "decoded_frames": 0,
+  "starts": 1,
+  "ends": 0,
+  "qualities": {
+    "60": {
+      "frames": 0,
+      "mean_jpeg_bytes": 0,
+      "median_fps": 0
+    },
+    "75": {
+      "frames": 0,
+      "mean_jpeg_bytes": 0,
+      "median_fps": 0
+    },
+    "85": {
+      "frames": 0,
+      "mean_jpeg_bytes": 0,
+      "median_fps": 0
+    }
+  },
+  "actions": [
+    {
+      "seconds": 1.0926050000016403,
+      "command": "C"
+    }
+  ],
+  "camera_fifo_overflows": 0,
+  "light_readback_on": false,
+  "automatic_off_seen_before_stop": false,
+  "physical_buttons_tested": false,
+  "physical_light_observed": false,
+  "spatial": {
+    "reconstructed_jpeg_bytes": 0,
+    "transport_payload_bytes": 0,
+    "reused_groups": 0,
+    "total_groups": 0,
+    "keyframes": 0
+  }
+}

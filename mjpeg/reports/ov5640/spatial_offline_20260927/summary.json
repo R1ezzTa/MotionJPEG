@@ -1,0 +1,147 @@
+{
+  "passed": true,
+  "source": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\progressive_fhd30_60s_20260926_191740\\usb_capture.bin",
+  "frames": [
+    {
+      "source_frame_id": 100,
+      "original_jpeg_bytes": 545007,
+      "full_cache": {
+        "keyframe": true,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 562427,
+        "transport_bytes": 582689,
+        "net_saved_bytes": -20262
+      },
+      "board_cache": {
+        "keyframe": true,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 562427,
+        "transport_bytes": 582689,
+        "net_saved_bytes": -20262
+      }
+    },
+    {
+      "source_frame_id": 101,
+      "original_jpeg_bytes": 539090,
+      "full_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 556285,
+        "transport_bytes": 576547,
+        "net_saved_bytes": -20262
+      },
+      "board_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 556285,
+        "transport_bytes": 576547,
+        "net_saved_bytes": -20262
+      }
+    },
+    {
+      "source_frame_id": 102,
+      "original_jpeg_bytes": 545460,
+      "full_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 562647,
+        "transport_bytes": 582909,
+        "net_saved_bytes": -20262
+      },
+      "board_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 562647,
+        "transport_bytes": 582909,
+        "net_saved_bytes": -20262
+      }
+    },
+    {
+      "source_frame_id": 103,
+      "original_jpeg_bytes": 541231,
+      "full_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 558377,
+        "transport_bytes": 578639,
+        "net_saved_bytes": -20262
+      },
+      "board_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 558377,
+        "transport_bytes": 578639,
+        "net_saved_bytes": -20262
+      }
+    },
+    {
+      "source_frame_id": 104,
+      "original_jpeg_bytes": 545364,
+      "full_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 562661,
+        "transport_bytes": 582923,
+        "net_saved_bytes": -20262
+      },
+      "board_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 562661,
+        "transport_bytes": 582923,
+        "net_saved_bytes": -20262
+      }
+    },
+    {
+      "source_frame_id": 105,
+      "original_jpeg_bytes": 538977,
+      "full_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 556154,
+        "transport_bytes": 576416,
+        "net_saved_bytes": -20262
+      },
+      "board_cache": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 556154,
+        "transport_bytes": 576416,
+        "net_saved_bytes": -20262
+      }
+    }
+  ],
+  "original_bytes": 3255129,
+  "full_cache": {
+    "bytes": 3480123,
+    "reduction_vs_original": -0.06911984133347704
+  },
+  "board_cache": {
+    "bytes": 3480123,
+    "reduction_vs_original": -0.06911984133347704
+  }
+}
