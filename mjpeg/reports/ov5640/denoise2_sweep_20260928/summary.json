@@ -1,0 +1,271 @@
+{
+  "passed": true,
+  "error": null,
+  "strengths": [
+    0,
+    8,
+    16,
+    32,
+    64,
+    255,
+    0
+  ],
+  "seconds_per_strength": 4.0,
+  "quality": 85,
+  "required_revision": 2,
+  "observed_revisions": [
+    2
+  ],
+  "phases": [
+    {
+      "strength": 0,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001947807129145,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 464862.31666666665,
+      "jpeg_payload_bytes": 55783478,
+      "jpeg_mb_per_second": 13.946774962134473,
+      "wire_bytes": 56446654,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\00_strength_000"
+    },
+    {
+      "strength": 8,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.00194848788982,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 387992.0833333333,
+      "jpeg_payload_bytes": 46559050,
+      "jpeg_mb_per_second": 11.64051849787572,
+      "wire_bytes": 47114142,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\01_strength_008"
+    },
+    {
+      "strength": 16,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001948639169978,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 352232.56666666665,
+      "jpeg_payload_bytes": 42267908,
+      "jpeg_mb_per_second": 10.567663374176348,
+      "wire_bytes": 42772708,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\02_strength_016"
+    },
+    {
+      "strength": 32,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.00194833660967,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 309610.60833333334,
+      "jpeg_payload_bytes": 37153273,
+      "jpeg_mb_per_second": 9.288921475682956,
+      "wire_bytes": 37598145,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\03_strength_032"
+    },
+    {
+      "strength": 64,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001948412249742,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 309549.7,
+      "jpeg_payload_bytes": 37145964,
+      "jpeg_mb_per_second": 9.287094130427384,
+      "wire_bytes": 37590716,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\04_strength_064"
+    },
+    {
+      "strength": 255,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001948639169978,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 309562.5,
+      "jpeg_payload_bytes": 37147500,
+      "jpeg_mb_per_second": 9.287478225613055,
+      "wire_bytes": 37592336,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\05_strength_255"
+    },
+    {
+      "strength": 0,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.00194810968944,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 464926.65,
+      "jpeg_payload_bytes": 55791198,
+      "jpeg_mb_per_second": 13.948705228111743,
+      "wire_bytes": 56454530,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise2_sweep_20260928\\06_strength_000"
+    }
+  ],
+  "independently_decoded_frames": 840,
+  "actions": [
+    {
+      "seconds": 0.2850017000018852,
+      "command": "l"
+    },
+    {
+      "seconds": 0.285088500007987,
+      "command": "S"
+    },
+    {
+      "seconds": 1.2368513999972492,
+      "command": "TFF\nA1\nNSCL\n"
+    },
+    {
+      "seconds": 2.237735899994732,
+      "command": "3"
+    },
+    {
+      "seconds": 2.2378310000058264,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 3.236066800003755,
+      "command": "C"
+    },
+    {
+      "seconds": 7.239534799999092,
+      "command": "S"
+    },
+    {
+      "seconds": 8.238561100006336,
+      "command": "3"
+    },
+    {
+      "seconds": 8.238631300002453,
+      "command": "N08\n"
+    },
+    {
+      "seconds": 9.236244200001238,
+      "command": "C"
+    },
+    {
+      "seconds": 13.239554300002055,
+      "command": "S"
+    },
+    {
+      "seconds": 14.238279500001227,
+      "command": "3"
+    },
+    {
+      "seconds": 14.238353499997174,
+      "command": "N10\n"
+    },
+    {
+      "seconds": 15.236592200002633,
+      "command": "C"
+    },
+    {
+      "seconds": 19.242757200001506,
+      "command": "S"
+    },
+    {
+      "seconds": 20.237585499999113,
+      "command": "3"
+    },
+    {
+      "seconds": 20.237648499998613,
+      "command": "N20\n"
+    },
+    {
+      "seconds": 21.235868799994932,
+      "command": "C"
+    },
+    {
+      "seconds": 25.24396500000148,
+      "command": "S"
+    },
+    {
+      "seconds": 26.238728700001957,
+      "command": "3"
+    },
+    {
+      "seconds": 26.238782000000356,
+      "command": "N40\n"
+    },
+    {
+      "seconds": 27.236942000003182,
+      "command": "C"
+    },
+    {
+      "seconds": 31.244500600005267,
+      "command": "S"
+    },
+    {
+      "seconds": 32.25001509999856,
+      "command": "3"
+    },
+    {
+      "seconds": 32.25014370000281,
+      "command": "NFF\n"
+    },
+    {
+      "seconds": 33.237489399994956,
+      "command": "C"
+    },
+    {
+      "seconds": 37.24393029999919,
+      "command": "S"
+    },
+    {
+      "seconds": 38.239388300004066,
+      "command": "3"
+    },
+    {
+      "seconds": 38.2394340000028,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 39.23754099999496,
+      "command": "C"
+    },
+    {
+      "seconds": 43.24033679999411,
+      "command": "S"
+    },
+    {
+      "seconds": 43.28329190000659,
+      "command": "l"
+    },
+    {
+      "seconds": 43.283338499997626,
+      "command": "S"
+    }
+  ],
+  "removed_and_malformed_commands_ignored": true,
+  "comparison_note": "Same physical scene captured sequentially, not identical source pixels. JPEG image payload excludes MBLK/USB overhead.",
+  "physical_motion_quality_verified": false
+}
