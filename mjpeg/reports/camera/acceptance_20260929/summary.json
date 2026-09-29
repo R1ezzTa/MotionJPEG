@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "recorded_at": "2026-09-29T17:15:27.802308+08:00",
+  "build_directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\full_20260929_170515",
+  "bitstream_sha256": "f2b022c687035f34944f03232f0991a46cc7aed7a40464210358aedbbc8d857a",
+  "checked_hashes": 63,
+  "top": "davinci_mjpeg_camera_top",
+  "camera_profile": 5,
+  "core_mhz": 100,
+  "ddr3": false,
+  "interframe_compression": false,
+  "resources": {
+    "lut": {
+      "used": 15584,
+      "available": 20800,
+      "percent": 74.92
+    },
+    "ff": {
+      "used": 19533,
+      "available": 41600,
+      "percent": 46.95
+    },
+    "bram36_equivalent": {
+      "used": 36,
+      "available": 50,
+      "percent": 72.0
+    },
+    "dsp": {
+      "used": 46,
+      "available": 90,
+      "percent": 51.11
+    }
+  },
+  "timings": {
+    "wns_ns": 0.057,
+    "tns_ns": 0.0,
+    "whs_ns": 0.023,
+    "ths_ns": 0.0,
+    "core_100mhz_wns_ns": 0.057,
+    "usb_tristate_max_data_path_ns": 3.857
+  },
+  "independently_decoded_frames": 3480,
+  "max_camera_fifo_overflows": 0,
+  "physical_buttons_retested": false,
+  "physical_leds_observed": false,
+  "programmed_to": "FPGA SRAM",
+  "tests": {
+    "controls": {
+      "summary": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\controls\\summary.json",
+      "passed": true
+    },
+    "modes": {
+      "summary": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\modes\\summary.json",
+      "passed": true
+    },
+    "denoise32": {
+      "summary": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\denoise32\\summary.json",
+      "passed": true
+    },
+    "sobel60": {
+      "summary": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\camera\\acceptance_20260929\\sobel60\\summary.json",
+      "passed": true
+    }
+  },
+  "source_snapshot": "F:\\zju\\dasanshangkecheng\\HDL\\work\\no_ddr3_20260929\\final_source_snapshot",
+  "notes": [
+    "Image arithmetic is bit-exact; parallel stages shorten local paths, not the configured camera frame period.",
+    "Reports contain CDC/DRC warnings (DSP pipelining, RAM async control and the existing camera clock placement); there are no critical CDC findings or DRC errors.",
+    "Source-level simulations include independent per-pixel references, backpressure, frame configuration and abort recovery."
+  ]
+}
