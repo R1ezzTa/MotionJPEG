@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "error": null,
+  "strengths": [
+    16
+  ],
+  "seconds_per_strength": 60.0,
+  "quality": 85,
+  "phases": [
+    {
+      "strength": 16,
+      "frames": 1800,
+      "decoded_frames": 1800,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.001952510058796,
+      "max_frame_interval_ms": 33.33117,
+      "mean_jpeg_bytes": 424164.1477777778,
+      "jpeg_payload_bytes": 763495466,
+      "jpeg_mb_per_second": 12.72575261809845,
+      "wire_bytes": 772582538,
+      "camera_fifo_overflows": 0,
+      "independent_jpeg": true,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\denoise_long16_20260928\\00_strength_016"
+    }
+  ],
+  "independently_decoded_frames": 1800,
+  "actions": [
+    {
+      "seconds": 0.21845179999945685,
+      "command": "l"
+    },
+    {
+      "seconds": 0.2185219000093639,
+      "command": "S"
+    },
+    {
+      "seconds": 1.168868000007933,
+      "command": "TFF\nA1\nNSCL\n"
+    },
+    {
+      "seconds": 2.17005740001332,
+      "command": "3"
+    },
+    {
+      "seconds": 2.170133400009945,
+      "command": "N10\n"
+    },
+    {
+      "seconds": 3.169064600006095,
+      "command": "C"
+    },
+    {
+      "seconds": 63.173572100000456,
+      "command": "S"
+    },
+    {
+      "seconds": 63.217385800002376,
+      "command": "l"
+    },
+    {
+      "seconds": 63.21742110000923,
+      "command": "S"
+    }
+  ],
+  "removed_and_malformed_commands_ignored": true,
+  "comparison_note": "Same physical scene captured sequentially, not identical source pixels. JPEG image payload excludes MBLK/USB overhead.",
+  "physical_motion_quality_verified": false
+}
