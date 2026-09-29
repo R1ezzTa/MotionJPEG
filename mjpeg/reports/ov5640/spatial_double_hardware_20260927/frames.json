@@ -1,0 +1,59 @@
+[
+  {
+    "frame_id": 0,
+    "timestamp": 103362363,
+    "bytes": 526603,
+    "quality": 85,
+    "session": 1,
+    "seconds": 1.1798392000018794,
+    "phase": "qualities",
+    "spatial": {
+      "frame_id": 0,
+      "keyframe": true,
+      "groups": 4050,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 526603,
+      "transport_bytes": 546865,
+      "net_saved_bytes": -20262
+    }
+  },
+  {
+    "frame_id": 1,
+    "timestamp": 106695486,
+    "bytes": 518991,
+    "quality": 85,
+    "session": 1,
+    "seconds": 1.2639364000024216,
+    "phase": "qualities",
+    "spatial": {
+      "frame_id": 1,
+      "keyframe": false,
+      "groups": 4050,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 518991,
+      "transport_bytes": 539253,
+      "net_saved_bytes": -20262
+    }
+  },
+  {
+    "frame_id": 2,
+    "timestamp": 110028608,
+    "bytes": 524344,
+    "quality": 85,
+    "session": 1,
+    "seconds": 1.301941199999419,
+    "phase": "qualities",
+    "spatial": {
+      "frame_id": 2,
+      "keyframe": false,
+      "groups": 4050,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 524344,
+      "transport_bytes": 544606,
+      "net_saved_bytes": -20262
+    }
+  }
+]

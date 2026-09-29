@@ -1,0 +1,264 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Sat Sep 26 16:53:34 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_timing -from [get_pins -hier -filter {REF_PIN_NAME == CLK && NAME =~ *rx_fifo/memory_reg*/CLK}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *rx_fifo/m_data_reg*}] -max_paths 8 -nworst 1 -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/mjpeg_board_test/build_20260926_164734/rx_ram_cdc_timing.rpt
+| Design       : davinci_mjpeg_board_test_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             7.733ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_128_191_7_7/DP/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[7]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        2.299ns  (logic 1.186ns (51.596%)  route 1.113ns (48.404%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y29                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_128_191_7_7/DP/CLK
+    SLICE_X60Y29         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.081     1.081 r  synchronous.rx_fifo/memory_reg_128_191_7_7/DP/O
+                         net (fo=1, routed)           1.113     2.194    synchronous.rx_fifo/memory_reg_128_191_7_7_n_0
+    SLICE_X62Y32         LUT6 (Prop_lut6_I1_O)        0.105     2.299 r  synchronous.rx_fifo//m_data[7]_i_2/O
+                         net (fo=1, routed)           0.000     2.299    synchronous.rx_fifo//m_data[7]_i_2_n_0
+    SLICE_X62Y32         FDRE                                         r  synchronous.rx_fifo/m_data_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X62Y32         FDRE (Setup_fdre_C_D)        0.032    10.032    synchronous.rx_fifo/m_data_reg[7]
+  -------------------------------------------------------------------
+                         required time                         10.032    
+                         arrival time                          -2.299    
+  -------------------------------------------------------------------
+                         slack                                  7.733    
+
+Slack (MET) :             7.800ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_0_63_0_2/RAMC/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[2]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        2.232ns  (logic 1.189ns (53.268%)  route 1.043ns (46.732%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y28                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_0_63_0_2/RAMC/CLK
+    SLICE_X60Y28         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.084     1.084 r  synchronous.rx_fifo/memory_reg_0_63_0_2/RAMC/O
+                         net (fo=1, routed)           1.043     2.127    synchronous.rx_fifo/memory_reg_0_63_0_2_n_2
+    SLICE_X65Y28         LUT6 (Prop_lut6_I5_O)        0.105     2.232 r  synchronous.rx_fifo//m_data[2]_i_1/O
+                         net (fo=1, routed)           0.000     2.232    synchronous.rx_fifo//m_data[2]_i_1_n_0
+    SLICE_X65Y28         FDRE                                         r  synchronous.rx_fifo/m_data_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X65Y28         FDRE (Setup_fdre_C_D)        0.032    10.032    synchronous.rx_fifo/m_data_reg[2]
+  -------------------------------------------------------------------
+                         required time                         10.032    
+                         arrival time                          -2.232    
+  -------------------------------------------------------------------
+                         slack                                  7.800    
+
+Slack (MET) :             8.011ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_0_63_3_5/RAMB/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        2.019ns  (logic 1.192ns (59.041%)  route 0.827ns (40.959%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X64Y33                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_0_63_3_5/RAMB/CLK
+    SLICE_X64Y33         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.087     1.087 r  synchronous.rx_fifo/memory_reg_0_63_3_5/RAMB/O
+                         net (fo=1, routed)           0.827     1.914    synchronous.rx_fifo/memory_reg_0_63_3_5_n_1
+    SLICE_X65Y32         LUT6 (Prop_lut6_I5_O)        0.105     2.019 r  synchronous.rx_fifo//m_data[4]_i_1/O
+                         net (fo=1, routed)           0.000     2.019    synchronous.rx_fifo//m_data[4]_i_1_n_0
+    SLICE_X65Y32         FDRE                                         r  synchronous.rx_fifo/m_data_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X65Y32         FDRE (Setup_fdre_C_D)        0.030    10.030    synchronous.rx_fifo/m_data_reg[4]
+  -------------------------------------------------------------------
+                         required time                         10.030    
+                         arrival time                          -2.019    
+  -------------------------------------------------------------------
+                         slack                                  8.011    
+
+Slack (MET) :             8.022ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_128_191_6_6/DP/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[6]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        2.008ns  (logic 1.189ns (59.202%)  route 0.819ns (40.798%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y29                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_128_191_6_6/DP/CLK
+    SLICE_X60Y29         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.084     1.084 r  synchronous.rx_fifo/memory_reg_128_191_6_6/DP/O
+                         net (fo=1, routed)           0.819     1.903    synchronous.rx_fifo/memory_reg_128_191_6_6_n_0
+    SLICE_X62Y32         LUT6 (Prop_lut6_I1_O)        0.105     2.008 r  synchronous.rx_fifo//m_data[6]_i_1/O
+                         net (fo=1, routed)           0.000     2.008    synchronous.rx_fifo//m_data[6]_i_1_n_0
+    SLICE_X62Y32         FDRE                                         r  synchronous.rx_fifo/m_data_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X62Y32         FDRE (Setup_fdre_C_D)        0.030    10.030    synchronous.rx_fifo/m_data_reg[6]
+  -------------------------------------------------------------------
+                         required time                         10.030    
+                         arrival time                          -2.008    
+  -------------------------------------------------------------------
+                         slack                                  8.022    
+
+Slack (MET) :             8.097ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_0_63_3_5/RAMC/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        1.935ns  (logic 1.189ns (61.432%)  route 0.746ns (38.568%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X64Y33                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_0_63_3_5/RAMC/CLK
+    SLICE_X64Y33         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.084     1.084 r  synchronous.rx_fifo/memory_reg_0_63_3_5/RAMC/O
+                         net (fo=1, routed)           0.746     1.830    synchronous.rx_fifo/memory_reg_0_63_3_5_n_2
+    SLICE_X65Y32         LUT6 (Prop_lut6_I5_O)        0.105     1.935 r  synchronous.rx_fifo//m_data[5]_i_1/O
+                         net (fo=1, routed)           0.000     1.935    synchronous.rx_fifo//m_data[5]_i_1_n_0
+    SLICE_X65Y32         FDRE                                         r  synchronous.rx_fifo/m_data_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X65Y32         FDRE (Setup_fdre_C_D)        0.032    10.032    synchronous.rx_fifo/m_data_reg[5]
+  -------------------------------------------------------------------
+                         required time                         10.032    
+                         arrival time                          -1.935    
+  -------------------------------------------------------------------
+                         slack                                  8.097    
+
+Slack (MET) :             8.124ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_64_127_0_2/RAMB/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        1.906ns  (logic 1.192ns (62.531%)  route 0.714ns (37.469%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X64Y29                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_64_127_0_2/RAMB/CLK
+    SLICE_X64Y29         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.087     1.087 r  synchronous.rx_fifo/memory_reg_64_127_0_2/RAMB/O
+                         net (fo=1, routed)           0.714     1.801    synchronous.rx_fifo/memory_reg_64_127_0_2_n_1
+    SLICE_X65Y28         LUT6 (Prop_lut6_I3_O)        0.105     1.906 r  synchronous.rx_fifo//m_data[1]_i_1/O
+                         net (fo=1, routed)           0.000     1.906    synchronous.rx_fifo//m_data[1]_i_1_n_0
+    SLICE_X65Y28         FDRE                                         r  synchronous.rx_fifo/m_data_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X65Y28         FDRE (Setup_fdre_C_D)        0.030    10.030    synchronous.rx_fifo/m_data_reg[1]
+  -------------------------------------------------------------------
+                         required time                         10.030    
+                         arrival time                          -1.906    
+  -------------------------------------------------------------------
+                         slack                                  8.124    
+
+Slack (MET) :             8.170ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_64_127_0_2/RAMA/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        1.862ns  (logic 1.186ns (63.681%)  route 0.676ns (36.319%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X64Y29                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_64_127_0_2/RAMA/CLK
+    SLICE_X64Y29         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.081     1.081 r  synchronous.rx_fifo/memory_reg_64_127_0_2/RAMA/O
+                         net (fo=1, routed)           0.676     1.757    synchronous.rx_fifo/memory_reg_64_127_0_2_n_0
+    SLICE_X65Y28         LUT6 (Prop_lut6_I3_O)        0.105     1.862 r  synchronous.rx_fifo//m_data[0]_i_1/O
+                         net (fo=1, routed)           0.000     1.862    synchronous.rx_fifo//m_data[0]_i_1_n_0
+    SLICE_X65Y28         FDRE                                         r  synchronous.rx_fifo/m_data_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X65Y28         FDRE (Setup_fdre_C_D)        0.032    10.032    synchronous.rx_fifo/m_data_reg[0]
+  -------------------------------------------------------------------
+                         required time                         10.032    
+                         arrival time                          -1.862    
+  -------------------------------------------------------------------
+                         slack                                  8.170    
+
+Slack (MET) :             8.192ns  (required time - arrival time)
+  Source:                 synchronous.rx_fifo/memory_reg_64_127_3_5/RAMA/CLK
+                            (rising edge-triggered cell RAMD64E clocked by usb_clk  {rise@0.000ns fall@8.333ns period=16.667ns})
+  Destination:            synchronous.rx_fifo/m_data_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by core_raw  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             core_raw
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (MaxDelay Path 10.000ns)
+  Data Path Delay:        1.838ns  (logic 1.186ns (64.519%)  route 0.652ns (35.481%))
+  Logic Levels:           1  (LUT6=1)
+  Timing Exception:       MaxDelay Path 10.000ns -datapath_only
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X64Y32                                      0.000     0.000 r  synchronous.rx_fifo/memory_reg_64_127_3_5/RAMA/CLK
+    SLICE_X64Y32         RAMD64E (Prop_ramd64e_CLK_O)
+                                                      1.081     1.081 r  synchronous.rx_fifo/memory_reg_64_127_3_5/RAMA/O
+                         net (fo=1, routed)           0.652     1.733    synchronous.rx_fifo/memory_reg_64_127_3_5_n_0
+    SLICE_X65Y31         LUT6 (Prop_lut6_I3_O)        0.105     1.838 r  synchronous.rx_fifo//m_data[3]_i_1/O
+                         net (fo=1, routed)           0.000     1.838    synchronous.rx_fifo//m_data[3]_i_1_n_0
+    SLICE_X65Y31         FDRE                                         r  synchronous.rx_fifo/m_data_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   10.000    10.000    
+    SLICE_X65Y31         FDRE (Setup_fdre_C_D)        0.030    10.030    synchronous.rx_fifo/m_data_reg[3]
+  -------------------------------------------------------------------
+                         required time                         10.030    
+                         arrival time                          -1.838    
+  -------------------------------------------------------------------
+                         slack                                  8.192    
+
+
+
+
