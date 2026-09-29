@@ -1,0 +1,5697 @@
+[
+  {
+    "seconds": 1.07913300000655,
+    "kind": "fps",
+    "value": {
+      "window": 1,
+      "input_fps": 0,
+      "compressed_fps": 0,
+      "failed_fps": 0,
+      "total_compressed": 0
+    }
+  },
+  {
+    "seconds": 1.0791533000010531,
+    "kind": "camera",
+    "value": {
+      "flags": 2150232065,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 59885086,
+      "received_frames": 0,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 49687680,
+      "frame_sync_count": 24,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": false,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 1,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": false,
+      "tables_ready": false,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": false,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 1.0793653000000631,
+    "kind": "link",
+    "value": {
+      "window": 1,
+      "cycles": 60000000,
+      "writes": 68,
+      "write_busy_cycles": 2,
+      "txe_wait_cycles": 0,
+      "upstream_empty_cycles": 59999919,
+      "rx_cycles": 11
+    }
+  },
+  {
+    "seconds": 1.0804605000012089,
+    "kind": "start",
+    "value": null
+  },
+  {
+    "seconds": 1.1484419000044,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 0,
+      "timestamp": 103362160,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580938,
+      "seconds": 1.1484419000044
+    }
+  },
+  {
+    "seconds": 1.1484742000029655,
+    "kind": "timing",
+    "value": {
+      "frame_id": 0,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3241676,
+      "total_ticks": 3241815,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1036883
+    }
+  },
+  {
+    "seconds": 1.1783955000064452,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 1,
+      "timestamp": 106695275,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576357,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 1.1783955000064452
+    }
+  },
+  {
+    "seconds": 1.1784251000062795,
+    "kind": "timing",
+    "value": {
+      "frame_id": 1,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241872,
+      "total_ticks": 3241914,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1028487
+    }
+  },
+  {
+    "seconds": 1.2110818000001018,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 2,
+      "timestamp": 110028391,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579120,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.2110818000001018
+    }
+  },
+  {
+    "seconds": 1.2111221000013757,
+    "kind": "timing",
+    "value": {
+      "frame_id": 2,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241892,
+      "total_ticks": 3241934,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033485
+    }
+  },
+  {
+    "seconds": 1.2447941999998875,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 3,
+      "timestamp": 113361507,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574518,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.2447941999998875
+    }
+  },
+  {
+    "seconds": 1.2448239000004833,
+    "kind": "timing",
+    "value": {
+      "frame_id": 3,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241903,
+      "total_ticks": 3242850,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026057
+    }
+  },
+  {
+    "seconds": 1.2782944000064163,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 4,
+      "timestamp": 116694623,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580419,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.2782944000064163
+    }
+  },
+  {
+    "seconds": 1.2783221999998204,
+    "kind": "timing",
+    "value": {
+      "frame_id": 4,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241841,
+      "total_ticks": 3241883,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035848
+    }
+  },
+  {
+    "seconds": 1.312696600005438,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 5,
+      "timestamp": 120027739,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574354,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.312696600005438
+    }
+  },
+  {
+    "seconds": 1.3127257000014652,
+    "kind": "timing",
+    "value": {
+      "frame_id": 5,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241886,
+      "total_ticks": 3241928,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024857
+    }
+  },
+  {
+    "seconds": 1.3462454000036814,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 6,
+      "timestamp": 123360854,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576840,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 1.3462454000036814
+    }
+  },
+  {
+    "seconds": 1.3462853000019095,
+    "kind": "timing",
+    "value": {
+      "frame_id": 6,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241868,
+      "total_ticks": 3241942,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029389
+    }
+  },
+  {
+    "seconds": 1.379420500001288,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 7,
+      "timestamp": 126693970,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573300,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.379420500001288
+    }
+  },
+  {
+    "seconds": 1.3794469000058598,
+    "kind": "timing",
+    "value": {
+      "frame_id": 7,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241902,
+      "total_ticks": 3241944,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022943
+    }
+  },
+  {
+    "seconds": 1.4122429000053671,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 8,
+      "timestamp": 130027086,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576881,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.4122429000053671
+    }
+  },
+  {
+    "seconds": 1.4122719000006327,
+    "kind": "timing",
+    "value": {
+      "frame_id": 8,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241936,
+      "total_ticks": 3241978,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029439
+    }
+  },
+  {
+    "seconds": 1.445912600000156,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 9,
+      "timestamp": 133360202,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574995,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.445912600000156
+    }
+  },
+  {
+    "seconds": 1.4459378000028664,
+    "kind": "timing",
+    "value": {
+      "frame_id": 9,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241923,
+      "total_ticks": 3241965,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026017
+    }
+  },
+  {
+    "seconds": 1.4797299000056228,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 10,
+      "timestamp": 136693318,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578507,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.4797299000056228
+    }
+  },
+  {
+    "seconds": 1.4797722000002977,
+    "kind": "timing",
+    "value": {
+      "frame_id": 10,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241895,
+      "total_ticks": 3241937,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1032378
+    }
+  },
+  {
+    "seconds": 1.5143795000039972,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 11,
+      "timestamp": 140026434,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574437,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.5143795000039972
+    }
+  },
+  {
+    "seconds": 1.5144221000009566,
+    "kind": "timing",
+    "value": {
+      "frame_id": 11,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241807,
+      "total_ticks": 3241849,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025007
+    }
+  },
+  {
+    "seconds": 1.5462698000046657,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 12,
+      "timestamp": 143359549,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582199,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 1.5462698000046657
+    }
+  },
+  {
+    "seconds": 1.5463132000004407,
+    "kind": "timing",
+    "value": {
+      "frame_id": 12,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242133,
+      "total_ticks": 3242175,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1039072
+    }
+  },
+  {
+    "seconds": 1.58055840000452,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 13,
+      "timestamp": 146692665,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574392,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.58055840000452
+    }
+  },
+  {
+    "seconds": 1.58058549999987,
+    "kind": "timing",
+    "value": {
+      "frame_id": 13,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241868,
+      "total_ticks": 3241910,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024920
+    }
+  },
+  {
+    "seconds": 1.6130852999995113,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 14,
+      "timestamp": 150025781,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 584483,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.6130852999995113
+    }
+  },
+  {
+    "seconds": 1.6131298000036622,
+    "kind": "timing",
+    "value": {
+      "frame_id": 14,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241866,
+      "total_ticks": 3241908,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1043214
+    }
+  },
+  {
+    "seconds": 1.6475784000067506,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 15,
+      "timestamp": 153358897,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574994,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.6475784000067506
+    }
+  },
+  {
+    "seconds": 1.6476183000049787,
+    "kind": "timing",
+    "value": {
+      "frame_id": 15,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241903,
+      "total_ticks": 3241945,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026017
+    }
+  },
+  {
+    "seconds": 1.6810603000049014,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 16,
+      "timestamp": 156692013,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577972,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.6810603000049014
+    }
+  },
+  {
+    "seconds": 1.6811016000065138,
+    "kind": "timing",
+    "value": {
+      "frame_id": 16,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241859,
+      "total_ticks": 3241901,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031411
+    }
+  },
+  {
+    "seconds": 1.714119700001902,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 17,
+      "timestamp": 160025129,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575747,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.714119700001902
+    }
+  },
+  {
+    "seconds": 1.7141636000014842,
+    "kind": "timing",
+    "value": {
+      "frame_id": 17,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241929,
+      "total_ticks": 3242226,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027635
+    }
+  },
+  {
+    "seconds": 1.747964400005003,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 18,
+      "timestamp": 163358244,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580788,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 1.747964400005003
+    }
+  },
+  {
+    "seconds": 1.7479919000033988,
+    "kind": "timing",
+    "value": {
+      "frame_id": 18,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241960,
+      "total_ticks": 3242441,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1036954
+    }
+  },
+  {
+    "seconds": 1.7781431000039447,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 19,
+      "timestamp": 166691360,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574960,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.7781431000039447
+    }
+  },
+  {
+    "seconds": 1.7781907000025967,
+    "kind": "timing",
+    "value": {
+      "frame_id": 19,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241933,
+      "total_ticks": 3241975,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025945
+    }
+  },
+  {
+    "seconds": 1.8122178000048734,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 20,
+      "timestamp": 170024476,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576081,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.8122178000048734
+    }
+  },
+  {
+    "seconds": 1.8122577000031015,
+    "kind": "timing",
+    "value": {
+      "frame_id": 20,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242145,
+      "total_ticks": 3242187,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027989
+    }
+  },
+  {
+    "seconds": 1.845705400002771,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 21,
+      "timestamp": 173357592,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573485,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.845705400002771
+    }
+  },
+  {
+    "seconds": 1.8457321000023512,
+    "kind": "timing",
+    "value": {
+      "frame_id": 21,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241916,
+      "total_ticks": 3242887,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024206
+    }
+  },
+  {
+    "seconds": 1.8780184999995981,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 22,
+      "timestamp": 176690708,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582201,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.8780184999995981
+    }
+  },
+  {
+    "seconds": 1.8780446000018856,
+    "kind": "timing",
+    "value": {
+      "frame_id": 22,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241832,
+      "total_ticks": 3241874,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1039077
+    }
+  },
+  {
+    "seconds": 1.9124735000004875,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 23,
+      "timestamp": 180023824,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575512,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.9124735000004875
+    }
+  },
+  {
+    "seconds": 1.9125144999998156,
+    "kind": "timing",
+    "value": {
+      "frame_id": 23,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242032,
+      "total_ticks": 3243051,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027927
+    }
+  },
+  {
+    "seconds": 1.9461483000050066,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 24,
+      "timestamp": 183356940,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580165,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 1.9461483000050066
+    }
+  },
+  {
+    "seconds": 1.9461914000057732,
+    "kind": "timing",
+    "value": {
+      "frame_id": 24,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3241891,
+      "total_ticks": 3241933,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035389
+    }
+  },
+  {
+    "seconds": 1.9785628000026918,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 25,
+      "timestamp": 186690055,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573564,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 1.9785628000026918
+    }
+  },
+  {
+    "seconds": 1.978608000004897,
+    "kind": "timing",
+    "value": {
+      "frame_id": 25,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242227,
+      "total_ticks": 3243024,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024172
+    }
+  },
+  {
+    "seconds": 2.01325600000564,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 26,
+      "timestamp": 190023171,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579667,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.01325600000564
+    }
+  },
+  {
+    "seconds": 2.0132872000031057,
+    "kind": "timing",
+    "value": {
+      "frame_id": 26,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241971,
+      "total_ticks": 3242852,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035324
+    }
+  },
+  {
+    "seconds": 2.045538000005763,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 27,
+      "timestamp": 193356287,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575202,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.045538000005763
+    }
+  },
+  {
+    "seconds": 2.045564700005343,
+    "kind": "timing",
+    "value": {
+      "frame_id": 27,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242111,
+      "total_ticks": 3242153,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026394
+    }
+  },
+  {
+    "seconds": 2.07875950000016,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 28,
+      "timestamp": 196689403,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580194,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.07875950000016
+    }
+  },
+  {
+    "seconds": 2.078786100006255,
+    "kind": "timing",
+    "value": {
+      "frame_id": 28,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241839,
+      "total_ticks": 3241881,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035442
+    }
+  },
+  {
+    "seconds": 2.0787935000043944,
+    "kind": "fps",
+    "value": {
+      "window": 2,
+      "input_fps": 29,
+      "compressed_fps": 29,
+      "failed_fps": 0,
+      "total_compressed": 29
+    }
+  },
+  {
+    "seconds": 2.0788074000010965,
+    "kind": "camera",
+    "value": {
+      "flags": 2150363213,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 134885180,
+      "received_frames": 29,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 111895680,
+      "frame_sync_count": 54,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 2,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 2.0788140000004205,
+    "kind": "link",
+    "value": {
+      "window": 2,
+      "cycles": 60000000,
+      "writes": 16940724,
+      "write_busy_cycles": 32943,
+      "txe_wait_cycles": 3669928,
+      "upstream_empty_cycles": 39356375,
+      "rx_cycles": 30
+    }
+  },
+  {
+    "seconds": 2.1126745000001392,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 29,
+      "timestamp": 200022519,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572672,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.1126745000001392
+    }
+  },
+  {
+    "seconds": 2.1127145000064047,
+    "kind": "timing",
+    "value": {
+      "frame_id": 29,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242090,
+      "total_ticks": 3242426,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022092
+    }
+  },
+  {
+    "seconds": 2.146049500006484,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 30,
+      "timestamp": 203355635,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 583573,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.146049500006484
+    }
+  },
+  {
+    "seconds": 2.1460753999999724,
+    "kind": "timing",
+    "value": {
+      "frame_id": 30,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241737,
+      "total_ticks": 3241779,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1041566
+    }
+  },
+  {
+    "seconds": 2.180134600006568,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 31,
+      "timestamp": 206688750,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572813,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 2.180134600006568
+    }
+  },
+  {
+    "seconds": 2.1801618000026792,
+    "kind": "timing",
+    "value": {
+      "frame_id": 31,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241869,
+      "total_ticks": 3241911,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022059
+    }
+  },
+  {
+    "seconds": 2.214088400003675,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 32,
+      "timestamp": 210021866,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582296,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.214088400003675
+    }
+  },
+  {
+    "seconds": 2.214127400002326,
+    "kind": "timing",
+    "value": {
+      "frame_id": 32,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241806,
+      "total_ticks": 3241848,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1039246
+    }
+  },
+  {
+    "seconds": 2.2478572000036365,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 33,
+      "timestamp": 213354982,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574692,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.2478572000036365
+    }
+  },
+  {
+    "seconds": 2.2478973000033875,
+    "kind": "timing",
+    "value": {
+      "frame_id": 33,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242148,
+      "total_ticks": 3242547,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025823
+    }
+  },
+  {
+    "seconds": 2.279969200004416,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 34,
+      "timestamp": 216688098,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577513,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.279969200004416
+    }
+  },
+  {
+    "seconds": 2.2799953000067035,
+    "kind": "timing",
+    "value": {
+      "frame_id": 34,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241840,
+      "total_ticks": 3241882,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030580
+    }
+  },
+  {
+    "seconds": 2.3138607000000775,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 35,
+      "timestamp": 220021214,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577551,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.3138607000000775
+    }
+  },
+  {
+    "seconds": 2.3138986000049044,
+    "kind": "timing",
+    "value": {
+      "frame_id": 35,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241893,
+      "total_ticks": 3242936,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031644
+    }
+  },
+  {
+    "seconds": 2.3470386000044527,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 36,
+      "timestamp": 223354330,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581128,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.3470386000044527
+    }
+  },
+  {
+    "seconds": 2.347079200000735,
+    "kind": "timing",
+    "value": {
+      "frame_id": 36,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241964,
+      "total_ticks": 3242006,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037129
+    }
+  },
+  {
+    "seconds": 2.380434900005639,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 37,
+      "timestamp": 226687445,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573667,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 2.380434900005639
+    }
+  },
+  {
+    "seconds": 2.3804568000050494,
+    "kind": "timing",
+    "value": {
+      "frame_id": 37,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241849,
+      "total_ticks": 3242210,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1023929
+    }
+  },
+  {
+    "seconds": 2.414253800001461,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 38,
+      "timestamp": 230020561,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579983,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.414253800001461
+    }
+  },
+  {
+    "seconds": 2.414291700006288,
+    "kind": "timing",
+    "value": {
+      "frame_id": 38,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242063,
+      "total_ticks": 3242105,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035051
+    }
+  },
+  {
+    "seconds": 2.4452627999999095,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 39,
+      "timestamp": 233353677,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572632,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.4452627999999095
+    }
+  },
+  {
+    "seconds": 2.44528100000025,
+    "kind": "timing",
+    "value": {
+      "frame_id": 39,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241845,
+      "total_ticks": 3242269,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022112
+    }
+  },
+  {
+    "seconds": 2.478182300001208,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 40,
+      "timestamp": 236686793,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578496,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.478182300001208
+    }
+  },
+  {
+    "seconds": 2.47820650000358,
+    "kind": "timing",
+    "value": {
+      "frame_id": 40,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241930,
+      "total_ticks": 3241972,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1032354
+    }
+  },
+  {
+    "seconds": 2.512293600004341,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 41,
+      "timestamp": 240019909,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577350,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.512293600004341
+    }
+  },
+  {
+    "seconds": 2.5123115000023972,
+    "kind": "timing",
+    "value": {
+      "frame_id": 41,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241934,
+      "total_ticks": 3241976,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030285
+    }
+  },
+  {
+    "seconds": 2.5457082000066293,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 42,
+      "timestamp": 243353025,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580179,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.5457082000066293
+    }
+  },
+  {
+    "seconds": 2.5457428000008804,
+    "kind": "timing",
+    "value": {
+      "frame_id": 42,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241872,
+      "total_ticks": 3241914,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035413
+    }
+  },
+  {
+    "seconds": 2.5787739000006695,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 43,
+      "timestamp": 246686140,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575358,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 2.5787739000006695
+    }
+  },
+  {
+    "seconds": 2.5788175000052433,
+    "kind": "timing",
+    "value": {
+      "frame_id": 43,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242097,
+      "total_ticks": 3242139,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026670
+    }
+  },
+  {
+    "seconds": 2.611291600005643,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 44,
+      "timestamp": 250019256,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581270,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.611291600005643
+    }
+  },
+  {
+    "seconds": 2.6113213000062387,
+    "kind": "timing",
+    "value": {
+      "frame_id": 44,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241958,
+      "total_ticks": 3242000,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037390
+    }
+  },
+  {
+    "seconds": 2.645282400000724,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 45,
+      "timestamp": 253352372,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574162,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.645282400000724
+    }
+  },
+  {
+    "seconds": 2.6453074000019114,
+    "kind": "timing",
+    "value": {
+      "frame_id": 45,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241935,
+      "total_ticks": 3241977,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024509
+    }
+  },
+  {
+    "seconds": 2.6799047000022256,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 46,
+      "timestamp": 256685488,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578773,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.6799047000022256
+    }
+  },
+  {
+    "seconds": 2.6799452000050223,
+    "kind": "timing",
+    "value": {
+      "frame_id": 46,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241958,
+      "total_ticks": 3242373,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033239
+    }
+  },
+  {
+    "seconds": 2.712257300001511,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 47,
+      "timestamp": 260018604,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572976,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.712257300001511
+    }
+  },
+  {
+    "seconds": 2.7122821000011754,
+    "kind": "timing",
+    "value": {
+      "frame_id": 47,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241998,
+      "total_ticks": 3242040,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022349
+    }
+  },
+  {
+    "seconds": 2.745693900003971,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 48,
+      "timestamp": 263351720,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578795,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.745693900003971
+    }
+  },
+  {
+    "seconds": 2.7457438000055845,
+    "kind": "timing",
+    "value": {
+      "frame_id": 48,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241993,
+      "total_ticks": 3242328,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033193
+    }
+  },
+  {
+    "seconds": 2.7793598000062048,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 49,
+      "timestamp": 266684835,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574511,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 2.7793598000062048
+    }
+  },
+  {
+    "seconds": 2.7793888000014704,
+    "kind": "timing",
+    "value": {
+      "frame_id": 49,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241794,
+      "total_ticks": 3242765,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026062
+    }
+  },
+  {
+    "seconds": 2.812676100002136,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 50,
+      "timestamp": 270017951,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579466,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.812676100002136
+    }
+  },
+  {
+    "seconds": 2.8127013000048464,
+    "kind": "timing",
+    "value": {
+      "frame_id": 50,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241860,
+      "total_ticks": 3241902,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1034118
+    }
+  },
+  {
+    "seconds": 2.8473112000065157,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 51,
+      "timestamp": 273351067,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573629,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.8473112000065157
+    }
+  },
+  {
+    "seconds": 2.8473360999996657,
+    "kind": "timing",
+    "value": {
+      "frame_id": 51,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242189,
+      "total_ticks": 3242668,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1023975
+    }
+  },
+  {
+    "seconds": 2.880286999999953,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 52,
+      "timestamp": 276684183,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581357,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.880286999999953
+    }
+  },
+  {
+    "seconds": 2.8803112000023248,
+    "kind": "timing",
+    "value": {
+      "frame_id": 52,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242120,
+      "total_ticks": 3242162,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037545
+    }
+  },
+  {
+    "seconds": 2.9140348000000813,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 53,
+      "timestamp": 280017299,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574313,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.9140348000000813
+    }
+  },
+  {
+    "seconds": 2.914074600004824,
+    "kind": "timing",
+    "value": {
+      "frame_id": 53,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242053,
+      "total_ticks": 3242095,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024780
+    }
+  },
+  {
+    "seconds": 2.947867700000643,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 54,
+      "timestamp": 283350415,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578243,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.947867700000643
+    }
+  },
+  {
+    "seconds": 2.9478937000021688,
+    "kind": "timing",
+    "value": {
+      "frame_id": 54,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241938,
+      "total_ticks": 3241980,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031904
+    }
+  },
+  {
+    "seconds": 2.980313700005354,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 55,
+      "timestamp": 286683531,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576560,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 2.980313700005354
+    }
+  },
+  {
+    "seconds": 2.980331300001126,
+    "kind": "timing",
+    "value": {
+      "frame_id": 55,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241883,
+      "total_ticks": 3242854,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029774
+    }
+  },
+  {
+    "seconds": 3.01352990000305,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 56,
+      "timestamp": 290016646,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581669,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 3.01352990000305
+    }
+  },
+  {
+    "seconds": 3.0135532000058447,
+    "kind": "timing",
+    "value": {
+      "frame_id": 56,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242126,
+      "total_ticks": 3243109,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1039056
+    }
+  },
+  {
+    "seconds": 3.0451549000063096,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 57,
+      "timestamp": 293349762,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573326,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.0451549000063096
+    }
+  },
+  {
+    "seconds": 3.0451806000055512,
+    "kind": "timing",
+    "value": {
+      "frame_id": 57,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241957,
+      "total_ticks": 3241999,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022987
+    }
+  },
+  {
+    "seconds": 3.078846300006262,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 58,
+      "timestamp": 296682878,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578347,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.078846300006262
+    }
+  },
+  {
+    "seconds": 3.078885700000683,
+    "kind": "timing",
+    "value": {
+      "frame_id": 58,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241929,
+      "total_ticks": 3241971,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1032088
+    }
+  },
+  {
+    "seconds": 3.0788960000063526,
+    "kind": "fps",
+    "value": {
+      "window": 3,
+      "input_fps": 30,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 59
+    }
+  },
+  {
+    "seconds": 3.078920600004494,
+    "kind": "camera",
+    "value": {
+      "flags": 2150363213,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 209885273,
+      "received_frames": 59,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 174103680,
+      "frame_sync_count": 84,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 3,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 3.0789262000034796,
+    "kind": "link",
+    "value": {
+      "window": 3,
+      "cycles": 60000000,
+      "writes": 17522556,
+      "write_busy_cycles": 34087,
+      "txe_wait_cycles": 3762683,
+      "upstream_empty_cycles": 38680674,
+      "rx_cycles": 0
+    }
+  },
+  {
+    "seconds": 3.1111258000019006,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 59,
+      "timestamp": 300015994,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576852,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.1111258000019006
+    }
+  },
+  {
+    "seconds": 3.1111527000030037,
+    "kind": "timing",
+    "value": {
+      "frame_id": 59,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241985,
+      "total_ticks": 3242093,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029447
+    }
+  },
+  {
+    "seconds": 3.144025600005989,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 60,
+      "timestamp": 303349110,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581624,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.144025600005989
+    }
+  },
+  {
+    "seconds": 3.144052300005569,
+    "kind": "timing",
+    "value": {
+      "frame_id": 60,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241679,
+      "total_ticks": 3241721,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1038028
+    }
+  },
+  {
+    "seconds": 3.1787285000027623,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 61,
+      "timestamp": 306682226,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575224,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.1787285000027623
+    }
+  },
+  {
+    "seconds": 3.1787500999998883,
+    "kind": "timing",
+    "value": {
+      "frame_id": 61,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241884,
+      "total_ticks": 3241926,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026428
+    }
+  },
+  {
+    "seconds": 3.211227300002065,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 62,
+      "timestamp": 310015342,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 583412,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.211227300002065
+    }
+  },
+  {
+    "seconds": 3.2112450000058743,
+    "kind": "timing",
+    "value": {
+      "frame_id": 62,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241848,
+      "total_ticks": 3241890,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1041271
+    }
+  },
+  {
+    "seconds": 3.244201100002101,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 63,
+      "timestamp": 313348458,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574368,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.244201100002101
+    }
+  },
+  {
+    "seconds": 3.244234100005997,
+    "kind": "timing",
+    "value": {
+      "frame_id": 63,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241880,
+      "total_ticks": 3241922,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024872
+    }
+  },
+  {
+    "seconds": 3.278141000002506,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 64,
+      "timestamp": 316681573,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578043,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 3.278141000002506
+    }
+  },
+  {
+    "seconds": 3.2781582000025082,
+    "kind": "timing",
+    "value": {
+      "frame_id": 64,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241964,
+      "total_ticks": 3242006,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031537
+    }
+  },
+  {
+    "seconds": 3.311173100002634,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 65,
+      "timestamp": 320014689,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576820,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.311173100002634
+    }
+  },
+  {
+    "seconds": 3.31119430000399,
+    "kind": "timing",
+    "value": {
+      "frame_id": 65,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241999,
+      "total_ticks": 3242155,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029437
+    }
+  },
+  {
+    "seconds": 3.3476730000038515,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 66,
+      "timestamp": 323347805,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580898,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.3476730000038515
+    }
+  },
+  {
+    "seconds": 3.3477041000005556,
+    "kind": "timing",
+    "value": {
+      "frame_id": 66,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241924,
+      "total_ticks": 3242144,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1036896
+    }
+  },
+  {
+    "seconds": 3.3784613000025274,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 67,
+      "timestamp": 326680921,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576089,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.3784613000025274
+    }
+  },
+  {
+    "seconds": 3.3784812000012607,
+    "kind": "timing",
+    "value": {
+      "frame_id": 67,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241980,
+      "total_ticks": 3242022,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027999
+    }
+  },
+  {
+    "seconds": 3.411578400002327,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 68,
+      "timestamp": 330014037,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582857,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.411578400002327
+    }
+  },
+  {
+    "seconds": 3.411602500003937,
+    "kind": "timing",
+    "value": {
+      "frame_id": 68,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242144,
+      "total_ticks": 3242418,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1040498
+    }
+  },
+  {
+    "seconds": 3.444395300000906,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 69,
+      "timestamp": 333347153,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575686,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.444395300000906
+    }
+  },
+  {
+    "seconds": 3.4444351000056486,
+    "kind": "timing",
+    "value": {
+      "frame_id": 69,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241841,
+      "total_ticks": 3242281,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027667
+    }
+  },
+  {
+    "seconds": 3.4786738000038895,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 70,
+      "timestamp": 336680268,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579976,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 3.4786738000038895
+    }
+  },
+  {
+    "seconds": 3.4786979000055,
+    "kind": "timing",
+    "value": {
+      "frame_id": 70,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242072,
+      "total_ticks": 3242114,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035041
+    }
+  },
+  {
+    "seconds": 3.510817700000189,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 71,
+      "timestamp": 340013384,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574450,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.510817700000189
+    }
+  },
+  {
+    "seconds": 3.5108359000005294,
+    "kind": "timing",
+    "value": {
+      "frame_id": 71,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242056,
+      "total_ticks": 3242098,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025031
+    }
+  },
+  {
+    "seconds": 3.5478646000046865,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 72,
+      "timestamp": 343346500,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581229,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.5478646000046865
+    }
+  },
+  {
+    "seconds": 3.5478864000033354,
+    "kind": "timing",
+    "value": {
+      "frame_id": 72,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242126,
+      "total_ticks": 3242168,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037313
+    }
+  },
+  {
+    "seconds": 3.5772412000005716,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 73,
+      "timestamp": 346679616,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578068,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.5772412000005716
+    }
+  },
+  {
+    "seconds": 3.577262500002689,
+    "kind": "timing",
+    "value": {
+      "frame_id": 73,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241963,
+      "total_ticks": 3242005,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031585
+    }
+  },
+  {
+    "seconds": 3.611218900005042,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 74,
+      "timestamp": 350012732,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581225,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.611218900005042
+    }
+  },
+  {
+    "seconds": 3.6112391000060597,
+    "kind": "timing",
+    "value": {
+      "frame_id": 74,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241868,
+      "total_ticks": 3241910,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037308
+    }
+  },
+  {
+    "seconds": 3.644738100003451,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 75,
+      "timestamp": 353345848,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573586,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.644738100003451
+    }
+  },
+  {
+    "seconds": 3.644773600004555,
+    "kind": "timing",
+    "value": {
+      "frame_id": 75,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241887,
+      "total_ticks": 3242624,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024160
+    }
+  },
+  {
+    "seconds": 3.67747490000329,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 76,
+      "timestamp": 356678963,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578520,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 3.67747490000329
+    }
+  },
+  {
+    "seconds": 3.677499200006423,
+    "kind": "timing",
+    "value": {
+      "frame_id": 76,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241885,
+      "total_ticks": 3241927,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1032402
+    }
+  },
+  {
+    "seconds": 3.710373800000525,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 77,
+      "timestamp": 360012079,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575537,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.710373800000525
+    }
+  },
+  {
+    "seconds": 3.7103924000039115,
+    "kind": "timing",
+    "value": {
+      "frame_id": 77,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241862,
+      "total_ticks": 3242815,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027914
+    }
+  },
+  {
+    "seconds": 3.747882400006347,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 78,
+      "timestamp": 363345195,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582529,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.747882400006347
+    }
+  },
+  {
+    "seconds": 3.74790710000525,
+    "kind": "timing",
+    "value": {
+      "frame_id": 78,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241911,
+      "total_ticks": 3241953,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1039676
+    }
+  },
+  {
+    "seconds": 3.777316100000462,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 79,
+      "timestamp": 366678311,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574257,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.777316100000462
+    }
+  },
+  {
+    "seconds": 3.7773358000049484,
+    "kind": "timing",
+    "value": {
+      "frame_id": 79,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241833,
+      "total_ticks": 3241875,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024683
+    }
+  },
+  {
+    "seconds": 3.8104185000047437,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 80,
+      "timestamp": 370011427,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576613,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.8104185000047437
+    }
+  },
+  {
+    "seconds": 3.8104397999995854,
+    "kind": "timing",
+    "value": {
+      "frame_id": 80,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241925,
+      "total_ticks": 3242764,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029748
+    }
+  },
+  {
+    "seconds": 3.845388300003833,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 81,
+      "timestamp": 373344542,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574564,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 3.845388300003833
+    }
+  },
+  {
+    "seconds": 3.8454261000006227,
+    "kind": "timing",
+    "value": {
+      "frame_id": 81,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241956,
+      "total_ticks": 3242801,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026037
+    }
+  },
+  {
+    "seconds": 3.8781664000052842,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 82,
+      "timestamp": 376677658,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 583725,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.8781664000052842
+    }
+  },
+  {
+    "seconds": 3.8781839000002947,
+    "kind": "timing",
+    "value": {
+      "frame_id": 82,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241935,
+      "total_ticks": 3242906,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1042766
+    }
+  },
+  {
+    "seconds": 3.9115572000009706,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 83,
+      "timestamp": 380010774,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572256,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.9115572000009706
+    }
+  },
+  {
+    "seconds": 3.9115772000004654,
+    "kind": "timing",
+    "value": {
+      "frame_id": 83,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241883,
+      "total_ticks": 3241925,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1021044
+    }
+  },
+  {
+    "seconds": 3.944325700002082,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 84,
+      "timestamp": 383343890,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577721,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.944325700002082
+    }
+  },
+  {
+    "seconds": 3.9443450000035227,
+    "kind": "timing",
+    "value": {
+      "frame_id": 84,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241892,
+      "total_ticks": 3242337,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031360
+    }
+  },
+  {
+    "seconds": 3.978579599999648,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 85,
+      "timestamp": 386677006,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577855,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 3.978579599999648
+    }
+  },
+  {
+    "seconds": 3.9786009000017657,
+    "kind": "timing",
+    "value": {
+      "frame_id": 85,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241858,
+      "total_ticks": 3242076,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031370
+    }
+  },
+  {
+    "seconds": 4.011494600003061,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 86,
+      "timestamp": 390010122,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581842,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.011494600003061
+    }
+  },
+  {
+    "seconds": 4.0115256999997655,
+    "kind": "timing",
+    "value": {
+      "frame_id": 86,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242211,
+      "total_ticks": 3242610,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1038786
+    }
+  },
+  {
+    "seconds": 4.044073000004573,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 87,
+      "timestamp": 393343237,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575819,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 4.044073000004573
+    }
+  },
+  {
+    "seconds": 4.044107500005339,
+    "kind": "timing",
+    "value": {
+      "frame_id": 87,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241861,
+      "total_ticks": 3241956,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027559
+    }
+  },
+  {
+    "seconds": 4.078205000005255,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 88,
+      "timestamp": 396676353,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581850,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.078205000005255
+    }
+  },
+  {
+    "seconds": 4.07824210000399,
+    "kind": "timing",
+    "value": {
+      "frame_id": 88,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241914,
+      "total_ticks": 3242287,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1038770
+    }
+  },
+  {
+    "seconds": 4.078251099999761,
+    "kind": "fps",
+    "value": {
+      "window": 4,
+      "input_fps": 30,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 89
+    }
+  },
+  {
+    "seconds": 4.078272200000356,
+    "kind": "camera",
+    "value": {
+      "flags": 2150363213,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 284885367,
+      "received_frames": 89,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 236311680,
+      "frame_sync_count": 114,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 4,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 4.078283000002557,
+    "kind": "link",
+    "value": {
+      "window": 4,
+      "cycles": 60000000,
+      "writes": 17549075,
+      "write_busy_cycles": 34136,
+      "txe_wait_cycles": 3805300,
+      "upstream_empty_cycles": 38611489,
+      "rx_cycles": 0
+    }
+  },
+  {
+    "seconds": 4.111276000003272,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 89,
+      "timestamp": 400009469,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573246,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.111276000003272
+    }
+  },
+  {
+    "seconds": 4.111309400002938,
+    "kind": "timing",
+    "value": {
+      "frame_id": 89,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242037,
+      "total_ticks": 3242079,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022842
+    }
+  },
+  {
+    "seconds": 4.1437313000060385,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 90,
+      "timestamp": 403342585,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577207,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.1437313000060385
+    }
+  },
+  {
+    "seconds": 4.143753000003926,
+    "kind": "timing",
+    "value": {
+      "frame_id": 90,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241646,
+      "total_ticks": 3241688,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030024
+    }
+  },
+  {
+    "seconds": 4.177379700005986,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 91,
+      "timestamp": 406675701,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578075,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.177379700005986
+    }
+  },
+  {
+    "seconds": 4.1774008000065805,
+    "kind": "timing",
+    "value": {
+      "frame_id": 91,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242107,
+      "total_ticks": 3242149,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031595
+    }
+  },
+  {
+    "seconds": 4.210723900003359,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 92,
+      "timestamp": 410008817,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578236,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.210723900003359
+    }
+  },
+  {
+    "seconds": 4.210743499999808,
+    "kind": "timing",
+    "value": {
+      "frame_id": 92,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241893,
+      "total_ticks": 3241935,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031885
+    }
+  },
+  {
+    "seconds": 4.245154700001876,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 93,
+      "timestamp": 413341932,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574554,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 4.245154700001876
+    }
+  },
+  {
+    "seconds": 4.245172400005686,
+    "kind": "timing",
+    "value": {
+      "frame_id": 93,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241895,
+      "total_ticks": 3242764,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026042
+    }
+  },
+  {
+    "seconds": 4.277843600000779,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 94,
+      "timestamp": 416675048,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579543,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.277843600000779
+    }
+  },
+  {
+    "seconds": 4.277861000002304,
+    "kind": "timing",
+    "value": {
+      "frame_id": 94,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241850,
+      "total_ticks": 3241892,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1034258
+    }
+  },
+  {
+    "seconds": 4.310412600003474,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 95,
+      "timestamp": 420008164,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576010,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.310412600003474
+    }
+  },
+  {
+    "seconds": 4.310429600001953,
+    "kind": "timing",
+    "value": {
+      "frame_id": 95,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241834,
+      "total_ticks": 3241876,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027854
+    }
+  },
+  {
+    "seconds": 4.348070300002291,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 96,
+      "timestamp": 423341280,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582153,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.348070300002291
+    }
+  },
+  {
+    "seconds": 4.348087800004578,
+    "kind": "timing",
+    "value": {
+      "frame_id": 96,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241922,
+      "total_ticks": 3241964,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1038990
+    }
+  },
+  {
+    "seconds": 4.377623200001835,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 97,
+      "timestamp": 426674396,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574722,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.377623200001835
+    }
+  },
+  {
+    "seconds": 4.377656600001501,
+    "kind": "timing",
+    "value": {
+      "frame_id": 97,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241842,
+      "total_ticks": 3242172,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025812
+    }
+  },
+  {
+    "seconds": 4.411999100004323,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 98,
+      "timestamp": 430007512,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580100,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.411999100004323
+    }
+  },
+  {
+    "seconds": 4.412038900001789,
+    "kind": "timing",
+    "value": {
+      "frame_id": 98,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241966,
+      "total_ticks": 3242008,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035268
+    }
+  },
+  {
+    "seconds": 4.444033100000524,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 99,
+      "timestamp": 433340628,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574793,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.444033100000524
+    }
+  },
+  {
+    "seconds": 4.444055500003742,
+    "kind": "timing",
+    "value": {
+      "frame_id": 99,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3242098,
+      "total_ticks": 3242230,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025740
+    }
+  },
+  {
+    "seconds": 4.478526800005056,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 100,
+      "timestamp": 436673743,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582025,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 4.478526800005056
+    }
+  },
+  {
+    "seconds": 4.478565100005653,
+    "kind": "timing",
+    "value": {
+      "frame_id": 100,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242033,
+      "total_ticks": 3242075,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1038758
+    }
+  },
+  {
+    "seconds": 4.511298200006422,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 101,
+      "timestamp": 440006859,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574909,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.511298200006422
+    }
+  },
+  {
+    "seconds": 4.511337100004312,
+    "kind": "timing",
+    "value": {
+      "frame_id": 101,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241827,
+      "total_ticks": 3241869,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025858
+    }
+  },
+  {
+    "seconds": 4.543930900006671,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 102,
+      "timestamp": 443339975,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579542,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.543930900006671
+    }
+  },
+  {
+    "seconds": 4.54395310000109,
+    "kind": "timing",
+    "value": {
+      "frame_id": 102,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241954,
+      "total_ticks": 3241996,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1034258
+    }
+  },
+  {
+    "seconds": 4.578457600000547,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 103,
+      "timestamp": 446673091,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577215,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.578457600000547
+    }
+  },
+  {
+    "seconds": 4.578500300005544,
+    "kind": "timing",
+    "value": {
+      "frame_id": 103,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241938,
+      "total_ticks": 3241980,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030034
+    }
+  },
+  {
+    "seconds": 4.6111110000056215,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 104,
+      "timestamp": 450006207,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 583049,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.6111110000056215
+    }
+  },
+  {
+    "seconds": 4.611138200001733,
+    "kind": "timing",
+    "value": {
+      "frame_id": 104,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241909,
+      "total_ticks": 3241951,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1040614
+    }
+  },
+  {
+    "seconds": 4.6446551000044565,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 105,
+      "timestamp": 453339322,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577513,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 4.6446551000044565
+    }
+  },
+  {
+    "seconds": 4.6446831000066595,
+    "kind": "timing",
+    "value": {
+      "frame_id": 105,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241978,
+      "total_ticks": 3242020,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030580
+    }
+  },
+  {
+    "seconds": 4.677829100000963,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 106,
+      "timestamp": 456672438,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578958,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.677829100000963
+    }
+  },
+  {
+    "seconds": 4.677857000002405,
+    "kind": "timing",
+    "value": {
+      "frame_id": 106,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241901,
+      "total_ticks": 3241943,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033195
+    }
+  },
+  {
+    "seconds": 4.7107482999999775,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 107,
+      "timestamp": 460005554,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575578,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.7107482999999775
+    }
+  },
+  {
+    "seconds": 4.710772200000065,
+    "kind": "timing",
+    "value": {
+      "frame_id": 107,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241892,
+      "total_ticks": 3242761,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027898
+    }
+  },
+  {
+    "seconds": 4.74426510000194,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 108,
+      "timestamp": 463338670,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579607,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.74426510000194
+    }
+  },
+  {
+    "seconds": 4.744292800001858,
+    "kind": "timing",
+    "value": {
+      "frame_id": 108,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241839,
+      "total_ticks": 3242858,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035351
+    }
+  },
+  {
+    "seconds": 4.778537900005176,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 109,
+      "timestamp": 466671786,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574557,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.778537900005176
+    }
+  },
+  {
+    "seconds": 4.778564200001711,
+    "kind": "timing",
+    "value": {
+      "frame_id": 109,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241892,
+      "total_ticks": 3242755,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026041
+    }
+  },
+  {
+    "seconds": 4.810812800002168,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 110,
+      "timestamp": 470004902,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580016,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.810812800002168
+    }
+  },
+  {
+    "seconds": 4.810836700002255,
+    "kind": "timing",
+    "value": {
+      "frame_id": 110,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242008,
+      "total_ticks": 3242050,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035109
+    }
+  },
+  {
+    "seconds": 4.84451710000576,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 111,
+      "timestamp": 473338017,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575472,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 4.84451710000576
+    }
+  },
+  {
+    "seconds": 4.844543300001533,
+    "kind": "timing",
+    "value": {
+      "frame_id": 111,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241882,
+      "total_ticks": 3241924,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026873
+    }
+  },
+  {
+    "seconds": 4.877747600003204,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 112,
+      "timestamp": 476671133,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577528,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.877747600003204
+    }
+  },
+  {
+    "seconds": 4.877779300004477,
+    "kind": "timing",
+    "value": {
+      "frame_id": 112,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241885,
+      "total_ticks": 3241927,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030604
+    }
+  },
+  {
+    "seconds": 4.91047090000211,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 113,
+      "timestamp": 480004249,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574905,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.91047090000211
+    }
+  },
+  {
+    "seconds": 4.910496200005582,
+    "kind": "timing",
+    "value": {
+      "frame_id": 113,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241893,
+      "total_ticks": 3241935,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025853
+    }
+  },
+  {
+    "seconds": 4.948282400000608,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 114,
+      "timestamp": 483337365,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582154,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.948282400000608
+    }
+  },
+  {
+    "seconds": 4.948320900002727,
+    "kind": "timing",
+    "value": {
+      "frame_id": 114,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242055,
+      "total_ticks": 3242097,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1038990
+    }
+  },
+  {
+    "seconds": 4.977583300002152,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 115,
+      "timestamp": 486670481,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575814,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 4.977583300002152
+    }
+  },
+  {
+    "seconds": 4.977602200000547,
+    "kind": "timing",
+    "value": {
+      "frame_id": 115,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241922,
+      "total_ticks": 3242050,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027587
+    }
+  },
+  {
+    "seconds": 5.011384299999918,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 116,
+      "timestamp": 490003597,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580214,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.011384299999918
+    }
+  },
+  {
+    "seconds": 5.0114186000064365,
+    "kind": "timing",
+    "value": {
+      "frame_id": 116,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241931,
+      "total_ticks": 3241973,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035476
+    }
+  },
+  {
+    "seconds": 5.044866600001114,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 117,
+      "timestamp": 493336712,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 571546,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 5.044866600001114
+    }
+  },
+  {
+    "seconds": 5.04489260000264,
+    "kind": "timing",
+    "value": {
+      "frame_id": 117,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241965,
+      "total_ticks": 3242690,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1020446
+    }
+  },
+  {
+    "seconds": 5.078536200002418,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 118,
+      "timestamp": 496669828,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578067,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.078536200002418
+    }
+  },
+  {
+    "seconds": 5.078571400001238,
+    "kind": "timing",
+    "value": {
+      "frame_id": 118,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242108,
+      "total_ticks": 3242150,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031585
+    }
+  },
+  {
+    "seconds": 5.078581500005384,
+    "kind": "fps",
+    "value": {
+      "window": 5,
+      "input_fps": 30,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 119
+    }
+  },
+  {
+    "seconds": 5.078601500004879,
+    "kind": "camera",
+    "value": {
+      "flags": 2150363213,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 359885461,
+      "received_frames": 119,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 298519718,
+      "frame_sync_count": 144,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 5,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 5.0786117000025115,
+    "kind": "link",
+    "value": {
+      "window": 5,
+      "cycles": 60000000,
+      "writes": 17532684,
+      "write_busy_cycles": 34120,
+      "txe_wait_cycles": 3805483,
+      "upstream_empty_cycles": 38627713,
+      "rx_cycles": 0
+    }
+  },
+  {
+    "seconds": 5.110619600003702,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 119,
+      "timestamp": 500002944,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576817,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.110619600003702
+    }
+  },
+  {
+    "seconds": 5.110657000004721,
+    "kind": "timing",
+    "value": {
+      "frame_id": 119,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241826,
+      "total_ticks": 3241980,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029435
+    }
+  },
+  {
+    "seconds": 5.144392800000787,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 120,
+      "timestamp": 503336060,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577658,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.144392800000787
+    }
+  },
+  {
+    "seconds": 5.144418400006543,
+    "kind": "timing",
+    "value": {
+      "frame_id": 120,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241690,
+      "total_ticks": 3242487,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031596
+    }
+  },
+  {
+    "seconds": 5.1781580000024405,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 121,
+      "timestamp": 506669176,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574880,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.1781580000024405
+    }
+  },
+  {
+    "seconds": 5.178185800003121,
+    "kind": "timing",
+    "value": {
+      "frame_id": 121,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242211,
+      "total_ticks": 3242253,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025800
+    }
+  },
+  {
+    "seconds": 5.2110509000049205,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 122,
+      "timestamp": 510002292,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 582743,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.2110509000049205
+    }
+  },
+  {
+    "seconds": 5.2110899000035715,
+    "kind": "timing",
+    "value": {
+      "frame_id": 122,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242029,
+      "total_ticks": 3242904,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1040891
+    }
+  },
+  {
+    "seconds": 5.245195900002727,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 123,
+      "timestamp": 513335407,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576047,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 5.245195900002727
+    }
+  },
+  {
+    "seconds": 5.245218400006706,
+    "kind": "timing",
+    "value": {
+      "frame_id": 123,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241970,
+      "total_ticks": 3242012,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027917
+    }
+  },
+  {
+    "seconds": 5.2774806000015815,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 124,
+      "timestamp": 516668523,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580118,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.2774806000015815
+    }
+  },
+  {
+    "seconds": 5.277504300000146,
+    "kind": "timing",
+    "value": {
+      "frame_id": 124,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242267,
+      "total_ticks": 3242309,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035302
+    }
+  },
+  {
+    "seconds": 5.3118780000004335,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 125,
+      "timestamp": 520001639,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574561,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.3118780000004335
+    }
+  },
+  {
+    "seconds": 5.311900500004413,
+    "kind": "timing",
+    "value": {
+      "frame_id": 125,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241989,
+      "total_ticks": 3242834,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026037
+    }
+  },
+  {
+    "seconds": 5.344766800000798,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 126,
+      "timestamp": 523334755,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 583860,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.344766800000798
+    }
+  },
+  {
+    "seconds": 5.3447949000037625,
+    "kind": "timing",
+    "value": {
+      "frame_id": 126,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242075,
+      "total_ticks": 3242740,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1042706
+    }
+  },
+  {
+    "seconds": 5.378777400001127,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 127,
+      "timestamp": 526667871,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575636,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.378777400001127
+    }
+  },
+  {
+    "seconds": 5.37880540000333,
+    "kind": "timing",
+    "value": {
+      "frame_id": 127,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241965,
+      "total_ticks": 3242702,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027872
+    }
+  },
+  {
+    "seconds": 5.412814000002982,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 128,
+      "timestamp": 530000987,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578630,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.412814000002982
+    }
+  },
+  {
+    "seconds": 5.412841400000616,
+    "kind": "timing",
+    "value": {
+      "frame_id": 128,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241844,
+      "total_ticks": 3242755,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033474
+    }
+  },
+  {
+    "seconds": 5.446089100005338,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 129,
+      "timestamp": 533334102,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575151,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 5.446089100005338
+    }
+  },
+  {
+    "seconds": 5.446112900004664,
+    "kind": "timing",
+    "value": {
+      "frame_id": 129,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241914,
+      "total_ticks": 3241956,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026293
+    }
+  },
+  {
+    "seconds": 5.478927100004512,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 130,
+      "timestamp": 536667218,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580673,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.478927100004512
+    }
+  },
+  {
+    "seconds": 5.478950700002315,
+    "kind": "timing",
+    "value": {
+      "frame_id": 130,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241832,
+      "total_ticks": 3242749,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037187
+    }
+  },
+  {
+    "seconds": 5.512947200004419,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 131,
+      "timestamp": 540000334,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576843,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.512947200004419
+    }
+  },
+  {
+    "seconds": 5.512970600000699,
+    "kind": "timing",
+    "value": {
+      "frame_id": 131,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241997,
+      "total_ticks": 3242039,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029362
+    }
+  },
+  {
+    "seconds": 5.546601800000644,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 132,
+      "timestamp": 543333450,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575981,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.546601800000644
+    }
+  },
+  {
+    "seconds": 5.5466250000026776,
+    "kind": "timing",
+    "value": {
+      "frame_id": 132,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241867,
+      "total_ticks": 3241909,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027801
+    }
+  },
+  {
+    "seconds": 5.579658000002382,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 133,
+      "timestamp": 546666566,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573347,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.579658000002382
+    }
+  },
+  {
+    "seconds": 5.579676500005007,
+    "kind": "timing",
+    "value": {
+      "frame_id": 133,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241832,
+      "total_ticks": 3241874,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1023030
+    }
+  },
+  {
+    "seconds": 5.612623500004702,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 134,
+      "timestamp": 549999682,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580568,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.612623500004702
+    }
+  },
+  {
+    "seconds": 5.6126415000035195,
+    "kind": "timing",
+    "value": {
+      "frame_id": 134,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241934,
+      "total_ticks": 3241976,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1036114
+    }
+  },
+  {
+    "seconds": 5.645927800003847,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 135,
+      "timestamp": 553332798,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577133,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.645927800003847
+    }
+  },
+  {
+    "seconds": 5.645948600002157,
+    "kind": "timing",
+    "value": {
+      "frame_id": 135,
+      "feed_ticks": 3224102,
+      "jpeg_ticks": 3241867,
+      "total_ticks": 3241909,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029889
+    }
+  },
+  {
+    "seconds": 5.679988900003082,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 136,
+      "timestamp": 556665913,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578609,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 5.679988900003082
+    }
+  },
+  {
+    "seconds": 5.680007100003422,
+    "kind": "timing",
+    "value": {
+      "frame_id": 136,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241862,
+      "total_ticks": 3242815,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033482
+    }
+  },
+  {
+    "seconds": 5.713669300006586,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 137,
+      "timestamp": 559999029,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574723,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.713669300006586
+    }
+  },
+  {
+    "seconds": 5.713705900001514,
+    "kind": "timing",
+    "value": {
+      "frame_id": 137,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241897,
+      "total_ticks": 3242134,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025719
+    }
+  },
+  {
+    "seconds": 5.7475101000018185,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 138,
+      "timestamp": 563332145,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579867,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.7475101000018185
+    }
+  },
+  {
+    "seconds": 5.747548999999708,
+    "kind": "timing",
+    "value": {
+      "frame_id": 138,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242085,
+      "total_ticks": 3242259,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1034975
+    }
+  },
+  {
+    "seconds": 5.780468400000245,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 139,
+      "timestamp": 566665261,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573375,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.780468400000245
+    }
+  },
+  {
+    "seconds": 5.780506000002788,
+    "kind": "timing",
+    "value": {
+      "frame_id": 139,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241830,
+      "total_ticks": 3241872,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1023074
+    }
+  },
+  {
+    "seconds": 5.813453000002482,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 140,
+      "timestamp": 569998377,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 583248,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.813453000002482
+    }
+  },
+  {
+    "seconds": 5.813485700004094,
+    "kind": "timing",
+    "value": {
+      "frame_id": 140,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242154,
+      "total_ticks": 3242196,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1040967
+    }
+  },
+  {
+    "seconds": 5.843754200002877,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 141,
+      "timestamp": 573331493,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575720,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.843754200002877
+    }
+  },
+  {
+    "seconds": 5.843790400002035,
+    "kind": "timing",
+    "value": {
+      "frame_id": 141,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241859,
+      "total_ticks": 3242238,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027664
+    }
+  },
+  {
+    "seconds": 5.876908700003696,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 142,
+      "timestamp": 576664608,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578868,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 5.876908700003696
+    }
+  },
+  {
+    "seconds": 5.876932600003784,
+    "kind": "timing",
+    "value": {
+      "frame_id": 142,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241828,
+      "total_ticks": 3241994,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033159
+    }
+  },
+  {
+    "seconds": 5.910430500000075,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 143,
+      "timestamp": 579997724,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576250,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.910430500000075
+    }
+  },
+  {
+    "seconds": 5.910455500001262,
+    "kind": "timing",
+    "value": {
+      "frame_id": 143,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241874,
+      "total_ticks": 3241916,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1028289
+    }
+  },
+  {
+    "seconds": 5.944349700002931,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 144,
+      "timestamp": 583330840,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580990,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.944349700002931
+    }
+  },
+  {
+    "seconds": 5.944445799999812,
+    "kind": "timing",
+    "value": {
+      "frame_id": 144,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241864,
+      "total_ticks": 3241906,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1036878
+    }
+  },
+  {
+    "seconds": 5.978186200001801,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 145,
+      "timestamp": 586663956,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572319,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 5.978186200001801
+    }
+  },
+  {
+    "seconds": 5.978221900004428,
+    "kind": "timing",
+    "value": {
+      "frame_id": 145,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241961,
+      "total_ticks": 3242003,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1021160
+    }
+  },
+  {
+    "seconds": 6.01158530000248,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 146,
+      "timestamp": 589997072,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579372,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.01158530000248
+    }
+  },
+  {
+    "seconds": 6.0116090000010445,
+    "kind": "timing",
+    "value": {
+      "frame_id": 146,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241969,
+      "total_ticks": 3242011,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033944
+    }
+  },
+  {
+    "seconds": 6.0447302000029595,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 147,
+      "timestamp": 593330188,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575087,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.0447302000029595
+    }
+  },
+  {
+    "seconds": 6.044752800000424,
+    "kind": "timing",
+    "value": {
+      "frame_id": 147,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241930,
+      "total_ticks": 3241972,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026177
+    }
+  },
+  {
+    "seconds": 6.078561300004367,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 148,
+      "timestamp": 596663304,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578698,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.078561300004367
+    }
+  },
+  {
+    "seconds": 6.0785834000053,
+    "kind": "timing",
+    "value": {
+      "frame_id": 148,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241933,
+      "total_ticks": 3242694,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033445
+    }
+  },
+  {
+    "seconds": 6.07858860000124,
+    "kind": "fps",
+    "value": {
+      "window": 6,
+      "input_fps": 31,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 149
+    }
+  },
+  {
+    "seconds": 6.078599300002679,
+    "kind": "camera",
+    "value": {
+      "flags": 2150363229,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 434885554,
+      "received_frames": 149,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 360731971,
+      "frame_sync_count": 174,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 6,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": true,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 6.07861160000175,
+    "kind": "link",
+    "value": {
+      "window": 6,
+      "cycles": 60000000,
+      "writes": 17534649,
+      "write_busy_cycles": 34132,
+      "txe_wait_cycles": 3814871,
+      "upstream_empty_cycles": 38616348,
+      "rx_cycles": 0
+    }
+  },
+  {
+    "seconds": 6.112701600002765,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 149,
+      "timestamp": 599996419,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576239,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 6.112701600002765
+    }
+  },
+  {
+    "seconds": 6.112725200000568,
+    "kind": "timing",
+    "value": {
+      "frame_id": 149,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242096,
+      "total_ticks": 3242138,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1028265
+    }
+  },
+  {
+    "seconds": 6.145250600005966,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 150,
+      "timestamp": 603329535,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577718,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.145250600005966
+    }
+  },
+  {
+    "seconds": 6.145270900000469,
+    "kind": "timing",
+    "value": {
+      "frame_id": 150,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241693,
+      "total_ticks": 3242165,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031382
+    }
+  },
+  {
+    "seconds": 6.179855800000951,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 151,
+      "timestamp": 606662651,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575488,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.179855800000951
+    }
+  },
+  {
+    "seconds": 6.179874400004337,
+    "kind": "timing",
+    "value": {
+      "frame_id": 151,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241860,
+      "total_ticks": 3241902,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026902
+    }
+  },
+  {
+    "seconds": 6.212296100005915,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 152,
+      "timestamp": 609995767,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 581088,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.212296100005915
+    }
+  },
+  {
+    "seconds": 6.212330800000927,
+    "kind": "timing",
+    "value": {
+      "frame_id": 152,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241998,
+      "total_ticks": 3242040,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1037052
+    }
+  },
+  {
+    "seconds": 6.245598500005144,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 153,
+      "timestamp": 613328883,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574650,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.245598500005144
+    }
+  },
+  {
+    "seconds": 6.245618799999647,
+    "kind": "timing",
+    "value": {
+      "frame_id": 153,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241974,
+      "total_ticks": 3242421,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025794
+    }
+  },
+  {
+    "seconds": 6.279497400006221,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 154,
+      "timestamp": 616661999,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578962,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.279497400006221
+    }
+  },
+  {
+    "seconds": 6.279518800001824,
+    "kind": "timing",
+    "value": {
+      "frame_id": 154,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241935,
+      "total_ticks": 3241977,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033209
+    }
+  },
+  {
+    "seconds": 6.313099400002102,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 155,
+      "timestamp": 619995115,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575298,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.313099400002102
+    }
+  },
+  {
+    "seconds": 6.313118400001258,
+    "kind": "timing",
+    "value": {
+      "frame_id": 155,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242264,
+      "total_ticks": 3242306,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1026568
+    }
+  },
+  {
+    "seconds": 6.346609500003979,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 156,
+      "timestamp": 623328230,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578209,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 6.346609500003979
+    }
+  },
+  {
+    "seconds": 6.346644100005506,
+    "kind": "timing",
+    "value": {
+      "frame_id": 156,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241822,
+      "total_ticks": 3241864,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031846
+    }
+  },
+  {
+    "seconds": 6.380002900004911,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 157,
+      "timestamp": 626661346,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577324,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.380002900004911
+    }
+  },
+  {
+    "seconds": 6.380021200006013,
+    "kind": "timing",
+    "value": {
+      "frame_id": 157,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241985,
+      "total_ticks": 3242027,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030232
+    }
+  },
+  {
+    "seconds": 6.413257899999735,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 158,
+      "timestamp": 629994462,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577348,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.413257899999735
+    }
+  },
+  {
+    "seconds": 6.413287600000331,
+    "kind": "timing",
+    "value": {
+      "frame_id": 158,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241836,
+      "total_ticks": 3241878,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030280
+    }
+  },
+  {
+    "seconds": 6.447184600001492,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 159,
+      "timestamp": 633327578,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577202,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.447184600001492
+    }
+  },
+  {
+    "seconds": 6.447219200003019,
+    "kind": "timing",
+    "value": {
+      "frame_id": 159,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241870,
+      "total_ticks": 3241912,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1030019
+    }
+  },
+  {
+    "seconds": 6.481568100003642,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 160,
+      "timestamp": 636660694,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578998,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.481568100003642
+    }
+  },
+  {
+    "seconds": 6.481597700003476,
+    "kind": "timing",
+    "value": {
+      "frame_id": 160,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241944,
+      "total_ticks": 3241986,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033272
+    }
+  },
+  {
+    "seconds": 6.510383600005298,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 161,
+      "timestamp": 639993810,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576733,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.510383600005298
+    }
+  },
+  {
+    "seconds": 6.510409200003778,
+    "kind": "timing",
+    "value": {
+      "frame_id": 161,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242033,
+      "total_ticks": 3242408,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029497
+    }
+  },
+  {
+    "seconds": 6.5445386999999755,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 162,
+      "timestamp": 643326926,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580044,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.5445386999999755
+    }
+  },
+  {
+    "seconds": 6.544576000000234,
+    "kind": "timing",
+    "value": {
+      "frame_id": 162,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241832,
+      "total_ticks": 3241874,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035162
+    }
+  },
+  {
+    "seconds": 6.578305300005013,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 163,
+      "timestamp": 646660042,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576457,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.578305300005013
+    }
+  },
+  {
+    "seconds": 6.578329700001632,
+    "kind": "timing",
+    "value": {
+      "frame_id": 163,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241964,
+      "total_ticks": 3242006,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1028666
+    }
+  },
+  {
+    "seconds": 6.611395200001425,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 164,
+      "timestamp": 649993157,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579155,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 6.611395200001425
+    }
+  },
+  {
+    "seconds": 6.611429300006421,
+    "kind": "timing",
+    "value": {
+      "frame_id": 164,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242060,
+      "total_ticks": 3242102,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033557
+    }
+  },
+  {
+    "seconds": 6.644444600002316,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 165,
+      "timestamp": 653326273,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573587,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.644444600002316
+    }
+  },
+  {
+    "seconds": 6.644470600003842,
+    "kind": "timing",
+    "value": {
+      "frame_id": 165,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241974,
+      "total_ticks": 3242711,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024160
+    }
+  },
+  {
+    "seconds": 6.677923700000974,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 166,
+      "timestamp": 656659389,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578890,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.677923700000974
+    }
+  },
+  {
+    "seconds": 6.677950299999793,
+    "kind": "timing",
+    "value": {
+      "frame_id": 166,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242009,
+      "total_ticks": 3242116,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1033139
+    }
+  },
+  {
+    "seconds": 6.71153790000244,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 167,
+      "timestamp": 659992505,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 574962,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.71153790000244
+    }
+  },
+  {
+    "seconds": 6.711573000000499,
+    "kind": "timing",
+    "value": {
+      "frame_id": 167,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241993,
+      "total_ticks": 3242035,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1025959
+    }
+  },
+  {
+    "seconds": 6.745504500002426,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 168,
+      "timestamp": 663325621,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580140,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.745504500002426
+    }
+  },
+  {
+    "seconds": 6.745533600005729,
+    "kind": "timing",
+    "value": {
+      "frame_id": 168,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241853,
+      "total_ticks": 3241895,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035336
+    }
+  },
+  {
+    "seconds": 6.779130900002201,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 169,
+      "timestamp": 666658737,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 572305,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.779130900002201
+    }
+  },
+  {
+    "seconds": 6.779158800003643,
+    "kind": "timing",
+    "value": {
+      "frame_id": 169,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241902,
+      "total_ticks": 3241944,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1021145
+    }
+  },
+  {
+    "seconds": 6.81229350000649,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 170,
+      "timestamp": 669991853,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 577575,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.81229350000649
+    }
+  },
+  {
+    "seconds": 6.812319300006493,
+    "kind": "timing",
+    "value": {
+      "frame_id": 170,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241845,
+      "total_ticks": 3242828,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031632
+    }
+  },
+  {
+    "seconds": 6.8453695000062,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 171,
+      "timestamp": 673324969,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576408,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.8453695000062
+    }
+  },
+  {
+    "seconds": 6.845394600000873,
+    "kind": "timing",
+    "value": {
+      "frame_id": 171,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241908,
+      "total_ticks": 3241950,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1028574
+    }
+  },
+  {
+    "seconds": 6.879863100002694,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 172,
+      "timestamp": 676658085,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 578030,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.879863100002694
+    }
+  },
+  {
+    "seconds": 6.879890800002613,
+    "kind": "timing",
+    "value": {
+      "frame_id": 172,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241939,
+      "total_ticks": 3241981,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1031513
+    }
+  },
+  {
+    "seconds": 6.913410400004068,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 173,
+      "timestamp": 679991200,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576533,
+      "tick_delta": 3333115,
+      "instant_fps": 30.00196512871593,
+      "seconds": 6.913410400004068
+    }
+  },
+  {
+    "seconds": 6.913435500006017,
+    "kind": "timing",
+    "value": {
+      "frame_id": 173,
+      "feed_ticks": 3224104,
+      "jpeg_ticks": 3242183,
+      "total_ticks": 3243202,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029783
+    }
+  },
+  {
+    "seconds": 6.946907600002305,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 174,
+      "timestamp": 683324316,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 579866,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.946907600002305
+    }
+  },
+  {
+    "seconds": 6.946934700004931,
+    "kind": "timing",
+    "value": {
+      "frame_id": 174,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241912,
+      "total_ticks": 3242190,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1035079
+    }
+  },
+  {
+    "seconds": 6.979867699999886,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 175,
+      "timestamp": 686657432,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573467,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 6.979867699999886
+    }
+  },
+  {
+    "seconds": 6.979885600005218,
+    "kind": "timing",
+    "value": {
+      "frame_id": 175,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241918,
+      "total_ticks": 3242931,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1024214
+    }
+  },
+  {
+    "seconds": 7.013437300003716,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 176,
+      "timestamp": 689990548,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 580880,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 7.013437300003716
+    }
+  },
+  {
+    "seconds": 7.0134596999996575,
+    "kind": "timing",
+    "value": {
+      "frame_id": 176,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241983,
+      "total_ticks": 3242257,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1036907
+    }
+  },
+  {
+    "seconds": 7.047328800006653,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 177,
+      "timestamp": 693323664,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 575517,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 7.047328800006653
+    }
+  },
+  {
+    "seconds": 7.0473659000053885,
+    "kind": "timing",
+    "value": {
+      "frame_id": 177,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241905,
+      "total_ticks": 3242912,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1027925
+    }
+  },
+  {
+    "seconds": 7.080597700005455,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 178,
+      "timestamp": 696656780,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 576906,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 7.080597700005455
+    }
+  },
+  {
+    "seconds": 7.0806343000003835,
+    "kind": "timing",
+    "value": {
+      "frame_id": 178,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3242144,
+      "total_ticks": 3242186,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1029478
+    }
+  },
+  {
+    "seconds": 7.080643400004192,
+    "kind": "fps",
+    "value": {
+      "window": 7,
+      "input_fps": 30,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 179
+    }
+  },
+  {
+    "seconds": 7.080663800006732,
+    "kind": "camera",
+    "value": {
+      "flags": 2150363229,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 509885647,
+      "received_frames": 179,
+      "dropped_frames": 24,
+      "overflow_count": 0,
+      "dvp_byte_count": 422944224,
+      "frame_sync_count": 204,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 7,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": true,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  },
+  {
+    "seconds": 7.080697000004875,
+    "kind": "link",
+    "value": {
+      "window": 7,
+      "cycles": 60000000,
+      "writes": 17523914,
+      "write_busy_cycles": 34089,
+      "txe_wait_cycles": 3773080,
+      "upstream_empty_cycles": 38668917,
+      "rx_cycles": 0
+    }
+  },
+  {
+    "seconds": 7.11148040000262,
+    "kind": "frame",
+    "value": {
+      "channel": 0,
+      "frame_id": 179,
+      "timestamp": 699989896,
+      "width": 1920,
+      "height": 1080,
+      "gray": false,
+      "status": 0,
+      "length": 573062,
+      "tick_delta": 3333116,
+      "instant_fps": 30.001956127539515,
+      "seconds": 7.11148040000262
+    }
+  },
+  {
+    "seconds": 7.111505200002284,
+    "kind": "timing",
+    "value": {
+      "frame_id": 179,
+      "feed_ticks": 3224103,
+      "jpeg_ticks": 3241796,
+      "total_ticks": 3241838,
+      "input_wait_ticks": 0,
+      "output_wait_ticks": 1022513
+    }
+  },
+  {
+    "seconds": 7.111508900001354,
+    "kind": "end",
+    "value": null
+  },
+  {
+    "seconds": 8.078922100001364,
+    "kind": "fps",
+    "value": {
+      "window": 8,
+      "input_fps": 0,
+      "compressed_fps": 1,
+      "failed_fps": 0,
+      "total_compressed": 180
+    }
+  },
+  {
+    "seconds": 8.078938800004835,
+    "kind": "camera",
+    "value": {
+      "flags": 2150232073,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 584885739,
+      "received_frames": 180,
+      "dropped_frames": 54,
+      "overflow_count": 0,
+      "dvp_byte_count": 485156476,
+      "frame_sync_count": 234,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "threshold_capable": true,
+      "threshold_requested": 0,
+      "run_requested": false,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 8,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": false,
+      "tables_ready": true,
+      "codec_busy": false,
+      "config_error": false,
+      "streaming": false,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    }
+  }
+]

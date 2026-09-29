@@ -1,0 +1,228 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Sep 28 10:55:24 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_clocks -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/ddr3/full_20260928_105205/clocks.rpt
+| Design       : davinci_mjpeg_ddr3_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+---------------------------------------------------------------------------------------------------------------------
+
+Clock Report
+
+
+Attributes
+  P: Propagated
+  G: Generated
+  A: Auto-derived
+  R: Renamed
+  V: Virtual
+  I: Inverted
+  S: Pin phase-shifted with Latency mode
+
+Clock                                                                                                                                                        Period(ns)  Waveform(ns)    Attributes  Sources
+cam_clk                                                                                                                                                      13.250      {0.000 6.625}   P           {cam_pclk}
+sys_clk                                                                                                                                                      20.000      {0.000 10.000}  P           {sys_clk}
+usb_clk                                                                                                                                                      16.667      {0.000 8.333}   P           {usb_clk_60m}
+clk_div2_bufg_in_1                                                                                                                                           5.000       {0.000 2.500}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKOUT1}
+clk_pll_i_1                                                                                                                                                  10.000      {0.000 5.000}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT}
+clock_raw                                                                                                                                                    13.250      {-1.104 5.521}  P,G,A       {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0}
+core_raw                                                                                                                                                     10.000      {0.000 5.000}   P,G,A       {multiplied_clock.clock_generator/mmcm/CLKOUT0}
+ddr_ref_raw                                                                                                                                                  5.000       {0.000 2.500}   P,G,A       {multiplied_clock.clock_generator/mmcm/CLKOUT1}
+feedback_raw                                                                                                                                                 20.000      {0.000 10.000}  P,G,A       {multiplied_clock.clock_generator/mmcm/CLKFBOUT}
+feedback_raw_1                                                                                                                                               13.250      {0.000 6.625}   P,G,A       {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKFBOUT}
+freq_refclk_1                                                                                                                                                1.250       {0.000 0.625}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT0}
+iserdes_clkdiv_2                                                                                                                                             10.000      {0.000 5.000}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/ICLKDIV}
+iserdes_clkdiv_3                                                                                                                                             10.000      {0.000 5.000}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/ICLKDIV}
+mem_refclk_1                                                                                                                                                 2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT1}
+mmcm_ps_clk_bufg_in_1                                                                                                                                        20.000      {0.000 10.000}  P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKOUT0}
+oserdes_clk_4                                                                                                                                                2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/phaser_out/OCLK}
+oserdes_clk_5                                                                                                                                                2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/phaser_out/OCLK}
+oserdes_clk_6                                                                                                                                                2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK}
+oserdes_clk_7                                                                                                                                                2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_out/OCLK}
+oserdes_clkdiv_4                                                                                                                                             10.000      {0.000 5.000}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/phaser_out/OCLKDIV}
+oserdes_clkdiv_5                                                                                                                                             10.000      {0.000 5.000}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/phaser_out/OCLKDIV}
+oserdes_clkdiv_6                                                                                                                                             5.000       {0.000 2.500}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLKDIV}
+oserdes_clkdiv_7                                                                                                                                             5.000       {0.000 2.500}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_out/OCLKDIV}
+pll_clk3_out_1                                                                                                                                               10.000      {0.000 5.000}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3}
+pll_clkfbout_1                                                                                                                                               5.000       {0.000 2.500}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKFBOUT}
+sync_pulse_1                                                                                                                                                 40.000      {1.094 3.594}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT2}
+u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_1  2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/ICLK}
+u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_1  2.500       {0.000 1.250}   P,G,A       {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/ICLK}
+
+
+====================================================
+Generated Clocks
+====================================================
+
+Generated Clock     : clk_div2_bufg_in_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKIN1
+Master Clock        : pll_clk3_out_1
+Multiply By         : 2
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKOUT1}
+
+Generated Clock     : clk_pll_i_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKIN1
+Master Clock        : pll_clk3_out_1
+Multiply By         : 1
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT}
+
+Generated Clock     : clock_raw
+Master Source       : real_camera.phase_clock.sampling_clock/camera_mmcm/CLKIN1
+Master Clock        : cam_clk
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {-1.104 -1.104 -1.104}
+Generated Sources   : {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0}
+
+Generated Clock     : core_raw
+Master Source       : multiplied_clock.clock_generator/mmcm/CLKIN1
+Master Clock        : sys_clk
+Multiply By         : 2
+Generated Sources   : {multiplied_clock.clock_generator/mmcm/CLKOUT0}
+
+Generated Clock     : ddr_ref_raw
+Master Source       : multiplied_clock.clock_generator/mmcm/CLKIN1
+Master Clock        : sys_clk
+Multiply By         : 4
+Generated Sources   : {multiplied_clock.clock_generator/mmcm/CLKOUT1}
+
+Generated Clock     : feedback_raw
+Master Source       : multiplied_clock.clock_generator/mmcm/CLKIN1
+Master Clock        : sys_clk
+Multiply By         : 1
+Generated Sources   : {multiplied_clock.clock_generator/mmcm/CLKFBOUT}
+
+Generated Clock     : feedback_raw_1
+Master Source       : real_camera.phase_clock.sampling_clock/camera_mmcm/CLKIN1
+Master Clock        : cam_clk
+Multiply By         : 1
+Generated Sources   : {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKFBOUT}
+
+Generated Clock     : freq_refclk_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKIN1
+Master Clock        : ddr_ref_raw
+Multiply By         : 4
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT0}
+
+Generated Clock     : iserdes_clkdiv_2
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/ICLK
+Master Clock        : u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_1
+Divide By           : 4
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/ICLKDIV}
+
+Generated Clock     : iserdes_clkdiv_3
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/ICLK
+Master Clock        : u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_1
+Divide By           : 4
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/ICLKDIV}
+
+Generated Clock     : mem_refclk_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKIN1
+Master Clock        : ddr_ref_raw
+Multiply By         : 2
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT1}
+
+Generated Clock     : mmcm_ps_clk_bufg_in_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKIN1
+Master Clock        : pll_clk3_out_1
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {0.000 5.000 10.000}
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKOUT0}
+
+Generated Clock     : oserdes_clk_4
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/phaser_out/MEMREFCLK
+Master Clock        : mem_refclk_1
+Divide By           : 1
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/phaser_out/OCLK}
+
+Generated Clock     : oserdes_clk_5
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/phaser_out/MEMREFCLK
+Master Clock        : mem_refclk_1
+Divide By           : 1
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/phaser_out/OCLK}
+
+Generated Clock     : oserdes_clk_6
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/MEMREFCLK
+Master Clock        : mem_refclk_1
+Divide By           : 1
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK}
+
+Generated Clock     : oserdes_clk_7
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_out/MEMREFCLK
+Master Clock        : mem_refclk_1
+Divide By           : 1
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_out/OCLK}
+
+Generated Clock     : oserdes_clkdiv_4
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/phaser_out/OCLK
+Master Clock        : oserdes_clk_4
+Divide By           : 4
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/phaser_out/OCLKDIV}
+
+Generated Clock     : oserdes_clkdiv_5
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/phaser_out/OCLK
+Master Clock        : oserdes_clk_5
+Divide By           : 4
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/phaser_out/OCLKDIV}
+
+Generated Clock     : oserdes_clkdiv_6
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK
+Master Clock        : oserdes_clk_6
+Divide By           : 2
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLKDIV}
+
+Generated Clock     : oserdes_clkdiv_7
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_out/OCLK
+Master Clock        : oserdes_clk_7
+Divide By           : 2
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_out/OCLKDIV}
+
+Generated Clock     : pll_clk3_out_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKIN1
+Master Clock        : ddr_ref_raw
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {0.000 2.500 5.000}
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3}
+
+Generated Clock     : pll_clkfbout_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKIN1
+Master Clock        : ddr_ref_raw
+Multiply By         : 1
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKFBOUT}
+
+Generated Clock     : sync_pulse_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKIN1
+Master Clock        : ddr_ref_raw
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {1.094 1.094 36.094}
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT2}
+
+Generated Clock     : u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/FREQREFCLK
+Master Clock        : freq_refclk_1
+Divide By           : 2
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_in_gen.phaser_in/ICLK}
+
+Generated Clock     : u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_1
+Master Source       : memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/FREQREFCLK
+Master Clock        : freq_refclk_1
+Divide By           : 2
+Generated Sources   : {memory/controller/u_davinci_ddr3_mig_mig/u_memc_ui_top_std/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/phaser_in_gen.phaser_in/ICLK}
+
+
+
+====================================================
+User Uncertainty
+====================================================
+
+From Clock  To Clock  Setup(ns)  Hold(ns)  Edges
+cam_clk     cam_clk   0.250      0.250     rf -> rf
+usb_clk     usb_clk   0.150      0.150     rf -> rf
+
+
+====================================================
+User Jitter
+====================================================
+
+

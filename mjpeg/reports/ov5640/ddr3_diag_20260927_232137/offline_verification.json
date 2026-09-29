@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "frames": 180,
+  "starts": 1,
+  "ends": 1,
+  "groups_per_frame": 4050,
+  "tail_index": 4049,
+  "tail_copy_frames": 0,
+  "total_copy_groups": 0,
+  "all_copy_groups_equal_actual_emitted_reference": true,
+  "complete_dqt_q85": true,
+  "pillow_load_every_frame": true,
+  "threshold_values": [
+    0
+  ],
+  "median_fps": 30.001956127539515,
+  "record_parse_ms": {
+    "mean": 8.616323888377842,
+    "p50": 8.285250089102192,
+    "p95": 11.255800061917398,
+    "maximum": 13.269199946080334
+  },
+  "spj_parse_ms": {
+    "mean": 4.771993332865855,
+    "p50": 4.5775499966111965,
+    "p95": 6.345800000417512,
+    "maximum": 7.509800001571421
+  },
+  "pixel_decode_ms": {
+    "mean": 15.555823333205707,
+    "p50": 15.179950001765974,
+    "p95": 18.103900001733564,
+    "maximum": 22.97550000366755
+  },
+  "wall_seconds": 4.368400600003952,
+  "decoded_or_viewed_images": "decoded numerically only, never viewed"
+}

@@ -1,0 +1,173 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Sun Sep 27 23:22:07 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/ddr3/full_20260927_232137/utilization_hier.rpt
+| Design       : davinci_mjpeg_ddr3_top
+| Device       : 7a35tfgg484-2
+| Design State : Physopt postRoute
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------------------------------------------+----------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|                               Instance                              |                       Module                       | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++---------------------------------------------------------------------+----------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| davinci_mjpeg_ddr3_top                                              |                                              (top) |      18861 |      17224 |    1604 |   33 | 20729 |     31 |      4 |         45 |
+|   (davinci_mjpeg_ddr3_top)                                          |                                              (top) |         43 |         43 |       0 |    0 |    24 |      0 |      0 |          0 |
+|   blocks                                                            |                         board_test_block_transport |        997 |        994 |       0 |    3 |  1234 |      0 |      1 |          0 |
+|   display                                                           |                                davinci_fps_display |        101 |        101 |       0 |    0 |   122 |      0 |      0 |          0 |
+|   engine                                                            |                            mjpeg_board_test_engine |      10426 |      10117 |     296 |   13 | 12472 |     28 |      2 |         44 |
+|     (engine)                                                        |                            mjpeg_board_test_engine |        375 |        375 |       0 |    0 |  1312 |      0 |      1 |          0 |
+|     codec                                                           |                                    mjpeg_synth_top |       9880 |       9571 |     296 |   13 | 10839 |     28 |      1 |         44 |
+|       (codec)                                                       |                                    mjpeg_synth_top |          2 |          2 |       0 |    0 |   102 |      0 |      0 |          0 |
+|       byte_aggregate.collector                                      |                               mjpeg_byte_coalescer |         86 |         86 |       0 |    0 |   179 |      0 |      0 |          0 |
+|       encoder                                                       |                                      mjpeg_encoder |       9471 |       9162 |     296 |   13 | 10247 |     28 |      1 |         44 |
+|         (encoder)                                                   |                                      mjpeg_encoder |          7 |          7 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         channels[0].channel                                         |                                      mjpeg_channel |       9102 |       8793 |     296 |   13 |  9667 |     28 |      1 |         44 |
+|           (channels[0].channel)                                     |                                      mjpeg_channel |         91 |         91 |       0 |    0 |   336 |      0 |      1 |          0 |
+|           core                                                      |                                       jpeg_encoder |       6665 |       6380 |     272 |   13 |  8400 |     19 |      0 |         43 |
+|             (core)                                                  |                                       jpeg_encoder |         11 |         11 |       0 |    0 |    43 |      0 |      0 |          0 |
+|             dct                                                     |                                             dct8x8 |       1944 |       1940 |       0 |    4 |  4524 |      0 |      0 |         38 |
+|               (dct)                                                 |                                             dct8x8 |        689 |        689 |       0 |    0 |  4512 |      0 |      0 |          0 |
+|               engine                                                |                                              dct1d |       1256 |       1252 |       0 |    4 |    12 |      0 |      0 |         38 |
+|             format                                                  |                                     jpeg_formatter |        522 |        522 |       0 |    0 |   317 |      0 |      0 |          1 |
+|             formatter_input_buffer                                  |                 jpeg_stream_buffer__parameterized2 |        139 |        139 |       0 |    0 |   270 |      0 |      0 |          0 |
+|             front                                                   |                                   raster_to_mcu422 |        304 |        304 |       0 |    0 |   167 |     16 |      0 |          0 |
+|               (front)                                               |                                   raster_to_mcu422 |        194 |        194 |       0 |    0 |   167 |      0 |      0 |          0 |
+|               banks[0].lanes[0].ram                                 |                                     line_group_ram |          9 |          9 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[0].lanes[1].ram                                 |                                   line_group_ram_0 |         10 |         10 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[0].lanes[2].ram                                 |                     line_group_ram__parameterized0 |          8 |          8 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[0].lanes[3].ram                                 |                   line_group_ram__parameterized0_1 |          2 |          2 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[0].lanes[4].ram                                 |                   line_group_ram__parameterized0_2 |          2 |          2 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[0].lanes[5].ram                                 |                   line_group_ram__parameterized0_3 |          2 |          2 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[0].ram                                 |                                   line_group_ram_4 |         20 |         20 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[1].lanes[1].ram                                 |                                   line_group_ram_5 |         41 |         41 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[1].lanes[2].ram                                 |                   line_group_ram__parameterized0_6 |          2 |          2 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[3].ram                                 |                   line_group_ram__parameterized0_7 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[4].ram                                 |                   line_group_ram__parameterized0_8 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[5].ram                                 |                   line_group_ram__parameterized0_9 |         19 |         19 |       0 |    0 |     0 |      1 |      0 |          0 |
+|             huff                                                    |                                    huffman_encoder |        993 |        993 |       0 |    0 |   849 |      3 |      0 |          0 |
+|             huff_input_buffer                                       |                 jpeg_stream_buffer__parameterized0 |        102 |        102 |       0 |    0 |   196 |      0 |      0 |          0 |
+|             huff_output_buffer                                      |                 jpeg_stream_buffer__parameterized1 |        312 |        312 |       0 |    0 |   308 |      0 |      0 |          0 |
+|             packer                                                  |                                     entropy_packer |       1218 |       1218 |       0 |    0 |   803 |      0 |      0 |          0 |
+|             quant                                                   |                                           quantize |        610 |        417 |     184 |    9 |   582 |      0 |      0 |          4 |
+|             scan_order                                              |                                      zigzag_buffer |        222 |        134 |      88 |    0 |   102 |      0 |      0 |          0 |
+|             symbols_core                                            |                                     symbol_encoder |        294 |        294 |       0 |    0 |   239 |      0 |      0 |          0 |
+|           ddr_spatial_transport.skip                                |                              jpeg_spatial_skip_ddr |       2351 |       2327 |      24 |    0 |   931 |      9 |      0 |          1 |
+|             (ddr_spatial_transport.skip)                            |                              jpeg_spatial_skip_ddr |        865 |        841 |      24 |    0 |   780 |      9 |      0 |          1 |
+|             coefficient_decoders.decoder                            |                           jpeg_coefficient_decoder |       1489 |       1489 |       0 |    0 |   151 |      0 |      0 |          0 |
+|         channels[0].channel_output                                  |                                 jpeg_stream_buffer |         80 |         80 |       0 |    0 |    90 |      0 |      0 |          0 |
+|         descriptor_arbiter                                          |                      mjpeg_arbiter__parameterized0 |        214 |        214 |       0 |    0 |   362 |      0 |      0 |          0 |
+|           (descriptor_arbiter)                                      |                      mjpeg_arbiter__parameterized0 |        159 |        159 |       0 |    0 |    18 |      0 |      0 |          0 |
+|           output_buffer                                             |                 jpeg_stream_buffer__parameterized4 |         56 |         56 |       0 |    0 |   344 |      0 |      0 |          0 |
+|         payload_arbiter                                             |                                      mjpeg_arbiter |         68 |         68 |       0 |    0 |   119 |      0 |      0 |          0 |
+|           (payload_arbiter)                                         |                                      mjpeg_arbiter |          0 |          0 |       0 |    0 |    11 |      0 |      0 |          0 |
+|           output_buffer                                             |                 jpeg_stream_buffer__parameterized3 |         68 |         68 |       0 |    0 |   108 |      0 |      0 |          0 |
+|       transport                                                     |                                   mjpeg_packetizer |        322 |        322 |       0 |    0 |   311 |      0 |      0 |          0 |
+|     meter                                                           |                                   frame_rate_meter |        174 |        174 |       0 |    0 |   321 |      0 |      0 |          0 |
+|   memory                                                            |                                  mjpeg_ddr3_memory |       4611 |       3814 |     780 |   17 |  3993 |      0 |      0 |          0 |
+|     (memory)                                                        |                                  mjpeg_ddr3_memory |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|     bridge                                                          |                                  ddr3_burst_bridge |        583 |        215 |     368 |    0 |   251 |      0 |      0 |          0 |
+|       (bridge)                                                      |                                  ddr3_burst_bridge |        104 |        104 |       0 |    0 |   143 |      0 |      0 |          0 |
+|       read_fifo                                                     |             ddr3_bridge_async_fifo__parameterized0 |        222 |         50 |     172 |    0 |    54 |      0 |      0 |          0 |
+|       write_fifo                                                    |                             ddr3_bridge_async_fifo |        261 |         65 |     196 |    0 |    54 |      0 |      0 |          0 |
+|     controller                                                      |                                   davinci_ddr3_mig |       4028 |       3599 |     412 |   17 |  3742 |      0 |      0 |          0 |
+|       (controller)                                                  |                                   davinci_ddr3_mig |        252 |          0 |     252 |    0 |     0 |      0 |      0 |          0 |
+|       u_davinci_ddr3_mig_mig                                        |                               davinci_ddr3_mig_mig |       3776 |       3599 |     160 |   17 |  3742 |      0 |      0 |          0 |
+|         temp_mon_enabled.u_tempmon                                  |                           mig_7series_v4_2_tempmon |         50 |         50 |       0 |    0 |   122 |      0 |      0 |          0 |
+|         u_ddr3_clk_ibuf                                             |                          mig_7series_v4_2_clk_ibuf |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|         u_ddr3_infrastructure                                       |                    mig_7series_v4_2_infrastructure |          6 |          6 |       0 |    0 |    33 |      0 |      0 |          0 |
+|         u_iodelay_ctrl                                              |                      mig_7series_v4_2_iodelay_ctrl |          2 |          2 |       0 |    0 |    15 |      0 |      0 |          0 |
+|         u_memc_ui_top_std                                           |                   mig_7series_v4_2_memc_ui_top_std |       3720 |       3543 |     160 |   17 |  3572 |      0 |      0 |          0 |
+|           (u_memc_ui_top_std)                                       |                   mig_7series_v4_2_memc_ui_top_std |          0 |          0 |       0 |    0 |     1 |      0 |      0 |          0 |
+|           mem_intfc0                                                |                         mig_7series_v4_2_mem_intfc |       3463 |       3390 |      56 |   17 |  3167 |      0 |      0 |          0 |
+|             ddr_phy_top0                                            |                       mig_7series_v4_2_ddr_phy_top |       3269 |       3201 |      52 |   16 |  2910 |      0 |      0 |          0 |
+|               (ddr_phy_top0)                                        |                       mig_7series_v4_2_ddr_phy_top |          4 |          4 |       0 |    0 |     0 |      0 |      0 |          0 |
+|               u_ddr_calib_top                                       |                     mig_7series_v4_2_ddr_calib_top |       2817 |       2803 |       0 |   14 |  2586 |      0 |      0 |          0 |
+|                 (u_ddr_calib_top)                                   |                     mig_7series_v4_2_ddr_calib_top |         46 |         45 |       0 |    1 |    29 |      0 |      0 |          0 |
+|                 ddr_phy_prbs_rdlvl_gen.u_ddr_phy_prbs_rdlvl         |                mig_7series_v4_2_ddr_phy_prbs_rdlvl |        347 |        347 |       0 |    0 |   499 |      0 |      0 |          0 |
+|                 ddr_phy_rdlvl_gen.u_ddr_phy_rdlvl                   |                     mig_7series_v4_2_ddr_phy_rdlvl |        534 |        534 |       0 |    0 |   873 |      0 |      0 |          0 |
+|                 ddr_phy_tempmon_0                                   |                   mig_7series_v4_2_ddr_phy_tempmon |        257 |        257 |       0 |    0 |   229 |      0 |      0 |          0 |
+|                 dqsfind_calib_left.u_ddr_phy_dqs_found_cal_hr       |          mig_7series_v4_2_ddr_phy_dqs_found_cal_hr |        156 |        155 |       0 |    1 |    91 |      0 |      0 |          0 |
+|                 mb_wrlvl_inst.u_ddr_phy_ck_addr_cmd_delay           |         mig_7series_v4_2_ddr_phy_ck_addr_cmd_delay |         19 |         18 |       0 |    1 |    16 |      0 |      0 |          0 |
+|                 mb_wrlvl_inst.u_ddr_phy_wrlvl                       |                     mig_7series_v4_2_ddr_phy_wrlvl |        258 |        257 |       0 |    1 |   160 |      0 |      0 |          0 |
+|                 u_ddr_phy_init                                      |                      mig_7series_v4_2_ddr_phy_init |        915 |        911 |       0 |    4 |   352 |      0 |      0 |          0 |
+|                 u_ddr_phy_wrcal                                     |                     mig_7series_v4_2_ddr_phy_wrcal |        167 |        161 |       0 |    6 |   304 |      0 |      0 |          0 |
+|                 u_ddr_prbs_gen                                      |                      mig_7series_v4_2_ddr_prbs_gen |        129 |        129 |       0 |    0 |    33 |      0 |      0 |          0 |
+|               u_ddr_mc_phy_wrapper                                  |                mig_7series_v4_2_ddr_mc_phy_wrapper |        450 |        396 |      52 |    2 |   324 |      0 |      0 |          0 |
+|                 (u_ddr_mc_phy_wrapper)                              |                mig_7series_v4_2_ddr_mc_phy_wrapper |          0 |          0 |       0 |    0 |    24 |      0 |      0 |          0 |
+|                 u_ddr_mc_phy                                        |                        mig_7series_v4_2_ddr_mc_phy |        450 |        396 |      52 |    2 |   300 |      0 |      0 |          0 |
+|                   (u_ddr_mc_phy)                                    |                        mig_7series_v4_2_ddr_mc_phy |          0 |          0 |       0 |    0 |    16 |      0 |      0 |          0 |
+|                   ddr_phy_4lanes_0.u_ddr_phy_4lanes                 |                    mig_7series_v4_2_ddr_phy_4lanes |        450 |        396 |      52 |    2 |   284 |      0 |      0 |          0 |
+|                     (ddr_phy_4lanes_0.u_ddr_phy_4lanes)             |                    mig_7series_v4_2_ddr_phy_4lanes |          5 |          4 |       0 |    1 |    20 |      0 |      0 |          0 |
+|                     ddr_byte_lane_A.ddr_byte_lane_A                 |                     mig_7series_v4_2_ddr_byte_lane |         70 |         18 |      52 |    0 |    19 |      0 |      0 |          0 |
+|                       (ddr_byte_lane_A.ddr_byte_lane_A)             |                     mig_7series_v4_2_ddr_byte_lane |          1 |          1 |       0 |    0 |     0 |      0 |      0 |          0 |
+|                       ddr_byte_group_io                             |                 mig_7series_v4_2_ddr_byte_group_io |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|                       of_pre_fifo_gen.u_ddr_of_pre_fifo             | mig_7series_v4_2_ddr_of_pre_fifo__parameterized1_7 |         69 |         17 |      52 |    0 |    19 |      0 |      0 |          0 |
+|                     ddr_byte_lane_B.ddr_byte_lane_B                 |     mig_7series_v4_2_ddr_byte_lane__parameterized0 |         24 |         24 |       0 |    0 |    20 |      0 |      0 |          0 |
+|                       (ddr_byte_lane_B.ddr_byte_lane_B)             |     mig_7series_v4_2_ddr_byte_lane__parameterized0 |          9 |          9 |       0 |    0 |     1 |      0 |      0 |          0 |
+|                       ddr_byte_group_io                             | mig_7series_v4_2_ddr_byte_group_io__parameterized0 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|                       of_pre_fifo_gen.u_ddr_of_pre_fifo             | mig_7series_v4_2_ddr_of_pre_fifo__parameterized1_6 |         15 |         15 |       0 |    0 |    19 |      0 |      0 |          0 |
+|                     ddr_byte_lane_C.ddr_byte_lane_C                 |     mig_7series_v4_2_ddr_byte_lane__parameterized1 |        149 |        148 |       0 |    1 |   113 |      0 |      0 |          0 |
+|                       (ddr_byte_lane_C.ddr_byte_lane_C)             |     mig_7series_v4_2_ddr_byte_lane__parameterized1 |          7 |          7 |       0 |    0 |    71 |      0 |      0 |          0 |
+|                       ddr_byte_group_io                             | mig_7series_v4_2_ddr_byte_group_io__parameterized1 |          2 |          1 |       0 |    1 |     2 |      0 |      0 |          0 |
+|                       dq_gen_40.if_post_fifo_gen.u_ddr_if_post_fifo |                mig_7series_v4_2_ddr_if_post_fifo_4 |        118 |        118 |       0 |    0 |    16 |      0 |      0 |          0 |
+|                       of_pre_fifo_gen.u_ddr_of_pre_fifo             | mig_7series_v4_2_ddr_of_pre_fifo__parameterized1_5 |         22 |         22 |       0 |    0 |    24 |      0 |      0 |          0 |
+|                     ddr_byte_lane_D.ddr_byte_lane_D                 |     mig_7series_v4_2_ddr_byte_lane__parameterized2 |        203 |        203 |       0 |    0 |   112 |      0 |      0 |          0 |
+|                       (ddr_byte_lane_D.ddr_byte_lane_D)             |     mig_7series_v4_2_ddr_byte_lane__parameterized2 |          0 |          0 |       0 |    0 |    71 |      0 |      0 |          0 |
+|                       ddr_byte_group_io                             | mig_7series_v4_2_ddr_byte_group_io__parameterized2 |          0 |          0 |       0 |    0 |     0 |      0 |      0 |          0 |
+|                       dq_gen_40.if_post_fifo_gen.u_ddr_if_post_fifo |                  mig_7series_v4_2_ddr_if_post_fifo |        182 |        182 |       0 |    0 |    17 |      0 |      0 |          0 |
+|                       of_pre_fifo_gen.u_ddr_of_pre_fifo             |   mig_7series_v4_2_ddr_of_pre_fifo__parameterized1 |         21 |         21 |       0 |    0 |    24 |      0 |      0 |          0 |
+|             mc0                                                     |                                mig_7series_v4_2_mc |        199 |        194 |       4 |    1 |   257 |      0 |      0 |          0 |
+|               (mc0)                                                 |                                mig_7series_v4_2_mc |          7 |          7 |       0 |    0 |    78 |      0 |      0 |          0 |
+|               bank_mach0                                            |                         mig_7series_v4_2_bank_mach |         99 |         99 |       0 |    0 |    93 |      0 |      0 |          0 |
+|                 arb_mux0                                            |                           mig_7series_v4_2_arb_mux |         42 |         42 |       0 |    0 |    15 |      0 |      0 |          0 |
+|                   arb_row_col0                                      |                       mig_7series_v4_2_arb_row_col |         40 |         40 |       0 |    0 |    11 |      0 |      0 |          0 |
+|                     (arb_row_col0)                                  |                       mig_7series_v4_2_arb_row_col |         13 |         13 |       0 |    0 |     8 |      0 |      0 |          0 |
+|                     col_arb0                                        |   mig_7series_v4_2_round_robin_arb__parameterized0 |         14 |         14 |       0 |    0 |     1 |      0 |      0 |          0 |
+|                     config_arb0                                     | mig_7series_v4_2_round_robin_arb__parameterized0_0 |          4 |          4 |       0 |    0 |     1 |      0 |      0 |          0 |
+|                     pre_4_1_1T_arb.pre_arb0                         | mig_7series_v4_2_round_robin_arb__parameterized0_1 |          9 |          9 |       0 |    0 |     1 |      0 |      0 |          0 |
+|                   arb_select0                                       |                        mig_7series_v4_2_arb_select |          2 |          2 |       0 |    0 |     4 |      0 |      0 |          0 |
+|                 bank_cntrl[0].bank0                                 |                        mig_7series_v4_2_bank_cntrl |         39 |         39 |       0 |    0 |    61 |      0 |      0 |          0 |
+|                   bank_compare0                                     |                      mig_7series_v4_2_bank_compare |         10 |         10 |       0 |    0 |    37 |      0 |      0 |          0 |
+|                   bank_queue0                                       |                        mig_7series_v4_2_bank_queue |         12 |         12 |       0 |    0 |     9 |      0 |      0 |          0 |
+|                   bank_state0                                       |                        mig_7series_v4_2_bank_state |         17 |         17 |       0 |    0 |    15 |      0 |      0 |          0 |
+|                 bank_common0                                        |                       mig_7series_v4_2_bank_common |         18 |         18 |       0 |    0 |    17 |      0 |      0 |          0 |
+|               col_mach0                                             |                          mig_7series_v4_2_col_mach |         15 |         11 |       4 |    0 |    18 |      0 |      0 |          0 |
+|               rank_mach0                                            |                         mig_7series_v4_2_rank_mach |         78 |         77 |       0 |    1 |    68 |      0 |      0 |          0 |
+|                 rank_cntrl[0].rank_cntrl0                           |                        mig_7series_v4_2_rank_cntrl |         12 |         11 |       0 |    1 |    15 |      0 |      0 |          0 |
+|                 rank_common0                                        |                       mig_7series_v4_2_rank_common |         66 |         66 |       0 |    0 |    53 |      0 |      0 |          0 |
+|                   (rank_common0)                                    |                       mig_7series_v4_2_rank_common |         55 |         55 |       0 |    0 |    47 |      0 |      0 |          0 |
+|                   maintenance_request.maint_arb0                    |                   mig_7series_v4_2_round_robin_arb |         12 |         12 |       0 |    0 |     6 |      0 |      0 |          0 |
+|           u_ui_top                                                  |                            mig_7series_v4_2_ui_top |        258 |        154 |     104 |    0 |   404 |      0 |      0 |          0 |
+|             ui_cmd0                                                 |                            mig_7series_v4_2_ui_cmd |         32 |         32 |       0 |    0 |    61 |      0 |      0 |          0 |
+|             ui_rd_data0                                             |                        mig_7series_v4_2_ui_rd_data |         11 |         11 |       0 |    0 |    10 |      0 |      0 |          0 |
+|             ui_wr_data0                                             |                        mig_7series_v4_2_ui_wr_data |        215 |        111 |     104 |    0 |   333 |      0 |      0 |          0 |
+|   multiplied_clock.clock_generator                                  |                              board_test_core_clock |          1 |          1 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   real_camera.capture                                               |                                 ov5640_dvp_capture |        429 |        429 |       0 |    0 |   934 |      1 |      1 |          0 |
+|     (real_camera.capture)                                           |                                 ov5640_dvp_capture |        324 |        324 |       0 |    0 |   816 |      0 |      0 |          0 |
+|     pixel_fifo                                                      |                                  camera_pixel_fifo |        107 |        107 |       0 |    0 |   118 |      1 |      1 |          0 |
+|   real_camera.controls                                              |                              camera_board_controls |        152 |        152 |       0 |    0 |   179 |      0 |      0 |          0 |
+|   real_camera.initialization                                        |                                        ov5640_init |        592 |        592 |       0 |    0 |   232 |      0 |      0 |          1 |
+|     (real_camera.initialization)                                    |                                        ov5640_init |        262 |        262 |       0 |    0 |   141 |      0 |      0 |          1 |
+|     u_sccb                                                          |                                 ov5640_sccb_master |        331 |        331 |       0 |    0 |    91 |      0 |      0 |          0 |
+|   real_camera.phase_clock.sampling_clock                            |                                ov5640_sample_clock |          1 |          1 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   real_camera.raw_processing.demosaic                               |                               bayer_bggr_to_yuv422 |       1093 |        613 |     480 |    0 |   276 |      0 |      0 |          0 |
+|   synchronous.clock_guard                                           |                         board_test_usb_clock_guard |         30 |         30 |       0 |    0 |    34 |      0 |      0 |          0 |
+|   synchronous.link                                                  |                              board_test_ft245_sync |        231 |        231 |       0 |    0 |   448 |      0 |      0 |          0 |
+|   synchronous.rx_fifo                                               |              board_test_async_fifo__parameterized0 |        121 |         73 |      48 |    0 |    80 |      0 |      0 |          0 |
+|   synchronous.stats_mailbox                                         |                            board_test_cdc_snapshot |          4 |          4 |       0 |    0 |   587 |      0 |      0 |          0 |
+|   synchronous.tx_fifo                                               |                              board_test_async_fifo |         39 |         39 |       0 |    0 |   114 |      2 |      0 |          0 |
++---------------------------------------------------------------------+----------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
