@@ -1,6 +1,6 @@
 // DC difference, magnitude/category, then bounded AC run-length coding.
 // Two coefficients can produce up to three ZRLs and two value symbols.
-module symbol_encoder (
+module symbol_encoder #(parameter RESTART_ENABLE=0) (
     input clk,
     input rst_n,
     input [31:0] s_data,
@@ -9,6 +9,7 @@ module symbol_encoder (
     input [1:0] s_component,
     input [4:0] s_pair,
     input s_frame_start, s_frame_end,
+    input s_restart,
     output reg [39:0] m_symbols,
     output reg [54:0] m_amplitudes,
     output reg [19:0] m_sizes,
@@ -155,7 +156,7 @@ module symbol_encoder (
             if (s_valid) begin
                 values1[16:0] <= s_pair == 0 ? $signed(
                     s_data[15:0]
-                ) - (s_frame_start ? 17'sd0 : $signed(
+                ) - ((s_frame_start || (RESTART_ENABLE && s_restart)) ? 17'sd0 : $signed(
                     previous[s_component]
                 )) : $signed(
                     s_data[15:0]
@@ -165,7 +166,8 @@ module symbol_encoder (
                 chroma1 <= s_component != 0;
                 start1 <= s_frame_start;
                 end1 <= s_frame_end;
-                if (s_frame_start) for (j = 0; j < 3; j = j + 1) previous[j] <= 0;
+                if (s_frame_start || (RESTART_ENABLE && s_restart))
+                    for (j = 0; j < 3; j = j + 1) previous[j] <= 0;
                 if (s_pair == 0) previous[s_component] <= s_data[15:0];
             end
             if (v1) begin

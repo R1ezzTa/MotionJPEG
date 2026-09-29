@@ -2,13 +2,21 @@
 // and queuing its descriptor. Abort emits a zero-byte end token; cached
 // quantization entries are replayed after resetting the JPEG core.
 module mjpeg_channel #(
-    parameter MAX_WIDTH = 1920
+    parameter MAX_WIDTH = 1920, RESTART_MCUS=0, SPATIAL_SKIP=0, SPATIAL_THRESHOLD=0, SPATIAL_DDR=0,SPATIAL_ADAPTIVE=0
 ) (
+    output mem_cmd_valid,mem_cmd_write,input mem_cmd_ready,
+    output [27:0] mem_cmd_addr,output [13:0] mem_cmd_bytes,
+    output [127:0] mem_w_data,output [15:0] mem_w_keep,
+    output mem_w_valid,mem_w_last,input mem_w_ready,
+    input [127:0] mem_r_data,input mem_r_valid,mem_r_last,output mem_r_ready,
+    input mem_done,mem_error,output mem_fault,
     input clk,
     input rst_n,
     input enable,
     input [15:0] cfg_width, cfg_height,
     input cfg_gray,
+    input [7:0] cfg_skip_threshold,
+    input cfg_skip_adaptive,input cfg_skip_pressure,
     input cfg_q_valid,
     output cfg_q_ready,
     input [6:0] cfg_q_addr,
@@ -37,6 +45,10 @@ module mjpeg_channel #(
 );
     localparam NORMAL = 2'd0, RESET_CORE = 2'd1, READ_TABLE = 2'd2, WRITE_TABLE = 2'd3;
     reg [1:0] recovery;
+    // An asynchronous reset must come from one register. Decoding the binary
+    // WRITE_TABLE (11) -> NORMAL (00) transition can briefly decode RESET_CORE
+    // (01) in hardware and erase the table that has just been restored.
+    reg core_reset;
     reg [6:0] restore_index;
     reg [28:0] restore_data;
     reg [28:0] table_cache[0:127];  // synthesis ram_style=bram
@@ -46,20 +58,23 @@ module mjpeg_channel #(
     reg [63:0] timestamp;
     reg [15:0] frame_width, frame_height;
     reg frame_gray;
+    reg [7:0] frame_skip_threshold;
+    reg frame_skip_adaptive;
     reg [7:0] errors;
-    wire core_rst_n = rst_n && (recovery != RESET_CORE);
+    wire core_rst_n = rst_n && !core_reset;
     wire core_q_ready, core_q_valid, core_tables_ready;
     wire core_s_ready, core_busy, protocol_error, coefficient_error;
     wire [127:0] core_data;
     wire [4:0] core_bytes;
     wire core_valid, core_last;
+    wire skip_recovering,skip_mem_active;
     wire replay = (recovery == WRITE_TABLE);
-    assign cfg_q_ready = core_q_ready && !inflight && (recovery == NORMAL);
+    assign cfg_q_ready = core_q_ready && !inflight && !skip_mem_active && !skip_recovering && (recovery == NORMAL);
     assign core_q_valid = replay || (cfg_q_valid && cfg_q_ready);
     assign tables_ready = core_tables_ready && (recovery == NORMAL);
-    assign busy = inflight || (recovery != NORMAL);
-    wire abort_now = s_abort && inflight && !terminated && !aborted;
-    wire input_allowed = enable && (recovery == NORMAL) && !terminated && !aborted && !abort_now;
+    assign busy = inflight || (recovery != NORMAL) || skip_recovering || skip_mem_active;
+    wire abort_now = (s_abort || mem_fault) && inflight && !terminated && !aborted;
+    wire input_allowed = enable && !skip_recovering && (inflight || !skip_mem_active) && (recovery == NORMAL) && !terminated && !aborted && !abort_now;
     assign s_ready = core_s_ready && input_allowed;
     wire first_pixel = s_valid && s_ready && !inflight;
     assign m_valid = inflight && !terminated && !abort_now && (aborted || core_valid);
@@ -77,8 +92,48 @@ module mjpeg_channel #(
     assign desc_height = frame_height;
     assign desc_gray = frame_gray;
     assign desc_status = errors;
+    wire [127:0] raw_core_data;
+    wire [4:0] raw_core_bytes;
+    wire raw_core_valid,raw_core_ready,raw_core_last;
+    generate if(SPATIAL_SKIP && SPATIAL_DDR) begin: ddr_spatial_transport
+        jpeg_spatial_skip_ddr #(.THRESHOLD_ENABLE(SPATIAL_THRESHOLD),.ADAPTIVE_ENABLE(SPATIAL_ADAPTIVE)) skip(
+            .clk(clk),.rst_n(rst_n),.abort(abort_now || recovery==RESET_CORE),
+            .recovering(skip_recovering),
+            .invalidate(core_q_valid && core_q_ready),
+            .cfg_threshold(frame_skip_threshold),.cfg_adaptive(frame_skip_adaptive),.input_pressure(cfg_skip_pressure),.cfg_q_valid(core_q_valid && core_q_ready),
+            .cfg_q_addr(replay ? restore_index : cfg_q_addr),.cfg_q_value(replay ? restore_data[7:0] : cfg_q_value),
+            .frame_id(frame_id),.width(cfg_width),.height(cfg_height),.gray(cfg_gray),
+            .s_data(raw_core_data),.s_bytes(raw_core_bytes),.s_last(raw_core_last),
+            .s_valid(raw_core_valid),.s_ready(raw_core_ready),
+            .m_data(core_data),.m_bytes(core_bytes),.m_last(core_last),.m_valid(core_valid),
+            .m_ready(m_ready && inflight && !terminated && !aborted && !abort_now),
+        .cmd_valid(mem_cmd_valid),.cmd_write(mem_cmd_write),.cmd_ready(mem_cmd_ready),.cmd_addr(mem_cmd_addr),
+        .cmd_bytes(mem_cmd_bytes),.w_data(mem_w_data),.w_keep(mem_w_keep),.w_valid(mem_w_valid),
+        .w_last(mem_w_last),.w_ready(mem_w_ready),.r_data(mem_r_data),.r_valid(mem_r_valid),
+        .r_last(mem_r_last),.r_ready(mem_r_ready),.mem_done(mem_done),.mem_error(mem_error),
+            .mem_fault(mem_fault),.mem_active(skip_mem_active));
+    end else if(SPATIAL_SKIP) begin: spatial_transport
+        jpeg_spatial_skip #(.THRESHOLD_ENABLE(SPATIAL_THRESHOLD)) skip(
+            .clk(clk),.rst_n(core_rst_n),.invalidate(core_q_valid && core_q_ready),
+            .cfg_threshold(frame_skip_threshold),.cfg_q_valid(core_q_valid && core_q_ready),
+            .cfg_q_addr(replay ? restore_index : cfg_q_addr),.cfg_q_value(replay ? restore_data[7:0] : cfg_q_value),
+            .frame_id(frame_id),.width(cfg_width),.height(cfg_height),.gray(cfg_gray),
+            .s_data(raw_core_data),.s_bytes(raw_core_bytes),.s_last(raw_core_last),
+            .s_valid(raw_core_valid),.s_ready(raw_core_ready),
+            .m_data(core_data),.m_bytes(core_bytes),.m_last(core_last),.m_valid(core_valid),
+            .m_ready(m_ready && inflight && !terminated && !aborted && !abort_now));
+    end else begin: independent_transport
+        assign core_data=raw_core_data;assign core_bytes=raw_core_bytes;
+        assign core_last=raw_core_last;assign core_valid=raw_core_valid;
+        assign raw_core_ready=m_ready && inflight && !terminated && !aborted && !abort_now;
+    end endgenerate
+    generate if(!SPATIAL_DDR || !SPATIAL_SKIP) begin: no_ddr
+        assign mem_cmd_valid=0;assign mem_cmd_write=0;assign mem_cmd_addr=0;assign mem_cmd_bytes=0;
+        assign mem_w_data=0;assign mem_w_keep=0;assign mem_w_valid=0;assign mem_w_last=0;
+        assign mem_r_ready=0;assign mem_fault=0;assign skip_recovering=0;assign skip_mem_active=0;
+    end endgenerate
     jpeg_encoder #(
-        .MAX_WIDTH(MAX_WIDTH)
+        .MAX_WIDTH(MAX_WIDTH),.RESTART_MCUS(RESTART_MCUS)
     ) core (
         .clk              (clk),
         .rst_n            (core_rst_n),
@@ -98,11 +153,11 @@ module mjpeg_channel #(
         .s_sof            (s_sof),
         .s_eol            (s_eol),
         .s_eof            (s_eof),
-        .m_data           (core_data),
-        .m_bytes          (core_bytes),
-        .m_valid          (core_valid),
-        .m_ready          (m_ready && inflight && !terminated && !aborted && !abort_now),
-        .m_last           (core_last),
+        .m_data           (raw_core_data),
+        .m_bytes          (raw_core_bytes),
+        .m_valid          (raw_core_valid),
+        .m_ready          (raw_core_ready),
+        .m_last           (raw_core_last),
         .busy             (core_busy),
         .protocol_error   (protocol_error),
         .coefficient_error(coefficient_error)
@@ -115,6 +170,7 @@ module mjpeg_channel #(
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             recovery <= NORMAL;
+            core_reset <= 0;
             restore_index <= 0;
             cache_valid <= 0;
             inflight <= 0;
@@ -129,12 +185,15 @@ module mjpeg_channel #(
             frame_width <= 0;
             frame_height <= 0;
             frame_gray <= 0;
+            frame_skip_threshold <= 0;
+            frame_skip_adaptive <= 0;
             errors <= 0;
         end else begin
             if (cfg_q_valid && cfg_q_ready && cfg_q_value != 0 && cfg_q_recip != 0)
                 cache_valid[cfg_q_addr] <= 1;
             case (recovery)
                 RESET_CORE: begin
+                    core_reset <= 0;
                     restore_index <= 0;
                     recovery <= (&cache_valid) ? READ_TABLE : NORMAL;
                 end
@@ -151,6 +210,8 @@ module mjpeg_channel #(
                 end
             endcase
             if (first_pixel) begin
+                frame_skip_threshold <= cfg_skip_threshold;
+                frame_skip_adaptive <= SPATIAL_ADAPTIVE?cfg_skip_adaptive:1'b0;
                 inflight <= 1;
                 terminated <= 0;
                 aborted <= 0;
@@ -177,6 +238,7 @@ module mjpeg_channel #(
             if (abort_now) begin
                 aborted <= 1;
                 recovery <= RESET_CORE;
+                core_reset <= 1;
                 errors <= {4'd0, config_error, coefficient_error, protocol_error, 1'b1};
             end
             if (frame_done && inflight && terminated) descriptor_pending <= 1;

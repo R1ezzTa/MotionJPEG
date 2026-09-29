@@ -1,22 +1,25 @@
 // YUYV raster -> two samples/cycle, MCU order Y0,Y1,Cb,Cr.
-// Six even/odd memories per bank permit synchronous two-sample reads.
 module raster_to_mcu422 #(
     parameter MAX_WIDTH = 1920
 ) (
     input clk,
     input rst_n,
+
     input [15:0] cfg_width, cfg_height,
     input cfg_gray,
+
     input [15:0] s_data,
     input s_valid,
     output s_ready,
     input s_sof, s_eol, s_eof,
+
     output reg [15:0] m_data,
     output reg m_valid,
     input m_ready,
     output reg [1:0] m_component,
     output reg [4:0] m_pair,
     output reg m_frame_start, m_frame_end,
+
     output reg protocol_error,
     output input_frame_end
 );
@@ -29,8 +32,10 @@ module raster_to_mcu422 #(
     reg [15:0] mcu;
     reg [1:0] block_no;
     reg [4:0] pair_no;
+
     wire dimensions_ok = (cfg_width != 0) && (cfg_width <= MAX_WIDTH) && (cfg_height != 0) &&
         (cfg_height[2:0] == 0) && (cfg_gray ? cfg_width[2:0] == 0 : cfg_width[3:0] == 0);
+
     assign s_ready = !full[wr_bank] && (active || (s_sof && dimensions_ok));
     wire put = s_valid && s_ready;
     wire [15:0] wx = x, wy = y;

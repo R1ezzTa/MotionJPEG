@@ -12,7 +12,7 @@ module board_test_core_clock(
         .CLKOUT0_PHASE(0.0),.STARTUP_WAIT("FALSE")
     ) mmcm(
         .CLKIN1(ref_clk),.CLKFBIN(feedback),.CLKFBOUT(feedback_raw),
-        .CLKOUT0(core_raw),.LOCKED(locked),.PWRDWN(1'b0),.RST(!rst_n)
+        .CLKOUT0(core_raw),.CLKOUT1(),.LOCKED(locked),.PWRDWN(1'b0),.RST(!rst_n)
     );
     BUFG feedback_buffer(.I(feedback_raw),.O(feedback));
     BUFG core_buffer(.I(core_raw),.O(core_clk));

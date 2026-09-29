@@ -35,7 +35,10 @@ class FifoInitializationTests(unittest.TestCase):
         dll=FakeD2xx();stream=self.open(dll,synchronous=True)
         selected=[e for e in dll.events if e[0] in ('FT_SetBitMode','sleep','FT_Purge')]
         self.assertEqual(selected,[('FT_SetBitMode',(0,0)),('sleep',(0.01,)),
-                                   ('FT_SetBitMode',(255,64)),('sleep',(0.05,)),('FT_Purge',())])
+                                   ('FT_Purge',()),('FT_SetBitMode',(255,64)),('sleep',(0.05,))])
+        sync_index=dll.events.index(('FT_SetBitMode',(255,64)))
+        for name in ('FT_SetFlowControl','FT_SetTimeouts','FT_SetLatencyTimer','FT_SetUSBParameters','FT_Purge'):
+            self.assertLess(next(i for i,e in enumerate(dll.events) if e[0]==name),sync_index)
         self.assertEqual(stream.eeprom_info['link_clock_hz'],60000000)
         self.assertFalse(any('WriteEE' in name or 'Program' in name for name,_ in dll.events))
         stream.close()

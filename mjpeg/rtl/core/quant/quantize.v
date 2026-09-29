@@ -25,13 +25,21 @@ module quantize (
     output reg [4:0] m_pair,
     output reg m_frame_start, m_frame_end
 );
-    reg [7:0] qt[0:127];
-    reg [20:0] rt[0:127];
+    (* ram_style="distributed" *) reg [7:0] qt[0:127];
+    (* ram_style="distributed" *) reg [20:0] rt[0:127];
     reg [127:0] loaded;
     // Configuration status may wait two clocks; pixel write enables must not
     // include a 128-bit reduction across the quantizer and frontend.
     (* preserve=1 *) reg [7:0] loaded_groups;
     assign cfg_ready = !busy;
+    // RAM writes must be in a clock-only process. An asynchronous reset process
+    // whose table entries merely hold during reset inhibits Vivado RAM inference.
+    always @(posedge clk) begin
+        if(rst_n && cfg_valid && cfg_ready && cfg_value!=0 && cfg_recip!=0) begin
+            qt[cfg_addr]<=cfg_value;
+            rt[cfg_addr]<=cfg_recip;
+        end
+    end
     genvar group;
     generate
         for (group = 0; group < 8; group = group + 1) begin : table_status
@@ -91,8 +99,6 @@ module quantize (
             if (cfg_valid && cfg_ready) begin
                 if (cfg_value == 0 || cfg_recip == 0) config_error <= 1;
                 else begin
-                    qt[cfg_addr] <= cfg_value;
-                    rt[cfg_addr] <= cfg_recip;
                     loaded[cfg_addr] <= 1;
                 end
             end

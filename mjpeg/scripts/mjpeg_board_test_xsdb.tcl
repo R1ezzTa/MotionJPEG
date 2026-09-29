@@ -1,5 +1,5 @@
-if {$argc != 2} { error "Expected Help|Program|State project_root" }
-lassign $argv action project_root
+if {$argc != 2 && $argc != 3} { error "Expected Help|Program|State project_root ?verified_build_directory?" }
+lassign $argv action project_root verified_build_directory
 set project_root [file normalize $project_root]
 connect -url tcp:127.0.0.1:3122
 puts "MJPEG_TEST_JTAG_TARGETS=[jtag targets]"
@@ -18,10 +18,14 @@ if {$action eq "Help"} {
     targets -set -filter {name == "xc7a35t"}
 
     if {$action eq "Program"} {
-        set pointer [open [file join $project_root reports mjpeg_board_test latest_build.txt] r]
-        fconfigure $pointer -encoding utf-8
-        set output_directory [file normalize [string trim [read $pointer] "\ufeff \t\r\n"]]
-        close $pointer
+        if {$verified_build_directory ne ""} {
+            set output_directory [file normalize $verified_build_directory]
+        } else {
+            set pointer [open [file join $project_root reports mjpeg_board_test latest_build.txt] r]
+            fconfigure $pointer -encoding utf-8
+            set output_directory [file normalize [string trim [read $pointer] "\ufeff \t\r\n"]]
+            close $pointer
+        }
         if {![file exists [file join $output_directory BUILD_PASS.txt]]} { error "Build pass marker missing." }
         set bitstream [file join $output_directory davinci_mjpeg_board_test.bit]
         if {![file exists $bitstream]} { error "Self-test bitstream missing." }

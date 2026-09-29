@@ -1,9 +1,15 @@
 param(
     [ValidateSet('Build','Help','Program','State')][string]$Action = 'Build',
     [string]$VivadoRoot = 'F:/Xilinx/Vivado/2020.1',
-    [string]$SynthesisBuild = ''
+    [string]$SynthesisBuild = '',
+    [ValidateRange(0,5)][int]$CameraProfile=1,
+    [switch]$SpatialSkip,
+    [switch]$SpatialThreshold,
+    [string]$BuildDirectory='',
+    [string]$SourceSnapshot=''
 )
 $ErrorActionPreference = 'Stop'
+if($SpatialThreshold){$SpatialSkip=[switch]$true}
 . "$PSScriptRoot/vivado_env.ps1" -VivadoRoot $VivadoRoot
 $taskPython = "$VivadoRoot/tps/win64/python-2.7.16"
 $env:RDI_PYTHONHOME = $taskPython
@@ -27,10 +33,22 @@ try {
         $taskSourceFiles=@((Get-ChildItem "$taskProjectRoot/rtl" -File -Recurse).FullName + (Get-ChildItem "$taskProjectRoot/data/board_test" -File).FullName + "$taskProjectRoot/constraints/davinci_mjpeg_board_test.xdc" + "$taskProjectRoot/constraints/davinci_mjpeg_cdc.xdc")
         $taskSourceHashes=Get-FileHash -LiteralPath $taskSourceFiles -Algorithm SHA256
         $taskSourceHashes | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_input_hashes.json" -Encoding utf8
-        $taskTclArgs=@($taskProjectRoot,$taskBuild)
+        $taskTclArgs=@($taskProjectRoot,$taskBuild,'-',$CameraProfile,[int]$SpatialSkip.IsPresent,[int]$SpatialThreshold.IsPresent)
+        @{camera_profile=$CameraProfile;single_stream=$true;spatial_skip=$SpatialSkip.IsPresent;spatial_threshold=$SpatialThreshold.IsPresent} | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_profile.json" -Encoding utf8
         $taskCheckpointHash=$null
         if($SynthesisBuild){
             $taskReuseRoot=(Resolve-Path -LiteralPath $SynthesisBuild).Path
+            $taskOldProfile=1
+            if(Test-Path -LiteralPath "$taskReuseRoot/build_profile.json") {
+                $taskOldProfile=(Get-Content -LiteralPath "$taskReuseRoot/build_profile.json" -Raw | ConvertFrom-Json).camera_profile
+            }
+            if($taskOldProfile -ne $CameraProfile){throw 'Cannot reuse synthesis: camera profile changed'}
+            if([bool](Get-Content -LiteralPath "$taskReuseRoot/build_profile.json" -Raw | ConvertFrom-Json).spatial_skip -ne $SpatialSkip.IsPresent){
+                throw 'Cannot reuse synthesis: spatial skip mode changed'
+            }
+            if([bool](Get-Content -LiteralPath "$taskReuseRoot/build_profile.json" -Raw | ConvertFrom-Json).spatial_threshold -ne $SpatialThreshold.IsPresent){
+                throw 'Cannot reuse synthesis: spatial threshold mode changed'
+            }
             $taskReuseHashes=Get-Content -LiteralPath "$taskReuseRoot/build_input_hashes.json" -Raw | ConvertFrom-Json
             if($taskReuseHashes.Count -ne $taskSourceHashes.Count){
                 throw 'Cannot reuse synthesis: source file set changed'
@@ -47,7 +65,7 @@ try {
             }
             $taskCheckpointHash=Get-FileHash -LiteralPath "$taskReuseRoot/synthesized.dcp" -Algorithm SHA256
             $taskCheckpointHash | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/reused_synthesis.json" -Encoding utf8
-            $taskTclArgs+=@($taskCheckpointHash.Path)
+            $taskTclArgs[2]=$taskCheckpointHash.Path
         }
         & "$VivadoRoot/bin/unwrapped/win64.o/vivado.exe" -mode batch -source scripts/build_mjpeg_board_test.tcl -log "$taskBuild/build.log" -journal "$taskBuild/build.jou" -tclargs @taskTclArgs
         if ($LASTEXITCODE -ne 0 -or !(Test-Path -LiteralPath "$taskBuild/BUILD_PASS.txt")) { throw 'Self-test bitstream build failed.' }
@@ -61,22 +79,31 @@ try {
                 throw "Source changed during build: $($taskHash.Path)"
             }
         }
-        Get-FileHash -LiteralPath @($taskSourceFiles + "$taskBuild/davinci_mjpeg_board_test.bit") -Algorithm SHA256 | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_hashes.json" -Encoding utf8
+        Get-FileHash -LiteralPath @($taskSourceFiles + "$taskBuild/davinci_mjpeg_board_test.bit" + "$taskBuild/build_profile.json" + "$taskBuild/board_profile.xdc") -Algorithm SHA256 | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$taskBuild/build_hashes.json" -Encoding utf8
         [System.IO.File]::WriteAllText("$taskReports/latest_build.txt", $taskBuild + [Environment]::NewLine, [System.Text.UTF8Encoding]::new($false))
         Write-Output "MJPEG_TEST_BITSTREAM=$taskBuild/davinci_mjpeg_board_test.bit"
     }
     else {
         if ($Action -eq 'Program') {
-            $taskBuiltDirectory = (Get-Content -LiteralPath "$taskReports/latest_build.txt" -Raw).Trim()
+            $taskBuiltDirectory = if($BuildDirectory){(Resolve-Path -LiteralPath $BuildDirectory).Path}else{
+                (Get-Content -LiteralPath "$taskReports/latest_build.txt" -Raw).Trim()
+            }
             $taskBuiltHashes = Get-Content -LiteralPath "$taskBuiltDirectory/build_hashes.json" -Raw | ConvertFrom-Json
             foreach ($taskHash in $taskBuiltHashes) {
-                if ((Get-FileHash -LiteralPath $taskHash.Path -Algorithm SHA256).Hash -ne $taskHash.Hash) { throw "Built artifact/source changed: $($taskHash.Path)" }
+                $taskVerifyPath=$taskHash.Path
+                if($SourceSnapshot -and ($taskHash.Path -like "$taskProjectRoot\rtl\*" -or
+                    $taskHash.Path -like "$taskProjectRoot\data\board_test\*" -or $taskHash.Path -like "$taskProjectRoot\constraints\*")) {
+                    $taskVerifyPath=Join-Path $SourceSnapshot $taskHash.Path.Substring($taskProjectRoot.Length+1)
+                }
+                if ((Get-FileHash -LiteralPath $taskVerifyPath -Algorithm SHA256).Hash -ne $taskHash.Hash) { throw "Built artifact/source changed: $taskVerifyPath" }
             }
         }
         $taskServer = Start-Process -FilePath "$VivadoRoot/bin/unwrapped/win64.o/hw_server.exe" -ArgumentList '-s','tcp:127.0.0.1:3122','-p0','-I60' -WindowStyle Hidden -PassThru -RedirectStandardOutput "$taskReports/hw_server.stdout.log" -RedirectStandardError "$taskReports/hw_server.stderr.log"
         $taskStdout = "$taskReports/xsdb_$Action.stdout.log"
         $taskStderr = "$taskReports/xsdb_$Action.stderr.log"
-        $taskXsdb = Start-Process -FilePath "$VivadoRoot/bin/unwrapped/win64.o/rdi_xsdb.exe" -ArgumentList 'scripts/mjpeg_board_test_xsdb.tcl',$Action,$taskProjectRoot -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput $taskStdout -RedirectStandardError $taskStderr
+        $taskXsdbArgs=@('scripts/mjpeg_board_test_xsdb.tcl',$Action,$taskProjectRoot)
+        if($Action -eq 'Program'){$taskXsdbArgs+=@($taskBuiltDirectory)}
+        $taskXsdb = Start-Process -FilePath "$VivadoRoot/bin/unwrapped/win64.o/rdi_xsdb.exe" -ArgumentList $taskXsdbArgs -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput $taskStdout -RedirectStandardError $taskStderr
         Get-Content -LiteralPath $taskStdout,$taskStderr
         if ($taskXsdb.ExitCode -ne 0) { throw "XSDB self-test action failed: $($taskXsdb.ExitCode)" }
     }

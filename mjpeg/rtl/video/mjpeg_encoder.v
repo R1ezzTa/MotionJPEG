@@ -2,12 +2,20 @@
 // buffer capture data and honor ready, or signal abort for incomplete frames.
 module mjpeg_encoder #(
     parameter CHANNELS = 2,
-    MAX_WIDTH = 1920
+    MAX_WIDTH = 1920, RESTART_MCUS=0, SPATIAL_SKIP=0, SPATIAL_THRESHOLD=0, SPATIAL_DDR=0,SPATIAL_ADAPTIVE=0
 ) (
+    output [CHANNELS-1:0] mem_cmd_valid,mem_cmd_write,input [CHANNELS-1:0] mem_cmd_ready,
+    output [CHANNELS*28-1:0] mem_cmd_addr,output [CHANNELS*14-1:0] mem_cmd_bytes,
+    output [CHANNELS*128-1:0] mem_w_data,output [CHANNELS*16-1:0] mem_w_keep,
+    output [CHANNELS-1:0] mem_w_valid,mem_w_last,input [CHANNELS-1:0] mem_w_ready,
+    input [CHANNELS*128-1:0] mem_r_data,input [CHANNELS-1:0] mem_r_valid,mem_r_last,output [CHANNELS-1:0] mem_r_ready,
+    input [CHANNELS-1:0] mem_done,mem_error,output [CHANNELS-1:0] mem_fault,
     input clk,
     input rst_n,
     input [CHANNELS-1:0] enable, cfg_gray,
     input [CHANNELS*16-1:0] cfg_width, cfg_height,
+    input [CHANNELS*8-1:0] cfg_skip_threshold,
+    input [CHANNELS-1:0] cfg_skip_adaptive,cfg_skip_pressure,
     input [CHANNELS-1:0] cfg_q_valid,
     output [CHANNELS-1:0] cfg_q_ready,
     input [CHANNELS*7-1:0] cfg_q_addr,
@@ -71,14 +79,22 @@ module mjpeg_encoder #(
                 descriptor_id, timestamp, length, width, height, gray, status
             };
             mjpeg_channel #(
-                .MAX_WIDTH(MAX_WIDTH)
+                .MAX_WIDTH(MAX_WIDTH),.RESTART_MCUS(RESTART_MCUS),.SPATIAL_SKIP(SPATIAL_SKIP),.SPATIAL_THRESHOLD(SPATIAL_THRESHOLD),.SPATIAL_DDR(SPATIAL_DDR),.SPATIAL_ADAPTIVE(SPATIAL_ADAPTIVE)
             ) channel (
+        .mem_cmd_valid(mem_cmd_valid[c]),.mem_cmd_write(mem_cmd_write[c]),.mem_cmd_ready(mem_cmd_ready[c]),.mem_cmd_addr(mem_cmd_addr[c*28+:28]),
+        .mem_cmd_bytes(mem_cmd_bytes[c*14+:14]),.mem_w_data(mem_w_data[c*128+:128]),.mem_w_keep(mem_w_keep[c*16+:16]),.mem_w_valid(mem_w_valid[c]),
+        .mem_w_last(mem_w_last[c]),.mem_w_ready(mem_w_ready[c]),.mem_r_data(mem_r_data[c*128+:128]),.mem_r_valid(mem_r_valid[c]),
+        .mem_r_last(mem_r_last[c]),.mem_r_ready(mem_r_ready[c]),.mem_done(mem_done[c]),.mem_error(mem_error[c]),
+        .mem_fault(mem_fault[c]),
                 .clk           (clk),
                 .rst_n         (rst_n),
                 .enable        (enable[c]),
                 .cfg_width     (cfg_width[c*16+:16]),
                 .cfg_height    (cfg_height[c*16+:16]),
                 .cfg_gray      (cfg_gray[c]),
+                .cfg_skip_threshold(cfg_skip_threshold[c*8+:8]),
+                .cfg_skip_adaptive(cfg_skip_adaptive[c]),
+                .cfg_skip_pressure(cfg_skip_pressure[c]),
                 .cfg_q_valid   (cfg_q_valid[c]),
                 .cfg_q_ready   (cfg_q_ready[c]),
                 .cfg_q_addr    (cfg_q_addr[c*7+:7]),

@@ -1,5 +1,8 @@
 # Local scratch files and previews
 /work/
+1/
+xsim.dir/
+*.pb
 **/docs/backups/
 *.bak
 **/tight_setup_hold_pins.txt
@@ -32,6 +35,10 @@ webtalk*
 !**/reports/**/*.rpt
 !**/reports/**/*.jpg
 !**/reports/**/*.png
+# Per-frame camera dumps stay local; curated samples and doc-referenced frames stay.
+**/reports/**/camera[0-9]_frame[0-9]*.jpg
+!**/reports/**/camera0_frame19.jpg
+!**/reports/**/camera0_frame41.jpg
 **/reports/**/xsim.dir/
 **/reports/**/latest*.txt
 

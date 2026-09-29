@@ -2,9 +2,15 @@
 
 ## 本版接线
 
-`mjpeg_encoder` 是给 A、B、C 合并时使用的内部顶层。默认双路，每路有独立 JPEG 核心；`CHANNELS` 支持 1～4。`mjpeg_synth_top` 为独立综合顶层，将配置和输出改为两条 32 位总线。原来的 `jpeg_encoder`、`jpeg_synth_top` 保留。
+当前达芬奇项目只实现单路摄像头，板级顶层使用 `CHANNELS=1`。以下多通道接口描述是复用核心的扩展参考，不属于本项目验收要求。
+
+`mjpeg_encoder` 是给 A、B、C 合并时使用的内部顶层。通用模块默认双路，每路有独立 JPEG 核心；`CHANNELS` 支持 1～4。`mjpeg_synth_top` 为独立综合顶层，将配置和输出改为两条 32 位总线。原来的 `jpeg_encoder`、`jpeg_synth_top` 保留。
 
 一帧仍编码成一个完整 Baseline JPEG，无帧间预测。压缩质量沿用原量化表接口，每路可在帧间更新。这里的“视频”由连续帧、帧号和时间信息表达；AVI、网络协议、DDR、摄像头驱动不在本模块中。
+
+上述行为对应默认 `SPATIAL_SKIP=0, RESTART_MCUS=0`。可选实验 `SPATIAL_SKIP=1, RESTART_MCUS=4` 将独立 JPEG 区域包装为 SPJ1 DATA/COPY 记录，由主机重建完整 JPEG；压缩输出此时不是可独立打开的 JPEG 文件。彩色区域为固定坐标 64×8 像素，默认只缓存 192 个区域，不增加量化损失。协议及限制见 [空间块跳过实验](空间块跳过实现.md)。
+
+`SPATIAL_THRESHOLD=1` 进一步启用可调死区和 SPJ2：每通道 `cfg_skip_threshold[c*8+:8]` 在该帧首次像素握手时锁存，阈值改变后的帧完整刷新。0 保持精确复用，非零比较反量化系数并允许误差；阈值单位不是像素灰阶。未启用该参数时新增输入不影响旧模式。板级 `spatial_threshold_requested` 来自 USB Txx/LF 命令，详情见 [可调阈值实验](空间块跳过可调阈值.md)。
 
 ## A → B
 

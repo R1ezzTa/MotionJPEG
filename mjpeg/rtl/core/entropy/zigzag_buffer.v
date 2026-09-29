@@ -15,37 +15,30 @@ module zigzag_buffer (
     output reg m_frame_start, m_frame_end
 );
     `include "rtl/generated/zigzag.vh"
-    reg [2047:0] mem;
+    (* ram_style="distributed" *) reg [15:0] even_mem[0:63],odd_mem[0:63];
     reg [3:0] meta[0:1];
     reg [1:0] full;
     reg wb, rb;
     reg [4:0] pair;
-    // Eight local write registers replace a 64-load global data broadcast.
-    // Only the selected group captures input; its four pairs in both banks
-    // consume the registered value one cycle later.
-    (* preserve=1 *) reg [31:0] group_data[0:7];
+    // The natural input order always writes one even and one odd coefficient.
+    // RAMs retain the original one-clock write delay without 128 FF write decoders.
+    reg [31:0] write_data;
     reg write_valid, write_bank;
     reg [4:0] write_pair;
     reg [1:0] write_component;
     reg write_start, write_end;
     assign s_ready = !full[wb];
     wire ce = !m_valid || m_ready;
-    genvar w;
-    generate
-        for (w = 0; w < 8; w = w + 1) begin : write_groups
-            always @(posedge clk)
-                if (s_valid && s_ready && s_pair[4:2] == w)
-                    group_data[w] <= s_data;
+    always @(posedge clk) begin
+        if(s_valid && s_ready) write_data<=s_data;
+        if(write_valid) begin
+            even_mem[{write_bank,write_pair}]<=write_data[15:0];
+            odd_mem[{write_bank,write_pair}]<=write_data[31:16];
         end
-    endgenerate
-    genvar g;
-    generate
-        for (g = 0; g < 128; g = g + 1) begin : storage
-            always @(posedge clk)
-                if (write_valid && (write_bank == g / 64) && (write_pair == (g % 64) / 2))
-                    mem[g*16+:16] <= group_data[(g%64)/8][(g%2)*16+:16];
-        end
-    endgenerate
+    end
+    wire [5:0] index0=zigzag({pair,1'b0}),index1=zigzag({pair,1'b1});
+    wire [15:0] read0=index0[0]?odd_mem[{rb,index0[5:1]}]:even_mem[{rb,index0[5:1]}];
+    wire [15:0] read1=index1[0]?odd_mem[{rb,index1[5:1]}]:even_mem[{rb,index1[5:1]}];
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             full <= 0;
@@ -86,10 +79,7 @@ module zigzag_buffer (
             if (ce) begin
                 m_valid <= full[rb];
                 if (full[rb]) begin
-                    m_data <= {
-                        mem[(rb*64+zigzag({pair, 1'b1}))*16+:16],
-                        mem[(rb*64+zigzag({pair, 1'b0}))*16+:16]
-                    };
+                    m_data <= {read1,read0};
                     m_component <= meta[rb][3:2];
                     m_pair <= pair;
                     m_frame_start <= meta[rb][1] && (pair == 0);

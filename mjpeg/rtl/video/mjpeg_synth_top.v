@@ -3,14 +3,22 @@
 module mjpeg_synth_top #(
     parameter CHANNELS = 2,
     MAX_WIDTH = 1920,
-    COALESCE = 0
+    COALESCE = 0, RESTART_MCUS=0, SPATIAL_SKIP=0, SPATIAL_THRESHOLD=0, SPATIAL_DDR=0,SPATIAL_ADAPTIVE=0
 ) (
+    output [CHANNELS-1:0] mem_cmd_valid,mem_cmd_write,input [CHANNELS-1:0] mem_cmd_ready,
+    output [CHANNELS*28-1:0] mem_cmd_addr,output [CHANNELS*14-1:0] mem_cmd_bytes,
+    output [CHANNELS*128-1:0] mem_w_data,output [CHANNELS*16-1:0] mem_w_keep,
+    output [CHANNELS-1:0] mem_w_valid,mem_w_last,input [CHANNELS-1:0] mem_w_ready,
+    input [CHANNELS*128-1:0] mem_r_data,input [CHANNELS-1:0] mem_r_valid,mem_r_last,output [CHANNELS-1:0] mem_r_ready,
+    input [CHANNELS-1:0] mem_done,mem_error,output [CHANNELS-1:0] mem_fault,
     input clk,
     input rst_n,
     input [2:0] cfg_cmd,
     input [1:0] cfg_channel,
     input [31:0] cfg_data,
     input cfg_valid,
+    input [CHANNELS*8-1:0] cfg_skip_threshold,
+    input [CHANNELS-1:0] cfg_skip_adaptive,cfg_skip_pressure,
     output cfg_ready,
     input [CHANNELS*16-1:0] s_data,
     input [CHANNELS-1:0] s_valid,
@@ -86,12 +94,20 @@ module mjpeg_synth_top #(
     wire [7:0] descriptor_status;
     mjpeg_encoder #(
         .CHANNELS (CHANNELS),
-        .MAX_WIDTH(MAX_WIDTH)
+        .MAX_WIDTH(MAX_WIDTH),.RESTART_MCUS(RESTART_MCUS),.SPATIAL_SKIP(SPATIAL_SKIP),.SPATIAL_THRESHOLD(SPATIAL_THRESHOLD),.SPATIAL_DDR(SPATIAL_DDR),.SPATIAL_ADAPTIVE(SPATIAL_ADAPTIVE)
     ) encoder (
+        .mem_cmd_valid(mem_cmd_valid),.mem_cmd_write(mem_cmd_write),.mem_cmd_ready(mem_cmd_ready),.mem_cmd_addr(mem_cmd_addr),
+        .mem_cmd_bytes(mem_cmd_bytes),.mem_w_data(mem_w_data),.mem_w_keep(mem_w_keep),.mem_w_valid(mem_w_valid),
+        .mem_w_last(mem_w_last),.mem_w_ready(mem_w_ready),.mem_r_data(mem_r_data),.mem_r_valid(mem_r_valid),
+        .mem_r_last(mem_r_last),.mem_r_ready(mem_r_ready),.mem_done(mem_done),.mem_error(mem_error),
+        .mem_fault(mem_fault),
         .clk           (clk),
         .rst_n         (rst_n),
         .enable        (enabled),
         .cfg_gray      (gray),
+        .cfg_skip_threshold(cfg_skip_threshold),
+        .cfg_skip_adaptive(cfg_skip_adaptive),
+        .cfg_skip_pressure(cfg_skip_pressure),
         .cfg_width     (widths),
         .cfg_height    (heights),
         .cfg_q_valid   (q_valid),
@@ -136,7 +152,17 @@ module mjpeg_synth_top #(
     wire [31:0] packed_id;
     wire packet_desc_ready;
     assign descriptor_ready=packet_desc_ready && collector_idle;
-    generate if(COALESCE) begin : aggregate
+    // Only the active DDR skip stage emits one byte per beat. An independent
+    // JPEG core emits multiple bytes even when the board retains its DDR IP.
+    generate if(COALESCE && SPATIAL_SKIP && SPATIAL_DDR) begin : byte_aggregate
+        mjpeg_byte_coalescer collector(
+            .clk(clk),.rst_n(rst_n),.s_data(payload),.s_bytes(payload_bytes),
+            .s_first(payload_first),.s_last(payload_last),.s_valid(payload_valid),.s_ready(payload_ready),
+            .s_channel(payload_channel),.s_frame_id(payload_id),.flush(descriptor_valid),
+            .m_data(packed_payload),.m_bytes(packed_bytes),.m_first(packed_first),.m_last(packed_last),
+            .m_valid(packed_valid),.m_ready(packed_ready),.m_channel(packed_channel),.m_frame_id(packed_id),
+            .idle(collector_idle));
+    end else if(COALESCE) begin : aggregate
         mjpeg_payload_coalescer collector(
             .clk(clk),.rst_n(rst_n),.s_data(payload),.s_bytes(payload_bytes),
             .s_first(payload_first),.s_last(payload_last),.s_valid(payload_valid),.s_ready(payload_ready),

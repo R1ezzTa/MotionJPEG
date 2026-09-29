@@ -44,9 +44,6 @@ class FtdiFifo:
             if self.eeprom_info['IsFifo']!=1 or any(values[offset] for offset in (36,37,38)):
                 raise ValueError('Board FT232H EEPROM is not configured for FT245 FIFO')
             if synchronous:
-                # Volatile interface selection only: never program EEPROM.
-                self.check(self.dll.FT_SetBitMode(self.handle,0xff,0x40),'FT_SetBitMode(sync FIFO)')
-                time.sleep(0.05)
                 self.check(self.dll.FT_SetFlowControl(self.handle,0x0100,0,0),'FT_SetFlowControl')
             self.check(self.dll.FT_SetTimeouts(self.handle,200,2000),'FT_SetTimeouts')
             self.check(self.dll.FT_SetLatencyTimer(self.handle,2),'FT_SetLatencyTimer')
@@ -54,6 +51,13 @@ class FtdiFifo:
             self.eeprom_info['transport']='FT245 synchronous FIFO' if synchronous else 'FT245 asynchronous FIFO'
             self.eeprom_info['link_clock_hz']=60000000 if synchronous else 50000000
             self.reset_input_buffer()
+            if synchronous:
+                # Purge while CLKOUT is stopped. Board keys can retain RUN
+                # across link reset, so purging after clock restart could
+                # erase START and leave the receiver inside a JPEG block.
+                # Volatile interface selection only: never program EEPROM.
+                self.check(self.dll.FT_SetBitMode(self.handle,0xff,0x40),'FT_SetBitMode(sync FIFO)')
+                time.sleep(0.05)
         except Exception:
             self.close();raise
 

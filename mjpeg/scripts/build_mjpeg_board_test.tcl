@@ -1,10 +1,27 @@
-if {$argc!=2 && $argc!=3} {error "Expected project_root output_directory ?synthesis_checkpoint?"}
-lassign $argv project_root output_directory synthesis_checkpoint
+if {$argc<4 || $argc>6} {error "Expected project_root output_directory synthesis_checkpoint camera_profile ?spatial_skip? ?spatial_threshold?"}
+lassign $argv project_root output_directory synthesis_checkpoint camera_profile spatial_skip spatial_threshold
+if {$spatial_skip==""} {set spatial_skip 0}
+if {$spatial_threshold==""} {set spatial_threshold 0}
+if {$spatial_threshold!=0 && $spatial_threshold!=1} {error "Invalid spatial threshold mode"}
+if {$spatial_threshold && !$spatial_skip} {error "Threshold requires spatial skip"}
+if {$spatial_skip!=0 && $spatial_skip!=1} {error "Invalid spatial skip mode"}
+if {$synthesis_checkpoint=="-"} {set synthesis_checkpoint ""}
+if {$camera_profile<0 || $camera_profile>5} {error "Unsupported camera profile"}
 set project_root [file normalize $project_root]
 set output_directory [file normalize $output_directory]
 cd $project_root
 file mkdir $output_directory
 set_param general.maxThreads 2
+set cam_period [lindex {40.000 20.000 23.500 13.250 13.250 13.250} $camera_profile]
+set fd [open [file join $project_root constraints davinci_mjpeg_board_test.xdc] r]
+set board_constraints [read $fd]
+close $fd
+regsub {create_clock -name cam_clk -period [0-9.]+} $board_constraints "create_clock -name cam_clk -period $cam_period" board_constraints
+set profile_xdc [file join $output_directory board_profile.xdc]
+set fd [open $profile_xdc w]
+puts $fd $board_constraints
+close $fd
+puts "CAMERA_PROFILE=$camera_profile CAM_CONSTRAINED_PERIOD=$cam_period"
 proc collect_verilog {directory} {
     set result [glob -nocomplain -directory $directory *.v]
     foreach subdir [glob -nocomplain -type d -directory $directory *] {
@@ -15,13 +32,13 @@ proc collect_verilog {directory} {
 if {$synthesis_checkpoint!=""} {
     open_checkpoint $synthesis_checkpoint
     reset_timing
-    read_xdc [file join $project_root constraints davinci_mjpeg_board_test.xdc]
+    read_xdc $profile_xdc
 } else {
     create_project -in_memory -part xc7a35tfgg484-2
     read_verilog [collect_verilog [file join $project_root rtl]]
     set_property include_dirs [list $project_root [file join $project_root rtl generated]] [current_fileset]
-    read_xdc [file join $project_root constraints davinci_mjpeg_board_test.xdc]
-    synth_design -top davinci_mjpeg_board_test_top -part xc7a35tfgg484-2
+    read_xdc $profile_xdc
+    synth_design -top davinci_mjpeg_board_test_top -part xc7a35tfgg484-2 -generic [list REAL_CAMERA=1 CAMERA_PROFILE=$camera_profile SPATIAL_SKIP=$spatial_skip SPATIAL_THRESHOLD=$spatial_threshold]
 }
 read_xdc [file join $project_root constraints davinci_mjpeg_cdc.xdc]
 set rx_ram_clocks [get_pins -hier -filter {REF_PIN_NAME == CLK && NAME =~ *rx_fifo/memory_reg*/CLK}]
@@ -44,6 +61,13 @@ foreach fifo_name {tx_fifo rx_fifo} {
     }
 }
 write_checkpoint -force [file join $output_directory synthesized.dcp]
+report_cdc -details -file [file join $output_directory cdc_synth.rpt]
+set cdc_handle [open [file join $output_directory cdc_synth.rpt] r]
+set cdc_text [read $cdc_handle]
+close $cdc_handle
+if {[regexp {CDC-[0-9]+\s+Critical} $cdc_text]} {
+    error "Critical CDC before implementation; inspect cdc_synth.rpt"
+}
 report_utilization -file [file join $output_directory utilization_synth.rpt]
 opt_design -directive Explore
 place_design -directive Explore

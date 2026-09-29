@@ -83,10 +83,26 @@ module entropy_packer (
             next_end = 1;
         end
     end
+    // Each position is j + the number of preceding FF bytes.
+    // Thus j<=position<=2*j and valid source positions are unique.
+    // Gather with OR, avoiding the wide priority scatter mux.
     always @* begin
         packed = 0;
-        for (i = 0; i < 8; i = i + 1)
-        if (i < n4) packed[positions[i]*8+:8] = raw4[63-i*8-:8];
+        packed[0+:8] = ({8{(n4>4'd0) && (positions[0]==4'd0)}} & raw4[63-:8]);
+        packed[8+:8] = ({8{(n4>4'd1) && (positions[1]==4'd1)}} & raw4[55-:8]);
+        packed[16+:8] = ({8{(n4>4'd1) && (positions[1]==4'd2)}} & raw4[55-:8]) | ({8{(n4>4'd2) && (positions[2]==4'd2)}} & raw4[47-:8]);
+        packed[24+:8] = ({8{(n4>4'd2) && (positions[2]==4'd3)}} & raw4[47-:8]) | ({8{(n4>4'd3) && (positions[3]==4'd3)}} & raw4[39-:8]);
+        packed[32+:8] = ({8{(n4>4'd2) && (positions[2]==4'd4)}} & raw4[47-:8]) | ({8{(n4>4'd3) && (positions[3]==4'd4)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd4)}} & raw4[31-:8]);
+        packed[40+:8] = ({8{(n4>4'd3) && (positions[3]==4'd5)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd5)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd5)}} & raw4[23-:8]);
+        packed[48+:8] = ({8{(n4>4'd3) && (positions[3]==4'd6)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd6)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd6)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd6)}} & raw4[15-:8]);
+        packed[56+:8] = ({8{(n4>4'd4) && (positions[4]==4'd7)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd7)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd7)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd7)}} & raw4[7-:8]);
+        packed[64+:8] = ({8{(n4>4'd4) && (positions[4]==4'd8)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd8)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd8)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd8)}} & raw4[7-:8]);
+        packed[72+:8] = ({8{(n4>4'd5) && (positions[5]==4'd9)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd9)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd9)}} & raw4[7-:8]);
+        packed[80+:8] = ({8{(n4>4'd5) && (positions[5]==4'd10)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd10)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd10)}} & raw4[7-:8]);
+        packed[88+:8] = ({8{(n4>4'd6) && (positions[6]==4'd11)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd11)}} & raw4[7-:8]);
+        packed[96+:8] = ({8{(n4>4'd6) && (positions[6]==4'd12)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd12)}} & raw4[7-:8]);
+        packed[104+:8] = ({8{(n4>4'd7) && (positions[7]==4'd13)}} & raw4[7-:8]);
+        packed[112+:8] = ({8{(n4>4'd7) && (positions[7]==4'd14)}} & raw4[7-:8]);
     end
     integer j;
     always @(posedge clk or negedge rst_n) begin

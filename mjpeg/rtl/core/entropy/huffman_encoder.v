@@ -19,7 +19,11 @@ module huffman_encoder (
     wire ce = !m_valid || m_ready;
     assign s_ready = ce;
     reg va, vb, v1, v2, v3, ea, eb, e1, e2, e3;
-    reg [20:0] yd[0:4], ya[0:4], cd[0:4], ca[0:4], chosen[0:4];
+    (* rom_style="block" *) reg [20:0] lookup_rom[0:1023];
+    reg [20:0] lookup_q[0:4],chosen[0:4];
+    integer init_key;
+    initial for(init_key=0;init_key<1024;init_key=init_key+1)
+        lookup_rom[init_key]=huffman(init_key);
     reg [10:0] amp_a[0:4], amp_b[0:4];
     reg [3:0] size_a[0:4], size_b[0:4];
     reg [4:0] dc_a, active_a, active_b;
@@ -33,6 +37,14 @@ module huffman_encoder (
     reg [103:0] group03;
     reg [6:0] len03;
     integer j;
+    genvar lane;
+    generate for(lane=0;lane<5;lane=lane+1) begin: rom_lanes
+        wire [7:0] symbol=s_dc[lane]?{4'd0,s_symbols[lane*8+:4]}:s_symbols[lane*8+:8];
+        // Pure synchronous read, no asynchronous output reset, so the unified
+        // YDC/YAC/CDC/CAC lookup maps directly into one BRAM per lane.
+        always @(posedge clk)
+            if(ce && s_valid) lookup_q[lane]<=lookup_rom[{s_chroma,!s_dc[lane],symbol}];
+    end endgenerate
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             va <= 0;
@@ -66,10 +78,6 @@ module huffman_encoder (
             for (j = 0; j < 5; j = j + 1) begin
                 code1[j] <= 0;
                 len1[j] <= 0;
-                yd[j] <= 0;
-                ya[j] <= 0;
-                cd[j] <= 0;
-                ca[j] <= 0;
                 chosen[j] <= 0;
                 amp_a[j] <= 0;
                 amp_b[j] <= 0;
@@ -91,10 +99,6 @@ module huffman_encoder (
             m_frame_end <= e3;
             if (s_valid)
                 for (j = 0; j < 5; j = j + 1) begin
-                    yd[j] <= huffman({6'd0, s_symbols[j*8+:4]});
-                    cd[j] <= huffman({2'b10, 4'd0, s_symbols[j*8+:4]});
-                    ya[j] <= huffman({2'b01, s_symbols[j*8+:8]});
-                    ca[j] <= huffman({2'b11, s_symbols[j*8+:8]});
                     amp_a[j] <= s_amplitudes[j*11+:11];
                     size_a[j] <= s_sizes[j*4+:4];
                     active_a[j] <= j < s_count;
@@ -105,7 +109,7 @@ module huffman_encoder (
             end
             if (va)
                 for (j = 0; j < 5; j = j + 1) begin
-                    chosen[j] <= chroma_a ? (dc_a[j] ? cd[j] : ca[j]) : (dc_a[j] ? yd[j] : ya[j]);
+                    chosen[j] <= lookup_q[j];
                     amp_b[j] <= amp_a[j];
                     size_b[j] <= size_a[j];
                     active_b[j] <= active_a[j];

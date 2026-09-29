@@ -2,6 +2,31 @@
 # Vivado derives the 10ns core clock from the MMCM configuration.
 create_clock -name sys_clk -period 20.000 [get_ports sys_clk]
 create_clock -name usb_clk -period 16.667 [get_ports usb_clk_60m]
+# OV5640 VGA30 uses nominal 48 MHz PCLK; constrain 50 MHz with allowance.
+create_clock -name cam_clk -period 20.000 [get_ports cam_pclk]
+set_property -dict {PACKAGE_PIN F14 IOSTANDARD LVCMOS33} [get_ports cam_pclk]
+set_property -dict {PACKAGE_PIN C15 IOSTANDARD LVCMOS33} [get_ports cam_rst_n]
+set_property -dict {PACKAGE_PIN F16 IOSTANDARD LVCMOS33} [get_ports cam_pwdn]
+set_property -dict {PACKAGE_PIN C14 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[0]}]
+set_property -dict {PACKAGE_PIN B13 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[1]}]
+set_property -dict {PACKAGE_PIN C13 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[2]}]
+set_property -dict {PACKAGE_PIN D15 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[3]}]
+set_property -dict {PACKAGE_PIN D14 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[4]}]
+set_property -dict {PACKAGE_PIN E14 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[5]}]
+set_property -dict {PACKAGE_PIN E13 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[6]}]
+set_property -dict {PACKAGE_PIN F13 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports {cam_data[7]}]
+set_property -dict {PACKAGE_PIN E16 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports cam_vsync]
+set_property -dict {PACKAGE_PIN B15 IOSTANDARD LVCMOS33 IOB TRUE} [get_ports cam_href]
+set_property -dict {PACKAGE_PIN D16 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports cam_scl]
+set_property -dict {PACKAGE_PIN B16 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports cam_sda]
+# DVP falling launch reference. Low-rate profiles sample rising; HD profiles
+# sample falling with a full-cycle budget. 10ns max/0ns min is a conservative
+# engineering assumption: OV5640 DS v2.01 does not specify DVP data tPD limits.
+# Sign off both setup and hold; do not false-path data/HREF/VSYNC.
+set_input_delay -clock cam_clk -clock_fall -max 10.000 [get_ports {cam_data[*] cam_vsync cam_href}]
+set_input_delay -clock cam_clk -clock_fall -min 0.000 [get_ports {cam_data[*] cam_vsync cam_href}]
+set_clock_uncertainty 0.250 [get_clocks cam_clk]
+set_false_path -to [get_ports {cam_rst_n cam_pwdn cam_scl cam_sda}]
 set_property -dict {PACKAGE_PIN Y4 IOSTANDARD LVCMOS33} [get_ports usb_clk_60m]
 set_property -dict {PACKAGE_PIN R4 IOSTANDARD LVCMOS33} [get_ports sys_clk]
 set_property -dict {PACKAGE_PIN U2 IOSTANDARD LVCMOS33} [get_ports sys_rst_n]
@@ -23,6 +48,10 @@ set_property -dict {PACKAGE_PIN R2 IOSTANDARD LVCMOS33} [get_ports {led[0]}]
 set_property -dict {PACKAGE_PIN R3 IOSTANDARD LVCMOS33} [get_ports {led[1]}]
 set_property -dict {PACKAGE_PIN V2 IOSTANDARD LVCMOS33} [get_ports {led[2]}]
 set_property -dict {PACKAGE_PIN Y2 IOSTANDARD LVCMOS33} [get_ports {led[3]}]
+set_property -dict {PACKAGE_PIN T1 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports {key[0]}]
+set_property -dict {PACKAGE_PIN U1 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports {key[1]}]
+set_property -dict {PACKAGE_PIN W2 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports {key[2]}]
+set_property -dict {PACKAGE_PIN T3 IOSTANDARD LVCMOS33 PULLUP TRUE} [get_ports {key[3]}]
 # Six common-anode digits. Official vendor example maps select bit0 to units.
 set_property -dict {PACKAGE_PIN J15 IOSTANDARD LVCMOS33} [get_ports {seg_sel[0]}]
 set_property -dict {PACKAGE_PIN H17 IOSTANDARD LVCMOS33} [get_ports {seg_sel[1]}]

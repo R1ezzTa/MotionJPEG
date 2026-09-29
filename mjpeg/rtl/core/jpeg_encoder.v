@@ -1,7 +1,7 @@
 // Baseline sequential JPEG, 8-bit grayscale or full-range YUYV 4:2:2.
 // Byte 0 is m_data[7:0]; m_bytes valid contiguous bytes; m_last carries EOI.
 module jpeg_encoder #(
-    parameter MAX_WIDTH = 1920
+    parameter MAX_WIDTH = 1920, RESTART_MCUS=0
 ) (
     input clk,
     input rst_n,
@@ -184,7 +184,24 @@ module jpeg_encoder #(
         .m_frame_start(dfs),
         .m_frame_end  (dfe)
     );
-    symbol_encoder symbols_core (
+    // Restart groups follow spatial MCU order. Quantized coefficients and
+    // original SOF remain unchanged; only DC prediction/entropy boundaries reset.
+    reg [15:0] interval_mcus;
+    reg [1:0] interval_block;
+    wire last_mcu_pair = dp==31 && (gray || interval_block==3);
+    wire interval_end = RESTART_MCUS!=0 && last_mcu_pair &&
+        (interval_mcus==RESTART_MCUS-1 || dfe);
+    wire interval_start = RESTART_MCUS!=0 && dp==0 && interval_block==0 && interval_mcus==0;
+    always @(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin interval_mcus<=0;interval_block<=0;end
+        else if(d_valid && d_ready && dp==31) begin
+            if(last_mcu_pair) begin
+                interval_block<=0;
+                interval_mcus<=(interval_end || dfe)?0:interval_mcus+1'b1;
+            end else interval_block<=interval_block+1'b1;
+        end
+    end
+    symbol_encoder #(.RESTART_ENABLE(RESTART_MCUS!=0)) symbols_core (
         .clk              (clk),
         .rst_n            (rst_n),
         .s_data           (d_data),
@@ -193,7 +210,8 @@ module jpeg_encoder #(
         .s_component      (dc),
         .s_pair           (dp),
         .s_frame_start    (dfs),
-        .s_frame_end      (dfe),
+        .s_frame_end      (dfe || interval_end),
+        .s_restart        (interval_start),
         .m_symbols        (symbols),
         .m_amplitudes     (amplitudes),
         .m_sizes          (sizes),
@@ -281,7 +299,7 @@ module jpeg_encoder #(
         .m_valid(formatter_input_valid),
         .m_ready(formatter_input_ready)
     );
-    jpeg_formatter format (
+    jpeg_formatter #(.RESTART_MCUS(RESTART_MCUS)) format (
         .clk         (clk),
         .rst_n       (rst_n),
         .start       (formatter_start),

@@ -1,10 +1,18 @@
 # MotionJPEG
 
-发布版本：**1.2.0**。初始基线：[1.0.0](https://github.com/R1ezzTa/MotionJPEG/tree/1.0.0)。本版包含已上板验证的 1 KB 大块封包、链路计数、单周期像素输入、同步 FT245/跨时钟缓冲及 100 MHz 编码时钟升级。
+当前主工程已迁移为 **无 DDR3 的独立 JPEG 图像链路**，入口 `mjpeg/scripts/run_camera_build.ps1`，顶层 `davinci_mjpeg_camera_top`。保留空间降噪和四种预处理模式，增加算术流水线并行、减少降噪乘法器；构建要求 LUT 使用不超过 80%。新结构与最终验证记录见 [无 DDR3 图像链路](mjpeg/docs/无DDR3图像链路.md)。下方带旧固件编号或 DDR3 的结果为历史记录。
 
-在正点原子达芬奇 FPGA（`xc7a35tfgg484-2`）上运行纯 FPGA JPEG/MJPEG 编码，主机负责接收、解码和显示。当前版本使用板内模拟图像输入，不开发 ARM 部分。
+当前已上板固件 `full_20260929_170515`：LUT **74.92%**、FF **46.95%**、BRAM **72%**、DSP **51.11%**；3480 帧独立解码、1080p30、零 FIFO 溢出。详情见[本次验收](mjpeg/reports/camera/acceptance_20260929/summary.json)。
+
+发布版本：**2.0.0**。初始基线：[1.0.0](https://github.com/R1ezzTa/MotionJPEG/tree/1.0.0)。本版将主工程迁移为无 DDR3 的真实 OV5640 摄像头链路：RAW Bayer 输入、四模式板内预处理、稳健降噪 v2、Q60/Q75/Q85 质量切换与板载按键控制，1080p30 实板零丢帧。1.2.0 及更早的模拟输入固件为历史记录。
+
+在正点原子达芬奇 FPGA（`xc7a35tfgg484-2`）上运行纯 FPGA JPEG/MJPEG 编码，主机负责接收、解码和显示，不开发 ARM 部分。已发布的 1.2.0 使用板内模拟图像输入；当前工作区已接入单路真实 OV5640，1080p30 的此前 60 秒测试验证 1796 帧全部解码、稳态零丢帧和零溢出，该场景 JPEG 带宽相对 RAW8 输入降低 73.87%。2026-09-28 已定位并修正 ISP 翻转与光学 RAW 相位不匹配导致的主要绿调，新固件已下载并再次通过 1170 帧、约 30.002 fps、零溢出验证。残余冷色、暗光噪声及完整色彩校准仍待评估，详见 [RAW 偏色定位与修正](mjpeg/docs/RAW偏色定位与修正.md)及 [OV5640 渐进验收](mjpeg/docs/OV5640渐进验收.md)。
 
 ## 工程目录
+
+板载交互已接入并经用户现场确认通过：KEY0 启停，KEY1 切 Q60/Q75/Q85，KEY2 补光约 2 秒，KEY3 停止并关灯，LED 指示状态。[PC 查看器](mjpeg/host/camera_viewer.py) 的“开启传输／停止传输”按钮也可控制板卡，与 KEY0 联动；停止后窗口保持连接，显示板卡实际状态。操作见 [PC 查看器说明](mjpeg/host/README.md)，详细按键映射见 [板载控制说明](mjpeg/docs/板载按键摄像头控制.md)。
+
+当前链路采用逐帧独立 JPEG，可切换彩色、灰度、二值化和 Sobel 边缘模式，模式及两个 0～255 阈值在板卡上按完整帧生效，PC 提供按钮和实际状态读回，见 [板内图像预处理](mjpeg/docs/板内图像预处理.md)。保留可关闭的板内稳健降噪 v2：YCbCr 3×3 中值混合，再进行两级亮度引导色度平滑。强度 0 保留原像素，支持 0～255 和 8/16/32 快捷档位；强度 32 完全使用中值，之后增加强度仅放宽色度平滑的亮度门限。新构建关闭帧间参考和自适应阈值。实现与新实板验收见 [板内稳健降噪](mjpeg/docs/板内稳健降噪.md)。首版 RGB sigma 的载荷虽下降，但用户未看到明显噪点改善，其反馈和原实验保留为历史；不以压缩率代替画质评价。此前复用实验见 [板内自适应阈值](mjpeg/docs/板内自适应阈值.md)和 [DDR3 参考缓存](mjpeg/docs/DDR3参考缓存.md)。
 
 - [mjpeg](mjpeg/README.md)：达芬奇 Vivado 板级工程、RTL、引脚约束、主机程序和上板测试。
 - [xilinx_mjpeg](xilinx_mjpeg/README.md)：Xilinx 移植基线、独立 JPEG 参考模型和仿真向量；达芬奇参考生成脚本依赖此目录。
@@ -20,7 +28,7 @@
 | 1280×720 | 45 | 1.478 |
 | 1920×1080 | 20 | 0.666 |
 
-初始吞吐包含调试封包和 FT232H 异步 FIFO 输出的背压，不代表 JPEG 编码核独立吞吐。真实摄像头和 DDR 缓冲尚待集成；数码管实物显示外观待现场确认。
+初始吞吐包含调试封包和 FT232H 异步 FIFO 输出的背压，不代表 JPEG 编码核独立吞吐。当时真实摄像头和 DDR 缓冲尚未集成；当前进展见上方真实 OV5640 和 DDR3 实板记录。
 
 ## 1.1.0 吞吐优化
 
@@ -43,9 +51,9 @@
 ```powershell
 ./mjpeg/scripts/run_import.ps1 -BoardTest
 ./mjpeg/scripts/run_sync_fifo_sim.ps1
-./mjpeg/scripts/run_mjpeg_board_test.ps1
+./mjpeg/scripts/run_camera_build.ps1 -Action Full
 ```
 
-主机侧使用 Python 3；参考生成需要 NumPy 和 Pillow，USB 回读需要 FTDI D2XX 驱动。详细命令见各目录的 README 和测试文档。当前上板验证在 Windows 完成，Ubuntu 接收路径尚未实际验证。
+主机侧使用 Python 3；参考生成需要 NumPy 和 Pillow，USB 回读需要 FTDI D2XX 驱动。详细命令见各目录的 README 和测试文档。上板验证在 Windows 完成，Ubuntu 接收路径尚未实际验证。
 
 仓库保留源代码、Vivado 工程、测试数据、报告摘要及样图。Vivado 缓存、bitstream、仿真生成物、USB 原始抓包和临时工作目录保留在本地，由 `.gitignore` 排除；报告中的部分构建路径和哈希对应原测试机器的历史产物。

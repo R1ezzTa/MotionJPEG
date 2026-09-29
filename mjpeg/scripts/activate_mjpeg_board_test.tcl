@@ -5,8 +5,8 @@ set argv {}
 source [file join [file dirname [info script]] import_sources.tcl]
 set argv $task_argv
 set_property TOP davinci_mjpeg_board_test_top [get_filesets sources_1]
-set_property GENERIC {} [get_filesets sources_1]
-foreach task_mem {pixels.mem quant.mem} {
+set_property GENERIC {REAL_CAMERA=1} [get_filesets sources_1]
+foreach task_mem {pixels.mem quant.mem camera_quant.mem} {
     set task_path [file join $project_root data board_test $task_mem]
     if {[llength [get_files -quiet $task_path]]==0} {add_files -fileset sources_1 -norecurse $task_path}
 }
@@ -21,14 +21,14 @@ set task_tb [file join $project_root tb tb_fps_peripherals.sv]
 if {[llength [get_files -quiet $task_tb]]==0} {add_files -fileset sim_1 -norecurse $task_tb}
 set task_tb [file join $project_root tb tb_mjpeg_progressive.sv]
 if {[llength [get_files -quiet $task_tb]]==0} {add_files -fileset sim_1 -norecurse $task_tb}
-foreach task_tb_name {tb_mjpeg_payload_coalescer.sv tb_mjpeg_core_throughput.sv tb_mjpeg_block_transport.sv tb_board_test_async_fifo.sv tb_davinci_mjpeg_sync_test.sv} {
+foreach task_tb_name {tb_mjpeg_payload_coalescer.sv tb_mjpeg_core_throughput.sv tb_mjpeg_block_transport.sv tb_board_test_async_fifo.sv tb_davinci_mjpeg_sync_test.sv tb_ov5640_init.sv tb_camera_pixel_fifo.sv tb_ov5640_dvp_capture.sv tb_mjpeg_real_camera.sv tb_bayer_bggr.sv tb_ov5640_sample_clock.sv tb_camera_board_controls.sv tb_mjpeg_board_controls.sv tb_jpeg_restart.sv tb_mjpeg_spatial_board.sv tb_mjpeg_spatial_throughput.sv tb_jpeg_threshold.sv tb_mjpeg_threshold_throughput.sv tb_jpeg_coefficient_decoder.sv} {
     set task_tb [file join $project_root tb $task_tb_name]
     if {[llength [get_files -quiet $task_tb]]==0} {add_files -fileset sim_1 -norecurse $task_tb}
 }
-set_property TOP tb_davinci_mjpeg_sync_test [get_filesets sim_1]
+set_property TOP tb_mjpeg_real_camera [get_filesets sim_1]
 set_property GENERIC {} [get_filesets sim_1]
 update_compile_order -fileset sources_1
 update_compile_order -fileset sim_1
 report_compile_order -fileset sources_1 -used_in synthesis -file [file join $project_root reports board_test_compile_order.rpt]
-puts "BOARD_TEST_PROJECT_ACTIVE: davinci_mjpeg_board_test_top, MMCM core 100 MHz / USB_SLAVE FT245 sync 60 MHz, CDC buffers"
+puts "BOARD_TEST_PROJECT_ACTIVE: davinci_mjpeg_board_test_top REAL_CAMERA=1, OV5640 VGA YUYV, MMCM core 100 MHz / USB_SLAVE FT245 sync 60 MHz"
 if {$task_batch} {close_project}

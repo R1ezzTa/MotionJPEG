@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 1190" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <defs>
+    <marker id="aB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 z" fill="#1F4E79"/></marker>
+    <marker id="aO" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 z" fill="#B85C00"/></marker>
+    <marker id="aR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 z" fill="#C0392B"/></marker>
+    <marker id="aG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 z" fill="#666666"/></marker>
+    <marker id="aP" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 z" fill="#8E44AD"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1640" height="1190" fill="#FAFCFF"/>
+
+  <text x="820" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1F4E79">达芬奇 MJPEG 板测系统 · 模块连接总图（v1.2.0：100 MHz 编码 + FT245 同步）</text>
+
+  <!-- ================= 域容器 ================= -->
+  <rect x="70" y="90" width="690" height="1010" rx="12" fill="#EAF2FB" stroke="#2E6DA4" stroke-width="2"/>
+  <text x="86" y="116" font-size="14" font-weight="bold" fill="#2E6DA4">编码域 core_clk = 100 MHz（MMCM 50→100，LOCKED 参与复位）</text>
+  <rect x="900" y="90" width="430" height="810" rx="12" fill="#FDF1E3" stroke="#C77A3A" stroke-width="2"/>
+  <text x="916" y="116" font-size="14" font-weight="bold" fill="#C77A3A">USB 域 usb_clk = 60 MHz（FT232H CLKOUT → BUFG）</text>
+  <text x="830" y="205" text-anchor="middle" font-size="12" fill="#666666">CDC 跨时钟域</text>
+
+  <!-- ================= 时钟岛 ================= -->
+  <rect x="90" y="130" width="215" height="54" rx="8" fill="#FFFFFF" stroke="#2E6DA4" stroke-width="2"/>
+  <text x="197" y="152" text-anchor="middle" font-size="11" font-weight="bold">board_test_core_clock</text>
+  <text x="197" y="170" text-anchor="middle" font-size="10" fill="#444">MMCM 50→100 MHz</text>
+  <rect x="460" y="130" width="280" height="54" rx="8" fill="#FFFFFF" stroke="#C0392B" stroke-width="2"/>
+  <text x="600" y="152" text-anchor="middle" font-size="11" font-weight="bold">board_test_usb_clock_guard</text>
+  <text x="600" y="170" text-anchor="middle" font-size="10" fill="#444">CLKOUT 心跳丢失 1ms → run_rst_n</text>
+
+  <!-- ================= 发动机行 ================= -->
+  <rect x="90" y="240" width="130" height="64" rx="8" fill="#FFFFFF" stroke="#7D8B99" stroke-width="1.8"/>
+  <text x="155" y="262" text-anchor="middle" font-size="10" font-weight="bold">board_test_gradient</text>
+  <text x="155" y="278" text-anchor="middle" font-size="10" fill="#444">组合渐变源</text>
+  <text x="155" y="292" text-anchor="middle" font-size="9" fill="#666">(x,y → YUYV)</text>
+
+  <rect x="250" y="215" width="350" height="130" rx="8" fill="#FFFFFF" stroke="#1F4E79" stroke-width="2.5"/>
+  <text x="425" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F4E79">mjpeg_board_test_engine</text>
+  <text x="425" y="262" text-anchor="middle" font-size="10.5">命令 FSM（G/C/V/H/F/S）· 配置量化表</text>
+  <text x="425" y="280" text-anchor="middle" font-size="10.5">1 拍/像素喂入 · TIM1/FPS1 测量</text>
+  <text x="425" y="298" text-anchor="middle" font-size="10.5">5 字节记录串行化（兼容边界）</text>
+
+  <rect x="615" y="215" width="120" height="130" rx="8" fill="#FFFFFF" stroke="#6C3483" stroke-width="2"/>
+  <text x="675" y="238" text-anchor="middle" font-size="10" font-weight="bold">board_test_</text>
+  <text x="675" y="252" text-anchor="middle" font-size="10" font-weight="bold">block_transport</text>
+  <text x="675" y="272" text-anchor="middle" font-size="10">MBLK 块封包</text>
+  <text x="675" y="288" text-anchor="middle" font-size="10">1KiB 双缓冲</text>
+  <text x="675" y="304" text-anchor="middle" font-size="9.5" fill="#666">JPEG 不改写</text>
+
+  <!-- ================= 测量行 ================= -->
+  <rect x="90" y="365" width="300" height="64" rx="8" fill="#FFFFFF" stroke="#7D8B99" stroke-width="1.8"/>
+  <text x="240" y="388" text-anchor="middle" font-size="10.5" font-weight="bold">frame_rate_meter + davinci_fps_display</text>
+  <text x="240" y="406" text-anchor="middle" font-size="10" fill="#444">一秒窗口帧率 · BCD + 数码管扫描</text>
+
+  <!-- ================= 编码核区 ================= -->
+  <rect x="90" y="450" width="500" height="360" rx="10" fill="#F5F9FF" stroke="#5B87B5" stroke-width="1.6" stroke-dasharray="7,4"/>
+  <text x="105" y="474" font-size="12" font-weight="bold" fill="#3B6EA5">mjpeg_synth_top（COALESCE=1）</text>
+  <rect x="105" y="490" width="320" height="300" rx="10" fill="#FBFDFF" stroke="#8FAFCB" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <text x="118" y="512" font-size="11.5" font-weight="bold" fill="#3B6EA5">mjpeg_encoder（CHANNELS=1）</text>
+
+  <rect x="118" y="525" width="180" height="250" rx="8" fill="#FFFFFF" stroke="#3B6EA5" stroke-width="2"/>
+  <text x="208" y="548" text-anchor="middle" font-size="11" font-weight="bold">mjpeg_channel ×1</text>
+  <text x="208" y="568" text-anchor="middle" font-size="10">帧号 · 时间戳 · 描述符</text>
+  <text x="208" y="584" text-anchor="middle" font-size="10">inflight 生命周期</text>
+  <text x="208" y="600" text-anchor="middle" font-size="10">abort 自愈</text>
+  <text x="208" y="616" text-anchor="middle" font-size="9.5" fill="#666">(RESET_CORE →</text>
+  <text x="208" y="630" text-anchor="middle" font-size="9.5" fill="#666">重放量化表)</text>
+
+  <rect x="130" y="650" width="156" height="105" rx="8" fill="#E9F7EF" stroke="#1E8449" stroke-width="2.5"/>
+  <text x="208" y="672" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1E8449">jpeg_encoder</text>
+  <text x="208" y="690" text-anchor="middle" font-size="10.5" fill="#1E8449">★ 压缩核（8 级流水）</text>
+  <text x="208" y="708" text-anchor="middle" font-size="10">像素进 / JPEG 出</text>
+  <text x="208" y="726" text-anchor="middle" font-size="9.5" fill="#666">详图见文档说明</text>
+
+  <rect x="310" y="525" width="100" height="110" rx="8" fill="#FFFFFF" stroke="#3B6EA5" stroke-width="1.8"/>
+  <text x="360" y="568" text-anchor="middle" font-size="10" font-weight="bold">mjpeg_arbiter ×2</text>
+  <text x="360" y="586" text-anchor="middle" font-size="9.5">载荷/描述符</text>
+  <text x="360" y="602" text-anchor="middle" font-size="9.5">轮询合流</text>
+
+  <rect x="440" y="505" width="135" height="64" rx="8" fill="#FFFFFF" stroke="#6C3483" stroke-width="2"/>
+  <text x="507" y="527" text-anchor="middle" font-size="9.5" font-weight="bold">mjpeg_payload_coalescer</text>
+  <text x="507" y="545" text-anchor="middle" font-size="9.5">攒 16 字节满拍</text>
+  <text x="507" y="560" text-anchor="middle" font-size="8.5" fill="#666">(膨胀 10.2×→1.01×)</text>
+
+  <rect x="440" y="595" width="135" height="64" rx="8" fill="#FFFFFF" stroke="#6C3483" stroke-width="2"/>
+  <text x="507" y="617" text-anchor="middle" font-size="10" font-weight="bold">mjpeg_packetizer</text>
+  <text x="507" y="635" text-anchor="middle" font-size="9.5">32 位传输封包</text>
+  <text x="507" y="650" text-anchor="middle" font-size="8.5" fill="#666">(word0+帧号+数据)</text>
+
+  <!-- ================= CDC 三件套 ================= -->
+  <rect x="775" y="240" width="110" height="130" rx="8" fill="#F2F2F2" stroke="#666666" stroke-width="1.8" stroke-dasharray="6,3"/>
+  <text x="830" y="268" text-anchor="middle" font-size="9.5" font-weight="bold">board_test_</text>
+  <text x="830" y="282" text-anchor="middle" font-size="9.5" font-weight="bold">async_fifo</text>
+  <text x="830" y="302" text-anchor="middle" font-size="10">TX 8KiB</text>
+  <text x="830" y="318" text-anchor="middle" font-size="9">双时钟 BRAM</text>
+  <text x="830" y="332" text-anchor="middle" font-size="8.5" fill="#666">Gray 指针</text>
+
+  <rect x="775" y="640" width="110" height="110" rx="8" fill="#F2F2F2" stroke="#666666" stroke-width="1.8" stroke-dasharray="6,3"/>
+  <text x="830" y="662" text-anchor="middle" font-size="9.5" font-weight="bold">async_fifo</text>
+  <text x="830" y="682" text-anchor="middle" font-size="10">RX 256B</text>
+  <text x="830" y="698" text-anchor="middle" font-size="9">命令缓冲</text>
+  <text x="830" y="712" text-anchor="middle" font-size="8.5" fill="#666">(分布式 RAM)</text>
+
+  <rect x="775" y="800" width="110" height="110" rx="8" fill="#F2F2F2" stroke="#666666" stroke-width="1.8" stroke-dasharray="6,3"/>
+  <text x="830" y="822" text-anchor="middle" font-size="9.5" font-weight="bold">cdc_snapshot</text>
+  <text x="830" y="842" text-anchor="middle" font-size="9.5">224b</text>
+  <text x="830" y="858" text-anchor="middle" font-size="9.5">原子快照</text>
+  <text x="830" y="874" text-anchor="middle" font-size="8.5" fill="#666">四相握手</text>
+
+  <!-- ================= USB 域 ================= -->
+  <rect x="930" y="240" width="360" height="170" rx="8" fill="#FFFFFF" stroke="#C77A3A" stroke-width="2.5"/>
+  <text x="1110" y="265" text-anchor="middle" font-size="12" font-weight="bold" fill="#B85C00">board_test_ft245_sync</text>
+  <text x="1110" y="287" text-anchor="middle" font-size="10">每拍 1 字节 · WR# 终判不吸收 · TXE 只挡当拍</text>
+  <text x="1110" y="305" text-anchor="middle" font-size="9.5">读换向：RELEASE→OE_SETUP→READ→TURN</text>
+  <text x="1110" y="323" text-anchor="middle" font-size="9.5">DATA/WR#/OE# 前一沿发出（全周期建立）</text>
+  <text x="1110" y="341" text-anchor="middle" font-size="9.5">五分类周期计数（写/忙/TXE等/空/读）</text>
+  <text x="1110" y="360" text-anchor="middle" font-size="9" fill="#999">60 MHz</text>
+
+  <rect x="1370" y="240" width="230" height="170" rx="8" fill="#FFF8E7" stroke="#B7950B" stroke-width="2"/>
+  <text x="1485" y="265" text-anchor="middle" font-size="12" font-weight="bold">FT232H 芯片</text>
+  <text x="1485" y="285" text-anchor="middle" font-size="10">(FT245 同步 FIFO 模式)</text>
+  <text x="1485" y="305" text-anchor="middle" font-size="10">CLKOUT 60MHz</text>
+  <text x="1485" y="323" text-anchor="middle" font-size="9.5">DATA[7:0] · TXE#/RXF#</text>
+  <text x="1485" y="339" text-anchor="middle" font-size="9.5">WR#/RD#/OE#</text>
+  <text x="1485" y="358" text-anchor="middle" font-size="8.5" fill="#666">EEPROM 未改（易失 bit-mode）</text>
+
+  <rect x="1370" y="470" width="230" height="90" rx="8" fill="#FFFFFF" stroke="#333333" stroke-width="2"/>
+  <text x="1485" y="492" text-anchor="middle" font-size="11" font-weight="bold">主机 PC（D2XX）</text>
+  <text x="1485" y="512" text-anchor="middle" font-size="8.5">progressive_test.py / board_test_receiver.py</text>
+  <text x="1485" y="530" text-anchor="middle" font-size="9.5">解包 · 参考比对 · 解码 · 统计</text>
+
+  <!-- ================= 连线 ================= -->
+  <!-- 时钟：晶振 -->
+  <text x="64" y="152" text-anchor="end" font-size="10" fill="#8E44AD">板载 50MHz</text>
+  <line x1="66" y1="157" x2="88" y2="157" stroke="#8E44AD" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#aP)"/>
+  <!-- 时钟：CLKOUT 心跳 -->
+  <polyline points="1420,240 1420,120 600,120 600,128" fill="none" stroke="#8E44AD" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#aP)"/>
+  <text x="1010" y="112" text-anchor="middle" font-size="10" fill="#8E44AD">CLKOUT 60MHz 心跳（usb_clk）</text>
+  <!-- 复位 -->
+  <line x1="490" y1="184" x2="490" y2="212" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="3,3" marker-end="url(#aR)"/>
+  <text x="500" y="202" font-size="8.5" fill="#C0392B">run_rst_n → 引擎 + 两 FIFO</text>
+
+  <!-- 像素 -->
+  <line x1="220" y1="272" x2="248" y2="272" stroke="#1F4E79" stroke-width="2.2" marker-end="url(#aB)"/>
+  <text x="234" y="262" text-anchor="middle" font-size="9" fill="#1F4E79">像素</text>
+  <!-- 帧事件到测量 -->
+  <line x1="280" y1="345" x2="280" y2="363" stroke="#1F4E79" stroke-width="1.8" marker-end="url(#aB)"/>
+  <text x="290" y="357" font-size="9" fill="#1F4E79">帧事件</text>
+  <line x1="90" y1="397" x2="30" y2="397" stroke="#1F4E79" stroke-width="1.8" marker-end="url(#aB)"/>
+  <text x="60" y="390" text-anchor="middle" font-size="8.5" fill="#1F4E79">seg_led</text>
+
+  <!-- 发动机 -> synth_top（配置+像素） -->
+  <line x1="430" y1="345" x2="430" y2="448" stroke="#1F4E79" stroke-width="2.2" marker-end="url(#aB)"/>
+  <text x="438" y="400" font-size="10" fill="#1F4E79">cfg 命令 + s_data 像素（1/拍）+ sof/eol/eof</text>
+  <!-- packetizer -> 发动机（32位包） -->
+  <polyline points="575,627 668,627 668,358 575,358 575,347" fill="none" stroke="#1F4E79" stroke-width="2.2" marker-end="url(#aB)"/>
+  <text x="676" y="490" transform="rotate(-90 676 490)" text-anchor="middle" font-size="9.5" fill="#1F4E79">32 位包 m_data / m_bytes / m_packet_last</text>
+
+  <!-- 发动机 -> 块封包 -->
+  <line x1="600" y1="280" x2="613" y2="280" stroke="#1F4E79" stroke-width="2.2" marker-end="url(#aB)"/>
+  <text x="607" y="268" text-anchor="middle" font-size="8.5" fill="#1F4E79">5B</text>
+  <text x="607" y="295" text-anchor="middle" font-size="8" fill="#1F4E79">记录</text>
+  <!-- 块封包 -> TX FIFO -->
+  <polyline points="674,215 674,195 830,195 830,238" fill="none" stroke="#1F4E79" stroke-width="2.2" marker-end="url(#aB)"/>
+  <text x="790" y="188" text-anchor="middle" font-size="9.5" fill="#1F4E79">MBLK 字节流</text>
+  <!-- TX FIFO -> ft245_sync -->
+  <line x1="885" y1="300" x2="928" y2="300" stroke="#1F4E79" stroke-width="2.2" marker-end="url(#aB)"/>
+  <text x="906" y="290" text-anchor="middle" font-size="9" fill="#1F4E79">8bit</text>
+
+  <!-- ft245_sync -> RX FIFO（命令） -->
+  <polyline points="975,410 975,695 887,695" fill="none" stroke="#B85C00" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#aO)"/>
+  <text x="967" y="560" transform="rotate(-90 967 560)" text-anchor="middle" font-size="10" fill="#B85C00">命令字节 G/C/V/H/F/S</text>
+  <!-- RX FIFO -> 发动机 -->
+  <polyline points="775,695 748,695 748,205 560,205 560,212" fill="none" stroke="#B85C00" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#aO)"/>
+  <text x="740" y="470" transform="rotate(-90 740 470)" text-anchor="middle" font-size="9.5" fill="#B85C00">命令（已入 100MHz 域）</text>
+
+  <!-- ft245 统计 -> snapshot -> 块封包 -->
+  <polyline points="1100,410 1100,855 887,855" fill="none" stroke="#B85C00" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#aO)"/>
+  <text x="1092" y="640" transform="rotate(-90 1092 640)" text-anchor="middle" font-size="9.5" fill="#B85C00">224b 链路统计（每秒）</text>
+  <polyline points="775,855 690,855 690,347" fill="none" stroke="#B85C00" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#aO)"/>
+  <text x="682" y="610" transform="rotate(-90 682 610)" text-anchor="middle" font-size="9" fill="#B85C00">统计块（类型4）</text>
+
+  <!-- ft245 <-> FT232H -->
+  <line x1="1292" y1="325" x2="1368" y2="325" stroke="#1F4E79" stroke-width="2.6" marker-start="url(#aB)" marker-end="url(#aB)"/>
+  <text x="1330" y="313" text-anchor="middle" font-size="9.5" fill="#1F4E79">8bit 总线</text>
+  <text x="1330" y="342" text-anchor="middle" font-size="8.5" fill="#666">同步 FT245</text>
+  <!-- FT232H <-> 主机 -->
+  <line x1="1485" y1="412" x2="1485" y2="468" stroke="#333333" stroke-width="2.2" marker-start="url(#aB)" marker-end="url(#aB)"/>
+  <text x="1498" y="445" font-size="10" fill="#333">USB</text>
+
+  <!-- synth_top 内部 -->
+  <line x1="298" y1="580" x2="308" y2="580" stroke="#1F4E79" stroke-width="2" marker-end="url(#aB)"/>
+  <line x1="410" y1="545" x2="438" y2="545" stroke="#1F4E79" stroke-width="2" marker-end="url(#aB)"/>
+  <line x1="507" y1="569" x2="507" y2="593" stroke="#1F4E79" stroke-width="2" marker-end="url(#aB)"/>
+  <polyline points="425,780 507,780 507,661" fill="none" stroke="#666666" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#aG)"/>
+  <text x="516" y="725" font-size="8.5" fill="#666">描述符（等聚合器空）</text>
+
+  <!-- ================= 图例 ================= -->
+  <rect x="70" y="1122" width="18" height="13" fill="#EAF2FB" stroke="#2E6DA4"/><text x="96" y="1133" font-size="11">100MHz 编码域</text>
+  <rect x="230" y="1122" width="18" height="13" fill="#FDF1E3" stroke="#C77A3A"/><text x="256" y="1133" font-size="11">60MHz USB 域</text>
+  <rect x="390" y="1122" width="18" height="13" fill="#E9F7EF" stroke="#1E8449"/><text x="416" y="1133" font-size="11">压缩算法核心</text>
+  <rect x="540" y="1122" width="18" height="13" fill="#FFFFFF" stroke="#6C3483"/><text x="566" y="1133" font-size="11">打包 / 传输</text>
+  <rect x="690" y="1122" width="18" height="13" fill="#F2F2F2" stroke="#666" stroke-dasharray="4,2"/><text x="716" y="1133" font-size="11">CDC 跨时钟</text>
+  <text x="70" y="1162" font-size="11" fill="#444">深蓝实线 = JPEG/像素数据通路 · 橙虚线 = 命令与统计 · 红虚线 = 复位/保护 · 紫点线 = 时钟。所有模块间均为 valid/ready 握手，背压沿数据通路反向传播（FT245 TXE → … → 像素源坐标保持）。</text>
+  <text x="70" y="1182" font-size="11" fill="#444">led[3:0] = {error_seen, done, running, tables_ready}（发动机输出，图中略）。</text>
+</svg>

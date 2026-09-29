@@ -14,7 +14,7 @@ $env:ISL_IOSTREAMS_RSA = "$VivadoRoot/tps/isl"
 $taskProjectRoot = Split-Path $PSScriptRoot -Parent
 Push-Location $taskProjectRoot
 try {
-    $taskImportScript = if ($BoardTest) {'scripts/activate_mjpeg_board_test.tcl'} else {'scripts/import_sources.tcl'}
+    $taskImportScript = if ($BoardTest) {'scripts/activate_camera.tcl'} else {'scripts/import_sources.tcl'}
     & "$VivadoRoot/bin/unwrapped/win64.o/vivado.exe" -mode batch -source $taskImportScript -log reports/import.log -journal reports/import.jou -tclargs --batch
     if ($LASTEXITCODE -ne 0) { throw "Source import failed: $LASTEXITCODE" }
 }

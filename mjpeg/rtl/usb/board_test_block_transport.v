@@ -29,7 +29,7 @@ module board_test_block_transport(
     reg in_stream,record_pending,packet_descriptor,packet_first,packet_last;
     reg [4:0] packet_bytes;
     reg [1:0] packet_channel;
-    reg [223:0] control_data;
+    reg [255:0] control_data;
     reg [223:0] descriptor_data;
     reg [7:0] control_type;
     reg [15:0] control_length;
@@ -40,7 +40,7 @@ module board_test_block_transport(
     reg [2:0] out_state;
     reg [63:0] out_header;
     reg [31:0] out_id,out_word;
-    reg [223:0] out_control;
+    reg [255:0] out_control;
     reg [15:0] out_remaining;
     reg [3:0] header_remaining;
     reg [2:0] id_remaining;
@@ -127,6 +127,12 @@ module board_test_block_transport(
                 end else if(in_flag>=8'h90 && in_flag<=8'h96) begin
                     if(in_flag!=8'h90) control_data[(in_flag-8'h91)*32+:32]<=in_word;
                     if(in_flag==8'h96) begin control_pending<=1;control_type<=3;control_length<=24;end
+                end else if(in_flag>=8'hb9 && in_flag<=8'hbc) begin
+                    if(in_flag!=8'hb9) control_data[(in_flag-8'hba)*32+:32]<=in_word;
+                    if(in_flag==8'hbc) begin control_pending<=1;control_type<=8;control_length<=12;end
+                end else if(in_flag>=8'hb0 && in_flag<=8'hb8) begin
+                    if(in_flag!=8'hb0) control_data[(in_flag-8'hb1)*32+:32]<=in_word;
+                    if(in_flag==8'hb8) begin control_pending<=1;control_type<=7;control_length<=32;end
                 end
             end
             if(out_state==OUT_IDLE) begin
@@ -171,7 +177,7 @@ module board_test_block_transport(
                         end
                     end
                     OUT_CONTROL: begin
-                        out_control<={8'd0,out_control[223:8]};out_remaining<=out_remaining-1'b1;
+                        out_control<={8'd0,out_control[255:8]};out_remaining<=out_remaining-1'b1;
                         if(out_remaining==1) begin
                             if(!out_is_link) control_pending<=0;
                             out_state<=OUT_IDLE;
