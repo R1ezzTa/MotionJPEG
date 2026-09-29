@@ -1,0 +1,97 @@
+{
+  "passed": false,
+  "error": "ValueError: Frame 121 failed, status=1",
+  "thresholds": [
+    60,
+    96,
+    128
+  ],
+  "adaptive": true,
+  "seconds_per_threshold": 4.0,
+  "quality": 85,
+  "threshold_units": "maximum absolute dequantized DCT coefficient difference",
+  "phases": [
+    {
+      "index": 0,
+      "threshold": 60,
+      "adaptive": true,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "median_fps": 30.001938125202887,
+      "mean_fps": 30.001941604644415,
+      "duration_seconds": 4.047893299997668,
+      "transport_payload_bytes": 56786125,
+      "reconstructed_jpeg_bytes": 59850766,
+      "payload_vs_reconstructed_ratio": 0.9487952919432978,
+      "payload_mb_per_second": 14.197450051700319,
+      "wire_bytes": 57460933,
+      "wire_mb_per_second": 14.195268684585413,
+      "reused_groups": 73911,
+      "total_groups": 486000,
+      "keyframes": 4,
+      "camera_fifo_overflows": 0,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_ceiling_20260928\\00_threshold_060"
+    }
+  ],
+  "frames": 121,
+  "actions": [
+    {
+      "seconds": 0.12425079999957234,
+      "command": "l"
+    },
+    {
+      "seconds": 0.12436159999924712,
+      "command": "S"
+    },
+    {
+      "seconds": 1.0780752999999095,
+      "command": "3"
+    },
+    {
+      "seconds": 1.0781378999963636,
+      "command": "T3C\n"
+    },
+    {
+      "seconds": 1.0781961000029696,
+      "command": "A1\n"
+    },
+    {
+      "seconds": 1.0786021999956574,
+      "command": "C"
+    },
+    {
+      "seconds": 5.082121100000222,
+      "command": "S"
+    },
+    {
+      "seconds": 6.078046099995845,
+      "command": "3"
+    },
+    {
+      "seconds": 6.078110500006005,
+      "command": "T60\n"
+    },
+    {
+      "seconds": 6.078185300008045,
+      "command": "A1\n"
+    },
+    {
+      "seconds": 6.0786453000037,
+      "command": "C"
+    },
+    {
+      "seconds": 6.150741699995706,
+      "command": "S"
+    },
+    {
+      "seconds": 6.150773000001209,
+      "command": "l"
+    }
+  ],
+  "usb_read_bytes": 58100141,
+  "capture_enabled": true,
+  "physical_buttons_tested": false,
+  "note": "Payload/restored-JPEG ratio is not a same-input comparison against ordinary MJPEG."
+}
