@@ -1,0 +1,223 @@
+{
+  "recorded_at": "2026-09-28T11:06:02.061608+08:00",
+  "build_directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\full_20260928_105205",
+  "camera_profile": 5,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "change": {
+    "register": "0x3820",
+    "before": "0x46",
+    "after": "0x42",
+    "bayer_pattern": "BGGR",
+    "scope": "profile 5 only"
+  },
+  "diagnosis": "ISP flip and optical RAW parity combination. GRBG-only candidate failed real-scene colour.",
+  "source_hashes_verified": 166,
+  "bitstream_sha256": "890676c106fb66b9ac7a5558ee2f0cc7c853d8b01a0a415f0ee6d7afeb2c554b",
+  "timing": {
+    "wns_ns": 0.002,
+    "whs_ns": 0.005,
+    "tns_ns": 0.0,
+    "ths_ns": 0.0,
+    "setup_hold_passed": true
+  },
+  "resources": {
+    "lut": 18464,
+    "ff": 20831,
+    "bram36_equivalents": 32,
+    "dsp": 45
+  },
+  "build_and_program_pass": true,
+  "threshold_test": {
+    "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_final_sweep_20260928_1100",
+    "passed": true,
+    "decoded_frames": 480,
+    "phases": [
+      {
+        "index": 0,
+        "threshold": 0,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001947126368503,
+        "mean_fps": 30.00194720200857,
+        "duration_seconds": 4.047766999996384,
+        "transport_payload_bytes": 56987354,
+        "reconstructed_jpeg_bytes": 54556018,
+        "payload_vs_reconstructed_ratio": 1.044565862559837,
+        "payload_mb_per_second": 14.247763215751432,
+        "wire_bytes": 57664514,
+        "wire_mb_per_second": 14.24600625481939,
+        "reused_groups": 14,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_final_sweep_20260928_1100\\00_threshold_000"
+      },
+      {
+        "index": 1,
+        "threshold": 32,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001947126368503,
+        "mean_fps": 30.001948714810055,
+        "duration_seconds": 4.048656300001312,
+        "transport_payload_bytes": 44024438,
+        "reconstructed_jpeg_bytes": 54583817,
+        "payload_vs_reconstructed_ratio": 0.806547442440678,
+        "payload_mb_per_second": 11.006824425619456,
+        "wire_bytes": 44549702,
+        "wire_mb_per_second": 11.003577162127979,
+        "reused_groups": 170042,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_final_sweep_20260928_1100\\01_threshold_032"
+      },
+      {
+        "index": 2,
+        "threshold": 64,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001947126368503,
+        "mean_fps": 30.001950000691433,
+        "duration_seconds": 4.046839299990097,
+        "transport_payload_bytes": 5581017,
+        "reconstructed_jpeg_bytes": 54462217,
+        "payload_vs_reconstructed_ratio": 0.1024750241070796,
+        "payload_mb_per_second": 1.3953449415584074,
+        "wire_bytes": 5655777,
+        "wire_mb_per_second": 1.3975788462897056,
+        "reused_groups": 455313,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_final_sweep_20260928_1100\\02_threshold_064"
+      },
+      {
+        "index": 3,
+        "threshold": 0,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001947126368503,
+        "mean_fps": 30.001950000691433,
+        "duration_seconds": 4.047322400001576,
+        "transport_payload_bytes": 57276743,
+        "reconstructed_jpeg_bytes": 54845551,
+        "payload_vs_reconstructed_ratio": 1.0443279711056235,
+        "payload_mb_per_second": 14.320116497403774,
+        "wire_bytes": 57957287,
+        "wire_mb_per_second": 14.31990863885156,
+        "reused_groups": 23,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_final_sweep_20260928_1100\\03_threshold_000"
+      }
+    ],
+    "max_frame_interval_ms": 33.33118
+  },
+  "controls_test": {
+    "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_controls_20260928_1101",
+    "passed": true,
+    "decoded_frames": 690,
+    "qualities": {
+      "60": {
+        "frames": 120,
+        "mean_jpeg_bytes": 215880.95,
+        "median_fps": 30.001947126368503
+      },
+      "75": {
+        "frames": 120,
+        "mean_jpeg_bytes": 305153.3416666667,
+        "median_fps": 30.001956127539515
+      },
+      "85": {
+        "frames": 450,
+        "mean_jpeg_bytes": 470349.0422222222,
+        "median_fps": 30.001956127539515
+      }
+    },
+    "starts": 2,
+    "ends": 2,
+    "light_readback_on": true,
+    "automatic_off_seen_before_stop": true,
+    "camera_fifo_overflows": 0,
+    "max_frame_interval_ms": 33.33117
+  },
+  "total_decoded_frames": 1170,
+  "physical_buttons_retested": false,
+  "colour_observation": "Global green substantially reduced; cabinet appears brown and light objects nearer neutral. Dark scene remains cool and noisy.",
+  "jpeg_wall_roi": [
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\work\\color_diag_20260928\\baseline\\frame_000011.jpg",
+      "wall_roi_rgb": [
+        32.8055619047619,
+        76.17137142857143,
+        44.67234285714286
+      ],
+      "wall_roi_green_ratio": 1.9662733953028697
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\isp42_final_sweep_20260928_1100\\03_threshold_000\\first_frame.jpg",
+      "wall_roi_rgb": [
+        39.052590476190474,
+        57.98139047619048,
+        65.75681904761905
+      ],
+      "wall_roi_green_ratio": 1.1064157452965873
+    }
+  ],
+  "standard_colour_calibration_passed": false,
+  "limitations": [
+    "Different-time room captures with uncalibrated lighting",
+    "Remaining cool cast and low-light noise",
+    "Nonzero-threshold motion artifacts unchanged",
+    "Short acceptance is not temperature or long endurance qualification"
+  ],
+  "source_snapshot": "F:\\zju\\dasanshangkecheng\\HDL\\work\\color_diag_20260928\\isp42_source_snapshot",
+  "idle_camera_status": {
+    "flags": 2150232065,
+    "chip_id": 22080,
+    "config_index": 283,
+    "pclk_ticks": 59885079,
+    "received_frames": 0,
+    "dropped_frames": 23,
+    "overflow_count": 0,
+    "dvp_byte_count": 49687685,
+    "frame_sync_count": 24,
+    "raw8": true,
+    "sampling_ready": true,
+    "board_controls": true,
+    "threshold_capable": true,
+    "threshold_requested": 0,
+    "run_requested": false,
+    "quality": 85,
+    "quality_requested": 85,
+    "quality_pending": false,
+    "window": 1,
+    "init_done": true,
+    "init_error": false,
+    "capture_active": false,
+    "tables_ready": false,
+    "codec_busy": false,
+    "config_error": false,
+    "streaming": false,
+    "light_requested": false,
+    "light_on": false,
+    "light_error": false,
+    "light_busy": false
+  },
+  "preview": "F:\\zju\\dasanshangkecheng\\HDL\\work\\image-previews\\color_diag_20260928\\final_isp42_before_after.jpg",
+  "jtag_program_log": "F:\\zju\\dasanshangkecheng\\HDL\\work\\color_diag_20260928\\program_isp42.log",
+  "spi_flash_written": false
+}
