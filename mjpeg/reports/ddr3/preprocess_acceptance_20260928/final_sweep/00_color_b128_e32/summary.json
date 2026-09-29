@@ -1,0 +1,24 @@
+{
+  "mode": "color",
+  "binary_threshold": 128,
+  "edge_threshold": 32,
+  "frames": 90,
+  "independently_decoded_frames": 90,
+  "starts": 1,
+  "ends": 1,
+  "mean_fps": 30.002067479551222,
+  "max_frame_interval_ms": 33.33104,
+  "mean_jpeg_bytes": 504589.5444444445,
+  "jpeg_mb_per_second": 15.138729561898232,
+  "wire_bytes": 45952315,
+  "active_confirmed": true,
+  "first_frame_statistics": {
+    "max_rgb_channel_difference": 133,
+    "min_level": 0,
+    "max_level": 255,
+    "mean_level": 55.10000048225309,
+    "near_black_fraction": 0.3494902584876543,
+    "near_white_fraction": 0.00011381172839506173
+  },
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\final_sweep\\00_color_b128_e32"
+}
