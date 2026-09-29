@@ -1,0 +1,1171 @@
+{
+  "passed": true,
+  "build": "full_20260928_000109",
+  "independently_decoded_frames": 3575,
+  "reference_slots": 4050,
+  "final_slot": 4049,
+  "reference_bytes": 33177600,
+  "live_threshold_change": {
+    "passed": true,
+    "error": null,
+    "thresholds": [
+      0,
+      32,
+      64,
+      0
+    ],
+    "frames_per_threshold": 60,
+    "quality": 85,
+    "starts": 1,
+    "ends": 1,
+    "frames": 244,
+    "median_fps": 30.001974129897746,
+    "mean_fps": 30.00197142583844,
+    "maximum_frame_interval_ms": 33.33115,
+    "transitions": [
+      {
+        "index": 0,
+        "threshold": 0,
+        "previous_threshold": null,
+        "command_after_frame_id": null,
+        "command_seconds": 1.0754258000015398,
+        "old_inflight_frames": 0,
+        "first_frame_id": 0,
+        "first_frame_keyframe": true,
+        "observed_seconds": 1.1464293000026373,
+        "accepted_frames": 60,
+        "last_frame_id": 59
+      },
+      {
+        "index": 1,
+        "threshold": 32,
+        "previous_threshold": 0,
+        "command_after_frame_id": 59,
+        "command_seconds": 3.1180440000025555,
+        "old_inflight_frames": 1,
+        "first_frame_id": 61,
+        "first_frame_keyframe": true,
+        "observed_seconds": 3.185263200000918,
+        "accepted_frames": 60,
+        "last_frame_id": 120
+      },
+      {
+        "index": 2,
+        "threshold": 64,
+        "previous_threshold": 32,
+        "command_after_frame_id": 120,
+        "command_seconds": 5.15014599999995,
+        "old_inflight_frames": 1,
+        "first_frame_id": 122,
+        "first_frame_keyframe": true,
+        "observed_seconds": 5.225721599999815,
+        "accepted_frames": 60,
+        "last_frame_id": 181
+      },
+      {
+        "index": 3,
+        "threshold": 0,
+        "previous_threshold": 64,
+        "command_after_frame_id": 181,
+        "command_seconds": 7.180803999995987,
+        "old_inflight_frames": 1,
+        "first_frame_id": 183,
+        "first_frame_keyframe": true,
+        "observed_seconds": 7.248361300000397,
+        "accepted_frames": 61,
+        "last_frame_id": 243
+      }
+    ],
+    "unfinished_transition": null,
+    "wire_bytes": 103578671,
+    "usb_read_bytes": 103578843,
+    "transport_payload_bytes": 102360283,
+    "reconstructed_jpeg_bytes": 129989862,
+    "reused_groups": 266386,
+    "camera_fifo_overflows": 0,
+    "actions": [
+      {
+        "seconds": 0.12368330000026617,
+        "command": "l"
+      },
+      {
+        "seconds": 0.12373710000247229,
+        "command": "S"
+      },
+      {
+        "seconds": 1.075421900000947,
+        "command": "3"
+      },
+      {
+        "seconds": 1.0755280000012135,
+        "command": "T00\n"
+      },
+      {
+        "seconds": 1.0760120999984792,
+        "command": "C"
+      },
+      {
+        "seconds": 3.1184789999970235,
+        "command": "T20\n"
+      },
+      {
+        "seconds": 5.150293300001067,
+        "command": "T40\n"
+      },
+      {
+        "seconds": 7.181188599999587,
+        "command": "T00\n"
+      },
+      {
+        "seconds": 9.21330979999766,
+        "command": "S"
+      },
+      {
+        "seconds": 10.086807799998496,
+        "command": "S"
+      },
+      {
+        "seconds": 10.086933899998257,
+        "command": "l"
+      }
+    ],
+    "capture_enabled": true,
+    "threshold_units": "maximum absolute dequantized DCT coefficient difference"
+  },
+  "threshold_sweep": {
+    "passed": true,
+    "error": null,
+    "thresholds": [
+      0,
+      8,
+      16,
+      32,
+      64,
+      128,
+      255
+    ],
+    "seconds_per_threshold": 4.0,
+    "quality": 85,
+    "threshold_units": "maximum absolute dequantized DCT coefficient difference",
+    "phases": [
+      {
+        "index": 0,
+        "threshold": 0,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.001973373495705,
+        "duration_seconds": 4.047615699993912,
+        "transport_payload_bytes": 66323389,
+        "reconstructed_jpeg_bytes": 63893781,
+        "payload_vs_reconstructed_ratio": 1.0380257352433095,
+        "payload_mb_per_second": 16.581937923483316,
+        "wire_bytes": 67109953,
+        "wire_mb_per_second": 16.580119748053388,
+        "reused_groups": 122,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\00_threshold_000"
+      },
+      {
+        "index": 1,
+        "threshold": 8,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.00197428117816,
+        "duration_seconds": 4.049463099996501,
+        "transport_payload_bytes": 66202970,
+        "reconstructed_jpeg_bytes": 63935519,
+        "payload_vs_reconstructed_ratio": 1.0354646530671003,
+        "payload_mb_per_second": 16.551831693980077,
+        "wire_bytes": 66988094,
+        "wire_mb_per_second": 16.54246312308856,
+        "reused_groups": 6712,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\01_threshold_008"
+      },
+      {
+        "index": 2,
+        "threshold": 16,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.001974961940036,
+        "duration_seconds": 4.048024100004113,
+        "transport_payload_bytes": 65598542,
+        "reconstructed_jpeg_bytes": 63889522,
+        "payload_vs_reconstructed_ratio": 1.0267496131838332,
+        "payload_mb_per_second": 16.400715121864767,
+        "wire_bytes": 66376574,
+        "wire_mb_per_second": 16.397277377852703,
+        "reused_groups": 18310,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\02_threshold_016"
+      },
+      {
+        "index": 3,
+        "threshold": 32,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.00197526450088,
+        "duration_seconds": 4.048751300004369,
+        "transport_payload_bytes": 58379415,
+        "reconstructed_jpeg_bytes": 63929747,
+        "payload_vs_reconstructed_ratio": 0.9131807607497648,
+        "payload_mb_per_second": 14.595814706550264,
+        "wire_bytes": 59072895,
+        "wire_mb_per_second": 14.590398526068087,
+        "reused_groups": 96217,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\03_threshold_032"
+      },
+      {
+        "index": 4,
+        "threshold": 64,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.001975945262803,
+        "duration_seconds": 4.046407499998168,
+        "transport_payload_bytes": 9095179,
+        "reconstructed_jpeg_bytes": 64028403,
+        "payload_vs_reconstructed_ratio": 0.14204913091460364,
+        "payload_mb_per_second": 2.273944513132162,
+        "wire_bytes": 9211123,
+        "wire_mb_per_second": 2.276370583042902,
+        "reused_groups": 436543,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\04_threshold_064"
+      },
+      {
+        "index": 5,
+        "threshold": 128,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.001977155506292,
+        "duration_seconds": 4.046318100001372,
+        "transport_payload_bytes": 3706134,
+        "reconstructed_jpeg_bytes": 64260028,
+        "payload_vs_reconstructed_ratio": 0.05767401782022255,
+        "payload_mb_per_second": 0.9265945633603763,
+        "wire_bytes": 3758934,
+        "wire_mb_per_second": 0.9289763946138405,
+        "reused_groups": 469794,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\05_threshold_128"
+      },
+      {
+        "index": 6,
+        "threshold": 255,
+        "frames": 120,
+        "decoded_frames": 120,
+        "starts": 1,
+        "ends": 1,
+        "median_fps": 30.001974129897746,
+        "mean_fps": 30.001977155506292,
+        "duration_seconds": 4.049821200002043,
+        "transport_payload_bytes": 3701613,
+        "reconstructed_jpeg_bytes": 64156350,
+        "payload_vs_reconstructed_ratio": 0.057696751763465344,
+        "payload_mb_per_second": 0.9254642388710426,
+        "wire_bytes": 3754365,
+        "wire_mb_per_second": 0.9270446310069458,
+        "reused_groups": 469800,
+        "total_groups": 486000,
+        "keyframes": 4,
+        "camera_fifo_overflows": 0,
+        "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_final_sweep_20260928_0011\\06_threshold_255"
+      }
+    ],
+    "frames": 840,
+    "actions": [
+      {
+        "seconds": 0.1237942000007024,
+        "command": "l"
+      },
+      {
+        "seconds": 0.12384900000324706,
+        "command": "S"
+      },
+      {
+        "seconds": 1.0767187000019476,
+        "command": "3"
+      },
+      {
+        "seconds": 1.0767753000036464,
+        "command": "T00\n"
+      },
+      {
+        "seconds": 1.0772439000065788,
+        "command": "C"
+      },
+      {
+        "seconds": 5.082056100000045,
+        "command": "S"
+      },
+      {
+        "seconds": 6.075097300003108,
+        "command": "3"
+      },
+      {
+        "seconds": 6.075236900003802,
+        "command": "T08\n"
+      },
+      {
+        "seconds": 6.075778900005389,
+        "command": "C"
+      },
+      {
+        "seconds": 10.081500300002517,
+        "command": "S"
+      },
+      {
+        "seconds": 11.075107300006493,
+        "command": "3"
+      },
+      {
+        "seconds": 11.075212499999907,
+        "command": "T10\n"
+      },
+      {
+        "seconds": 11.075827300002857,
+        "command": "C"
+      },
+      {
+        "seconds": 15.081562700004724,
+        "command": "S"
+      },
+      {
+        "seconds": 16.076491500003613,
+        "command": "3"
+      },
+      {
+        "seconds": 16.076661900006002,
+        "command": "T20\n"
+      },
+      {
+        "seconds": 16.077292300004046,
+        "command": "C"
+      },
+      {
+        "seconds": 20.0789528000023,
+        "command": "S"
+      },
+      {
+        "seconds": 21.07685230000061,
+        "command": "3"
+      },
+      {
+        "seconds": 21.076934800003073,
+        "command": "T40\n"
+      },
+      {
+        "seconds": 21.07742960000178,
+        "command": "C"
+      },
+      {
+        "seconds": 25.095135900002788,
+        "command": "S"
+      },
+      {
+        "seconds": 26.076231500002905,
+        "command": "3"
+      },
+      {
+        "seconds": 26.076346200003172,
+        "command": "T80\n"
+      },
+      {
+        "seconds": 26.076961000006122,
+        "command": "C"
+      },
+      {
+        "seconds": 30.080414800002472,
+        "command": "S"
+      },
+      {
+        "seconds": 31.076220300004934,
+        "command": "3"
+      },
+      {
+        "seconds": 31.07633220000571,
+        "command": "TFF\n"
+      },
+      {
+        "seconds": 31.076940099999774,
+        "command": "C"
+      },
+      {
+        "seconds": 35.08041520000552,
+        "command": "S"
+      },
+      {
+        "seconds": 36.074361800005136,
+        "command": "S"
+      },
+      {
+        "seconds": 36.0744113000037,
+        "command": "l"
+      }
+    ],
+    "usb_read_bytes": 276272482,
+    "capture_enabled": true,
+    "physical_buttons_tested": false,
+    "note": "Payload/restored-JPEG ratio is not a same-input comparison against ordinary MJPEG."
+  },
+  "controls": {
+    "passed": true,
+    "error": null,
+    "decoded_frames": 690,
+    "skip_threshold": 64,
+    "starts": 2,
+    "ends": 2,
+    "qualities": {
+      "60": {
+        "frames": 120,
+        "mean_jpeg_bytes": 255219.74166666667,
+        "median_fps": 30.001974129897746
+      },
+      "75": {
+        "frames": 120,
+        "mean_jpeg_bytes": 359484.55,
+        "median_fps": 30.001974129897746
+      },
+      "85": {
+        "frames": 450,
+        "mean_jpeg_bytes": 537167.9355555555,
+        "median_fps": 30.001974129897746
+      }
+    },
+    "actions": [
+      {
+        "seconds": 1.1660771000024397,
+        "command": "T40\n"
+      },
+      {
+        "seconds": 1.1661622000028729,
+        "command": "C"
+      },
+      {
+        "seconds": 5.18982070000493,
+        "command": "1"
+      },
+      {
+        "seconds": 9.178331900002377,
+        "command": "2"
+      },
+      {
+        "seconds": 13.167036500002723,
+        "command": "3"
+      },
+      {
+        "seconds": 17.194101100001717,
+        "command": "S"
+      },
+      {
+        "seconds": 19.164780500002962,
+        "command": "C"
+      },
+      {
+        "seconds": 21.19054270000197,
+        "command": "L"
+      },
+      {
+        "seconds": 26.167933700002322,
+        "command": "S"
+      }
+    ],
+    "camera_fifo_overflows": 0,
+    "light_readback_on": true,
+    "automatic_off_seen_before_stop": true,
+    "physical_buttons_tested": false,
+    "physical_light_observed": false,
+    "spatial": {
+      "reconstructed_jpeg_bytes": 315490086,
+      "transport_payload_bytes": 48119417,
+      "reused_groups": 2489151,
+      "total_groups": 2794500,
+      "keyframes": 23
+    }
+  },
+  "controls_session_rates": {
+    "1": {
+      "frames": 480,
+      "mean_fps": 30.00197664797463,
+      "median_fps": 30.001974129897746,
+      "maximum_interval_ms": 33.33114
+    },
+    "2": {
+      "frames": 210,
+      "mean_fps": 30.00197735998823,
+      "median_fps": 30.001974129897746,
+      "maximum_interval_ms": 33.33114
+    }
+  },
+  "sustained_t64": {
+    "passed": true,
+    "error": null,
+    "thresholds": [
+      64
+    ],
+    "frames_per_threshold": 1800,
+    "quality": 85,
+    "starts": 1,
+    "ends": 1,
+    "frames": 1801,
+    "median_fps": 30.001974129897746,
+    "mean_fps": 30.001974744978703,
+    "maximum_frame_interval_ms": 33.33115,
+    "transitions": [
+      {
+        "index": 0,
+        "threshold": 64,
+        "previous_threshold": null,
+        "command_after_frame_id": null,
+        "command_seconds": 1.0763031000024057,
+        "old_inflight_frames": 0,
+        "first_frame_id": 0,
+        "first_frame_keyframe": true,
+        "observed_seconds": 1.1569190000009257,
+        "accepted_frames": 1801,
+        "last_frame_id": 1800
+      }
+    ],
+    "unfinished_transition": null,
+    "wire_bytes": 139605036,
+    "usb_read_bytes": 139605172,
+    "transport_payload_bytes": 137850204,
+    "reconstructed_jpeg_bytes": 963423493,
+    "reused_groups": 6543083,
+    "camera_fifo_overflows": 0,
+    "actions": [
+      {
+        "seconds": 0.12375040000188164,
+        "command": "l"
+      },
+      {
+        "seconds": 0.12382170000637416,
+        "command": "S"
+      },
+      {
+        "seconds": 1.076297900006466,
+        "command": "3"
+      },
+      {
+        "seconds": 1.0763753999999608,
+        "command": "T40\n"
+      },
+      {
+        "seconds": 1.0768282000062754,
+        "command": "C"
+      },
+      {
+        "seconds": 61.10925320000388,
+        "command": "S"
+      },
+      {
+        "seconds": 62.07652980000421,
+        "command": "S"
+      },
+      {
+        "seconds": 62.07657110000582,
+        "command": "l"
+      }
+    ],
+    "capture_enabled": true,
+    "threshold_units": "maximum absolute dequantized DCT coefficient difference"
+  },
+  "sustained_keyframes": 61,
+  "same_input_offline_reference": {
+    "passed": true,
+    "comparison": "offline same input, not measured board bandwidth",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\ddr3_diag_20260927_232137\\usb_capture.bin",
+    "frames": 12,
+    "thresholds": [
+      0,
+      32,
+      64
+    ],
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "groups_per_frame": 4050,
+    "slot_bytes": 8192,
+    "refresh_period_frames": 30,
+    "original_same_input_jpeg_bytes": 6677510,
+    "totals": {
+      "0": {
+        "original_same_input_jpeg_bytes": 6677510,
+        "spj2_payload_bytes": 6920666,
+        "net_saved_bytes": -243156,
+        "net_reduction_percent": -3.6414172348674834,
+        "reused_groups": 0,
+        "total_groups": 48600,
+        "keyframes": 1,
+        "output_differs_from_current_frames": 0,
+        "frames": [
+          {
+            "frame_id": 0,
+            "threshold": 0,
+            "keyframe": true,
+            "jpeg_bytes": 560675,
+            "spj2_bytes": 580938,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 1,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 556094,
+            "spj2_bytes": 576357,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 2,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 558857,
+            "spj2_bytes": 579120,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 3,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 554255,
+            "spj2_bytes": 574518,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 4,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 560156,
+            "spj2_bytes": 580419,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 5,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 554091,
+            "spj2_bytes": 574354,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 6,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 556577,
+            "spj2_bytes": 576840,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 7,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 553037,
+            "spj2_bytes": 573300,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 8,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 556618,
+            "spj2_bytes": 576881,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 9,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 554732,
+            "spj2_bytes": 574995,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 10,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 558244,
+            "spj2_bytes": 578507,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 11,
+            "threshold": 0,
+            "keyframe": false,
+            "jpeg_bytes": 554174,
+            "spj2_bytes": 574437,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          }
+        ]
+      },
+      "32": {
+        "original_same_input_jpeg_bytes": 6677510,
+        "spj2_payload_bytes": 6288836,
+        "net_saved_bytes": 388674,
+        "net_reduction_percent": 5.820642724608427,
+        "reused_groups": 6563,
+        "total_groups": 48600,
+        "keyframes": 1,
+        "output_differs_from_current_frames": 11,
+        "frames": [
+          {
+            "frame_id": 0,
+            "threshold": 32,
+            "keyframe": true,
+            "jpeg_bytes": 560675,
+            "spj2_bytes": 580938,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 1,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 556094,
+            "spj2_bytes": 516050,
+            "reused_groups": 620,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 2,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 558857,
+            "spj2_bytes": 518967,
+            "reused_groups": 608,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 3,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 554255,
+            "spj2_bytes": 514830,
+            "reused_groups": 623,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 4,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 560156,
+            "spj2_bytes": 521028,
+            "reused_groups": 600,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 5,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 554091,
+            "spj2_bytes": 518265,
+            "reused_groups": 590,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 6,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 556577,
+            "spj2_bytes": 520136,
+            "reused_groups": 585,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 7,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 553037,
+            "spj2_bytes": 520414,
+            "reused_groups": 574,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 8,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 556618,
+            "spj2_bytes": 519979,
+            "reused_groups": 585,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 9,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 554732,
+            "spj2_bytes": 518082,
+            "reused_groups": 600,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 10,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 558244,
+            "spj2_bytes": 520609,
+            "reused_groups": 600,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 11,
+            "threshold": 32,
+            "keyframe": false,
+            "jpeg_bytes": 554174,
+            "spj2_bytes": 519538,
+            "reused_groups": 578,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          }
+        ]
+      },
+      "64": {
+        "original_same_input_jpeg_bytes": 6677510,
+        "spj2_payload_bytes": 1291557,
+        "net_saved_bytes": 5385953,
+        "net_reduction_percent": 80.65810459287968,
+        "reused_groups": 41030,
+        "total_groups": 48600,
+        "keyframes": 1,
+        "output_differs_from_current_frames": 11,
+        "frames": [
+          {
+            "frame_id": 0,
+            "threshold": 64,
+            "keyframe": true,
+            "jpeg_bytes": 560675,
+            "spj2_bytes": 580938,
+            "reused_groups": 0,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": true
+          },
+          {
+            "frame_id": 1,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 556094,
+            "spj2_bytes": 61647,
+            "reused_groups": 3747,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 2,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 558857,
+            "spj2_bytes": 61311,
+            "reused_groups": 3748,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 3,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 554255,
+            "spj2_bytes": 62387,
+            "reused_groups": 3745,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 4,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 560156,
+            "spj2_bytes": 66618,
+            "reused_groups": 3719,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 5,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 554091,
+            "spj2_bytes": 69100,
+            "reused_groups": 3702,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 6,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 556577,
+            "spj2_bytes": 68294,
+            "reused_groups": 3708,
+            "total_groups": 4050,
+            "tail_4049_copy": false,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 7,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 553037,
+            "spj2_bytes": 72615,
+            "reused_groups": 3678,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 8,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 556618,
+            "spj2_bytes": 67422,
+            "reused_groups": 3712,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 9,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 554732,
+            "spj2_bytes": 62164,
+            "reused_groups": 3747,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 10,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 558244,
+            "spj2_bytes": 61499,
+            "reused_groups": 3751,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          },
+          {
+            "frame_id": 11,
+            "threshold": 64,
+            "keyframe": false,
+            "jpeg_bytes": 554174,
+            "spj2_bytes": 57562,
+            "reused_groups": 3773,
+            "total_groups": 4050,
+            "tail_4049_copy": true,
+            "restored_equals_current": false
+          }
+        ]
+      }
+    },
+    "source_frames": [
+      {
+        "frame_id": 0,
+        "timestamp": 103362160,
+        "jpeg_bytes": 560675,
+        "jpeg_sha256": "2e4f761d03ffffc10a116e8b59a39f228ce45a8468e4c2ad9e2e6f3d78413e51",
+        "groups": 4050,
+        "coefficient_decode_seconds": 1.6823533999995561
+      },
+      {
+        "frame_id": 1,
+        "timestamp": 106695275,
+        "jpeg_bytes": 556094,
+        "jpeg_sha256": "08c2758a0e9586bf9706172860fe8b1a7693ac7ecc3fe96d1ba1a03f9bbd3970",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.151621000004525
+      },
+      {
+        "frame_id": 2,
+        "timestamp": 110028391,
+        "jpeg_bytes": 558857,
+        "jpeg_sha256": "7c44bbfd48921814060541b0ac90243c481bb6ab10fb887dbce25368ace6d224",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.495992300006037
+      },
+      {
+        "frame_id": 3,
+        "timestamp": 113361507,
+        "jpeg_bytes": 554255,
+        "jpeg_sha256": "fe52a1e48e0b345eb7be2339b55f30eec474b5d306a327ab90ae0b89539b4bda",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.3787833000023966
+      },
+      {
+        "frame_id": 4,
+        "timestamp": 116694623,
+        "jpeg_bytes": 560156,
+        "jpeg_sha256": "f22dcc9b0b3734730c06e9118b57b9cca6bf845ca6c74abca6cea6d1286664fb",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.485140800003137
+      },
+      {
+        "frame_id": 5,
+        "timestamp": 120027739,
+        "jpeg_bytes": 554091,
+        "jpeg_sha256": "14eacff7c45fdced9f139ebd98959027c4a3d14766aa38c04cdb6ffe6a3bac87",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.0392300999956205
+      },
+      {
+        "frame_id": 6,
+        "timestamp": 123360854,
+        "jpeg_bytes": 556577,
+        "jpeg_sha256": "1faac487a3be113d5d812669a7768e55c95e9db2e0e547920246ed3183dc71c8",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.252081700004055
+      },
+      {
+        "frame_id": 7,
+        "timestamp": 126693970,
+        "jpeg_bytes": 553037,
+        "jpeg_sha256": "11fe18278a09f5ccdb5ca0c8b9477b50ddbc501d8d6e2ca3ac7934e12ec2a419",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.2656742000035592
+      },
+      {
+        "frame_id": 8,
+        "timestamp": 130027086,
+        "jpeg_bytes": 556618,
+        "jpeg_sha256": "67363cc83267401d18cee9193c68c97113f3203b50fd2947a13d9aad065d7d42",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.394897600002878
+      },
+      {
+        "frame_id": 9,
+        "timestamp": 133360202,
+        "jpeg_bytes": 554732,
+        "jpeg_sha256": "0738f660526670d3ad472ba1e3409389b9ed156658149028528d38d69002c7ec",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.3683622000025935
+      },
+      {
+        "frame_id": 10,
+        "timestamp": 136693318,
+        "jpeg_bytes": 558244,
+        "jpeg_sha256": "c5a009be3adad29bf1c1fc701152b62b90aeeddfe3d74e957ed24faae085467f",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.318225299997721
+      },
+      {
+        "frame_id": 11,
+        "timestamp": 140026434,
+        "jpeg_bytes": 554174,
+        "jpeg_sha256": "e568b648d463d9510e131870a4a86c4a23865c7fd3c478aa882f3f4c9e89c6b3",
+        "groups": 4050,
+        "coefficient_decode_seconds": 2.2290654000025825
+      }
+    ],
+    "median_input_fps": 30.001956127539515,
+    "wall_seconds": 28.979998100003286,
+    "notes": [
+      "Every model sees exactly the same reconstructed original JPEG input and Q85 DQT.",
+      "T0 compares complete group bytes exactly. T32/T64 compare max absolute dequantized DCT difference.",
+      "Nonzero quantized-DCT dead zone is lossy, not a pixel error bound.",
+      "COPY retains last actually emitted same-position group; reference updates only on DATA.",
+      "All 4050 positions and final index4049 are verified on each restored output; Pillow loads all outputs without viewing.",
+      "Original JPEG versus SPJ2 includes all SPJ2 record/header overhead, excludes both MBLK framing and USB physical overhead.",
+      "Refresh cadence is every30 frames; selected short clip includes the first keyframe, but no second scheduled refresh.",
+      "At most one current coefficient frame and two threshold reference frames are retained; no whole-clip coefficient cache."
+    ]
+  },
+  "physical_buttons_retested": false,
+  "physical_image_color_quality_accepted": false,
+  "note": "Current FPGA hardware tests; image effects, motion and temperature endurance remain separate measurements. Sweep payload/restored ratios are not same-input MJPEG comparisons."
+}
