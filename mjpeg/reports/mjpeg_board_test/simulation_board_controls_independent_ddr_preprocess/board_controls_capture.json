@@ -1,0 +1,41 @@
+{
+  "frames": [
+    {
+      "frame_id": 0,
+      "quality": 85,
+      "bytes": 718
+    },
+    {
+      "frame_id": 1,
+      "quality": 60,
+      "bytes": 673
+    },
+    {
+      "frame_id": 2,
+      "quality": 75,
+      "bytes": 702
+    },
+    {
+      "frame_id": 3,
+      "quality": 85,
+      "bytes": 718
+    },
+    {
+      "frame_id": 4,
+      "quality": 60,
+      "bytes": 673
+    },
+    {
+      "frame_id": 5,
+      "quality": 75,
+      "bytes": 702
+    }
+  ],
+  "starts": 3,
+  "ends": 3,
+  "golden_byte_matches": 6,
+  "independent_decodes": 6,
+  "failed_frames": 0,
+  "preprocess_status_records": 2,
+  "preprocess_capable": true
+}
