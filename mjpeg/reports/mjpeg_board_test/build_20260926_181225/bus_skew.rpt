@@ -1,0 +1,808 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Sat Sep 26 18:20:04 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_bus_skew -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/mjpeg_board_test/build_20260926_181225/bus_skew.rpt
+| Design       : davinci_mjpeg_board_test_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   17        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/wgray_reg* || NAME =~ *tx_fifo/wbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/wgray_r1_reg*}]
+                                                                              Slow             10.000       0.762      9.238
+2   19        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/rgray_reg* || NAME =~ *tx_fifo/rbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/rgray_w1_reg*}]
+                                                                              Slow             16.667       1.040     15.627
+3   21        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *rx_fifo/wgray_reg* || NAME =~ *rx_fifo/wbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *rx_fifo/wgray_r1_reg*}]
+                                                                              Slow             16.667       0.846     15.821
+4   23        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *rx_fifo/rgray_reg* || NAME =~ *rx_fifo/rbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *rx_fifo/rgray_w1_reg*}]
+                                                                              Slow             10.000       0.940      9.060
+5   30        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *pixel_fifo/wgray_reg* || NAME =~ *pixel_fifo/wbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *pixel_fifo/wgray_r1_reg*}]
+                                                                              Slow             11.850       1.026     10.824
+6   32        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *pixel_fifo/rgray_reg* || NAME =~ *pixel_fifo/rbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *pixel_fifo/rgray_w1_reg*}]
+                                                                              Slow             10.000       1.064      8.936
+7   34        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *capture/*_gray_reg* || NAME =~ *capture/*_bin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *capture/*_c1_reg*}]
+                                                                              Slow             11.850       1.201     10.649
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/wgray_reg* || NAME =~ *tx_fifo/wbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/wgray_r1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 14
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+core_raw              usb_clk               synchronous.tx_fifo/wgray_r1_reg[4]/D
+                                                                            synchronous.tx_fifo/wgray_r1_reg[1]/D
+                                                                                                            Slow         0.762      9.238
+
+
+Slack (MET) :             9.238ns  (requirement - actual skew)
+  Endpoint Source:        synchronous.tx_fifo/wgray_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Endpoint Destination:   synchronous.tx_fifo/wgray_r1_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Reference Source:       synchronous.tx_fifo/wgray_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Destination:  synchronous.tx_fifo/wgray_r1_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:   -3.891ns
+  Reference Relative Delay:  -5.149ns
+  Relative CRPR:              0.627ns
+  Uncertainty:                0.131ns
+  Actual Bus Skew:            0.762ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.363    -0.560    synchronous.tx_fifo/core_clk
+    SLICE_X56Y20         FDCE                                         r  synchronous.tx_fifo/wgray_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X56Y20         FDCE (Prop_fdce_C_Q)         0.398    -0.162 r  synchronous.tx_fifo/wgray_reg[4]/Q
+                         net (fo=1, routed)           0.436     0.274    synchronous.tx_fifo/wgray_reg_n_0_[4]
+    SLICE_X59Y21         FDCE                                         r  synchronous.tx_fifo/wgray_r1_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.372     1.372 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.599     2.972    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077     3.049 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.318     4.366    synchronous.tx_fifo/synchronous.usb_clk
+    SLICE_X59Y21         FDCE                                         r  synchronous.tx_fifo/wgray_r1_reg[4]/C
+                         clock pessimism              0.000     4.366    
+    SLICE_X59Y21         FDCE (Setup_fdce_C_D)       -0.202     4.164    synchronous.tx_fifo/wgray_r1_reg[4]
+  -------------------------------------------------------------------
+                         data arrival                           0.274    
+                         clock arrival                          4.164    
+  -------------------------------------------------------------------
+                         relative delay                        -3.891    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.256    -1.003    synchronous.tx_fifo/core_clk
+    SLICE_X55Y18         FDCE                                         r  synchronous.tx_fifo/wgray_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X55Y18         FDCE (Prop_fdce_C_Q)         0.304    -0.699 r  synchronous.tx_fifo/wgray_reg[1]/Q
+                         net (fo=1, routed)           0.314    -0.384    synchronous.tx_fifo/wgray_reg_n_0_[1]
+    SLICE_X56Y18         FDCE                                         r  synchronous.tx_fifo/wgray_r1_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.439     1.439 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.127    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.208 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.365     4.573    synchronous.tx_fifo/synchronous.usb_clk
+    SLICE_X56Y18         FDCE                                         r  synchronous.tx_fifo/wgray_r1_reg[1]/C
+                         clock pessimism              0.000     4.573    
+    SLICE_X56Y18         FDCE (Hold_fdce_C_D)         0.191     4.764    synchronous.tx_fifo/wgray_r1_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                          -0.384    
+                         clock arrival                          4.764    
+  -------------------------------------------------------------------
+                         relative delay                        -5.149    
+
+
+
+Id: 2
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/rgray_reg* || NAME =~ *tx_fifo/rbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/rgray_w1_reg*}] 16.667
+Requirement: 16.667ns
+Endpoints: 14
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+usb_clk               core_raw              synchronous.tx_fifo/rgray_w1_reg[1]/D
+                                                                            synchronous.tx_fifo/rgray_w1_reg[13]/D
+                                                                                                            Slow         1.040     15.627
+
+
+Slack (MET) :             15.627ns  (requirement - actual skew)
+  Endpoint Source:        synchronous.tx_fifo/rgray_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Endpoint Destination:   synchronous.tx_fifo/rgray_w1_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       synchronous.tx_fifo/rgray_reg[13]/C
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Reference Destination:  synchronous.tx_fifo/rgray_w1_reg[13]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            16.667ns
+  Endpoint Relative Delay:    6.863ns
+  Reference Relative Delay:   5.326ns
+  Relative CRPR:              0.627ns
+  Uncertainty:                0.131ns
+  Actual Bus Skew:            1.040ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.439     1.439 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.127    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.208 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.364     4.572    synchronous.tx_fifo/synchronous.usb_clk
+    SLICE_X56Y19         FDCE                                         r  synchronous.tx_fifo/rgray_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X56Y19         FDCE (Prop_fdce_C_Q)         0.398     4.970 r  synchronous.tx_fifo/rgray_reg[1]/Q
+                         net (fo=1, routed)           0.689     5.659    synchronous.tx_fifo/rgray_reg_n_0_[1]
+    SLICE_X55Y18         FDCE                                         r  synchronous.tx_fifo/rgray_w1_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.256    -1.003    synchronous.tx_fifo/core_clk
+    SLICE_X55Y18         FDCE                                         r  synchronous.tx_fifo/rgray_w1_reg[1]/C
+                         clock pessimism              0.000    -1.003    
+    SLICE_X55Y18         FDCE (Setup_fdce_C_D)       -0.201    -1.204    synchronous.tx_fifo/rgray_w1_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           5.659    
+                         clock arrival                         -1.204    
+  -------------------------------------------------------------------
+                         relative delay                         6.863    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.372     1.372 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.599     2.972    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077     3.049 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.321     4.369    synchronous.tx_fifo/synchronous.usb_clk
+    SLICE_X58Y19         FDCE                                         r  synchronous.tx_fifo/rgray_reg[13]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X58Y19         FDCE (Prop_fdce_C_Q)         0.304     4.673 r  synchronous.tx_fifo/rgray_reg[13]/Q
+                         net (fo=1, routed)           0.292     4.965    synchronous.tx_fifo/rgray_reg_n_0_[13]
+    SLICE_X58Y21         FDCE                                         r  synchronous.tx_fifo/rgray_w1_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.424    -0.499    synchronous.tx_fifo/core_clk
+    SLICE_X58Y21         FDCE                                         r  synchronous.tx_fifo/rgray_w1_reg[13]/C
+                         clock pessimism              0.000    -0.499    
+    SLICE_X58Y21         FDCE (Hold_fdce_C_D)         0.138    -0.361    synchronous.tx_fifo/rgray_w1_reg[13]
+  -------------------------------------------------------------------
+                         data arrival                           4.965    
+                         clock arrival                         -0.361    
+  -------------------------------------------------------------------
+                         relative delay                         5.326    
+
+
+
+Id: 3
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *rx_fifo/wgray_reg* || NAME =~ *rx_fifo/wbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *rx_fifo/wgray_r1_reg*}] 16.667
+Requirement: 16.667ns
+Endpoints: 9
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+usb_clk               core_raw              synchronous.rx_fifo/wgray_r1_reg[4]/D
+                                                                            synchronous.rx_fifo/wgray_r1_reg[2]/D
+                                                                                                            Slow         0.846     15.821
+
+
+Slack (MET) :             15.821ns  (requirement - actual skew)
+  Endpoint Source:        synchronous.rx_fifo/wgray_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Endpoint Destination:   synchronous.rx_fifo/wgray_r1_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       synchronous.rx_fifo/wgray_reg[2]/C
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Reference Destination:  synchronous.rx_fifo/wgray_r1_reg[2]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            16.667ns
+  Endpoint Relative Delay:    6.653ns
+  Reference Relative Delay:   5.311ns
+  Relative CRPR:              0.627ns
+  Uncertainty:                0.131ns
+  Actual Bus Skew:            0.846ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.439     1.439 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.127    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.208 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.429     4.637    synchronous.rx_fifo/synchronous.usb_clk
+    SLICE_X59Y32         FDCE                                         r  synchronous.rx_fifo/wgray_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X59Y32         FDCE (Prop_fdce_C_Q)         0.348     4.985 r  synchronous.rx_fifo/wgray_reg[4]/Q
+                         net (fo=1, routed)           0.526     5.511    synchronous.rx_fifo/wgray[4]
+    SLICE_X59Y33         FDCE                                         r  synchronous.rx_fifo/wgray_r1_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.324    -0.935    synchronous.rx_fifo/core_clk
+    SLICE_X59Y33         FDCE                                         r  synchronous.rx_fifo/wgray_r1_reg[4]/C
+                         clock pessimism              0.000    -0.935    
+    SLICE_X59Y33         FDCE (Setup_fdce_C_D)       -0.207    -1.142    synchronous.rx_fifo/wgray_r1_reg[4]
+  -------------------------------------------------------------------
+                         data arrival                           5.511    
+                         clock arrival                         -1.142    
+  -------------------------------------------------------------------
+                         relative delay                         6.653    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.372     1.372 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.599     2.972    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077     3.049 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.323     4.371    synchronous.rx_fifo/synchronous.usb_clk
+    SLICE_X63Y31         FDCE                                         r  synchronous.rx_fifo/wgray_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X63Y31         FDCE (Prop_fdce_C_Q)         0.304     4.675 r  synchronous.rx_fifo/wgray_reg[2]/Q
+                         net (fo=1, routed)           0.281     4.957    synchronous.rx_fifo/wgray[2]
+    SLICE_X65Y32         FDCE                                         r  synchronous.rx_fifo/wgray_r1_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.431    -0.492    synchronous.rx_fifo/core_clk
+    SLICE_X65Y32         FDCE                                         r  synchronous.rx_fifo/wgray_r1_reg[2]/C
+                         clock pessimism              0.000    -0.492    
+    SLICE_X65Y32         FDCE (Hold_fdce_C_D)         0.138    -0.354    synchronous.rx_fifo/wgray_r1_reg[2]
+  -------------------------------------------------------------------
+                         data arrival                           4.957    
+                         clock arrival                         -0.354    
+  -------------------------------------------------------------------
+                         relative delay                         5.311    
+
+
+
+Id: 4
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *rx_fifo/rgray_reg* || NAME =~ *rx_fifo/rbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *rx_fifo/rgray_w1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 9
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+core_raw              usb_clk               synchronous.rx_fifo/rgray_w1_reg[7]/D
+                                                                            synchronous.rx_fifo/rgray_w1_reg[5]/D
+                                                                                                            Slow         0.940      9.060
+
+
+Slack (MET) :             9.060ns  (requirement - actual skew)
+  Endpoint Source:        synchronous.rx_fifo/rgray_reg[7]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Endpoint Destination:   synchronous.rx_fifo/rgray_w1_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Reference Source:       synchronous.rx_fifo/rgray_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Destination:  synchronous.rx_fifo/rgray_w1_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:   -3.662ns
+  Reference Relative Delay:  -5.113ns
+  Relative CRPR:              0.642ns
+  Uncertainty:                0.131ns
+  Actual Bus Skew:            0.940ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.430    -0.493    synchronous.rx_fifo/core_clk
+    SLICE_X59Y33         FDCE                                         r  synchronous.rx_fifo/rgray_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X59Y33         FDCE (Prop_fdce_C_Q)         0.379    -0.114 r  synchronous.rx_fifo/rgray_reg[7]/Q
+                         net (fo=1, routed)           0.752     0.638    synchronous.rx_fifo/rgray[7]
+    SLICE_X61Y33         FDCE                                         r  synchronous.rx_fifo/rgray_w1_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.372     1.372 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.599     2.972    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077     3.049 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.324     4.372    synchronous.rx_fifo/synchronous.usb_clk
+    SLICE_X61Y33         FDCE                                         r  synchronous.rx_fifo/rgray_w1_reg[7]/C
+                         clock pessimism              0.000     4.372    
+    SLICE_X61Y33         FDCE (Setup_fdce_C_D)       -0.073     4.299    synchronous.rx_fifo/rgray_w1_reg[7]
+  -------------------------------------------------------------------
+                         data arrival                           0.638    
+                         clock arrival                          4.299    
+  -------------------------------------------------------------------
+                         relative delay                        -3.662    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.323    -0.936    synchronous.rx_fifo/core_clk
+    SLICE_X61Y32         FDCE                                         r  synchronous.rx_fifo/rgray_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y32         FDCE (Prop_fdce_C_Q)         0.304    -0.632 r  synchronous.rx_fifo/rgray_reg[5]/Q
+                         net (fo=1, routed)           0.296    -0.336    synchronous.rx_fifo/rgray[5]
+    SLICE_X62Y32         FDCE                                         r  synchronous.rx_fifo/rgray_w1_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.439     1.439 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.127    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.208 r  synchronous.usb_clock_buffer/O
+                         net (fo=1013, routed)        1.431     4.639    synchronous.rx_fifo/synchronous.usb_clk
+    SLICE_X62Y32         FDCE                                         r  synchronous.rx_fifo/rgray_w1_reg[5]/C
+                         clock pessimism              0.000     4.639    
+    SLICE_X62Y32         FDCE (Hold_fdce_C_D)         0.138     4.777    synchronous.rx_fifo/rgray_w1_reg[5]
+  -------------------------------------------------------------------
+                         data arrival                          -0.336    
+                         clock arrival                          4.777    
+  -------------------------------------------------------------------
+                         relative delay                        -5.113    
+
+
+
+Id: 5
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *pixel_fifo/wgray_reg* || NAME =~ *pixel_fifo/wbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *pixel_fifo/wgray_r1_reg*}] 11.850
+Requirement: 11.850ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clock_raw             core_raw              real_camera.capture/pixel_fifo/wgray_r1_reg[1]/D
+                                                                            real_camera.capture/pixel_fifo/wgray_r1_reg[10]/D
+                                                                                                            Slow         1.026     10.824
+
+
+Slack (MET) :             10.824ns  (requirement - actual skew)
+  Endpoint Source:        real_camera.capture/pixel_fifo/wgray_reg[1]/C
+                            (falling edge-triggered cell FDCE clocked by clock_raw)
+  Endpoint Destination:   real_camera.capture/pixel_fifo/wgray_r1_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       real_camera.capture/pixel_fifo/wgray_reg[10]/C
+                            (falling edge-triggered cell FDCE clocked by clock_raw)
+  Reference Destination:  real_camera.capture/pixel_fifo/wgray_r1_reg[10]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            11.850ns
+  Endpoint Relative Delay:    3.380ns
+  Reference Relative Delay:   1.351ns
+  Relative CRPR:              1.254ns
+  Uncertainty:                0.251ns
+  Actual Bus Skew:            1.026ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clock_raw fall edge)
+                                                      0.000     0.000 f  
+    F14                                               0.000     0.000 f  cam_pclk (IN)
+                         net (fo=0)                   0.000     0.000    cam_pclk
+    F14                  IBUF (Prop_ibuf_I_O)         1.392     1.392 f  cam_pclk_IBUF_inst/O
+                         net (fo=1, routed)           2.954     4.347    real_camera.phase_clock.sampling_clock/pclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.924    -1.578 f  real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.425    -0.153    real_camera.phase_clock.sampling_clock/clock_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -0.072 f  real_camera.phase_clock.sampling_clock/sample_buffer/O
+                         net (fo=505, routed)         1.335     1.263    real_camera.capture/pixel_fifo/sample_clk
+    SLICE_X39Y75         FDCE                                         r  real_camera.capture/pixel_fifo/wgray_reg[1]/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y75         FDCE (Prop_fdce_C_Q)         0.353     1.616 r  real_camera.capture/pixel_fifo/wgray_reg[1]/Q
+                         net (fo=1, routed)           0.524     2.140    real_camera.capture/pixel_fifo/wgray[1]
+    SLICE_X40Y75         FDCE                                         r  real_camera.capture/pixel_fifo/wgray_r1_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.230    -1.028    real_camera.capture/pixel_fifo/core_clk
+    SLICE_X40Y75         FDCE                                         r  real_camera.capture/pixel_fifo/wgray_r1_reg[1]/C
+                         clock pessimism              0.000    -1.028    
+    SLICE_X40Y75         FDCE (Setup_fdce_C_D)       -0.212    -1.240    real_camera.capture/pixel_fifo/wgray_r1_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           2.140    
+                         clock arrival                         -1.240    
+  -------------------------------------------------------------------
+                         relative delay                         3.380    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clock_raw fall edge)
+                                                      0.000     0.000 f  
+    F14                                               0.000     0.000 f  cam_pclk (IN)
+                         net (fo=0)                   0.000     0.000    cam_pclk
+    F14                  IBUF (Prop_ibuf_I_O)         1.327     1.327 f  cam_pclk_IBUF_inst/O
+                         net (fo=1, routed)           2.442     3.769    real_camera.phase_clock.sampling_clock/pclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.061    -2.292 f  real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.357    -0.935    real_camera.phase_clock.sampling_clock/clock_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -0.858 f  real_camera.phase_clock.sampling_clock/sample_buffer/O
+                         net (fo=505, routed)         1.231     0.373    real_camera.capture/pixel_fifo/sample_clk
+    SLICE_X42Y76         FDCE                                         r  real_camera.capture/pixel_fifo/wgray_reg[10]/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X42Y76         FDCE (Prop_fdce_C_Q)         0.351     0.724 r  real_camera.capture/pixel_fifo/wgray_reg[10]/Q
+                         net (fo=1, routed)           0.231     0.955    real_camera.capture/pixel_fifo/wgray[10]
+    SLICE_X42Y74         FDCE                                         r  real_camera.capture/pixel_fifo/wgray_r1_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.336    -0.586    real_camera.capture/pixel_fifo/core_clk
+    SLICE_X42Y74         FDCE                                         r  real_camera.capture/pixel_fifo/wgray_r1_reg[10]/C
+                         clock pessimism              0.000    -0.586    
+    SLICE_X42Y74         FDCE (Hold_fdce_C_D)         0.191    -0.395    real_camera.capture/pixel_fifo/wgray_r1_reg[10]
+  -------------------------------------------------------------------
+                         data arrival                           0.955    
+                         clock arrival                         -0.395    
+  -------------------------------------------------------------------
+                         relative delay                         1.351    
+
+
+
+Id: 6
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *pixel_fifo/rgray_reg* || NAME =~ *pixel_fifo/rbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *pixel_fifo/rgray_w1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 13
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+core_raw              clock_raw             real_camera.capture/pixel_fifo/rgray_w1_reg[12]/D
+                                                                            real_camera.capture/pixel_fifo/rgray_w1_reg[7]/D
+                                                                                                            Slow         1.064      8.936
+
+
+Slack (MET) :             8.936ns  (requirement - actual skew)
+  Endpoint Source:        real_camera.capture/pixel_fifo/rgray_reg[12]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Endpoint Destination:   real_camera.capture/pixel_fifo/rgray_w1_reg[12]/D
+                            (falling edge-triggered cell FDCE clocked by clock_raw)
+  Reference Source:       real_camera.capture/pixel_fifo/rgray_reg[7]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Destination:  real_camera.capture/pixel_fifo/rgray_w1_reg[7]/D
+                            (falling edge-triggered cell FDCE clocked by clock_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    0.206ns
+  Reference Relative Delay:  -1.861ns
+  Relative CRPR:              1.254ns
+  Uncertainty:                0.251ns
+  Actual Bus Skew:            1.064ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.341    -0.581    real_camera.capture/pixel_fifo/core_clk
+    SLICE_X48Y75         FDCE                                         r  real_camera.capture/pixel_fifo/rgray_reg[12]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y75         FDCE (Prop_fdce_C_Q)         0.379    -0.202 r  real_camera.capture/pixel_fifo/rgray_reg[12]/Q
+                         net (fo=1, routed)           0.754     0.551    real_camera.capture/pixel_fifo/rgray[12]
+    SLICE_X38Y76         FDCE                                         r  real_camera.capture/pixel_fifo/rgray_w1_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clock_raw fall edge)
+                                                      0.000     0.000 f  
+    F14                                               0.000     0.000 f  cam_pclk (IN)
+                         net (fo=0)                   0.000     0.000    cam_pclk
+    F14                  IBUF (Prop_ibuf_I_O)         1.327     1.327 f  cam_pclk_IBUF_inst/O
+                         net (fo=1, routed)           2.442     3.769    real_camera.phase_clock.sampling_clock/pclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.061    -2.292 f  real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.357    -0.935    real_camera.phase_clock.sampling_clock/clock_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -0.858 f  real_camera.phase_clock.sampling_clock/sample_buffer/O
+                         net (fo=505, routed)         1.230     0.372    real_camera.capture/pixel_fifo/sample_clk
+    SLICE_X38Y76         FDCE                                         r  real_camera.capture/pixel_fifo/rgray_w1_reg[12]/C  (IS_INVERTED)
+                         clock pessimism              0.000     0.372    
+    SLICE_X38Y76         FDCE (Setup_fdce_C_D)       -0.027     0.345    real_camera.capture/pixel_fifo/rgray_w1_reg[12]
+  -------------------------------------------------------------------
+                         data arrival                           0.551    
+                         clock arrival                          0.345    
+  -------------------------------------------------------------------
+                         relative delay                         0.206    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.231    -1.027    real_camera.capture/pixel_fifo/core_clk
+    SLICE_X47Y75         FDCE                                         r  real_camera.capture/pixel_fifo/rgray_reg[7]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y75         FDCE (Prop_fdce_C_Q)         0.304    -0.723 r  real_camera.capture/pixel_fifo/rgray_reg[7]/Q
+                         net (fo=1, routed)           0.319    -0.405    real_camera.capture/pixel_fifo/rgray[7]
+    SLICE_X42Y76         FDCE                                         r  real_camera.capture/pixel_fifo/rgray_w1_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clock_raw fall edge)
+                                                      0.000     0.000 f  
+    F14                                               0.000     0.000 f  cam_pclk (IN)
+                         net (fo=0)                   0.000     0.000    cam_pclk
+    F14                  IBUF (Prop_ibuf_I_O)         1.392     1.392 f  cam_pclk_IBUF_inst/O
+                         net (fo=1, routed)           2.954     4.347    real_camera.phase_clock.sampling_clock/pclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.924    -1.578 f  real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.425    -0.153    real_camera.phase_clock.sampling_clock/clock_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -0.072 f  real_camera.phase_clock.sampling_clock/sample_buffer/O
+                         net (fo=505, routed)         1.337     1.265    real_camera.capture/pixel_fifo/sample_clk
+    SLICE_X42Y76         FDCE                                         r  real_camera.capture/pixel_fifo/rgray_w1_reg[7]/C  (IS_INVERTED)
+                         clock pessimism              0.000     1.265    
+    SLICE_X42Y76         FDCE (Hold_fdce_C_D)         0.191     1.456    real_camera.capture/pixel_fifo/rgray_w1_reg[7]
+  -------------------------------------------------------------------
+                         data arrival                          -0.405    
+                         clock arrival                          1.456    
+  -------------------------------------------------------------------
+                         relative delay                        -1.861    
+
+
+
+Id: 7
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *capture/*_gray_reg* || NAME =~ *capture/*_bin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *capture/*_c1_reg*}] 11.850
+Requirement: 11.850ns
+Endpoints: 192
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clock_raw             core_raw              real_camera.capture/received_c1_reg[22]/D
+                                                                            real_camera.capture/bytes_c1_reg[10]/D
+                                                                                                            Slow         1.201     10.649
+
+
+Slack (MET) :             10.649ns  (requirement - actual skew)
+  Endpoint Source:        real_camera.capture/received_gray_reg[22]/C
+                            (falling edge-triggered cell FDCE clocked by clock_raw)
+  Endpoint Destination:   real_camera.capture/received_c1_reg[22]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       real_camera.capture/bytes_gray_reg[10]/C
+                            (falling edge-triggered cell FDCE clocked by clock_raw)
+  Reference Destination:  real_camera.capture/bytes_c1_reg[10]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            11.850ns
+  Endpoint Relative Delay:    3.573ns
+  Reference Relative Delay:   1.369ns
+  Relative CRPR:              1.254ns
+  Uncertainty:                0.251ns
+  Actual Bus Skew:            1.201ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clock_raw fall edge)
+                                                      0.000     0.000 f  
+    F14                                               0.000     0.000 f  cam_pclk (IN)
+                         net (fo=0)                   0.000     0.000    cam_pclk
+    F14                  IBUF (Prop_ibuf_I_O)         1.392     1.392 f  cam_pclk_IBUF_inst/O
+                         net (fo=1, routed)           2.954     4.347    real_camera.phase_clock.sampling_clock/pclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.924    -1.578 f  real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.425    -0.153    real_camera.phase_clock.sampling_clock/clock_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -0.072 f  real_camera.phase_clock.sampling_clock/sample_buffer/O
+                         net (fo=505, routed)         1.414     1.342    real_camera.capture/sample_clk
+    SLICE_X61Y68         FDCE                                         r  real_camera.capture/received_gray_reg[22]/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y68         FDCE (Prop_fdce_C_Q)         0.353     1.695 r  real_camera.capture/received_gray_reg[22]/Q
+                         net (fo=1, routed)           0.715     2.410    real_camera.capture/received_gray[22]
+    SLICE_X62Y71         FDCE                                         r  real_camera.capture/received_c1_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.305    -0.953    real_camera.capture/core_clk
+    SLICE_X62Y71         FDCE                                         r  real_camera.capture/received_c1_reg[22]/C
+                         clock pessimism              0.000    -0.953    
+    SLICE_X62Y71         FDCE (Setup_fdce_C_D)       -0.210    -1.163    real_camera.capture/received_c1_reg[22]
+  -------------------------------------------------------------------
+                         data arrival                           2.410    
+                         clock arrival                         -1.163    
+  -------------------------------------------------------------------
+                         relative delay                         3.573    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clock_raw fall edge)
+                                                      0.000     0.000 f  
+    F14                                               0.000     0.000 f  cam_pclk (IN)
+                         net (fo=0)                   0.000     0.000    cam_pclk
+    F14                  IBUF (Prop_ibuf_I_O)         1.327     1.327 f  cam_pclk_IBUF_inst/O
+                         net (fo=1, routed)           2.442     3.769    real_camera.phase_clock.sampling_clock/pclk
+    MMCME2_ADV_X0Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.061    -2.292 f  real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0
+                         net (fo=1, routed)           1.357    -0.935    real_camera.phase_clock.sampling_clock/clock_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -0.858 f  real_camera.phase_clock.sampling_clock/sample_buffer/O
+                         net (fo=505, routed)         1.237     0.379    real_camera.capture/sample_clk
+    SLICE_X45Y69         FDCE                                         r  real_camera.capture/bytes_gray_reg[10]/C  (IS_INVERTED)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X45Y69         FDCE (Prop_fdce_C_Q)         0.308     0.687 r  real_camera.capture/bytes_gray_reg[10]/Q
+                         net (fo=1, routed)           0.290     0.978    real_camera.capture/bytes_gray[10]
+    SLICE_X46Y69         FDCE                                         r  real_camera.capture/bytes_c1_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    multiplied_clock.clock_generator/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  multiplied_clock.clock_generator/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    multiplied_clock.clock_generator/core_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  multiplied_clock.clock_generator/core_buffer/O
+                         net (fo=20515, routed)       1.344    -0.578    real_camera.capture/core_clk
+    SLICE_X46Y69         FDCE                                         r  real_camera.capture/bytes_c1_reg[10]/C
+                         clock pessimism              0.000    -0.578    
+    SLICE_X46Y69         FDCE (Hold_fdce_C_D)         0.187    -0.391    real_camera.capture/bytes_c1_reg[10]
+  -------------------------------------------------------------------
+                         data arrival                           0.978    
+                         clock arrival                         -0.391    
+  -------------------------------------------------------------------
+                         relative delay                         1.369    
+
+
+
