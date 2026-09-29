@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-09-26T20:51:47+08:00",
+  "passed": true,
+  "evidence_source": "user_on_site_confirmation",
+  "user_reply": "全部符合",
+  "build": "build_20260926_204044",
+  "camera_profile": 5,
+  "confirmed": {
+    "key0_start_stop": true,
+    "key1_cycle_q60_q75_q85": true,
+    "key2_light_and_approximately_two_second_auto_off": true,
+    "key3_stop_and_cancel_light": true,
+    "led0_run_indicator": true,
+    "led1_led2_quality_mapping": true,
+    "led3_light_indicator": true,
+    "physical_light_emission": true
+  },
+  "automatic_acceptance_report": "summary.json"
+}
