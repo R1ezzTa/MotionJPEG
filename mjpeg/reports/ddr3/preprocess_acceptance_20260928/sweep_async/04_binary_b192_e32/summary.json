@@ -1,0 +1,24 @@
+{
+  "mode": "binary",
+  "binary_threshold": 192,
+  "edge_threshold": 32,
+  "frames": 90,
+  "independently_decoded_frames": 90,
+  "starts": 1,
+  "ends": 1,
+  "mean_fps": 30.002019843848316,
+  "max_frame_interval_ms": 33.3311,
+  "mean_jpeg_bytes": 56858.4,
+  "jpeg_mb_per_second": 1.7058668450894652,
+  "wire_bytes": 5184448,
+  "active_confirmed": true,
+  "first_frame_statistics": {
+    "max_rgb_channel_difference": 0,
+    "min_level": 0,
+    "max_level": 255,
+    "mean_level": 2.44515625,
+    "near_black_fraction": 0.9904239004629629,
+    "near_white_fraction": 0.00954812885802469
+  },
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sweep_async\\04_binary_b192_e32"
+}
