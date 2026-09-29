@@ -1,0 +1,295 @@
+{
+  "passed": true,
+  "error": null,
+  "physical_keys_retested": false,
+  "received": 337,
+  "displayed": 218,
+  "failed": 0,
+  "recoveries": 0,
+  "camera_fifo_overflows": 0,
+  "worker_exited": true,
+  "preparation_exited": true,
+  "final_worker_error": null,
+  "events": [
+    {
+      "action": "stopped, preprocessing controls ready",
+      "seconds": 2.0973953000000165,
+      "received": 0,
+      "displayed": 0,
+      "phase": "waiting",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 0,
+        "mode": 0,
+        "binary_threshold_requested": 128,
+        "edge_threshold_requested": 32,
+        "binary_threshold": 128,
+        "edge_threshold": 32,
+        "frames_started": 0,
+        "window": 2
+      },
+      "status": "板内输入/压缩/失败 fps：0/0/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 53  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内彩色（亮度 128 / 边缘 32）",
+      "notice": "PC 按钮或 KEY0 启停传输，KEY1 切画质，KEY2 补光，KEY3 停止；暂停仅冻结显示。"
+    },
+    {
+      "action": "color stream",
+      "seconds": 4.357919000000038,
+      "received": 61,
+      "displayed": 53,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 0,
+        "mode": 0,
+        "binary_threshold_requested": 128,
+        "edge_threshold_requested": 32,
+        "binary_threshold": 128,
+        "edge_threshold": 32,
+        "frames_started": 53,
+        "window": 4
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内彩色（亮度 128 / 边缘 32）",
+      "notice": "已请求开启传输；等待板卡状态确认。"
+    },
+    {
+      "action": "gray active",
+      "seconds": 5.392333699999881,
+      "received": 92,
+      "displayed": 82,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 1,
+        "mode": 1,
+        "binary_threshold_requested": 128,
+        "edge_threshold_requested": 32,
+        "binary_threshold": 128,
+        "edge_threshold": 32,
+        "frames_started": 83,
+        "window": 5
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内灰度（亮度 128 / 边缘 32）",
+      "notice": "已请求板内灰度；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "invalid threshold rejected",
+      "seconds": 5.392533199999889,
+      "received": 92,
+      "displayed": 82,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 1,
+        "mode": 1,
+        "binary_threshold_requested": 128,
+        "edge_threshold_requested": 32,
+        "binary_threshold": 128,
+        "edge_threshold": 32,
+        "frames_started": 83,
+        "window": 5
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内灰度（亮度 128 / 边缘 32）",
+      "notice": "预处理设置未发送：Pixel/edge threshold must be an integer from 0 to 255"
+    },
+    {
+      "action": "binary 128 active",
+      "seconds": 6.4078967999998895,
+      "received": 122,
+      "displayed": 109,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 2,
+        "mode": 2,
+        "binary_threshold_requested": 128,
+        "edge_threshold_requested": 32,
+        "binary_threshold": 128,
+        "edge_threshold": 32,
+        "frames_started": 113,
+        "window": 6
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内二值化（亮度 128 / 边缘 32）",
+      "notice": "已请求板内二值化；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "binary 192 active",
+      "seconds": 7.392879799999946,
+      "received": 152,
+      "displayed": 133,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 2,
+        "mode": 2,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 32,
+        "binary_threshold": 192,
+        "edge_threshold": 32,
+        "frames_started": 143,
+        "window": 7
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内二值化（亮度 192 / 边缘 32）",
+      "notice": "已请求板内二值化；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "Sobel 64 active",
+      "seconds": 8.41583199999991,
+      "received": 182,
+      "displayed": 157,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 3,
+        "mode": 3,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 64,
+        "binary_threshold": 192,
+        "edge_threshold": 64,
+        "frames_started": 174,
+        "window": 8
+      },
+      "status": "板内输入/压缩/失败 fps：31/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内Sobel 边缘（亮度 192 / 边缘 64）",
+      "notice": "已请求板内Sobel 边缘；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "Sobel 8 active",
+      "seconds": 9.434567900000047,
+      "received": 213,
+      "displayed": 186,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 3,
+        "mode": 3,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 204,
+        "window": 9
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内Sobel 边缘（亮度 192 / 边缘 8）",
+      "notice": "已请求板内Sobel 边缘；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "display paused, USB continues",
+      "seconds": 10.462495199999921,
+      "received": 244,
+      "displayed": 186,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 3,
+        "mode": 3,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 234,
+        "window": 10
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 60  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内Sobel 边缘（亮度 192 / 边缘 8）",
+      "notice": "已请求板内Sobel 边缘；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "PC stop completed",
+      "seconds": 11.124115800000027,
+      "received": 245,
+      "displayed": 186,
+      "phase": "waiting",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 3,
+        "mode": 3,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 245,
+        "window": 11
+      },
+      "status": "板内输入/压缩/失败 fps：11/12/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 79  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内Sobel 边缘（亮度 192 / 边缘 8）",
+      "notice": "已请求停止传输；板卡排完当前帧并关灯，窗口保持连接。"
+    },
+    {
+      "action": "color requested while stopped",
+      "seconds": 13.122883799999954,
+      "received": 245,
+      "displayed": 186,
+      "phase": "waiting",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 0,
+        "mode": 3,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 245,
+        "window": 13
+      },
+      "status": "板内输入/压缩/失败 fps：0/0/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 139  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内Sobel 边缘（亮度 192 / 边缘 8） → 彩色 / 192 / 8（等待生效）",
+      "notice": "已请求板内彩色；阈值范围 0–255，等待完整帧及板卡回报。"
+    },
+    {
+      "action": "restart applied color",
+      "seconds": 15.32170989999986,
+      "received": 305,
+      "displayed": 186,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 0,
+        "mode": 0,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 299,
+        "window": 15
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 145  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内彩色（亮度 192 / 边缘 8）",
+      "notice": "已请求开启传输；等待板卡状态确认。"
+    },
+    {
+      "action": "display resumed",
+      "seconds": 16.343150400000013,
+      "received": 335,
+      "displayed": 215,
+      "phase": "streaming",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 0,
+        "mode": 0,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 329,
+        "window": 16
+      },
+      "status": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 145  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内彩色（亮度 192 / 边缘 8）",
+      "notice": "已请求开启传输；等待板卡状态确认。"
+    },
+    {
+      "action": "second clean stop",
+      "seconds": 17.111049800000046,
+      "received": 337,
+      "displayed": 218,
+      "phase": "waiting",
+      "preprocess": {
+        "revision": 1,
+        "mode_requested": 0,
+        "mode": 0,
+        "binary_threshold_requested": 192,
+        "edge_threshold_requested": 8,
+        "binary_threshold": 192,
+        "edge_threshold": 8,
+        "frames_started": 337,
+        "window": 17
+      },
+      "status": "板内输入/压缩/失败 fps：8/9/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 167  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 0  |  板内彩色（亮度 192 / 边缘 8）",
+      "notice": "已请求停止传输；板卡排完当前帧并关灯，窗口保持连接。"
+    }
+  ]
+}

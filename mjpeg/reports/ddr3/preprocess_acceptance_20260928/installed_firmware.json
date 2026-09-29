@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-09-29T15:57:25.602321+08:00",
+  "build_directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\full_20260929_153849",
+  "bitstream": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\full_20260929_153849\\davinci_mjpeg_board_test.bit",
+  "bitstream_sha256": "39e7fd4ead0514ea3c433edd8314a978f3f1b91bf83041a2e1dea353e802201a",
+  "guarded_hashes_verified": 172,
+  "source_snapshot": "F:\\zju\\dasanshangkecheng\\HDL\\work\\preprocess_20260928\\final_source_snapshot",
+  "spi_flash_written": false,
+  "jtag_crc_error": false,
+  "jtag_done": true,
+  "jtag_eos": true,
+  "jtag_program_log": "F:\\zju\\dasanshangkecheng\\HDL\\work\\preprocess_20260928\\final_program_output.log",
+  "modes": [
+    "color",
+    "gray",
+    "binary",
+    "sobel"
+  ],
+  "resources": {
+    "lut": 19410,
+    "ff": 22996,
+    "bram36_equivalent": 36,
+    "dsp": 49
+  },
+  "timing": {
+    "wns_ns": 0.064,
+    "tns_ns": 0.0,
+    "whs_ns": 0.015,
+    "ths_ns": 0.0,
+    "core_100mhz_wns_ns": 0.601
+  }
+}
