@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "error": null,
+  "thresholds": [
+    0,
+    32,
+    64,
+    0
+  ],
+  "frames_per_threshold": 60,
+  "quality": 85,
+  "starts": 1,
+  "ends": 1,
+  "frames": 244,
+  "median_fps": 30.001920122887864,
+  "transitions": [
+    {
+      "index": 0,
+      "threshold": 0,
+      "previous_threshold": null,
+      "command_after_frame_id": null,
+      "command_seconds": 1.0961748999980045,
+      "old_inflight_frames": 0,
+      "first_frame_id": 0,
+      "first_frame_keyframe": true,
+      "observed_seconds": 1.1678033999996842,
+      "accepted_frames": 60,
+      "last_frame_id": 59
+    },
+    {
+      "index": 1,
+      "threshold": 32,
+      "previous_threshold": 0,
+      "command_after_frame_id": 59,
+      "command_seconds": 3.1351093999983277,
+      "old_inflight_frames": 1,
+      "first_frame_id": 61,
+      "first_frame_keyframe": true,
+      "observed_seconds": 3.2018929999976535,
+      "accepted_frames": 60,
+      "last_frame_id": 120
+    },
+    {
+      "index": 2,
+      "threshold": 64,
+      "previous_threshold": 32,
+      "command_after_frame_id": 120,
+      "command_seconds": 5.166969099998823,
+      "old_inflight_frames": 1,
+      "first_frame_id": 122,
+      "first_frame_keyframe": true,
+      "observed_seconds": 5.236119099994539,
+      "accepted_frames": 60,
+      "last_frame_id": 181
+    },
+    {
+      "index": 3,
+      "threshold": 0,
+      "previous_threshold": 64,
+      "command_after_frame_id": 181,
+      "command_seconds": 7.201673899995512,
+      "old_inflight_frames": 1,
+      "first_frame_id": 183,
+      "first_frame_keyframe": true,
+      "observed_seconds": 7.26826159999473,
+      "accepted_frames": 61,
+      "last_frame_id": 243
+    }
+  ],
+  "unfinished_transition": null,
+  "wire_bytes": 122549747,
+  "usb_read_bytes": 122549919,
+  "transport_payload_bytes": 121111507,
+  "reconstructed_jpeg_bytes": 117675792,
+  "reused_groups": 14295,
+  "camera_fifo_overflows": 0,
+  "actions": [
+    {
+      "seconds": 0.14400880000175675,
+      "command": "l"
+    },
+    {
+      "seconds": 0.1440664999972796,
+      "command": "S"
+    },
+    {
+      "seconds": 1.0961696000013035,
+      "command": "3"
+    },
+    {
+      "seconds": 1.096284100000048,
+      "command": "T00\n"
+    },
+    {
+      "seconds": 1.0968617999969865,
+      "command": "C"
+    },
+    {
+      "seconds": 3.1352770999947097,
+      "command": "T20\n"
+    },
+    {
+      "seconds": 5.167123200000788,
+      "command": "T40\n"
+    },
+    {
+      "seconds": 7.201928999995289,
+      "command": "T00\n"
+    },
+    {
+      "seconds": 9.234297399998468,
+      "command": "S"
+    },
+    {
+      "seconds": 10.09586280000076,
+      "command": "S"
+    },
+    {
+      "seconds": 10.095905399997719,
+      "command": "l"
+    }
+  ],
+  "capture_enabled": true,
+  "threshold_units": "maximum absolute dequantized DCT coefficient difference"
+}
