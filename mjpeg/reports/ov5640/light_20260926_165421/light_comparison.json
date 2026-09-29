@@ -1,0 +1,165 @@
+{
+  "register_sequence_confirmed": true,
+  "first_on_status_index": 2,
+  "last_on_status_index": 3,
+  "light_events": [
+    {
+      "command": "L",
+      "elapsed_seconds": 2.0012797000003957
+    },
+    {
+      "command": "l",
+      "elapsed_seconds": 8.00257720000036
+    }
+  ],
+  "selections": {
+    "OFF before": {
+      "selected_frame": 10,
+      "metadata": {
+        "bytes": 39682,
+        "format": "JPEG",
+        "dimensions": [
+          640,
+          480
+        ]
+      },
+      "jpeg": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\light_20260926_165421\\camera0_frame10.jpg",
+      "frames": [
+        {
+          "frame_id": 10,
+          "jpeg_bytes": 39682,
+          "full_mean_y": 71.77064778645833,
+          "central_mean_y": 62.38329427083333
+        },
+        {
+          "frame_id": 11,
+          "jpeg_bytes": 39834,
+          "full_mean_y": 72.8175,
+          "central_mean_y": 63.3265625
+        },
+        {
+          "frame_id": 12,
+          "jpeg_bytes": 39707,
+          "full_mean_y": 72.54714192708333,
+          "central_mean_y": 63.098307291666664
+        },
+        {
+          "frame_id": 13,
+          "jpeg_bytes": 39755,
+          "full_mean_y": 72.47462565104166,
+          "central_mean_y": 63.00440104166667
+        },
+        {
+          "frame_id": 14,
+          "jpeg_bytes": 39857,
+          "full_mean_y": 72.36789388020833,
+          "central_mean_y": 62.91623697916667
+        }
+      ],
+      "mean_y": 72.39556184895832,
+      "central_mean_y": 62.945760416666666
+    },
+    "ON": {
+      "selected_frame": 41,
+      "metadata": {
+        "bytes": 40026,
+        "format": "JPEG",
+        "dimensions": [
+          640,
+          480
+        ]
+      },
+      "jpeg": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\light_20260926_165421\\camera0_frame41.jpg",
+      "frames": [
+        {
+          "frame_id": 41,
+          "jpeg_bytes": 40026,
+          "full_mean_y": 111.53620442708333,
+          "central_mean_y": 99.4963671875
+        },
+        {
+          "frame_id": 42,
+          "jpeg_bytes": 39955,
+          "full_mean_y": 111.654404296875,
+          "central_mean_y": 99.59389322916667
+        },
+        {
+          "frame_id": 43,
+          "jpeg_bytes": 40013,
+          "full_mean_y": 110.93208984375,
+          "central_mean_y": 98.854765625
+        },
+        {
+          "frame_id": 44,
+          "jpeg_bytes": 40043,
+          "full_mean_y": 110.82374348958334,
+          "central_mean_y": 98.77377604166666
+        },
+        {
+          "frame_id": 45,
+          "jpeg_bytes": 40234,
+          "full_mean_y": 110.51343424479167,
+          "central_mean_y": 98.4559375
+        }
+      ],
+      "mean_y": 111.09197526041667,
+      "central_mean_y": 99.03494791666667
+    },
+    "OFF after": {
+      "selected_frame": 85,
+      "metadata": {
+        "bytes": 39780,
+        "format": "JPEG",
+        "dimensions": [
+          640,
+          480
+        ]
+      },
+      "jpeg": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\light_20260926_165421\\camera0_frame85.jpg",
+      "frames": [
+        {
+          "frame_id": 85,
+          "jpeg_bytes": 39780,
+          "full_mean_y": 71.66127604166667,
+          "central_mean_y": 62.57134114583334
+        },
+        {
+          "frame_id": 86,
+          "jpeg_bytes": 39687,
+          "full_mean_y": 71.62404947916667,
+          "central_mean_y": 62.5438671875
+        },
+        {
+          "frame_id": 87,
+          "jpeg_bytes": 39783,
+          "full_mean_y": 71.47069661458333,
+          "central_mean_y": 62.425455729166664
+        },
+        {
+          "frame_id": 88,
+          "jpeg_bytes": 39790,
+          "full_mean_y": 71.528779296875,
+          "central_mean_y": 62.46734375
+        },
+        {
+          "frame_id": 89,
+          "jpeg_bytes": 39693,
+          "full_mean_y": 71.78689127604167,
+          "central_mean_y": 62.692447916666666
+        }
+      ],
+      "mean_y": 71.61433854166667,
+      "central_mean_y": 62.54009114583333
+    }
+  },
+  "preview_metadata": {
+    "path": "F:\\zju\\dasanshangkecheng\\HDL\\work\\image-previews\\ov5640_light_comparison.jpg",
+    "bytes": 31185,
+    "dimensions": [
+      1278,
+      345
+    ],
+    "format": "JPEG"
+  },
+  "note": "Selected frame groups are approximate phases inferred from 1 Hz status counters. JPEG luminance is a relative scene metric, not lux; auto exposure and scene motion can affect it."
+}
