@@ -1,0 +1,784 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Sun Sep 27 23:10:19 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_bus_skew -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/ddr3/selftest_20260927_230838/bus_skew.rpt
+| Design       : davinci_ddr3_selftest_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+-----------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+Table of Contents
+-----------------
+1. Bus Skew Report Summary
+2. Bus Skew Report Per Constraint
+
+1. Bus Skew Report Summary
+--------------------------
+
+Id  Position  From                            To                              Corner  Requirement(ns)  Actual(ns)  Slack(ns)
+--  --------  ------------------------------  ------------------------------  ------  ---------------  ----------  ---------
+1   22        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/wgray_reg* || NAME =~ *tx_fifo/wbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/wgray_r1_reg*}]
+                                                                              Slow             10.000       0.965      9.035
+2   24        [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/rgray_reg* || NAME =~ *tx_fifo/rbin_reg*)}]
+                                              [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/rgray_w1_reg*}]
+                                                                              Slow             10.000       0.928      9.072
+3   28        [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/write_fifo/wr_gray_reg* || NAME =~ *memory/bridge/write_fifo/wr_binary_reg*)}]
+                                              [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/write_fifo/wr_gray_sync1_reg*}]
+                                                                              Slow             10.000       1.339      8.661
+4   30        [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/write_fifo/rd_gray_reg* || NAME =~ *memory/bridge/write_fifo/rd_binary_reg*)}]
+                                              [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/write_fifo/rd_gray_sync1_reg*}]
+                                                                              Slow             10.000       0.718      9.282
+5   32        [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/read_fifo/wr_gray_reg* || NAME =~ *memory/bridge/read_fifo/wr_binary_reg*)}]
+                                              [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/read_fifo/wr_gray_sync1_reg*}]
+                                                                              Slow             10.000       0.885      9.115
+6   34        [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/read_fifo/rd_gray_reg* || NAME =~ *memory/bridge/read_fifo/rd_binary_reg*)}]
+                                              [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/read_fifo/rd_gray_sync1_reg*}]
+                                                                              Slow             10.000       0.888      9.112
+
+
+2. Bus Skew Report Per Constraint
+---------------------------------
+
+Id: 1
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/wgray_reg* || NAME =~ *tx_fifo/wbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/wgray_r1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 10
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+core_raw              usb_clk               tx_fifo/wgray_r1_reg[0]/D       tx_fifo/wgray_r1_reg[8]/D       Slow         0.965      9.035
+
+
+Slack (MET) :             9.035ns  (requirement - actual skew)
+  Endpoint Source:        tx_fifo/wgray_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Endpoint Destination:   tx_fifo/wgray_r1_reg[0]/D
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Reference Source:       tx_fifo/wgray_reg[8]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Destination:  tx_fifo/wgray_r1_reg[8]/D
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:   -3.723ns
+  Reference Relative Delay:  -5.214ns
+  Relative CRPR:              0.657ns
+  Uncertainty:                0.131ns
+  Actual Bus Skew:            0.965ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.431    -0.492    tx_fifo/clk
+    SLICE_X58Y34         FDCE                                         r  tx_fifo/wgray_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X58Y34         FDCE (Prop_fdce_C_Q)         0.348    -0.144 r  tx_fifo/wgray_reg[0]/Q
+                         net (fo=1, routed)           0.582     0.438    tx_fifo/wgray[0]
+    SLICE_X59Y30         FDCE                                         r  tx_fifo/wgray_r1_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.372     1.372 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.599     2.972    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077     3.049 r  usb_clock_buffer/O
+                         net (fo=87, routed)          1.321     4.369    tx_fifo/usb_clk
+    SLICE_X59Y30         FDCE                                         r  tx_fifo/wgray_r1_reg[0]/C
+                         clock pessimism              0.000     4.369    
+    SLICE_X59Y30         FDCE (Setup_fdce_C_D)       -0.209     4.160    tx_fifo/wgray_r1_reg[0]
+  -------------------------------------------------------------------
+                         data arrival                           0.438    
+                         clock arrival                          4.160    
+  -------------------------------------------------------------------
+                         relative delay                        -3.723    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.323    -0.936    tx_fifo/clk
+    SLICE_X59Y32         FDCE                                         r  tx_fifo/wgray_reg[8]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X59Y32         FDCE (Prop_fdce_C_Q)         0.304    -0.632 r  tx_fifo/wgray_reg[8]/Q
+                         net (fo=1, routed)           0.191    -0.441    tx_fifo/wgray[8]
+    SLICE_X61Y32         FDCE                                         r  tx_fifo/wgray_r1_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.439     1.439 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.127    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.208 r  usb_clock_buffer/O
+                         net (fo=87, routed)          1.429     4.637    tx_fifo/usb_clk
+    SLICE_X61Y32         FDCE                                         r  tx_fifo/wgray_r1_reg[8]/C
+                         clock pessimism              0.000     4.637    
+    SLICE_X61Y32         FDCE (Hold_fdce_C_D)         0.136     4.773    tx_fifo/wgray_r1_reg[8]
+  -------------------------------------------------------------------
+                         data arrival                          -0.441    
+                         clock arrival                          4.773    
+  -------------------------------------------------------------------
+                         relative delay                        -5.214    
+
+
+
+Id: 2
+set_bus_skew -from [get_cells -hier -filter {IS_SEQUENTIAL == 1 && (NAME =~ *tx_fifo/rgray_reg* || NAME =~ *tx_fifo/rbin_reg*)}] -to [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *tx_fifo/rgray_w1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 10
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+usb_clk               core_raw              tx_fifo/rgray_w1_reg[4]/D       tx_fifo/rgray_w1_reg[5]/D       Slow         0.928      9.072
+
+
+Slack (MET) :             9.072ns  (requirement - actual skew)
+  Endpoint Source:        tx_fifo/rgray_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Endpoint Destination:   tx_fifo/rgray_w1_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       tx_fifo/rgray_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by usb_clk)
+  Reference Destination:  tx_fifo/rgray_w1_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    6.726ns
+  Reference Relative Delay:   5.272ns
+  Relative CRPR:              0.657ns
+  Uncertainty:                0.131ns
+  Actual Bus Skew:            0.928ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.439     1.439 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.689     3.127    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.081     3.208 r  usb_clock_buffer/O
+                         net (fo=87, routed)          1.429     4.637    tx_fifo/usb_clk
+    SLICE_X60Y32         FDCE                                         r  tx_fifo/rgray_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y32         FDCE (Prop_fdce_C_Q)         0.433     5.070 r  tx_fifo/rgray_reg[4]/Q
+                         net (fo=1, routed)           0.648     5.718    tx_fifo/rgray[4]
+    SLICE_X59Y33         FDCE                                         r  tx_fifo/rgray_w1_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.324    -0.935    tx_fifo/clk
+    SLICE_X59Y33         FDCE                                         r  tx_fifo/rgray_w1_reg[4]/C
+                         clock pessimism              0.000    -0.935    
+    SLICE_X59Y33         FDCE (Setup_fdce_C_D)       -0.073    -1.008    tx_fifo/rgray_w1_reg[4]
+  -------------------------------------------------------------------
+                         data arrival                           5.718    
+                         clock arrival                         -1.008    
+  -------------------------------------------------------------------
+                         relative delay                         6.726    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock usb_clk rise edge)    0.000     0.000 r  
+    Y4                                                0.000     0.000 r  usb_clk_60m (IN)
+                         net (fo=0)                   0.000     0.000    usb_clk_60m
+    Y4                   IBUF (Prop_ibuf_I_O)         1.372     1.372 r  usb_clk_60m_IBUF_inst/O
+                         net (fo=1, routed)           1.599     2.972    usb_clk_60m_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.077     3.049 r  usb_clock_buffer/O
+                         net (fo=87, routed)          1.321     4.369    tx_fifo/usb_clk
+    SLICE_X60Y30         FDCE                                         r  tx_fifo/rgray_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X60Y30         FDCE (Prop_fdce_C_Q)         0.347     4.716 r  tx_fifo/rgray_reg[5]/Q
+                         net (fo=1, routed)           0.196     4.912    tx_fifo/rgray[5]
+    SLICE_X58Y30         FDCE                                         r  tx_fifo/rgray_w1_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.427    -0.496    tx_fifo/clk
+    SLICE_X58Y30         FDCE                                         r  tx_fifo/rgray_w1_reg[5]/C
+                         clock pessimism              0.000    -0.496    
+    SLICE_X58Y30         FDCE (Hold_fdce_C_D)         0.136    -0.360    tx_fifo/rgray_w1_reg[5]
+  -------------------------------------------------------------------
+                         data arrival                           4.912    
+                         clock arrival                         -0.360    
+  -------------------------------------------------------------------
+                         relative delay                         5.272    
+
+
+
+Id: 3
+set_bus_skew -from [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/write_fifo/wr_gray_reg* || NAME =~ *memory/bridge/write_fifo/wr_binary_reg*)}] -to [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/write_fifo/wr_gray_sync1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 7
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+core_raw              clk_pll_i_1           memory/bridge/write_fifo/wr_gray_sync1_reg[1]/D
+                                                                            memory/bridge/write_fifo/wr_gray_sync1_reg[4]/D
+                                                                                                            Slow         1.339      8.661
+
+
+Slack (MET) :             8.661ns  (requirement - actual skew)
+  Endpoint Source:        memory/bridge/write_fifo/wr_gray_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Endpoint Destination:   memory/bridge/write_fifo/wr_gray_sync1_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Reference Source:       memory/bridge/write_fifo/wr_gray_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Destination:  memory/bridge/write_fifo/wr_gray_sync1_reg[4]/D
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:   -0.095ns
+  Reference Relative Delay:  -1.754ns
+  Relative CRPR:              0.546ns
+  Uncertainty:                0.225ns
+  Actual Bus Skew:            1.339ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.343    -0.579    memory/bridge/write_fifo/clk
+    SLICE_X41Y69         FDCE                                         r  memory/bridge/write_fifo/wr_gray_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y69         FDCE (Prop_fdce_C_Q)         0.379    -0.200 r  memory/bridge/write_fifo/wr_gray_reg[1]/Q
+                         net (fo=2, routed)           1.029     0.828    memory/bridge/write_fifo/wr_gray[1]
+    SLICE_X39Y70         FDCE                                         r  memory/bridge/write_fifo/wr_gray_sync1_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.352    -2.335    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.290    -0.968    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.073    -0.895 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           0.929     0.034    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.069     0.103 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.664     0.767    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.699    -1.932 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.352    -0.579    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.077    -0.502 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.232     0.730    memory/bridge/write_fifo/CLK
+    SLICE_X39Y70         FDCE                                         r  memory/bridge/write_fifo/wr_gray_sync1_reg[1]/C
+                         clock pessimism              0.263     0.993    
+    SLICE_X39Y70         FDCE (Setup_fdce_C_D)       -0.070     0.923    memory/bridge/write_fifo/wr_gray_sync1_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           0.828    
+                         clock arrival                          0.923    
+  -------------------------------------------------------------------
+                         relative delay                        -0.095    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.233    -1.025    memory/bridge/write_fifo/clk
+    SLICE_X41Y71         FDCE                                         r  memory/bridge/write_fifo/wr_gray_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X41Y71         FDCE (Prop_fdce_C_Q)         0.304    -0.721 r  memory/bridge/write_fifo/wr_gray_reg[4]/Q
+                         net (fo=2, routed)           0.226    -0.495    memory/bridge/write_fifo/wr_gray[4]
+    SLICE_X39Y70         FDCE                                         r  memory/bridge/write_fifo/wr_gray_sync1_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.421    -2.004    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.394    -0.528    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.077    -0.451 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           1.062     0.611    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.106     0.717 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.702     1.419    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.874    -1.455 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.421    -0.035    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.081     0.046 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.338     1.385    memory/bridge/write_fifo/CLK
+    SLICE_X39Y70         FDCE                                         r  memory/bridge/write_fifo/wr_gray_sync1_reg[4]/C
+                         clock pessimism             -0.263     1.121    
+    SLICE_X39Y70         FDCE (Hold_fdce_C_D)         0.138     1.259    memory/bridge/write_fifo/wr_gray_sync1_reg[4]
+  -------------------------------------------------------------------
+                         data arrival                          -0.495    
+                         clock arrival                          1.259    
+  -------------------------------------------------------------------
+                         relative delay                        -1.754    
+
+
+
+Id: 4
+set_bus_skew -from [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/write_fifo/rd_gray_reg* || NAME =~ *memory/bridge/write_fifo/rd_binary_reg*)}] -to [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/write_fifo/rd_gray_sync1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 7
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_pll_i_1           core_raw              memory/bridge/write_fifo/rd_gray_sync1_reg[6]/D
+                                                                            memory/bridge/write_fifo/rd_gray_sync1_reg[1]/D
+                                                                                                            Slow         0.718      9.282
+
+
+Slack (MET) :             9.282ns  (requirement - actual skew)
+  Endpoint Source:        memory/bridge/write_fifo/rd_gray_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Endpoint Destination:   memory/bridge/write_fifo/rd_gray_sync1_reg[6]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       memory/bridge/write_fifo/rd_gray_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Reference Destination:  memory/bridge/write_fifo/rd_gray_sync1_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    3.079ns
+  Reference Relative Delay:   2.074ns
+  Relative CRPR:              0.489ns
+  Uncertainty:                0.201ns
+  Actual Bus Skew:            0.718ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.421    -2.004    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.394    -0.528    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.077    -0.451 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           1.062     0.611    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.106     0.717 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.702     1.419    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.874    -1.455 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.421    -0.035    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.081     0.046 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.339     1.386    memory/bridge/write_fifo/CLK
+    SLICE_X40Y70         FDCE                                         r  memory/bridge/write_fifo/rd_gray_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y70         FDCE (Prop_fdce_C_Q)         0.348     1.734 r  memory/bridge/write_fifo/rd_gray_reg[6]/Q
+                         net (fo=4, routed)           0.379     2.112    memory/bridge/write_fifo/rd_gray[6]
+    SLICE_X40Y67         FDCE                                         r  memory/bridge/write_fifo/rd_gray_sync1_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.238    -1.020    memory/bridge/write_fifo/clk
+    SLICE_X40Y67         FDCE                                         r  memory/bridge/write_fifo/rd_gray_sync1_reg[6]/C
+                         clock pessimism              0.263    -0.757    
+    SLICE_X40Y67         FDCE (Setup_fdce_C_D)       -0.210    -0.967    memory/bridge/write_fifo/rd_gray_sync1_reg[6]
+  -------------------------------------------------------------------
+                         data arrival                           2.112    
+                         clock arrival                         -0.967    
+  -------------------------------------------------------------------
+                         relative delay                         3.079    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.352    -2.335    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.290    -0.968    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.073    -0.895 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           0.929     0.034    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.069     0.103 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.664     0.767    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.699    -1.932 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.352    -0.579    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.077    -0.502 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.232     0.730    memory/bridge/write_fifo/CLK
+    SLICE_X38Y70         FDCE                                         r  memory/bridge/write_fifo/rd_gray_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X38Y70         FDCE (Prop_fdce_C_Q)         0.347     1.077 r  memory/bridge/write_fifo/rd_gray_reg[1]/Q
+                         net (fo=2, routed)           0.291     1.368    memory/bridge/write_fifo/rd_gray[1]
+    SLICE_X39Y69         FDCE                                         r  memory/bridge/write_fifo/rd_gray_sync1_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.342    -0.580    memory/bridge/write_fifo/clk
+    SLICE_X39Y69         FDCE                                         r  memory/bridge/write_fifo/rd_gray_sync1_reg[1]/C
+                         clock pessimism             -0.263    -0.844    
+    SLICE_X39Y69         FDCE (Hold_fdce_C_D)         0.138    -0.706    memory/bridge/write_fifo/rd_gray_sync1_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           1.368    
+                         clock arrival                         -0.706    
+  -------------------------------------------------------------------
+                         relative delay                         2.074    
+
+
+
+Id: 5
+set_bus_skew -from [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/read_fifo/wr_gray_reg* || NAME =~ *memory/bridge/read_fifo/wr_binary_reg*)}] -to [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/read_fifo/wr_gray_sync1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 7
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+clk_pll_i_1           core_raw              memory/bridge/read_fifo/wr_gray_sync1_reg[0]/D
+                                                                            memory/bridge/read_fifo/wr_gray_sync1_reg[5]/D
+                                                                                                            Slow         0.885      9.115
+
+
+Slack (MET) :             9.115ns  (requirement - actual skew)
+  Endpoint Source:        memory/bridge/read_fifo/wr_gray_reg[0]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Endpoint Destination:   memory/bridge/read_fifo/wr_gray_sync1_reg[0]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Source:       memory/bridge/read_fifo/wr_gray_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Reference Destination:  memory/bridge/read_fifo/wr_gray_sync1_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:    3.251ns
+  Reference Relative Delay:   2.047ns
+  Relative CRPR:              0.521ns
+  Uncertainty:                0.201ns
+  Actual Bus Skew:            0.885ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.421    -2.004    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.394    -0.528    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.077    -0.451 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           1.062     0.611    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.106     0.717 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.702     1.419    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.874    -1.455 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.421    -0.035    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.081     0.046 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.342     1.389    memory/bridge/read_fifo/CLK
+    SLICE_X47Y68         FDCE                                         r  memory/bridge/read_fifo/wr_gray_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X47Y68         FDCE (Prop_fdce_C_Q)         0.379     1.768 r  memory/bridge/read_fifo/wr_gray_reg[0]/Q
+                         net (fo=2, routed)           0.647     2.415    memory/bridge/read_fifo/wr_gray_reg_n_0_[0]
+    SLICE_X40Y68         FDCE                                         r  memory/bridge/read_fifo/wr_gray_sync1_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.237    -1.021    memory/bridge/read_fifo/clk
+    SLICE_X40Y68         FDCE                                         r  memory/bridge/read_fifo/wr_gray_sync1_reg[0]/C
+                         clock pessimism              0.263    -0.758    
+    SLICE_X40Y68         FDCE (Setup_fdce_C_D)       -0.079    -0.837    memory/bridge/read_fifo/wr_gray_sync1_reg[0]
+  -------------------------------------------------------------------
+                         data arrival                           2.415    
+                         clock arrival                         -0.837    
+  -------------------------------------------------------------------
+                         relative delay                         3.251    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.352    -2.335    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.290    -0.968    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.073    -0.895 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           0.929     0.034    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.069     0.103 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.664     0.767    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.699    -1.932 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.352    -0.579    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.077    -0.502 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.234     0.732    memory/bridge/read_fifo/CLK
+    SLICE_X45Y70         FDCE                                         r  memory/bridge/read_fifo/wr_gray_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X45Y70         FDCE (Prop_fdce_C_Q)         0.304     1.036 r  memory/bridge/read_fifo/wr_gray_reg[5]/Q
+                         net (fo=2, routed)           0.305     1.341    memory/bridge/read_fifo/wr_gray_reg_n_0_[5]
+    SLICE_X43Y70         FDCE                                         r  memory/bridge/read_fifo/wr_gray_sync1_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.342    -0.580    memory/bridge/read_fifo/clk
+    SLICE_X43Y70         FDCE                                         r  memory/bridge/read_fifo/wr_gray_sync1_reg[5]/C
+                         clock pessimism             -0.263    -0.844    
+    SLICE_X43Y70         FDCE (Hold_fdce_C_D)         0.138    -0.706    memory/bridge/read_fifo/wr_gray_sync1_reg[5]
+  -------------------------------------------------------------------
+                         data arrival                           1.341    
+                         clock arrival                         -0.706    
+  -------------------------------------------------------------------
+                         relative delay                         2.047    
+
+
+
+Id: 6
+set_bus_skew -from [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && (NAME =~ *memory/bridge/read_fifo/rd_gray_reg* || NAME =~ *memory/bridge/read_fifo/rd_binary_reg*)}] -to [get_cells -hier -quiet -filter {IS_SEQUENTIAL == 1 && NAME =~ *memory/bridge/read_fifo/rd_gray_sync1_reg*}] 10.000
+Requirement: 10.000ns
+Endpoints: 7
+
+From Clock            To Clock              Endpoint Pin                    Reference Pin                   Corner  Actual(ns)  Slack(ns)
+--------------------  --------------------  ------------------------------  ------------------------------  ------  ----------  ---------
+core_raw              clk_pll_i_1           memory/bridge/read_fifo/rd_gray_sync1_reg[1]/D
+                                                                            memory/bridge/read_fifo/rd_gray_sync1_reg[5]/D
+                                                                                                            Slow         0.888      9.112
+
+
+Slack (MET) :             9.112ns  (requirement - actual skew)
+  Endpoint Source:        memory/bridge/read_fifo/rd_gray_reg[1]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Endpoint Destination:   memory/bridge/read_fifo/rd_gray_sync1_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Reference Source:       memory/bridge/read_fifo/rd_gray_reg[5]/C
+                            (rising edge-triggered cell FDCE clocked by core_raw)
+  Reference Destination:  memory/bridge/read_fifo/rd_gray_sync1_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by clk_pll_i_1)
+  Path Type:              Bus Skew (Max at Slow Process Corner)
+  Requirement:            10.000ns
+  Endpoint Relative Delay:   -0.647ns
+  Reference Relative Delay:  -1.831ns
+  Relative CRPR:              0.521ns
+  Uncertainty:                0.225ns
+  Actual Bus Skew:            0.888ns  (Endpoint Relative Delay - Reference Relative Delay - Relative CRPR + Uncertainty)
+
+Endpoint path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.421    -2.004    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.345    -0.577    memory/bridge/read_fifo/clk
+    SLICE_X43Y67         FDCE                                         r  memory/bridge/read_fifo/rd_gray_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X43Y67         FDCE (Prop_fdce_C_Q)         0.379    -0.198 r  memory/bridge/read_fifo/rd_gray_reg[1]/Q
+                         net (fo=2, routed)           0.467     0.269    memory/bridge/read_fifo/rd_gray_reg_n_0_[1]
+    SLICE_X41Y67         FDCE                                         r  memory/bridge/read_fifo/rd_gray_sync1_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.352    -2.335    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.290    -0.968    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.073    -0.895 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           0.929     0.034    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.069     0.103 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.664     0.767    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.699    -1.932 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.352    -0.579    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.077    -0.502 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.236     0.734    memory/bridge/read_fifo/CLK
+    SLICE_X41Y67         FDCE                                         r  memory/bridge/read_fifo/rd_gray_sync1_reg[1]/C
+                         clock pessimism              0.263     0.997    
+    SLICE_X41Y67         FDCE (Setup_fdce_C_D)       -0.081     0.916    memory/bridge/read_fifo/rd_gray_sync1_reg[1]
+  -------------------------------------------------------------------
+                         data arrival                           0.269    
+                         clock arrival                          0.916    
+  -------------------------------------------------------------------
+                         relative delay                        -0.647    
+
+Reference path:
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock core_raw rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.366     1.366 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.004     2.369    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -6.057    -3.688 r  clocks/mmcm/CLKOUT0
+                         net (fo=1, routed)           1.352    -2.335    clocks/core_raw
+    BUFGCTRL_X0Y2        BUFG (Prop_bufg_I_O)         0.077    -2.258 r  clocks/core_buffer/O
+                         net (fo=1027, routed)        1.233    -1.025    memory/bridge/read_fifo/clk
+    SLICE_X43Y71         FDCE                                         r  memory/bridge/read_fifo/rd_gray_reg[5]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X43Y71         FDCE (Prop_fdce_C_Q)         0.304    -0.721 r  memory/bridge/read_fifo/rd_gray_reg[5]/Q
+                         net (fo=2, routed)           0.202    -0.520    memory/bridge/read_fifo/rd_gray_reg_n_0_[5]
+    SLICE_X42Y70         FDCE                                         r  memory/bridge/read_fifo/rd_gray_sync1_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_pll_i_1 rise edge)
+                                                      0.000     0.000 r  
+    R4                                                0.000     0.000 r  sys_clk (IN)
+                         net (fo=0)                   0.000     0.000    sys_clk
+    R4                   IBUF (Prop_ibuf_I_O)         1.432     1.432 r  sys_clk_IBUF_inst/O
+                         net (fo=1, routed)           1.065     2.497    clocks/sys_clk_IBUF
+    MMCME2_ADV_X1Y0      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT1)
+                                                     -5.921    -3.424 r  clocks/mmcm/CLKOUT1
+                         net (fo=1, routed)           1.421    -2.004    clocks/ddr_ref_raw
+    BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.081    -1.923 r  clocks/ddr_ref_buffer/O
+                         net (fo=63, routed)          1.394    -0.528    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/mmcm_clk
+    PLLE2_ADV_X1Y1       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT3)
+                                                      0.077    -0.451 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/plle2_i/CLKOUT3
+                         net (fo=1, routed)           1.062     0.611    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3_out
+    BUFHCE_X1Y12         BUFH (Prop_bufh_I_O)         0.106     0.717 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufh_pll_clk3/O
+                         net (fo=1, routed)           0.702     1.419    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/pll_clk3
+    MMCME2_ADV_X1Y1      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKFBOUT)
+                                                     -2.874    -1.455 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/gen_mmcm.mmcm_i/CLKFBOUT
+                         net (fo=1, routed)           1.421    -0.035    memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/clk_pll_i
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.081     0.046 r  memory/controller/u_davinci_ddr3_mig_mig/u_ddr3_infrastructure/u_bufg_clkdiv0/O
+                         net (fo=4844, routed)        1.339     1.386    memory/bridge/read_fifo/CLK
+    SLICE_X42Y70         FDCE                                         r  memory/bridge/read_fifo/rd_gray_sync1_reg[5]/C
+                         clock pessimism             -0.263     1.122    
+    SLICE_X42Y70         FDCE (Hold_fdce_C_D)         0.189     1.311    memory/bridge/read_fifo/rd_gray_sync1_reg[5]
+  -------------------------------------------------------------------
+                         data arrival                          -0.520    
+                         clock arrival                          1.311    
+  -------------------------------------------------------------------
+                         relative delay                        -1.831    
+
+
+
