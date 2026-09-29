@@ -1,0 +1,44 @@
+{
+  "frames": 17,
+  "width": 16,
+  "height": 8,
+  "strengths": [
+    0,
+    8,
+    16,
+    32,
+    64,
+    255,
+    32,
+    0,
+    16,
+    1,
+    1,
+    31,
+    31,
+    32,
+    32,
+    255,
+    255
+  ],
+  "zero_exact": true,
+  "constant_exact": true,
+  "high_contrast_step_exact_at_16": true,
+  "isolated_outlier_removed_at_32": true,
+  "correlated_colour_patch_center": [
+    120,
+    149,
+    108
+  ],
+  "known_flat_noise_input_mse": [
+    50.1328125,
+    47.16796875,
+    53.775390625
+  ],
+  "known_flat_noise_output_mse": [
+    12.130859375,
+    6.578125,
+    5.748046875
+  ],
+  "note": "Known artificial signals, not camera noise measurements."
+}
