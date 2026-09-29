@@ -1,0 +1,21 @@
+{
+  "frames": 9,
+  "width": 1920,
+  "height": 8,
+  "strengths": [
+    0,
+    8,
+    16,
+    32,
+    64,
+    255,
+    16,
+    0,
+    16
+  ],
+  "zero_exact": true,
+  "constant_exact": true,
+  "high_contrast_edge_exact_at_16": true,
+  "known_flat_noise_input_mse": 9.814453125,
+  "known_flat_noise_output_mse": 1.48046875
+}
