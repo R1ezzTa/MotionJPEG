@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "threshold": 32,
+  "good_frames": 1,
+  "abort_descriptors": 1,
+  "keyframes": 1,
+  "reused_groups": 0,
+  "all_4050_positions_and_tail_index_4049_valid": true,
+  "complete_spj2_reference_reconstruction": true,
+  "complete_q85_dqt": true,
+  "pillow_load_every_successful_frame": true,
+  "wall_seconds": 0.02161020000494318,
+  "note": "Offline validation of raw real-board capture, no USB access and no image viewing. Does not turn reduced admission FPS into 30fps acceptance.",
+  "frames": [
+    {
+      "frame_id": 0,
+      "keyframe": true,
+      "groups": 4050,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 557408,
+      "transport_bytes": 577671,
+      "net_saved_bytes": -20263,
+      "threshold": 32
+    }
+  ]
+}
