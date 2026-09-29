@@ -1,0 +1,80 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Sep 29 17:08:28 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_clocks -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/camera/full_20260929_170515/clocks.rpt
+| Design       : davinci_mjpeg_camera_top
+| Device       : 7a35t-fgg484
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+-----------------------------------------------------------------------------------------------------------------------
+
+Clock Report
+
+
+Attributes
+  P: Propagated
+  G: Generated
+  A: Auto-derived
+  R: Renamed
+  V: Virtual
+  I: Inverted
+  S: Pin phase-shifted with Latency mode
+
+Clock           Period(ns)  Waveform(ns)    Attributes  Sources
+cam_clk         13.250      {0.000 6.625}   P           {cam_pclk}
+sys_clk         20.000      {0.000 10.000}  P           {sys_clk}
+usb_clk         16.667      {0.000 8.333}   P           {usb_clk_60m}
+clock_raw       13.250      {-1.104 5.521}  P,G,A       {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0}
+core_raw        10.000      {0.000 5.000}   P,G,A       {multiplied_clock.clock_generator/mmcm/CLKOUT0}
+feedback_raw    20.000      {0.000 10.000}  P,G,A       {multiplied_clock.clock_generator/mmcm/CLKFBOUT}
+feedback_raw_1  13.250      {0.000 6.625}   P,G,A       {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKFBOUT}
+
+
+====================================================
+Generated Clocks
+====================================================
+
+Generated Clock     : clock_raw
+Master Source       : real_camera.phase_clock.sampling_clock/camera_mmcm/CLKIN1
+Master Clock        : cam_clk
+Edges               : {1 2 3}
+Edge Shifts(ns)     : {-1.104 -1.104 -1.104}
+Generated Sources   : {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKOUT0}
+
+Generated Clock     : core_raw
+Master Source       : multiplied_clock.clock_generator/mmcm/CLKIN1
+Master Clock        : sys_clk
+Multiply By         : 2
+Generated Sources   : {multiplied_clock.clock_generator/mmcm/CLKOUT0}
+
+Generated Clock     : feedback_raw
+Master Source       : multiplied_clock.clock_generator/mmcm/CLKIN1
+Master Clock        : sys_clk
+Multiply By         : 1
+Generated Sources   : {multiplied_clock.clock_generator/mmcm/CLKFBOUT}
+
+Generated Clock     : feedback_raw_1
+Master Source       : real_camera.phase_clock.sampling_clock/camera_mmcm/CLKIN1
+Master Clock        : cam_clk
+Multiply By         : 1
+Generated Sources   : {real_camera.phase_clock.sampling_clock/camera_mmcm/CLKFBOUT}
+
+
+
+====================================================
+User Uncertainty
+====================================================
+
+From Clock  To Clock        Setup(ns)  Hold(ns)  Edges
+cam_clk     cam_clk         0.250      0.250     rf -> rf
+cam_clk     clock_raw       0.250      0.250     rf -> rf
+cam_clk     feedback_raw_1  0.250      0.250     rf -> rf
+usb_clk     usb_clk         0.150      0.150     rf -> rf
+
+
+====================================================
+User Jitter
+====================================================
+
+
