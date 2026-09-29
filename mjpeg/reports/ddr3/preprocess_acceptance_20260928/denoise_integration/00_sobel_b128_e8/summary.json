@@ -1,0 +1,24 @@
+{
+  "mode": "sobel",
+  "binary_threshold": 128,
+  "edge_threshold": 8,
+  "frames": 90,
+  "independently_decoded_frames": 90,
+  "starts": 1,
+  "ends": 1,
+  "mean_fps": 30.00195279002604,
+  "max_frame_interval_ms": 33.33117,
+  "mean_jpeg_bytes": 299101.3,
+  "jpeg_mb_per_second": 8.973623082035415,
+  "wire_bytes": 27241825,
+  "active_confirmed": true,
+  "first_frame_statistics": {
+    "max_rgb_channel_difference": 0,
+    "min_level": 0,
+    "max_level": 169,
+    "mean_level": 5.706989293981482,
+    "near_black_fraction": 0.9069497492283951,
+    "near_white_fraction": 0.0
+  },
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\denoise_integration\\00_sobel_b128_e8"
+}
