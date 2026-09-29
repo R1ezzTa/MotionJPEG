@@ -1,0 +1,190 @@
+{
+  "passed": true,
+  "error": null,
+  "thresholds": [
+    0,
+    32,
+    64,
+    0
+  ],
+  "seconds_per_threshold": 4.0,
+  "quality": 85,
+  "threshold_units": "maximum absolute dequantized DCT coefficient difference",
+  "phases": [
+    {
+      "index": 0,
+      "threshold": 0,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "median_fps": 30.001956127539515,
+      "mean_fps": 30.001958623663523,
+      "duration_seconds": 4.047487599993474,
+      "transport_payload_bytes": 59461847,
+      "reconstructed_jpeg_bytes": 57030687,
+      "payload_vs_reconstructed_ratio": 1.0426289797280541,
+      "payload_mb_per_second": 14.866432278171757,
+      "wire_bytes": 60168059,
+      "wire_mb_per_second": 14.86553263315668,
+      "reused_groups": 25,
+      "total_groups": 486000,
+      "keyframes": 4,
+      "camera_fifo_overflows": 0,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\grbg_final_sweep_20260928_1040\\00_threshold_000"
+    },
+    {
+      "index": 1,
+      "threshold": 32,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "median_fps": 30.001956127539515,
+      "mean_fps": 30.001958623663523,
+      "duration_seconds": 4.047684599994682,
+      "transport_payload_bytes": 47554812,
+      "reconstructed_jpeg_bytes": 57005337,
+      "payload_vs_reconstructed_ratio": 0.8342168383286639,
+      "payload_mb_per_second": 11.889479183167479,
+      "wire_bytes": 48121464,
+      "wire_mb_per_second": 11.888639742351275,
+      "reused_groups": 159574,
+      "total_groups": 486000,
+      "keyframes": 4,
+      "camera_fifo_overflows": 0,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\grbg_final_sweep_20260928_1040\\01_threshold_032"
+    },
+    {
+      "index": 2,
+      "threshold": 64,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "median_fps": 30.001956127539515,
+      "mean_fps": 30.00195922878456,
+      "duration_seconds": 4.045460699999239,
+      "transport_payload_bytes": 6318464,
+      "reconstructed_jpeg_bytes": 56840684,
+      "payload_vs_reconstructed_ratio": 0.11116094239823011,
+      "payload_mb_per_second": 1.5797191609711918,
+      "wire_bytes": 6401852,
+      "wire_mb_per_second": 1.5824778621631905,
+      "reused_groups": 452223,
+      "total_groups": 486000,
+      "keyframes": 4,
+      "camera_fifo_overflows": 0,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\grbg_final_sweep_20260928_1040\\02_threshold_064"
+    },
+    {
+      "index": 3,
+      "threshold": 0,
+      "frames": 120,
+      "decoded_frames": 120,
+      "starts": 1,
+      "ends": 1,
+      "median_fps": 30.001956127539515,
+      "mean_fps": 30.00195998518589,
+      "duration_seconds": 4.0480625000054715,
+      "transport_payload_bytes": 59491069,
+      "reconstructed_jpeg_bytes": 57059893,
+      "payload_vs_reconstructed_ratio": 1.0426074405712609,
+      "payload_mb_per_second": 14.873738930116108,
+      "wire_bytes": 60197533,
+      "wire_mb_per_second": 14.870702465665644,
+      "reused_groups": 24,
+      "total_groups": 486000,
+      "keyframes": 4,
+      "camera_fifo_overflows": 0,
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\grbg_final_sweep_20260928_1040\\03_threshold_000"
+    }
+  ],
+  "frames": 480,
+  "actions": [
+    {
+      "seconds": 0.12256560000241734,
+      "command": "l"
+    },
+    {
+      "seconds": 0.12263270000403281,
+      "command": "S"
+    },
+    {
+      "seconds": 1.0756433999922592,
+      "command": "3"
+    },
+    {
+      "seconds": 1.0756981000013184,
+      "command": "T00\n"
+    },
+    {
+      "seconds": 1.076096000004327,
+      "command": "C"
+    },
+    {
+      "seconds": 5.080841200004215,
+      "command": "S"
+    },
+    {
+      "seconds": 6.076762800003053,
+      "command": "3"
+    },
+    {
+      "seconds": 6.076866399991559,
+      "command": "T20\n"
+    },
+    {
+      "seconds": 6.077432299993234,
+      "command": "C"
+    },
+    {
+      "seconds": 10.078721300000325,
+      "command": "S"
+    },
+    {
+      "seconds": 11.076037999999244,
+      "command": "3"
+    },
+    {
+      "seconds": 11.076118199998746,
+      "command": "T40\n"
+    },
+    {
+      "seconds": 11.076564200004213,
+      "command": "C"
+    },
+    {
+      "seconds": 15.092993600002956,
+      "command": "S"
+    },
+    {
+      "seconds": 16.07481750000443,
+      "command": "3"
+    },
+    {
+      "seconds": 16.074873699995806,
+      "command": "T00\n"
+    },
+    {
+      "seconds": 16.075305599995772,
+      "command": "C"
+    },
+    {
+      "seconds": 20.078498300004867,
+      "command": "S"
+    },
+    {
+      "seconds": 21.075037599992356,
+      "command": "S"
+    },
+    {
+      "seconds": 21.075078800000483,
+      "command": "l"
+    }
+  ],
+  "usb_read_bytes": 174889284,
+  "capture_enabled": true,
+  "physical_buttons_tested": false,
+  "note": "Payload/restored-JPEG ratio is not a same-input comparison against ordinary MJPEG."
+}
