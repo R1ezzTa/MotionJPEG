@@ -1,0 +1,24 @@
+{
+  "mode": "sobel",
+  "binary_threshold": 128,
+  "edge_threshold": 8,
+  "frames": 90,
+  "independently_decoded_frames": 90,
+  "starts": 1,
+  "ends": 1,
+  "mean_fps": 30.002047757745046,
+  "max_frame_interval_ms": 33.33106,
+  "mean_jpeg_bytes": 403136.9666666667,
+  "jpeg_mb_per_second": 12.094934526845806,
+  "wire_bytes": 36714691,
+  "active_confirmed": true,
+  "first_frame_statistics": {
+    "max_rgb_channel_difference": 0,
+    "min_level": 0,
+    "max_level": 184,
+    "mean_level": 9.588773630401235,
+    "near_black_fraction": 0.8019063464506173,
+    "near_white_fraction": 0.0
+  },
+  "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\final_sweep\\05_sobel_b128_e8"
+}
