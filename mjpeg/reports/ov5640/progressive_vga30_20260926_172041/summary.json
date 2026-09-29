@@ -1,0 +1,53 @@
+{
+  "received_frames": 0,
+  "decoded_frames": 0,
+  "failed_frames": 0,
+  "payload_bytes": 0,
+  "wire_bytes": 3136,
+  "payload_blocks": 0,
+  "core_clock_hz": 100000000,
+  "target_fps": 30.0,
+  "camera_diagnostics": [
+    "Video bytes advance without a complete captured frame: check admission, line/frame dimensions and capture faults."
+  ],
+  "last_camera_status": {
+    "flags": 73,
+    "chip_id": 22080,
+    "config_index": 272,
+    "pclk_ticks": 726835681,
+    "received_frames": 0,
+    "dropped_frames": 1,
+    "overflow_count": 0,
+    "dvp_byte_count": 290887392,
+    "init_done": true,
+    "init_error": false,
+    "capture_active": false,
+    "tables_ready": true,
+    "codec_busy": false,
+    "config_error": false,
+    "streaming": true,
+    "light_requested": false,
+    "light_on": false,
+    "light_error": false,
+    "light_busy": false
+  },
+  "camera_counter_deltas": {
+    "pclk_ticks": 696001319,
+    "received_frames": 0,
+    "dropped_frames": 0,
+    "overflow_count": 0,
+    "dvp_byte_count": 272832097
+  },
+  "last_fps": {
+    "window": 30,
+    "input_fps": 0,
+    "compressed_fps": 0,
+    "failed_fps": 0,
+    "total_compressed": 0
+  },
+  "pass": false,
+  "error": "ValueError: No camera JPEG received; inspect camera_status.json",
+  "required_fps": 30.0,
+  "require_no_drops": true,
+  "light_events": []
+}
