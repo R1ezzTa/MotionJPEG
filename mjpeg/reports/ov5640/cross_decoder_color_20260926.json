@@ -1,0 +1,27 @@
+{
+  "file": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\board_controls_20260926_204800\\sample_q85.jpg",
+  "roi": [
+    1200,
+    250,
+    1350,
+    600
+  ],
+  "pillow_rgb": [
+    123.834,
+    192.54396190476191,
+    135.70346666666666
+  ],
+  "windows_gdiplus_rgb": [
+    123.83485714285715,
+    192.54445714285714,
+    135.69786666666667
+  ],
+  "mean_channel_abs_difference": [
+    0.0008571428571428896,
+    0.0004952380952261137,
+    0.005599999999986949
+  ],
+  "pillow_green_to_red_blue": 1.4837469470413924,
+  "windows_green_to_red_blue": 1.4837778783084734,
+  "scope": "Cross-decoder pixel statistics; wall color and illumination not calibrated; no image viewing."
+}
