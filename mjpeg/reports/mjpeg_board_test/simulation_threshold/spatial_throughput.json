@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "frames": [
+    {
+      "frame_id": 0,
+      "feed_ticks": 2346524,
+      "jpeg_ticks": 2366155,
+      "total_ticks": 2366157,
+      "input_wait_ticks": 272925,
+      "jpeg_bytes": 550564,
+      "spatial": {
+        "keyframe": true,
+        "groups": 4050,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 530301,
+        "transport_bytes": 550564,
+        "net_saved_bytes": -20263,
+        "threshold": 128
+      },
+      "fps": 42.262622471797094
+    },
+    {
+      "frame_id": 1,
+      "feed_ticks": 2346744,
+      "jpeg_ticks": 2366375,
+      "total_ticks": 2366377,
+      "input_wait_ticks": 273145,
+      "jpeg_bytes": 525701,
+      "spatial": {
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 190,
+        "omitted_group_bytes": 24863,
+        "jpeg_bytes": 530301,
+        "transport_bytes": 525701,
+        "net_saved_bytes": 4600,
+        "threshold": 128
+      },
+      "fps": 42.258693352749795
+    }
+  ]
+}

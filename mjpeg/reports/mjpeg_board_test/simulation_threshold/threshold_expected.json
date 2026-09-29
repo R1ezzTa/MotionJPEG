@@ -1,0 +1,107 @@
+[
+  {
+    "frame_id": 0,
+    "threshold": 0,
+    "keyframe": true,
+    "reused": [],
+    "bytes": 668
+  },
+  {
+    "frame_id": 1,
+    "threshold": 0,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "bytes": 651
+  },
+  {
+    "frame_id": 2,
+    "threshold": 10,
+    "keyframe": true,
+    "reused": [],
+    "bytes": 668
+  },
+  {
+    "frame_id": 3,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "bytes": 632
+  },
+  {
+    "frame_id": 4,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "bytes": 632
+  },
+  {
+    "frame_id": 5,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "bytes": 651
+  },
+  {
+    "frame_id": 6,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": [
+      0
+    ],
+    "bytes": 658
+  },
+  {
+    "frame_id": 7,
+    "threshold": 0,
+    "keyframe": true,
+    "reused": [],
+    "bytes": 669
+  },
+  {
+    "frame_id": 8,
+    "threshold": 0,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "bytes": 632
+  },
+  {
+    "frame_id": 9,
+    "threshold": 255,
+    "keyframe": true,
+    "reused": [],
+    "bytes": 668
+  },
+  {
+    "frame_id": 10,
+    "threshold": 255,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "bytes": 632
+  },
+  {
+    "frame_id": 11,
+    "threshold": 255,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "bytes": 632
+  }
+]
