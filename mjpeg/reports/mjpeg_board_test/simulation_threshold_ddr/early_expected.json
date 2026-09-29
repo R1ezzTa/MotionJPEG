@@ -1,0 +1,125 @@
+[
+  {
+    "frame_id": 0,
+    "threshold": 32,
+    "keyframe": true,
+    "reused": [],
+    "malformed_comparisons": [],
+    "group_bytes": [
+      390,
+      390
+    ]
+  },
+  {
+    "frame_id": 1,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "malformed_comparisons": [],
+    "group_bytes": [
+      390,
+      390
+    ]
+  },
+  {
+    "frame_id": 2,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "malformed_comparisons": [],
+    "group_bytes": [
+      390,
+      390
+    ]
+  },
+  {
+    "frame_id": 3,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "malformed_comparisons": [],
+    "group_bytes": [
+      392,
+      390
+    ]
+  },
+  {
+    "frame_id": 4,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "malformed_comparisons": [],
+    "group_bytes": [
+      392,
+      390
+    ]
+  },
+  {
+    "frame_id": 5,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "malformed_comparisons": [
+      0
+    ],
+    "group_bytes": [
+      197,
+      390
+    ]
+  },
+  {
+    "frame_id": 6,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [],
+    "malformed_comparisons": [
+      0,
+      1
+    ],
+    "group_bytes": [
+      392,
+      6
+    ]
+  },
+  {
+    "frame_id": 7,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      0
+    ],
+    "malformed_comparisons": [
+      1
+    ],
+    "group_bytes": [
+      392,
+      390
+    ]
+  },
+  {
+    "frame_id": 8,
+    "threshold": 32,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "malformed_comparisons": [],
+    "group_bytes": [
+      392,
+      390
+    ]
+  }
+]

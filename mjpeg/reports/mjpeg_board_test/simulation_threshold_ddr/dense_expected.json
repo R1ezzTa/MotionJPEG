@@ -1,0 +1,49 @@
+[
+  {
+    "frame_id": 0,
+    "threshold": 255,
+    "keyframe": true,
+    "reused": [],
+    "group_bytes": [
+      390,
+      390
+    ]
+  },
+  {
+    "frame_id": 1,
+    "threshold": 255,
+    "keyframe": false,
+    "reused": [
+      0,
+      1
+    ],
+    "group_bytes": [
+      578,
+      578
+    ]
+  },
+  {
+    "frame_id": 2,
+    "threshold": 255,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "group_bytes": [
+      579,
+      578
+    ]
+  },
+  {
+    "frame_id": 3,
+    "threshold": 255,
+    "keyframe": false,
+    "reused": [
+      1
+    ],
+    "group_bytes": [
+      578,
+      578
+    ]
+  }
+]

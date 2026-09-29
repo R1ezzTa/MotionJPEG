@@ -1,0 +1,30 @@
+[
+  {
+    "frame_id": 0,
+    "threshold": 10,
+    "keyframe": true,
+    "reused": 0,
+    "tail_reference_dc": 100
+  },
+  {
+    "frame_id": 1,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": 4050,
+    "tail_reference_dc": 100
+  },
+  {
+    "frame_id": 2,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": 4050,
+    "tail_reference_dc": 100
+  },
+  {
+    "frame_id": 3,
+    "threshold": 10,
+    "keyframe": false,
+    "reused": 4049,
+    "tail_reference_dc": 103
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "cache_sha256": "93ced8d8f887ec3933457c2388c5e495d78f17c575bd4ce1455bee70cfa0303d",
+  "coefficient_decoder_sha256": "d3c2fe1b8f103a120ed3baf5fd6be5828a5c46a2dceb0a08b66ec34c834a0dbe",
+  "full_fixture_build": "C:/Windows/Temp/mjpeg_threshold_ddr_6e38d5ca91a34cc8b38d310f8f270e65",
+  "concurrent_abort_extra_build": "C:/Windows/Temp/mjpeg_ddr_camera_f4ccbfa8eed1462b9c37f593940771ec",
+  "threshold_fixture_frames": 12,
+  "abort_recovery_full_refresh_frames": 8,
+  "dense_1024_coefficient_frames": 4,
+  "full_4050_position_tail_drift_frames": 4,
+  "gradient_full_fhd_frames": 2,
+  "gradient_frame1_ideal_fps": 41.992528689295604,
+  "real_camera_entropy_repeat_frames": 2,
+  "real_camera_entropy_repeat_cache_only_fps": 52.93478381698963,
+  "independent_packets_bit_exact": true,
+  "gradient_independent_dct_quant_huffman_bit_exact": true,
+  "pillow_pixel_decode_complete": true,
+  "hardware_access_during_simulation": false,
+  "note": "These are simulation results. Full camera/MIG/USB real-board throughput must be accepted after final programming. Old single-decoder simulation is preserved in ../simulation_threshold_ddr_single."
+}

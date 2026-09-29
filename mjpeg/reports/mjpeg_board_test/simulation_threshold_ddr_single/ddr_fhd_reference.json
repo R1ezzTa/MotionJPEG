@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "sustains_1080p30": true,
+  "all_positions": 4050,
+  "frames": [
+    {
+      "frame_id": 0,
+      "keyframe": true,
+      "groups": 4050,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 530301,
+      "transport_bytes": 550564,
+      "net_saved_bytes": -20263,
+      "threshold": 128,
+      "ideal_fps": 42.262586749242125
+    },
+    {
+      "frame_id": 1,
+      "keyframe": false,
+      "groups": 4050,
+      "reused": 4050,
+      "omitted_group_bytes": 537788,
+      "jpeg_bytes": 530301,
+      "transport_bytes": 12776,
+      "net_saved_bytes": 517525,
+      "threshold": 128,
+      "ideal_fps": 35.63494705003218
+    }
+  ],
+  "note": "Ideal native-memory model. Frame1 includes sequential reference/current entropy decoding for every region."
+}
