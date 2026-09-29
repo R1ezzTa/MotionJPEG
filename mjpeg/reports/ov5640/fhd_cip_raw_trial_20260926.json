@@ -1,0 +1,101 @@
+{
+  "method": "Same previous-session wall ROI, without image viewing. Scene/light are not calibrated. All source image headers inspected before pixel statistics.",
+  "observations": [
+    {
+      "mode": "DPC",
+      "source": "mjpeg/reports/ov5640/progressive_20260926_190204/fhd30_raw/capture/camera0_frame300.jpg",
+      "frame": 300,
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        138.86638095238095,
+        208.63403809523808,
+        150.9808
+      ],
+      "stddev_rgb": [
+        8.067878298278137,
+        7.274026557585197,
+        8.643309161701982
+      ],
+      "green_to_red_blue": 1.4396140573781506,
+      "red_to_green": 0.6655979159497967,
+      "blue_to_green": 0.7236633167742249
+    },
+    {
+      "mode": "DPC",
+      "source": "mjpeg/reports/ov5640/progressive_20260926_190204/fhd30_raw/capture/camera0_frame600.jpg",
+      "frame": 600,
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        138.76266666666666,
+        207.78241904761904,
+        151.41350476190476
+      ],
+      "stddev_rgb": [
+        8.210414787580946,
+        7.250426027260922,
+        8.524823388896891
+      ],
+      "green_to_red_blue": 1.432112209797805,
+      "red_to_green": 0.6678267935405323,
+      "blue_to_green": 0.7287118200659903
+    },
+    {
+      "mode": "CIP",
+      "source": "mjpeg/reports/ov5640/progressive_20260926_192946/fhd30_raw/capture/camera0_frame300.jpg",
+      "frame": 300,
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        139.1328380952381,
+        207.8216,
+        150.74805714285714
+      ],
+      "stddev_rgb": [
+        6.7033376009890295,
+        6.2092789330621265,
+        7.21104516805874
+      ],
+      "green_to_red_blue": 1.4338413011268272,
+      "red_to_green": 0.669482085092397,
+      "blue_to_green": 0.7253724210710395
+    },
+    {
+      "mode": "CIP",
+      "source": "mjpeg/reports/ov5640/progressive_20260926_192946/fhd30_raw/capture/camera0_frame600.jpg",
+      "frame": 600,
+      "roi": [
+        1200,
+        250,
+        1350,
+        600
+      ],
+      "mean_rgb": [
+        138.76683809523809,
+        208.22771428571428,
+        150.33041904761905
+      ],
+      "stddev_rgb": [
+        6.761240890791554,
+        6.157164894447679,
+        7.283713365847513
+      ],
+      "green_to_red_blue": 1.4405374602555898,
+      "red_to_green": 0.666418678086399,
+      "blue_to_green": 0.721952020475752
+    }
+  ]
+}
