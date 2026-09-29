@@ -1,0 +1,1583 @@
+{
+  "recorded_at": "2026-09-28T13:03:39.131387+08:00",
+  "build_directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\full_20260928_124800",
+  "bitstream": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\full_20260928_124800\\davinci_mjpeg_board_test.bit",
+  "bitstream_sha256": "f2ca180f5410d7de5975eb30419e9a7957743c9e7d3c4d698df1eacfe79fc8fc",
+  "source_snapshot": "F:\\zju\\dasanshangkecheng\\HDL\\work\\adaptive_20260928\\source_snapshot",
+  "guarded_hashes_verified": 166,
+  "spi_flash_written": false,
+  "jtag_program_log": "F:\\zju\\dasanshangkecheng\\HDL\\work\\adaptive_20260928\\program_pressure.log",
+  "jtag_done": true,
+  "jtag_eos": true,
+  "jtag_crc_error": false,
+  "passed": true,
+  "camera_profile": 5,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "timing": {
+    "wns_ns": 0.064,
+    "tns_ns": 0.0,
+    "whs_ns": 0.04,
+    "ths_ns": 0.0
+  },
+  "resources": {
+    "lut": 18496.0,
+    "ff": 20881.0,
+    "bram36_equivalents": 32.5,
+    "dsp": 46.0
+  },
+  "noise_estimator": false,
+  "motion_compensation": false,
+  "subjective_motion_quality_verified": false,
+  "physical_keys_retested": false,
+  "adaptive_compare_budget_cycles": 384,
+  "adaptive_queue_priority": true,
+  "max_consecutive_copy_nonzero": 2,
+  "pixel_fifo_pressure_pixels": 1024,
+  "pixel_fifo_capacity_pixels": 4096,
+  "tests": {
+    "manual": {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928",
+      "report": {
+        "passed": true,
+        "error": null,
+        "thresholds": [
+          0,
+          60,
+          0
+        ],
+        "adaptive": false,
+        "seconds_per_threshold": 4.0,
+        "quality": 85,
+        "threshold_units": "maximum absolute dequantized DCT coefficient difference",
+        "phases": [
+          {
+            "index": 0,
+            "threshold": 0,
+            "adaptive": false,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001947126368503,
+            "mean_fps": 30.00195113529274,
+            "duration_seconds": 4.050144199994975,
+            "transport_payload_bytes": 67023012,
+            "reconstructed_jpeg_bytes": 64591452,
+            "payload_vs_reconstructed_ratio": 1.037645228969307,
+            "payload_mb_per_second": 16.75684275803449,
+            "wire_bytes": 67817784,
+            "wire_mb_per_second": 16.744535663713936,
+            "reused_groups": 0,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928\\00_threshold_000"
+          },
+          {
+            "index": 1,
+            "threshold": 60,
+            "adaptive": false,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001956127539515,
+            "mean_fps": 30.001952950655014,
+            "duration_seconds": 4.049171500009834,
+            "transport_payload_bytes": 16555548,
+            "reconstructed_jpeg_bytes": 64226503,
+            "payload_vs_reconstructed_ratio": 0.25776816776090083,
+            "payload_mb_per_second": 4.139156434735923,
+            "wire_bytes": 16758864,
+            "wire_mb_per_second": 4.138837784460179,
+            "reused_groups": 383188,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928\\01_threshold_060"
+          },
+          {
+            "index": 2,
+            "threshold": 0,
+            "adaptive": false,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001956127539515,
+            "mean_fps": 30.001953480135715,
+            "duration_seconds": 4.0509408000070835,
+            "transport_payload_bytes": 68044771,
+            "reconstructed_jpeg_bytes": 65613211,
+            "payload_vs_reconstructed_ratio": 1.0370590002065285,
+            "payload_mb_per_second": 17.012300450904064,
+            "wire_bytes": 68851531,
+            "wire_mb_per_second": 16.99642981696489,
+            "reused_groups": 0,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928\\02_threshold_000"
+          }
+        ],
+        "frames": 360,
+        "actions": [
+          {
+            "seconds": 0.12383449998742435,
+            "command": "l"
+          },
+          {
+            "seconds": 0.12392939999699593,
+            "command": "S"
+          },
+          {
+            "seconds": 1.0765539999993052,
+            "command": "3"
+          },
+          {
+            "seconds": 1.0766490999958478,
+            "command": "T00\n"
+          },
+          {
+            "seconds": 1.0767346999928122,
+            "command": "A0\n"
+          },
+          {
+            "seconds": 1.0771643999905791,
+            "command": "C"
+          },
+          {
+            "seconds": 5.080698899997515,
+            "command": "S"
+          },
+          {
+            "seconds": 6.077445799994166,
+            "command": "3"
+          },
+          {
+            "seconds": 6.0775280999951065,
+            "command": "T3C\n"
+          },
+          {
+            "seconds": 6.077597499999683,
+            "command": "A0\n"
+          },
+          {
+            "seconds": 6.078074599994579,
+            "command": "C"
+          },
+          {
+            "seconds": 10.089019399994868,
+            "command": "S"
+          },
+          {
+            "seconds": 11.076996999996481,
+            "command": "3"
+          },
+          {
+            "seconds": 11.0770821999904,
+            "command": "T00\n"
+          },
+          {
+            "seconds": 11.077150899989647,
+            "command": "A0\n"
+          },
+          {
+            "seconds": 11.077662299998337,
+            "command": "C"
+          },
+          {
+            "seconds": 15.08092909998959,
+            "command": "S"
+          },
+          {
+            "seconds": 16.074751399995876,
+            "command": "S"
+          },
+          {
+            "seconds": 16.074844899994787,
+            "command": "l"
+          }
+        ],
+        "usb_read_bytes": 153428487,
+        "capture_enabled": true,
+        "physical_buttons_tested": false,
+        "note": "Payload/restored-JPEG ratio is not a same-input comparison against ordinary MJPEG."
+      }
+    },
+    "auto": {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928",
+      "report": {
+        "passed": true,
+        "error": null,
+        "thresholds": [
+          0,
+          32,
+          60,
+          96,
+          128,
+          255
+        ],
+        "adaptive": true,
+        "seconds_per_threshold": 4.0,
+        "quality": 85,
+        "threshold_units": "maximum absolute dequantized DCT coefficient difference",
+        "phases": [
+          {
+            "index": 0,
+            "threshold": 0,
+            "adaptive": true,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001947126368503,
+            "mean_fps": 30.0019496981311,
+            "duration_seconds": 4.052418000006583,
+            "transport_payload_bytes": 68337536,
+            "reconstructed_jpeg_bytes": 65905976,
+            "payload_vs_reconstructed_ratio": 1.0368943781365139,
+            "payload_mb_per_second": 17.08549431305186,
+            "wire_bytes": 69147680,
+            "wire_mb_per_second": 17.06331380422446,
+            "reused_groups": 0,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\00_threshold_000"
+          },
+          {
+            "index": 1,
+            "threshold": 32,
+            "adaptive": true,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001947126368503,
+            "mean_fps": 30.001950000691433,
+            "duration_seconds": 4.049591999995755,
+            "transport_payload_bytes": 68287494,
+            "reconstructed_jpeg_bytes": 65954000,
+            "payload_vs_reconstructed_ratio": 1.0353806289231888,
+            "payload_mb_per_second": 17.072983172170968,
+            "wire_bytes": 69097062,
+            "wire_mb_per_second": 17.062721874221513,
+            "reused_groups": 1771,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\01_threshold_032"
+          },
+          {
+            "index": 2,
+            "threshold": 60,
+            "adaptive": true,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001947126368503,
+            "mean_fps": 30.001950757092295,
+            "duration_seconds": 4.049242699999013,
+            "transport_payload_bytes": 68559985,
+            "reconstructed_jpeg_bytes": 66793088,
+            "payload_vs_reconstructed_ratio": 1.0264532910950306,
+            "payload_mb_per_second": 17.14111078230822,
+            "wire_bytes": 69372733,
+            "wire_mb_per_second": 17.13227340016367,
+            "reused_groups": 9528,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\02_threshold_060"
+          },
+          {
+            "index": 3,
+            "threshold": 96,
+            "adaptive": true,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001947126368503,
+            "mean_fps": 30.00195128657292,
+            "duration_seconds": 4.055049400005373,
+            "transport_payload_bytes": 67300005,
+            "reconstructed_jpeg_bytes": 65915876,
+            "payload_vs_reconstructed_ratio": 1.0209984162237333,
+            "payload_mb_per_second": 16.826095596634282,
+            "wire_bytes": 68097993,
+            "wire_mb_per_second": 16.7933818512568,
+            "reused_groups": 14806,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\03_threshold_096"
+          },
+          {
+            "index": 4,
+            "threshold": 128,
+            "adaptive": true,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001956127539515,
+            "mean_fps": 30.001952042973848,
+            "duration_seconds": 4.0488186000002315,
+            "transport_payload_bytes": 65726052,
+            "reconstructed_jpeg_bytes": 64759930,
+            "payload_vs_reconstructed_ratio": 1.0149185151991362,
+            "payload_mb_per_second": 16.43258216731671,
+            "wire_bytes": 66505692,
+            "wire_mb_per_second": 16.425950028977883,
+            "reused_groups": 20381,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\04_threshold_128"
+          },
+          {
+            "index": 5,
+            "threshold": 255,
+            "adaptive": true,
+            "frames": 120,
+            "decoded_frames": 120,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001956127539515,
+            "mean_fps": 30.001952950655014,
+            "duration_seconds": 4.038352300005499,
+            "transport_payload_bytes": 65971870,
+            "reconstructed_jpeg_bytes": 65223534,
+            "payload_vs_reconstructed_ratio": 1.0114734046762937,
+            "payload_mb_per_second": 16.494041165056075,
+            "wire_bytes": 66754294,
+            "wire_mb_per_second": 16.53008183558158,
+            "reused_groups": 23281,
+            "total_groups": 486000,
+            "keyframes": 4,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\05_threshold_255"
+          }
+        ],
+        "frames": 720,
+        "actions": [
+          {
+            "seconds": 0.12487929999770131,
+            "command": "l"
+          },
+          {
+            "seconds": 0.12495230000058655,
+            "command": "S"
+          },
+          {
+            "seconds": 1.0771608000068227,
+            "command": "3"
+          },
+          {
+            "seconds": 1.0772334000066621,
+            "command": "T00\n"
+          },
+          {
+            "seconds": 1.077295299997786,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 1.0777038000087487,
+            "command": "C"
+          },
+          {
+            "seconds": 5.082662500004517,
+            "command": "S"
+          },
+          {
+            "seconds": 6.076458900002763,
+            "command": "3"
+          },
+          {
+            "seconds": 6.076558000000659,
+            "command": "T20\n"
+          },
+          {
+            "seconds": 6.0766519000026165,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 6.0771775000030175,
+            "command": "C"
+          },
+          {
+            "seconds": 10.08303850000084,
+            "command": "S"
+          },
+          {
+            "seconds": 11.077972400002182,
+            "command": "3"
+          },
+          {
+            "seconds": 11.078060700005153,
+            "command": "T3C\n"
+          },
+          {
+            "seconds": 11.078139100005501,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 11.078638300008606,
+            "command": "C"
+          },
+          {
+            "seconds": 15.080471599998418,
+            "command": "S"
+          },
+          {
+            "seconds": 16.077458100000513,
+            "command": "3"
+          },
+          {
+            "seconds": 16.07756600000721,
+            "command": "T60\n"
+          },
+          {
+            "seconds": 16.077641399999266,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 16.078145999999833,
+            "command": "C"
+          },
+          {
+            "seconds": 20.082957999999053,
+            "command": "S"
+          },
+          {
+            "seconds": 21.077625999998418,
+            "command": "3"
+          },
+          {
+            "seconds": 21.077737100000377,
+            "command": "T80\n"
+          },
+          {
+            "seconds": 21.078019400010817,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 21.078529800011893,
+            "command": "C"
+          },
+          {
+            "seconds": 25.081193899997743,
+            "command": "S"
+          },
+          {
+            "seconds": 26.08789880000404,
+            "command": "3"
+          },
+          {
+            "seconds": 26.087999299998046,
+            "command": "TFF\n"
+          },
+          {
+            "seconds": 26.088101600005757,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 26.088597400012077,
+            "command": "C"
+          },
+          {
+            "seconds": 30.09424960000615,
+            "command": "S"
+          },
+          {
+            "seconds": 31.075883900004555,
+            "command": "S"
+          },
+          {
+            "seconds": 31.075929300001008,
+            "command": "l"
+          }
+        ],
+        "usb_read_bytes": 408975930,
+        "capture_enabled": true,
+        "physical_buttons_tested": false,
+        "note": "Payload/restored-JPEG ratio is not a same-input comparison against ordinary MJPEG."
+      }
+    },
+    "long60": {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_long60_20260928",
+      "report": {
+        "passed": true,
+        "error": null,
+        "thresholds": [
+          60
+        ],
+        "adaptive": true,
+        "seconds_per_threshold": 60.0,
+        "quality": 85,
+        "threshold_units": "maximum absolute dequantized DCT coefficient difference",
+        "phases": [
+          {
+            "index": 0,
+            "threshold": 60,
+            "adaptive": true,
+            "frames": 1800,
+            "decoded_frames": 1800,
+            "starts": 1,
+            "ends": 1,
+            "median_fps": 30.001956127539515,
+            "mean_fps": 30.001954861671337,
+            "duration_seconds": 60.04928449999716,
+            "transport_payload_bytes": 1016680873,
+            "reconstructed_jpeg_bytes": 992170926,
+            "payload_vs_reconstructed_ratio": 1.0247033513658916,
+            "payload_mb_per_second": 16.945785366928117,
+            "wire_bytes": 1028734589,
+            "wire_mb_per_second": 17.131504522756615,
+            "reused_groups": 182704,
+            "total_groups": 7290000,
+            "keyframes": 60,
+            "camera_fifo_overflows": 0,
+            "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_long60_20260928\\00_threshold_060"
+          }
+        ],
+        "frames": 1800,
+        "actions": [
+          {
+            "seconds": 0.12315800000214949,
+            "command": "l"
+          },
+          {
+            "seconds": 0.12320360000012442,
+            "command": "S"
+          },
+          {
+            "seconds": 1.074071000010008,
+            "command": "3"
+          },
+          {
+            "seconds": 1.074137100004009,
+            "command": "T3C\n"
+          },
+          {
+            "seconds": 1.0741975999990245,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 1.0742587999993702,
+            "command": "C"
+          },
+          {
+            "seconds": 61.07748150000407,
+            "command": "S"
+          },
+          {
+            "seconds": 62.07565610000165,
+            "command": "S"
+          },
+          {
+            "seconds": 62.07569450000301,
+            "command": "l"
+          }
+        ],
+        "usb_read_bytes": 1028734725,
+        "capture_enabled": false,
+        "physical_buttons_tested": false,
+        "note": "Payload/restored-JPEG ratio is not a same-input comparison against ordinary MJPEG."
+      }
+    },
+    "controls": {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_controls_20260928",
+      "report": {
+        "passed": true,
+        "error": null,
+        "decoded_frames": 690,
+        "adaptive": true,
+        "skip_threshold": 60,
+        "starts": 2,
+        "ends": 2,
+        "qualities": {
+          "60": {
+            "frames": 120,
+            "mean_jpeg_bytes": 279743.99166666664,
+            "median_fps": 30.001956127539515
+          },
+          "75": {
+            "frames": 120,
+            "mean_jpeg_bytes": 381451.675,
+            "median_fps": 30.001956127539515
+          },
+          "85": {
+            "frames": 450,
+            "mean_jpeg_bytes": 567757.4577777778,
+            "median_fps": 30.001956127539515
+          }
+        },
+        "actions": [
+          {
+            "seconds": 1.1751420000073267,
+            "command": "T3C\n"
+          },
+          {
+            "seconds": 1.1752208000107203,
+            "command": "A1\n"
+          },
+          {
+            "seconds": 1.1752716000046348,
+            "command": "C"
+          },
+          {
+            "seconds": 5.185603900012211,
+            "command": "1"
+          },
+          {
+            "seconds": 9.17745480001031,
+            "command": "2"
+          },
+          {
+            "seconds": 13.17987570000696,
+            "command": "3"
+          },
+          {
+            "seconds": 17.186036600003717,
+            "command": "S"
+          },
+          {
+            "seconds": 19.17751120000321,
+            "command": "C"
+          },
+          {
+            "seconds": 21.18522740001208,
+            "command": "L"
+          },
+          {
+            "seconds": 26.18324840000423,
+            "command": "S"
+          }
+        ],
+        "camera_fifo_overflows": 0,
+        "light_readback_on": true,
+        "automatic_off_seen_before_stop": true,
+        "physical_buttons_tested": false,
+        "physical_light_observed": false,
+        "spatial": {
+          "reconstructed_jpeg_bytes": 334834336,
+          "transport_payload_bytes": 346198146,
+          "reused_groups": 49633,
+          "total_groups": 2794500,
+          "keyframes": 23
+        }
+      }
+    }
+  },
+  "gui": {
+    "passed": true,
+    "error": null,
+    "physical_keys_retested": false,
+    "physical_motion_quality_verified": false,
+    "received": 281,
+    "displayed": 166,
+    "recoveries": 0,
+    "failed_frames": 0,
+    "camera_fifo_overflows": 0,
+    "mode_switches": 2,
+    "control_cycles": 2,
+    "final_state": {
+      "phase": "waiting",
+      "received": 281,
+      "failed": 0,
+      "decoded": 0,
+      "jpeg_bytes": 159117451,
+      "wire_bytes": 151722526,
+      "fps": 0.0,
+      "error": null,
+      "camera": {
+        "flags": 2653548681,
+        "chip_id": 22080,
+        "config_index": 283,
+        "pclk_ticks": 959886182,
+        "received_frames": 281,
+        "dropped_frames": 103,
+        "overflow_count": 0,
+        "dvp_byte_count": 796217382,
+        "frame_sync_count": 384,
+        "raw8": true,
+        "sampling_ready": true,
+        "board_controls": true,
+        "adaptive_capable": true,
+        "adaptive_enabled": true,
+        "threshold_capable": true,
+        "threshold_requested": 60,
+        "run_requested": false,
+        "quality": 85,
+        "quality_requested": 85,
+        "quality_pending": false,
+        "window": 13,
+        "init_done": true,
+        "init_error": false,
+        "capture_active": false,
+        "tables_ready": true,
+        "codec_busy": false,
+        "config_error": false,
+        "streaming": false,
+        "light_requested": false,
+        "light_on": false,
+        "light_error": false,
+        "light_busy": false
+      },
+      "rate": {
+        "window": 13,
+        "input_fps": 21,
+        "compressed_fps": 22,
+        "failed_fps": 0,
+        "total_compressed": 281
+      },
+      "source": "USB_SLAVE",
+      "recoveries": 0,
+      "last_recovery": null,
+      "connection_epoch": 0,
+      "discarded_partial_frames": 0,
+      "threshold_capable": true,
+      "adaptive_capable": true,
+      "adaptive_requested": true,
+      "threshold_requested": 60,
+      "spatial": {
+        "frame_id": 280,
+        "keyframe": false,
+        "groups": 4050,
+        "reused": 32,
+        "omitted_group_bytes": 2340,
+        "jpeg_bytes": 564265,
+        "transport_bytes": 582188,
+        "net_saved_bytes": -17923,
+        "threshold": 60,
+        "adaptive": true
+      }
+    },
+    "clean_shutdown": true,
+    "events": [
+      {
+        "action": "initial stopped; automatic cap 60 confirmed",
+        "seconds": 1.1235045000066748,
+        "received": 0,
+        "displayed": 0,
+        "phase": "waiting",
+        "status": "板卡报告：已停止",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": null,
+        "camera": {
+          "flags": 2653548673,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 59885095,
+          "received_frames": 0,
+          "dropped_frames": 23,
+          "overflow_count": 0,
+          "dvp_byte_count": 49687682,
+          "frame_sync_count": 24,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 60,
+          "run_requested": false,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 1,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": false,
+          "tables_ready": false,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": false,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "automatic cap 60 receiving",
+        "seconds": 3.373798300002818,
+        "received": 61,
+        "displayed": 55,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 60,
+          "keyframe": true,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 564398,
+          "transport_bytes": 584661,
+          "net_saved_bytes": -20263,
+          "threshold": 60,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2653679817,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 209885276,
+          "received_frames": 53,
+          "dropped_frames": 30,
+          "overflow_count": 0,
+          "dvp_byte_count": 174103682,
+          "frame_sync_count": 84,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 60,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 3,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": false,
+          "tables_ready": true,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "checkbox switched live to manual T60",
+        "seconds": 4.3934068999951705,
+        "received": 91,
+        "displayed": 79,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "空间跳过系数阈值（反量化 DCT 单位，0–255）：",
+        "checkbox": false,
+        "spatial": {
+          "frame_id": 90,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 3634,
+          "omitted_group_bytes": 504940,
+          "jpeg_bytes": 565002,
+          "transport_bytes": 80325,
+          "net_saved_bytes": 484677,
+          "threshold": 60,
+          "adaptive": false
+        },
+        "camera": {
+          "flags": 2653679689,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 284885367,
+          "received_frames": 83,
+          "dropped_frames": 30,
+          "overflow_count": 0,
+          "dvp_byte_count": 236311682,
+          "frame_sync_count": 114,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": false,
+          "threshold_capable": true,
+          "threshold_requested": 60,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 4,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": false,
+          "tables_ready": true,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "checkbox switched live back to automatic",
+        "seconds": 5.374796899995999,
+        "received": 121,
+        "displayed": 104,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 120,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 36,
+          "omitted_group_bytes": 2784,
+          "jpeg_bytes": 564828,
+          "transport_bytes": 582307,
+          "net_saved_bytes": -17479,
+          "threshold": 60,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2653679821,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 359885458,
+          "received_frames": 113,
+          "dropped_frames": 30,
+          "overflow_count": 0,
+          "dvp_byte_count": 298519698,
+          "frame_sync_count": 144,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 60,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 5,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": true,
+          "tables_ready": true,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "zero threshold while automatic",
+        "seconds": 6.386891700007254,
+        "received": 151,
+        "displayed": 131,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 150,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 564414,
+          "transport_bytes": 584677,
+          "net_saved_bytes": -20263,
+          "threshold": 0,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2150363357,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 434885548,
+          "received_frames": 143,
+          "dropped_frames": 30,
+          "overflow_count": 0,
+          "dvp_byte_count": 360731948,
+          "frame_sync_count": 174,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 0,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 6,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": true,
+          "tables_ready": true,
+          "codec_busy": true,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "display paused; transmission continues",
+        "seconds": 7.3797135000058915,
+        "received": 181,
+        "displayed": 131,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 180,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 566111,
+          "transport_bytes": 586374,
+          "net_saved_bytes": -20263,
+          "threshold": 0,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2150363357,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 509885639,
+          "received_frames": 173,
+          "dropped_frames": 30,
+          "overflow_count": 0,
+          "dvp_byte_count": 422944199,
+          "frame_sync_count": 204,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 0,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 7,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": true,
+          "tables_ready": true,
+          "codec_busy": true,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "PC stopped; reader remains connected",
+        "seconds": 8.129138600008446,
+        "received": 182,
+        "displayed": 131,
+        "phase": "waiting",
+        "status": "板卡报告：已停止",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 181,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 565622,
+          "transport_bytes": 585885,
+          "net_saved_bytes": -20263,
+          "threshold": 0,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2150232201,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 584885730,
+          "received_frames": 182,
+          "dropped_frames": 52,
+          "overflow_count": 0,
+          "dvp_byte_count": 485156450,
+          "frame_sync_count": 234,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 0,
+          "run_requested": false,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 8,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": false,
+          "tables_ready": true,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": false,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "idle frames stable; telemetry advances",
+        "seconds": 9.477865000008023,
+        "received": 182,
+        "displayed": 131,
+        "phase": "waiting",
+        "status": "板卡报告：已停止",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 181,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 565622,
+          "transport_bytes": 585885,
+          "net_saved_bytes": -20263,
+          "threshold": 0,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2150232201,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 659885822,
+          "received_frames": 182,
+          "dropped_frames": 82,
+          "overflow_count": 0,
+          "dvp_byte_count": 547368702,
+          "frame_sync_count": 264,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 0,
+          "run_requested": false,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 9,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": false,
+          "tables_ready": true,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": false,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "PC restart retained automatic cap 0",
+        "seconds": 11.566218399995705,
+        "received": 243,
+        "displayed": 131,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 242,
+          "keyframe": true,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 564416,
+          "transport_bytes": 584679,
+          "net_saved_bytes": -20263,
+          "threshold": 0,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2150363357,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 809886002,
+          "received_frames": 229,
+          "dropped_frames": 94,
+          "overflow_count": 0,
+          "dvp_byte_count": 671792882,
+          "frame_sync_count": 324,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 0,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 11,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": true,
+          "tables_ready": true,
+          "codec_busy": true,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "display resumed",
+        "seconds": 11.804105200004415,
+        "received": 250,
+        "displayed": 137,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 249,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 0,
+          "omitted_group_bytes": 0,
+          "jpeg_bytes": 566873,
+          "transport_bytes": 587136,
+          "net_saved_bytes": -20263,
+          "threshold": 0,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2150363357,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 809886002,
+          "received_frames": 229,
+          "dropped_frames": 94,
+          "overflow_count": 0,
+          "dvp_byte_count": 671792882,
+          "frame_sync_count": 324,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 0,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 11,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": true,
+          "tables_ready": true,
+          "codec_busy": true,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "automatic cap 60 restored",
+        "seconds": 12.816025499996613,
+        "received": 280,
+        "displayed": 164,
+        "phase": "streaming",
+        "status": "板卡报告：已开启",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 279,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 23,
+          "omitted_group_bytes": 1803,
+          "jpeg_bytes": 567341,
+          "transport_bytes": 585801,
+          "net_saved_bytes": -18460,
+          "threshold": 60,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2653679837,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 884886092,
+          "received_frames": 259,
+          "dropped_frames": 94,
+          "overflow_count": 0,
+          "dvp_byte_count": 734005132,
+          "frame_sync_count": 354,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 60,
+          "run_requested": true,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 12,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": true,
+          "tables_ready": true,
+          "codec_busy": true,
+          "config_error": false,
+          "streaming": true,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      },
+      {
+        "action": "second PC stop; automatic cap 60 retained",
+        "seconds": 13.104081800003769,
+        "received": 281,
+        "displayed": 166,
+        "phase": "waiting",
+        "status": "板卡报告：已停止",
+        "threshold_label": "自适应系数阈值上限（0–255）：",
+        "checkbox": true,
+        "spatial": {
+          "frame_id": 280,
+          "keyframe": false,
+          "groups": 4050,
+          "reused": 32,
+          "omitted_group_bytes": 2340,
+          "jpeg_bytes": 564265,
+          "transport_bytes": 582188,
+          "net_saved_bytes": -17923,
+          "threshold": 60,
+          "adaptive": true
+        },
+        "camera": {
+          "flags": 2653548681,
+          "chip_id": 22080,
+          "config_index": 283,
+          "pclk_ticks": 959886182,
+          "received_frames": 281,
+          "dropped_frames": 103,
+          "overflow_count": 0,
+          "dvp_byte_count": 796217382,
+          "frame_sync_count": 384,
+          "raw8": true,
+          "sampling_ready": true,
+          "board_controls": true,
+          "adaptive_capable": true,
+          "adaptive_enabled": true,
+          "threshold_capable": true,
+          "threshold_requested": 60,
+          "run_requested": false,
+          "quality": 85,
+          "quality_requested": 85,
+          "quality_pending": false,
+          "window": 13,
+          "init_done": true,
+          "init_error": false,
+          "capture_active": false,
+          "tables_ready": true,
+          "codec_busy": false,
+          "config_error": false,
+          "streaming": false,
+          "light_requested": false,
+          "light_on": false,
+          "light_error": false,
+          "light_busy": false
+        }
+      }
+    ],
+    "final_worker_error": null
+  },
+  "copy_age": [
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928\\00_threshold_000\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 0,
+      "maximum_consecutive_copy": 0,
+      "passed": true,
+      "adaptive": false,
+      "threshold": 0
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928\\01_threshold_060\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 383188,
+      "maximum_consecutive_copy": 29,
+      "passed": true,
+      "adaptive": false,
+      "threshold": 60
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_manual_20260928\\02_threshold_000\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 0,
+      "maximum_consecutive_copy": 0,
+      "passed": true,
+      "adaptive": false,
+      "threshold": 0
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\00_threshold_000\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 0,
+      "maximum_consecutive_copy": 0,
+      "passed": true,
+      "adaptive": true,
+      "threshold": 0
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\01_threshold_032\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 1771,
+      "maximum_consecutive_copy": 2,
+      "passed": true,
+      "adaptive": true,
+      "threshold": 32
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\02_threshold_060\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 9528,
+      "maximum_consecutive_copy": 2,
+      "passed": true,
+      "adaptive": true,
+      "threshold": 60
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\03_threshold_096\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 14806,
+      "maximum_consecutive_copy": 2,
+      "passed": true,
+      "adaptive": true,
+      "threshold": 96
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\04_threshold_128\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 20381,
+      "maximum_consecutive_copy": 2,
+      "passed": true,
+      "adaptive": true,
+      "threshold": 128
+    },
+    {
+      "path": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\adaptive_pressure_auto_20260928\\05_threshold_255\\usb_capture.bin",
+      "frames": 120,
+      "copy_records": 23281,
+      "maximum_consecutive_copy": 2,
+      "passed": true,
+      "adaptive": true,
+      "threshold": 255
+    }
+  ],
+  "max_frame_interval_ms": 33.33117,
+  "independently_decoded_frames": 3570,
+  "bandwidth_comparison": [
+    {
+      "mode": "automatic",
+      "threshold": 0,
+      "payload_mb_per_second": 17.08549431305186,
+      "mean_fps": 30.0019496981311,
+      "saving_vs_auto_t0_percent": 0.0
+    },
+    {
+      "mode": "automatic",
+      "threshold": 32,
+      "payload_mb_per_second": 17.072983172170968,
+      "mean_fps": 30.001950000691433,
+      "saving_vs_auto_t0_percent": 0.07322668370990382
+    },
+    {
+      "mode": "automatic",
+      "threshold": 60,
+      "payload_mb_per_second": 17.14111078230822,
+      "mean_fps": 30.001950757092295,
+      "saving_vs_auto_t0_percent": -0.32551864310927936
+    },
+    {
+      "mode": "automatic",
+      "threshold": 96,
+      "payload_mb_per_second": 16.826095596634282,
+      "mean_fps": 30.00195128657292,
+      "saving_vs_auto_t0_percent": 1.5182394589509762
+    },
+    {
+      "mode": "automatic",
+      "threshold": 128,
+      "payload_mb_per_second": 16.43258216731671,
+      "mean_fps": 30.001952042973848,
+      "saving_vs_auto_t0_percent": 3.821441357048605
+    },
+    {
+      "mode": "automatic",
+      "threshold": 255,
+      "payload_mb_per_second": 16.494041165056075,
+      "mean_fps": 30.001952950655014,
+      "saving_vs_auto_t0_percent": 3.4617268728594275
+    },
+    {
+      "mode": "manual",
+      "threshold": 60,
+      "payload_mb_per_second": 4.139156434735923,
+      "mean_fps": 30.001952950655014,
+      "saving_vs_auto_t0_percent": 75.77385612089688
+    }
+  ],
+  "comparison_note": "Same physical scene in sequential captures, not identical source frames; payload is SPJ2 image payload, excluding MBLK/USB overhead.",
+  "previous_failures": [
+    {
+      "build": "full_20260928_115000",
+      "ceiling": 96,
+      "reason": "comparison caused camera FIFO overflow"
+    },
+    {
+      "build": "full_20260928_121003",
+      "ceiling": 128,
+      "reason": "fixed budget alone insufficient"
+    },
+    {
+      "build": "full_20260928_122633",
+      "ceiling": 128,
+      "reason": "encoded queue did not reflect raw pixel FIFO backlog"
+    }
+  ]
+}

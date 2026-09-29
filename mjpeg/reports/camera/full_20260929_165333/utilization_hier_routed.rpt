@@ -1,0 +1,106 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Sep 29 16:59:09 2026
+| Host         : LAPTOP-JC5LPK9T running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file F:/zju/dasanshangkecheng/HDL/mjpeg/reports/camera/full_20260929_165333/utilization_hier_routed.rpt
+| Design       : davinci_mjpeg_camera_top
+| Device       : 7a35tfgg484-2
+| Design State : Physopt postRoute
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------------------------+---------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|                  Instance                 |                 Module                | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++-------------------------------------------+---------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| davinci_mjpeg_camera_top                  |                                 (top) |      15768 |      15365 |     320 |   83 | 19573 |     30 |     12 |         43 |
+|   (davinci_mjpeg_camera_top)              |                                 (top) |         68 |         68 |       0 |    0 |    24 |      0 |      0 |          0 |
+|   blocks                                  |            board_test_block_transport |       1011 |       1008 |       0 |    3 |  1235 |      0 |      1 |          0 |
+|   display                                 |                   davinci_fps_display |        102 |        102 |       0 |    0 |   122 |      0 |      0 |          0 |
+|   engine                                  |               mjpeg_board_test_engine |       9314 |       9029 |     272 |   13 | 12184 |     19 |      2 |         42 |
+|     (engine)                              |               mjpeg_board_test_engine |        391 |        391 |       0 |    0 |  1448 |      0 |      1 |          0 |
+|     codec                                 |                       mjpeg_synth_top |       8811 |       8526 |     272 |   13 | 10415 |     19 |      1 |         42 |
+|       (codec)                             |                       mjpeg_synth_top |          7 |          7 |       0 |    0 |   102 |      0 |      0 |          0 |
+|       aggregate.collector                 |               mjpeg_payload_coalescer |        986 |        986 |       0 |    0 |   299 |      0 |      0 |          0 |
+|       encoder                             |                         mjpeg_encoder |       7520 |       7235 |     272 |   13 |  9702 |     19 |      1 |         42 |
+|         (encoder)                         |                         mjpeg_encoder |          7 |          7 |       0 |    0 |     9 |      0 |      0 |          0 |
+|         channels[0].channel               |                         mjpeg_channel |       6504 |       6219 |     272 |   13 |  8653 |     19 |      1 |         42 |
+|           (channels[0].channel)           |                         mjpeg_channel |         67 |         67 |       0 |    0 |   329 |      0 |      1 |          0 |
+|           core                            |                          jpeg_encoder |       6440 |       6155 |     272 |   13 |  8324 |     19 |      0 |         42 |
+|             (core)                        |                          jpeg_encoder |        151 |        151 |       0 |    0 |    25 |      0 |      0 |          0 |
+|             dct                           |                                dct8x8 |       1949 |       1945 |       0 |    4 |  4524 |      0 |      0 |         38 |
+|               (dct)                       |                                dct8x8 |        692 |        692 |       0 |    0 |  4512 |      0 |      0 |          0 |
+|               engine                      |                                 dct1d |       1258 |       1254 |       0 |    4 |    12 |      0 |      0 |         38 |
+|             format                        |                        jpeg_formatter |        360 |        360 |       0 |    0 |   283 |      0 |      0 |          0 |
+|             formatter_input_buffer        |    jpeg_stream_buffer__parameterized2 |        187 |        187 |       0 |    0 |   254 |      0 |      0 |          0 |
+|             front                         |                      raster_to_mcu422 |        378 |        378 |       0 |    0 |   167 |     16 |      0 |          0 |
+|               (front)                     |                      raster_to_mcu422 |        272 |        272 |       0 |    0 |   167 |      0 |      0 |          0 |
+|               banks[0].lanes[0].ram       |                        line_group_ram |          9 |          9 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[0].lanes[1].ram       |                      line_group_ram_3 |         10 |         10 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[0].lanes[2].ram       |        line_group_ram__parameterized0 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[0].lanes[3].ram       |      line_group_ram__parameterized0_4 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[0].lanes[4].ram       |      line_group_ram__parameterized0_5 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[0].lanes[5].ram       |      line_group_ram__parameterized0_6 |          8 |          8 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[0].ram       |                      line_group_ram_7 |         20 |         20 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[1].lanes[1].ram       |                      line_group_ram_8 |         42 |         42 |       0 |    0 |     0 |      2 |      0 |          0 |
+|               banks[1].lanes[2].ram       |      line_group_ram__parameterized0_9 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[3].ram       |     line_group_ram__parameterized0_10 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[4].ram       |     line_group_ram__parameterized0_11 |          1 |          1 |       0 |    0 |     0 |      1 |      0 |          0 |
+|               banks[1].lanes[5].ram       |     line_group_ram__parameterized0_12 |         19 |         19 |       0 |    0 |     0 |      1 |      0 |          0 |
+|             huff                          |                       huffman_encoder |        993 |        993 |       0 |    0 |   849 |      3 |      0 |          0 |
+|             huff_input_buffer             |    jpeg_stream_buffer__parameterized0 |        101 |        101 |       0 |    0 |   196 |      0 |      0 |          0 |
+|             huff_output_buffer            |    jpeg_stream_buffer__parameterized1 |        315 |        315 |       0 |    0 |   308 |      0 |      0 |          0 |
+|             packer                        |                        entropy_packer |        949 |        949 |       0 |    0 |   795 |      0 |      0 |          0 |
+|             quant                         |                              quantize |        565 |        372 |     184 |    9 |   582 |      0 |      0 |          4 |
+|             scan_order                    |                         zigzag_buffer |        192 |        104 |      88 |    0 |   102 |      0 |      0 |          0 |
+|             symbols_core                  |                        symbol_encoder |        310 |        310 |       0 |    0 |   239 |      0 |      0 |          0 |
+|         channels[0].channel_output        |                    jpeg_stream_buffer |        247 |        247 |       0 |    0 |   321 |      0 |      0 |          0 |
+|         descriptor_arbiter                |         mjpeg_arbiter__parameterized0 |        231 |        231 |       0 |    0 |   362 |      0 |      0 |          0 |
+|           (descriptor_arbiter)            |         mjpeg_arbiter__parameterized0 |        159 |        159 |       0 |    0 |    18 |      0 |      0 |          0 |
+|           output_buffer                   |    jpeg_stream_buffer__parameterized4 |         73 |         73 |       0 |    0 |   344 |      0 |      0 |          0 |
+|         payload_arbiter                   |                         mjpeg_arbiter |        531 |        531 |       0 |    0 |   357 |      0 |      0 |          0 |
+|           (payload_arbiter)               |                         mjpeg_arbiter |          0 |          0 |       0 |    0 |    28 |      0 |      0 |          0 |
+|           output_buffer                   |    jpeg_stream_buffer__parameterized3 |        531 |        531 |       0 |    0 |   329 |      0 |      0 |          0 |
+|       transport                           |                      mjpeg_packetizer |        302 |        302 |       0 |    0 |   312 |      0 |      0 |          0 |
+|     meter                                 |                      frame_rate_meter |        116 |        116 |       0 |    0 |   321 |      0 |      0 |          0 |
+|   multiplied_clock.clock_generator        |                 board_test_core_clock |          1 |          1 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   real_camera.capture                     |                    ov5640_dvp_capture |        435 |        435 |       0 |    0 |   935 |      1 |      1 |          0 |
+|     (real_camera.capture)                 |                    ov5640_dvp_capture |        344 |        344 |       0 |    0 |   817 |      0 |      0 |          0 |
+|     pixel_fifo                            |                     camera_pixel_fifo |         92 |         92 |       0 |    0 |   118 |      1 |      1 |          0 |
+|   real_camera.controls                    |                 camera_board_controls |        156 |        156 |       0 |    0 |   200 |      0 |      0 |          0 |
+|   real_camera.initialization              |                           ov5640_init |        583 |        583 |       0 |    0 |   232 |      0 |      0 |          1 |
+|     (real_camera.initialization)          |                           ov5640_init |        258 |        258 |       0 |    0 |   141 |      0 |      0 |          1 |
+|     u_sccb                                |                    ov5640_sccb_master |        327 |        327 |       0 |    0 |    91 |      0 |      0 |          0 |
+|   real_camera.phase_clock.sampling_clock  |                   ov5640_sample_clock |          1 |          1 |       0 |    0 |     0 |      0 |      0 |          0 |
+|   real_camera.preprocessing.processor     |                     yuv422_preprocess |        380 |        343 |       0 |   37 |   559 |      2 |      0 |          0 |
+|     (real_camera.preprocessing.processor) |                     yuv422_preprocess |        136 |         99 |       0 |   37 |   258 |      0 |      0 |          0 |
+|     window                                |    spatial_window_3x3__parameterized0 |        244 |        244 |       0 |    0 |   301 |      2 |      0 |          0 |
+|   real_camera.raw_processing.demosaic     |                  bayer_bggr_to_yuv422 |       3293 |       3263 |       0 |   30 |  2819 |      6 |      8 |          0 |
+|     (real_camera.raw_processing.demosaic) |                  bayer_bggr_to_yuv422 |        566 |        566 |       0 |    0 |   282 |      0 |      2 |          0 |
+|     denoising.filter                      |                   spatial_denoise_yuv |       2728 |       2698 |       0 |   30 |  2537 |      6 |      6 |          0 |
+|       chroma_first                        |                spatial_chroma_yuv_3x3 |        609 |        605 |       0 |    4 |   781 |      2 |      2 |          0 |
+|         (chroma_first)                    |                spatial_chroma_yuv_3x3 |        114 |        110 |       0 |    4 |   261 |      0 |      0 |          0 |
+|         windows                           |                  spatial_window_3x3_2 |        495 |        495 |       0 |    0 |   520 |      2 |      2 |          0 |
+|       chroma_second                       |              spatial_chroma_yuv_3x3_0 |        605 |        601 |       0 |    4 |   753 |      2 |      2 |          0 |
+|         (chroma_second)                   |              spatial_chroma_yuv_3x3_0 |        118 |        114 |       0 |    4 |   232 |      0 |      0 |          0 |
+|         windows                           |                  spatial_window_3x3_1 |        487 |        487 |       0 |    0 |   521 |      2 |      2 |          0 |
+|       median_filter                       |                spatial_median_yuv_3x3 |       1516 |       1494 |       0 |   22 |  1003 |      2 |      2 |          0 |
+|         (median_filter)                   |                spatial_median_yuv_3x3 |        530 |        508 |       0 |   22 |   483 |      0 |      0 |          0 |
+|         windows                           |                    spatial_window_3x3 |        986 |        986 |       0 |    0 |   520 |      2 |      2 |          0 |
+|   synchronous.clock_guard                 |            board_test_usb_clock_guard |         30 |         30 |       0 |    0 |    34 |      0 |      0 |          0 |
+|   synchronous.link                        |                 board_test_ft245_sync |        232 |        232 |       0 |    0 |   448 |      0 |      0 |          0 |
+|   synchronous.rx_fifo                     | board_test_async_fifo__parameterized0 |        136 |         88 |      48 |    0 |    80 |      0 |      0 |          0 |
+|   synchronous.stats_mailbox               |               board_test_cdc_snapshot |          4 |          4 |       0 |    0 |   587 |      0 |      0 |          0 |
+|   synchronous.tx_fifo                     |                 board_test_async_fifo |         39 |         39 |       0 |    0 |   114 |      2 |      0 |          0 |
++-------------------------------------------+---------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
