@@ -1,0 +1,1 @@
+Separate common-reset/flush synchronizers: held front, immediate async flush, paused reader clock, reset+flush overlap with both clocks absent, fresh-word recovery and pointer wrap passed
