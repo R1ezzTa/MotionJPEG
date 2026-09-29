@@ -1,0 +1,272 @@
+[
+  {
+    "window": 1,
+    "cycles": 60000000,
+    "writes": 3403108,
+    "write_busy_cycles": 6565,
+    "txe_wait_cycles": 716132,
+    "upstream_empty_cycles": 55874189,
+    "rx_cycles": 6
+  },
+  {
+    "window": 2,
+    "cycles": 60000000,
+    "writes": 7032471,
+    "write_busy_cycles": 13582,
+    "txe_wait_cycles": 1497835,
+    "upstream_empty_cycles": 51456112,
+    "rx_cycles": 0
+  },
+  {
+    "window": 3,
+    "cycles": 60000000,
+    "writes": 7032763,
+    "write_busy_cycles": 13582,
+    "txe_wait_cycles": 1492930,
+    "upstream_empty_cycles": 51460725,
+    "rx_cycles": 0
+  },
+  {
+    "window": 4,
+    "cycles": 60000000,
+    "writes": 7038911,
+    "write_busy_cycles": 13600,
+    "txe_wait_cycles": 1479982,
+    "upstream_empty_cycles": 51467507,
+    "rx_cycles": 0
+  },
+  {
+    "window": 5,
+    "cycles": 60000000,
+    "writes": 7036023,
+    "write_busy_cycles": 13581,
+    "txe_wait_cycles": 1509173,
+    "upstream_empty_cycles": 51441223,
+    "rx_cycles": 0
+  },
+  {
+    "window": 6,
+    "cycles": 60000000,
+    "writes": 7034919,
+    "write_busy_cycles": 13593,
+    "txe_wait_cycles": 1526317,
+    "upstream_empty_cycles": 51425171,
+    "rx_cycles": 0
+  },
+  {
+    "window": 7,
+    "cycles": 60000000,
+    "writes": 7035541,
+    "write_busy_cycles": 13589,
+    "txe_wait_cycles": 1499603,
+    "upstream_empty_cycles": 51451267,
+    "rx_cycles": 0
+  },
+  {
+    "window": 8,
+    "cycles": 60000000,
+    "writes": 7036516,
+    "write_busy_cycles": 13592,
+    "txe_wait_cycles": 1510999,
+    "upstream_empty_cycles": 51438893,
+    "rx_cycles": 0
+  },
+  {
+    "window": 9,
+    "cycles": 60000000,
+    "writes": 7038736,
+    "write_busy_cycles": 13580,
+    "txe_wait_cycles": 1498885,
+    "upstream_empty_cycles": 51448799,
+    "rx_cycles": 0
+  },
+  {
+    "window": 10,
+    "cycles": 60000000,
+    "writes": 7036761,
+    "write_busy_cycles": 13598,
+    "txe_wait_cycles": 1495452,
+    "upstream_empty_cycles": 51454189,
+    "rx_cycles": 0
+  },
+  {
+    "window": 11,
+    "cycles": 60000000,
+    "writes": 7039120,
+    "write_busy_cycles": 13597,
+    "txe_wait_cycles": 1502986,
+    "upstream_empty_cycles": 51444297,
+    "rx_cycles": 0
+  },
+  {
+    "window": 12,
+    "cycles": 60000000,
+    "writes": 7035230,
+    "write_busy_cycles": 13590,
+    "txe_wait_cycles": 1532263,
+    "upstream_empty_cycles": 51418917,
+    "rx_cycles": 0
+  },
+  {
+    "window": 13,
+    "cycles": 60000000,
+    "writes": 7038588,
+    "write_busy_cycles": 13597,
+    "txe_wait_cycles": 1535987,
+    "upstream_empty_cycles": 51411828,
+    "rx_cycles": 0
+  },
+  {
+    "window": 14,
+    "cycles": 60000000,
+    "writes": 7038607,
+    "write_busy_cycles": 13589,
+    "txe_wait_cycles": 1499171,
+    "upstream_empty_cycles": 51448633,
+    "rx_cycles": 0
+  },
+  {
+    "window": 15,
+    "cycles": 60000000,
+    "writes": 7034447,
+    "write_busy_cycles": 13576,
+    "txe_wait_cycles": 1485771,
+    "upstream_empty_cycles": 51466206,
+    "rx_cycles": 0
+  },
+  {
+    "window": 16,
+    "cycles": 60000000,
+    "writes": 7036976,
+    "write_busy_cycles": 13593,
+    "txe_wait_cycles": 1482815,
+    "upstream_empty_cycles": 51466616,
+    "rx_cycles": 0
+  },
+  {
+    "window": 17,
+    "cycles": 60000000,
+    "writes": 7037276,
+    "write_busy_cycles": 13586,
+    "txe_wait_cycles": 1485313,
+    "upstream_empty_cycles": 51463825,
+    "rx_cycles": 0
+  },
+  {
+    "window": 18,
+    "cycles": 60000000,
+    "writes": 7038399,
+    "write_busy_cycles": 13593,
+    "txe_wait_cycles": 1491474,
+    "upstream_empty_cycles": 51456534,
+    "rx_cycles": 0
+  },
+  {
+    "window": 19,
+    "cycles": 60000000,
+    "writes": 7035763,
+    "write_busy_cycles": 13585,
+    "txe_wait_cycles": 1510230,
+    "upstream_empty_cycles": 51440422,
+    "rx_cycles": 0
+  },
+  {
+    "window": 20,
+    "cycles": 60000000,
+    "writes": 7036155,
+    "write_busy_cycles": 13579,
+    "txe_wait_cycles": 1495171,
+    "upstream_empty_cycles": 51455095,
+    "rx_cycles": 0
+  },
+  {
+    "window": 21,
+    "cycles": 60000000,
+    "writes": 7036400,
+    "write_busy_cycles": 13593,
+    "txe_wait_cycles": 1508343,
+    "upstream_empty_cycles": 51441664,
+    "rx_cycles": 0
+  },
+  {
+    "window": 22,
+    "cycles": 60000000,
+    "writes": 7039337,
+    "write_busy_cycles": 13601,
+    "txe_wait_cycles": 1517411,
+    "upstream_empty_cycles": 51429651,
+    "rx_cycles": 0
+  },
+  {
+    "window": 23,
+    "cycles": 60000000,
+    "writes": 7037158,
+    "write_busy_cycles": 13583,
+    "txe_wait_cycles": 1509054,
+    "upstream_empty_cycles": 51440205,
+    "rx_cycles": 0
+  },
+  {
+    "window": 24,
+    "cycles": 60000000,
+    "writes": 7033756,
+    "write_busy_cycles": 13588,
+    "txe_wait_cycles": 1502671,
+    "upstream_empty_cycles": 51449985,
+    "rx_cycles": 0
+  },
+  {
+    "window": 25,
+    "cycles": 60000000,
+    "writes": 7033231,
+    "write_busy_cycles": 13586,
+    "txe_wait_cycles": 1505124,
+    "upstream_empty_cycles": 51448059,
+    "rx_cycles": 0
+  },
+  {
+    "window": 26,
+    "cycles": 60000000,
+    "writes": 7035088,
+    "write_busy_cycles": 13584,
+    "txe_wait_cycles": 1491021,
+    "upstream_empty_cycles": 51460307,
+    "rx_cycles": 0
+  },
+  {
+    "window": 27,
+    "cycles": 60000000,
+    "writes": 7037675,
+    "write_busy_cycles": 13594,
+    "txe_wait_cycles": 1513727,
+    "upstream_empty_cycles": 51435004,
+    "rx_cycles": 0
+  },
+  {
+    "window": 28,
+    "cycles": 60000000,
+    "writes": 7032793,
+    "write_busy_cycles": 13583,
+    "txe_wait_cycles": 1476534,
+    "upstream_empty_cycles": 51477090,
+    "rx_cycles": 0
+  },
+  {
+    "window": 29,
+    "cycles": 60000000,
+    "writes": 7035311,
+    "write_busy_cycles": 13592,
+    "txe_wait_cycles": 1479219,
+    "upstream_empty_cycles": 51471878,
+    "rx_cycles": 0
+  },
+  {
+    "window": 30,
+    "cycles": 60000000,
+    "writes": 7041132,
+    "write_busy_cycles": 13592,
+    "txe_wait_cycles": 1473398,
+    "upstream_empty_cycles": 51471878,
+    "rx_cycles": 0
+  }
+]
