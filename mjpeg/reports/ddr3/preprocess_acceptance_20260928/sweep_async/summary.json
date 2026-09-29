@@ -1,0 +1,264 @@
+{
+  "passed": false,
+  "error": "AssertionError: Failed frame 450, status 1",
+  "phases": [
+    {
+      "mode": "color",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.002029856435737,
+      "max_frame_interval_ms": 33.33108,
+      "mean_jpeg_bytes": 504136.65555555554,
+      "jpeg_mb_per_second": 15.125122991701437,
+      "wire_bytes": 45911099,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 127,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 56.4386752507716,
+        "near_black_fraction": 0.34652440200617285,
+        "near_white_fraction": 0.00022231867283950616
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sweep_async\\00_color_b128_e32"
+    },
+    {
+      "mode": "gray",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.002030058710297,
+      "max_frame_interval_ms": 33.33108,
+      "mean_jpeg_bytes": 372446.4555555555,
+      "jpeg_mb_per_second": 11.174149754837886,
+      "wire_bytes": 33920229,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 62.319439139660496,
+        "near_black_fraction": 0.282001350308642,
+        "near_white_fraction": 0.001750096450617284
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sweep_async\\01_gray_b128_e32"
+    },
+    {
+      "mode": "binary",
+      "binary_threshold": 64,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.002027833690267,
+      "max_frame_interval_ms": 33.33109,
+      "mean_jpeg_bytes": 467502.1222222222,
+      "jpeg_mb_per_second": 14.026011683220379,
+      "wire_bytes": 42575547,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 101.32206548996913,
+        "near_black_fraction": 0.602274787808642,
+        "near_white_fraction": 0.3969227430555556
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sweep_async\\02_binary_b64_e32"
+    },
+    {
+      "mode": "binary",
+      "binary_threshold": 128,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.002024293886343,
+      "max_frame_interval_ms": 33.33109,
+      "mean_jpeg_bytes": 181390.27777777778,
+      "jpeg_mb_per_second": 5.442075520563681,
+      "wire_bytes": 16523621,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 46.9039347029321,
+        "near_black_fraction": 0.8159794560185185,
+        "near_white_fraction": 0.18374083719135803
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sweep_async\\03_binary_b128_e32"
+    },
+    {
+      "mode": "binary",
+      "binary_threshold": 192,
+      "edge_threshold": 32,
+      "frames": 90,
+      "independently_decoded_frames": 90,
+      "starts": 1,
+      "ends": 1,
+      "mean_fps": 30.002019843848316,
+      "max_frame_interval_ms": 33.3311,
+      "mean_jpeg_bytes": 56858.4,
+      "jpeg_mb_per_second": 1.7058668450894652,
+      "wire_bytes": 5184448,
+      "active_confirmed": true,
+      "first_frame_statistics": {
+        "max_rgb_channel_difference": 0,
+        "min_level": 0,
+        "max_level": 255,
+        "mean_level": 2.44515625,
+        "near_black_fraction": 0.9904239004629629,
+        "near_white_fraction": 0.00954812885802469
+      },
+      "directory": "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ddr3\\preprocess_acceptance_20260928\\sweep_async\\04_binary_b192_e32"
+    }
+  ],
+  "denoise_strength": 0,
+  "independently_decoded_frames": 450,
+  "seconds_per_setting": 3.0,
+  "actions": [
+    {
+      "seconds": 0.25433220000002166,
+      "command": "l"
+    },
+    {
+      "seconds": 0.2543832000000066,
+      "command": "S"
+    },
+    {
+      "seconds": 1.2067228000000227,
+      "command": "3"
+    },
+    {
+      "seconds": 1.2067979000000264,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 1.2068540999999868,
+      "command": "B80\nE20\nM00\n"
+    },
+    {
+      "seconds": 1.2069159999999783,
+      "command": "C"
+    },
+    {
+      "seconds": 4.209072900000024,
+      "command": "S"
+    },
+    {
+      "seconds": 5.206730100000016,
+      "command": "3"
+    },
+    {
+      "seconds": 5.206765200000007,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 5.206810800000028,
+      "command": "B80\nE20\nM01\n"
+    },
+    {
+      "seconds": 6.205623899999978,
+      "command": "C"
+    },
+    {
+      "seconds": 9.207543799999996,
+      "command": "S"
+    },
+    {
+      "seconds": 10.208344300000022,
+      "command": "3"
+    },
+    {
+      "seconds": 10.208416999999997,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 10.208483699999988,
+      "command": "B40\nE20\nM02\n"
+    },
+    {
+      "seconds": 11.206576900000016,
+      "command": "C"
+    },
+    {
+      "seconds": 14.212185599999998,
+      "command": "S"
+    },
+    {
+      "seconds": 15.207550400000002,
+      "command": "3"
+    },
+    {
+      "seconds": 15.207591200000024,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 15.207634100000007,
+      "command": "B80\nE20\nM02\n"
+    },
+    {
+      "seconds": 16.20581279999999,
+      "command": "C"
+    },
+    {
+      "seconds": 19.215203900000006,
+      "command": "S"
+    },
+    {
+      "seconds": 20.208675599999992,
+      "command": "3"
+    },
+    {
+      "seconds": 20.2087712,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 20.208832200000018,
+      "command": "BC0\nE20\nM02\n"
+    },
+    {
+      "seconds": 21.206778100000008,
+      "command": "C"
+    },
+    {
+      "seconds": 24.215402900000015,
+      "command": "S"
+    },
+    {
+      "seconds": 25.206542000000013,
+      "command": "3"
+    },
+    {
+      "seconds": 25.206577700000025,
+      "command": "N00\n"
+    },
+    {
+      "seconds": 25.206637699999987,
+      "command": "B80\nE08\nM03\n"
+    },
+    {
+      "seconds": 26.205332999999996,
+      "command": "C"
+    },
+    {
+      "seconds": 26.240019700000005,
+      "command": "l"
+    },
+    {
+      "seconds": 26.240049400000032,
+      "command": "S"
+    }
+  ],
+  "note": "Sequential live scenes; grayscale/binary/edges change image content. JPEG may introduce grey edge pixels."
+}
