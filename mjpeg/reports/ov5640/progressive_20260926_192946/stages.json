@@ -1,0 +1,93 @@
+﻿{
+    "profile":  5,
+    "summary":  {
+                    "received_frames":  895,
+                    "decoded_frames":  895,
+                    "failed_frames":  0,
+                    "payload_bytes":  392380094,
+                    "wire_bytes":  397047674,
+                    "payload_blocks":  383632,
+                    "core_clock_hz":  100000000,
+                    "target_fps":  30.0,
+                    "camera_diagnostics":  [
+                                               "JPEG decode succeeded; frame counters and byte counters should still be checked for drops/overflow."
+                                           ],
+                    "last_camera_status":  {
+                                               "flags":  61533,
+                                               "chip_id":  22080,
+                                               "config_index":  283,
+                                               "pclk_ticks":  2234884954,
+                                               "received_frames":  893,
+                                               "dropped_frames":  0,
+                                               "overflow_count":  0,
+                                               "dvp_byte_count":  1853822234,
+                                               "frame_sync_count":  894,
+                                               "raw8":  true,
+                                               "sampling_ready":  true,
+                                               "window":  30,
+                                               "init_done":  true,
+                                               "init_error":  false,
+                                               "capture_active":  true,
+                                               "tables_ready":  true,
+                                               "codec_busy":  true,
+                                               "config_error":  false,
+                                               "streaming":  true,
+                                               "light_requested":  false,
+                                               "light_on":  false,
+                                               "light_error":  false,
+                                               "light_busy":  false
+                                           },
+                    "camera_counter_deltas":  {
+                                                  "pclk_ticks":  2174999910,
+                                                  "received_frames":  870,
+                                                  "dropped_frames":  0,
+                                                  "overflow_count":  0,
+                                                  "dvp_byte_count":  1804130675,
+                                                  "frame_sync_count":  870
+                                              },
+                    "camera_sample_seconds":  29,
+                    "camera_pclk_hz_measured":  74999996.89655173,
+                    "camera_dvp_bytes_per_second_measured":  62211402.5862069,
+                    "camera_vsync_fps_measured":  30.0,
+                    "last_fps":  {
+                                     "window":  30,
+                                     "input_fps":  30,
+                                     "compressed_fps":  30,
+                                     "failed_fps":  0,
+                                     "total_compressed":  893
+                                 },
+                    "dimensions":  [
+                                       1920,
+                                       1080
+                                   ],
+                    "first_frame_id":  0,
+                    "last_frame_id":  894,
+                    "jpeg_bytes_total":  392380094,
+                    "jpeg_bytes_mean":  438413.512849162,
+                    "jpeg_bytes_p95":  443516,
+                    "jpeg_bytes_max":  447046,
+                    "raw_yuv422_bytes_total":  3711744000,
+                    "compression_ratio":  9.459562441513661,
+                    "bandwidth_reduction_percent":  89.42868651501827,
+                    "sensor_format":  "RAW8 BGGR",
+                    "sensor_bytes_total":  1855872000,
+                    "sensor_compression_ratio":  4.729781220756831,
+                    "sensor_bandwidth_reduction_percent":  78.85737303003654,
+                    "raw_bytes_per_second_at_target_fps":  124416000.0,
+                    "jpeg_bytes_per_second_at_target_fps":  13152405.385474859,
+                    "jpeg_bits_per_second_at_target_fps":  105219243.08379887,
+                    "timestamp_fps":  30.001918864337565,
+                    "jpeg_bytes_per_second_measured":  13153246.641529772,
+                    "sensor_bytes_per_second_at_jpeg_fps":  62211978.95709038,
+                    "pass":  true,
+                    "error":  null,
+                    "required_fps":  30.0,
+                    "require_no_drops":  true,
+                    "light_events":  [
+
+                                     ]
+                },
+    "build":  "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\mjpeg_board_test\\build_20260926_192946",
+    "mode":  "fhd30_raw",
+    "capture":  "F:\\zju\\dasanshangkecheng\\HDL\\mjpeg\\reports\\ov5640\\progressive_20260926_192946\\fhd30_raw/capture"
+}
