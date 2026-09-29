@@ -1,0 +1,64 @@
+{
+  "received_frames": 42,
+  "decoded_frames": 42,
+  "failed_frames": 0,
+  "payload_bytes": 1702626,
+  "wire_bytes": 1726162,
+  "payload_blocks": 1696,
+  "core_clock_hz": 100000000,
+  "target_fps": 15,
+  "camera_diagnostics": [
+    "JPEG decode succeeded; frame counters and byte counters should still be checked for drops/overflow."
+  ],
+  "last_camera_status": {
+    "flags": 93,
+    "chip_id": 22080,
+    "config_index": 270,
+    "pclk_ticks": 78532514,
+    "received_frames": 40,
+    "dropped_frames": 1,
+    "overflow_count": 0,
+    "dvp_byte_count": 36089159,
+    "init_done": true,
+    "init_error": false,
+    "capture_active": true,
+    "tables_ready": true,
+    "codec_busy": true,
+    "config_error": false,
+    "streaming": true
+  },
+  "camera_counter_deltas": {
+    "pclk_ticks": 48000061,
+    "received_frames": 30,
+    "dropped_frames": 0,
+    "overflow_count": 0,
+    "dvp_byte_count": 18432061
+  },
+  "last_fps": {
+    "window": 3,
+    "input_fps": 15,
+    "compressed_fps": 15,
+    "failed_fps": 0,
+    "total_compressed": 40
+  },
+  "dimensions": [
+    640,
+    480
+  ],
+  "first_frame_id": 0,
+  "last_frame_id": 41,
+  "jpeg_bytes_total": 1702626,
+  "jpeg_bytes_mean": 40538.71428571428,
+  "jpeg_bytes_p95": 41298,
+  "jpeg_bytes_max": 41326,
+  "raw_yuv422_bytes_total": 25804800,
+  "compression_ratio": 15.155882736431842,
+  "bandwidth_reduction_percent": 93.40190197172619,
+  "raw_bytes_per_second_at_target_fps": 9216000,
+  "jpeg_bytes_per_second_at_target_fps": 608080.7142857142,
+  "jpeg_bits_per_second_at_target_fps": 4864645.714285714,
+  "timestamp_fps": 15.00001911587802,
+  "jpeg_bytes_per_second_measured": 608081.4892188316,
+  "pass": true,
+  "error": null
+}
