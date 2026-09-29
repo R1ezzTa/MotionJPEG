@@ -1,0 +1,70 @@
+{
+  "passed": false,
+  "error": "ValueError: Frame 3 status=1",
+  "thresholds": [
+    0,
+    32,
+    64,
+    0
+  ],
+  "frames_per_threshold": 30,
+  "quality": 85,
+  "starts": 1,
+  "ends": 0,
+  "frames": 3,
+  "median_fps": 30.002059641394382,
+  "transitions": [
+    {
+      "index": 0,
+      "threshold": 0,
+      "previous_threshold": null,
+      "command_after_frame_id": null,
+      "command_seconds": 1.075513800002227,
+      "old_inflight_frames": 0,
+      "first_frame_id": 0,
+      "first_frame_keyframe": true,
+      "observed_seconds": 1.1478728000001865,
+      "accepted_frames": 3,
+      "last_frame_id": 2
+    }
+  ],
+  "unfinished_transition": null,
+  "wire_bytes": 0,
+  "usb_read_bytes": 1901951,
+  "transport_payload_bytes": 1727954,
+  "reconstructed_jpeg_bytes": 1667165,
+  "reused_groups": 0,
+  "camera_fifo_overflows": 0,
+  "actions": [
+    {
+      "seconds": 0.12440080000669695,
+      "command": "l"
+    },
+    {
+      "seconds": 0.12446740000450518,
+      "command": "S"
+    },
+    {
+      "seconds": 1.0755104000054416,
+      "command": "3"
+    },
+    {
+      "seconds": 1.0755710000012186,
+      "command": "T00\n"
+    },
+    {
+      "seconds": 1.0761054000031436,
+      "command": "C"
+    },
+    {
+      "seconds": 1.2329008000015165,
+      "command": "S"
+    },
+    {
+      "seconds": 1.2329742000001715,
+      "command": "l"
+    }
+  ],
+  "capture_enabled": true,
+  "threshold_units": "maximum absolute dequantized DCT coefficient difference"
+}
