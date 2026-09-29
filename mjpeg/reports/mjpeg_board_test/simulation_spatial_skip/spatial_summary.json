@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "frames": [
+    {
+      "frame_id": 0,
+      "keyframe": true,
+      "groups": 6,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 1366,
+      "transport_bytes": 1408,
+      "net_saved_bytes": -42,
+      "rtl": {
+        "keyframe": true,
+        "groups": 6,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 1366,
+        "transport_bytes": 1408,
+        "net_saved_bytes": -42
+      }
+    },
+    {
+      "frame_id": 1,
+      "keyframe": false,
+      "groups": 6,
+      "reused": 6,
+      "omitted_group_bytes": 765,
+      "jpeg_bytes": 1366,
+      "transport_bytes": 643,
+      "net_saved_bytes": 723,
+      "rtl": {
+        "keyframe": false,
+        "groups": 6,
+        "reused": 3,
+        "omitted_group_bytes": 261,
+        "jpeg_bytes": 1366,
+        "transport_bytes": 1147,
+        "net_saved_bytes": 219
+      }
+    },
+    {
+      "frame_id": 2,
+      "keyframe": false,
+      "groups": 6,
+      "reused": 5,
+      "omitted_group_bytes": 688,
+      "jpeg_bytes": 1366,
+      "transport_bytes": 720,
+      "net_saved_bytes": 646,
+      "rtl": {
+        "keyframe": false,
+        "groups": 6,
+        "reused": 2,
+        "omitted_group_bytes": 184,
+        "jpeg_bytes": 1366,
+        "transport_bytes": 1224,
+        "net_saved_bytes": 142
+      }
+    },
+    {
+      "frame_id": 3,
+      "keyframe": true,
+      "groups": 6,
+      "reused": 0,
+      "omitted_group_bytes": 0,
+      "jpeg_bytes": 1074,
+      "transport_bytes": 1116,
+      "net_saved_bytes": -42,
+      "rtl": {
+        "keyframe": true,
+        "groups": 6,
+        "reused": 0,
+        "omitted_group_bytes": 0,
+        "jpeg_bytes": 1074,
+        "transport_bytes": 1116,
+        "net_saved_bytes": -42
+      }
+    }
+  ]
+}
