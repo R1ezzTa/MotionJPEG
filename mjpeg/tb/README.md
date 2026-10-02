@@ -1,6 +1,6 @@
 # 仿真文件
 
-为本工程的单路板级接口及模块仿真预留。现有验证基线在相邻 `xilinx_mjpeg/tb` 中，本次未将历史双路测试自动设为本工程的单路仿真顶层。
+本工程的单路板级接口、模块与摄像头链路仿真。历史上曾依赖相邻的 `xilinx_mjpeg/tb` 验证基线，该移植目录已移除；独立参考模型现位于 `mjpeg/scripts/jpeg_model.py`。
 
 当前预处理使用 `scripts/run_preprocess_sim.ps1`，独立整帧参考验证彩色原样直通、灰度、亮度二值化和带阈值的灰阶 Sobel。覆盖反射边界、正负梯度、阈值 0/255、帧内修改配置、随机反压和 abort；4×2、16×8、1920×8 全部逐像素比对。`run_board_controls_sim.ps1 -SpatialDdr 1 -PreprocessEnable 1` 验证 B/E/M 原子命令、非法值隔离、物理键、旧 JPEG 金样和新 kind 8 状态；默认不启用 kind 8 的回归继续保留旧协议。`test_preprocess_control.py` 覆盖新状态、旧抓包、能力门控、启动顺序及重连恢复。见 [板内图像预处理](../docs/板内图像预处理.md)。
 

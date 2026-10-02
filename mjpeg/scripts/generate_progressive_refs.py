@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 import io
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT.parent/'xilinx_mjpeg/scripts'))
+sys.path.insert(0,str(ROOT/'scripts'))
 from jpeg_model import encode,tables
 
 def main():
@@ -24,7 +24,7 @@ def main():
         with Image.open(io.BytesIO(jpg)) as decoded:
             assert decoded.size==(w,h);decoded.load()
         if (w,h)==(1920,1080):
-            assert jpg==(ROOT.parent/'xilinx_mjpeg/data/fhd/model.jpg').read_bytes()
+            assert jpg==(ROOT/'data/reference/model.jpg').read_bytes()
         (dest/f'{w}x{h}.expected.jpg').write_bytes(jpg)
         manifest.append({'width':w,'height':h,'gray':False,'quality':85,'bytes':len(jpg),'sha256':hashlib.sha256(jpg).hexdigest()})
         print(f'REFERENCE {w}x{h}: {len(jpg)} bytes, {time.monotonic()-started:.2f}s',flush=True)

@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT.parent / 'xilinx_mjpeg/scripts'))
+sys.path.insert(0, str(ROOT / 'scripts'))
 from jpeg_model import tables, encode
 
 

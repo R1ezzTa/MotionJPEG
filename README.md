@@ -45,8 +45,7 @@
 
 ## 工程结构
 
-- [mjpeg](mjpeg/README.md)：达芬奇 Vivado 板级工程、RTL、引脚约束、主机程序和上板测试。
-- [xilinx_mjpeg](xilinx_mjpeg/README.md)：Xilinx 移植基线、独立 JPEG 整数参考模型和仿真向量；达芬奇的参考生成脚本依赖此目录。
+- [mjpeg](mjpeg/README.md)：达芬奇 Vivado 板级工程、RTL、引脚约束、主机程序和上板测试。独立 JPEG 整数参考模型在 `mjpeg/scripts/jpeg_model.py`，参考生成脚本与本工程同目录。
 
 关键文档索引：[无 DDR3 图像链路](mjpeg/docs/无DDR3图像链路.md) · [板内图像预处理](mjpeg/docs/板内图像预处理.md) · [板内稳健降噪](mjpeg/docs/板内稳健降噪.md) · [OV5640 渐进验收](mjpeg/docs/OV5640渐进验收.md) · [MJPEG 接口](mjpeg/docs/MJPEG接口.md) · [压缩核流水链路图](mjpeg/docs/压缩核流水链路图.svg) · [模块连接图](mjpeg/docs/模块连接图.svg)。
 

@@ -2,7 +2,7 @@
 import sys
 from pathlib import Path
 import numpy as np
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'xilinx_mjpeg/scripts'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from jpeg_model import BitWriter, blocks, dct, HUFF, ZZ, header, segment, symbols
 
 

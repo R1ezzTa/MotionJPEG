@@ -57,9 +57,9 @@ mjpeg/
 
 Vivado 自动生成的 `mjpeg.cache`、`mjpeg.hw`、`mjpeg.sim` 等目录继续由工具管理。
 
-## 已复制的代码
+## 代码来源
 
-初始复制的 19 个 `.v` 和 3 个依赖 `.vh` 来自相邻的 `../xilinx_mjpeg/rtl`，保留原目录及 include 路径，当时逐文件 SHA-256 比较一致。后续 DDR3 集成对量化、Zigzag、Huffman 和比特打包的存储及组合逻辑作了等价优化，相关逐周期和独立 JPEG 验证见 [DDR3 参考缓存](docs/DDR3参考缓存.md)。基线已将行缓存 RAM 适配为 Vivado block RAM 推断，默认不启用安路原语分支。
+压缩核 RTL 最初由相邻的 Xilinx 移植基线 `../xilinx_mjpeg/rtl` 复制而来（19 个 `.v` 和 3 个依赖 `.vh`，当时逐文件 SHA-256 比较一致）；该移植目录现已从仓库移除，仅保留历史记录。后续 DDR3 集成对量化、Zigzag、Huffman 和比特打包的存储及组合逻辑作了等价优化，相关逐周期和独立 JPEG 验证见 [DDR3 参考缓存](docs/DDR3参考缓存.md)。行缓存 RAM 已适配为 Vivado block RAM 推断，默认不启用安路原语分支。
 
 复制来源和校验值：`docs/copied_rtl_manifest.json`。原始工程快照：`docs/original_source_snapshot.json`。通道、配置和数据接口详见 `docs/MJPEG接口.md`，其中历史安路性能记录不代表达芬奇上板性能。
 
