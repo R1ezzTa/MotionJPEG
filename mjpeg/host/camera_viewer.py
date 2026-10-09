@@ -42,17 +42,8 @@ def pixel_threshold_command(value, edge=False):
     return f'{"E" if edge else "B"}{value:02X}\n'.encode('ascii')
 
 
-def threshold_command(value):
-    """Atomic FPGA command; coefficient units, not pixel brightness."""
-    if isinstance(value, bool) or not isinstance(value, int) or not 0 <= value <= 255:
-        raise ValueError('Spatial coefficient threshold must be an integer from 0 to 255')
-    return f'T{value:02X}\n'.encode('ascii')
 
 
-def adaptive_command(enabled):
-    if not isinstance(enabled, bool):
-        raise ValueError('Adaptive mode must be enabled or disabled')
-    return b'A1\n' if enabled else b'A0\n'
 
 
 def denoise_command(value):
@@ -163,15 +154,13 @@ class PreviewWorker(threading.Thread):
                           jpeg_bytes=0, wire_bytes=0, fps=0.0, error=None,
                           camera=None, rate=None, source='capture' if args.capture else 'USB_SLAVE',
                           recoveries=0, last_recovery=None, connection_epoch=0,
-                          discarded_partial_frames=0, threshold_capable=None,
-                          adaptive_capable=None, adaptive_requested=getattr(args, 'adaptive', None),
-                          threshold_requested=getattr(args, 'skip_threshold', None),
-                          denoise_capable=None, denoise_requested=getattr(args, 'denoise_strength', None),
+                          discarded_partial_frames=0,
+                          denoise_capable=None, denoise_requested=args.denoise_strength,
                           preprocess_capable=None, preprocess=None,
                           mode_requested=(PREPROCESS_MODES.index(args.preprocess_mode)
-                                          if getattr(args,'preprocess_mode',None) is not None else None),
-                          binary_threshold_requested=getattr(args,'binary_threshold',None),
-                          edge_threshold_requested=getattr(args,'edge_threshold',None))
+                                          if args.preprocess_mode is not None else None),
+                          binary_threshold_requested=args.binary_threshold,
+                          edge_threshold_requested=args.edge_threshold)
 
     def update(self, **values):
         with self.lock:
@@ -181,13 +170,6 @@ class PreviewWorker(threading.Thread):
         with self.lock:
             return self.latest, self.state.copy()
 
-    def set_threshold(self, value):
-        command = threshold_command(value)
-        with self.lock:
-            if self.args.capture or self.state['threshold_capable'] is not True:
-                raise ValueError('Current firmware does not support adjustable spatial threshold')
-            self.state['threshold_requested'] = value
-        self.commands.put(command)
 
     def set_transmission(self, enabled):
         """Change the FPGA run request while keeping the USB reader open."""
@@ -211,13 +193,6 @@ class PreviewWorker(threading.Thread):
             self.state['denoise_requested'] = value
         self.commands.put(command)
 
-    def set_adaptive(self, enabled):
-        command = adaptive_command(enabled)
-        with self.lock:
-            if self.args.capture or self.state['adaptive_capable'] is not True:
-                raise ValueError('Current firmware does not support board adaptive mode')
-            self.state['adaptive_requested'] = enabled
-        self.commands.put(command)
 
     def set_preprocess(self, mode, binary_threshold, edge_threshold):
         # Validate the whole request before enqueueing any command.
@@ -250,7 +225,7 @@ class PreviewWorker(threading.Thread):
         error = None
         began = time.monotonic()
         consecutive_recoveries = recoveries = discarded = good_camera_snapshots = wire_base = 0
-        threshold_initialized = False
+        settings_initialized = False
         auto_start_pending = False
         try:
             records = None
@@ -273,13 +248,11 @@ class PreviewWorker(threading.Thread):
                         with self.lock:
                             self.latest = None
                             self.state.update(connection_epoch=recoveries, camera=None, rate=None, fps=0.0,
-                                              threshold_capable=None, adaptive_capable=None, denoise_capable=None, spatial=None,
+                                              denoise_capable=None,
                                               preprocess_capable=None,preprocess=None)
-                            requested = self.state['threshold_requested']
-                        threshold_initialized = False
+                        settings_initialized = False
                         auto_start_pending = bool(not self.args.capture and self.args.auto_start and
-                                                  (requested is not None or self.state['adaptive_requested'] is not None or
-                                                   self.state['denoise_requested'] is not None or
+                                                  (self.state['denoise_requested'] is not None or
                                                    any(self.state[name] is not None for name in
                                                        ('mode_requested','binary_threshold_requested','edge_threshold_requested'))))
                         if not self.args.capture and self.args.auto_start and not auto_start_pending:
@@ -331,29 +304,16 @@ class PreviewWorker(threading.Thread):
                                 # A single newest frame bounds memory even if rendering is slow.
                                 self.latest = (published, frame)
                                 self.state.update(fps=fps, jpeg_bytes=jpeg_bytes)
-                        self.update(received=received, failed=failed, decoded=decoded, spatial=records.spatial_stats)
+                        self.update(received=received, failed=failed, decoded=decoded)
                         if not frame.status:
                             consecutive_recoveries = 0
                     elif kind == 'camera':
-                        capable = bool(value.get('threshold_capable', False))
-                        self.update(camera=value, threshold_capable=capable,
-                                    adaptive_capable=bool(value.get('adaptive_capable', False)),
+                        self.update(camera=value,
                                     denoise_capable=bool(value.get('denoise_capable', False)),
                                     preprocess_capable=bool(value.get('preprocess_capable',False)))
                         if value['init_error'] or value['config_error']:
                             raise RuntimeError(f"Camera initialization/configuration error at index {value['config_index']}")
-                        if not self.args.capture and not threshold_initialized:
-                            with self.lock:
-                                requested = self.state['threshold_requested']
-                            if requested is not None:
-                                if not capable:
-                                    raise RuntimeError('--skip-threshold requires firmware with adjustable spatial threshold support')
-                                self.commands.put(threshold_command(requested))
-                            adaptive = self.state['adaptive_requested']
-                            if adaptive is not None:
-                                if not value.get('adaptive_capable', False):
-                                    raise RuntimeError('--adaptive requires firmware with board adaptive mode support')
-                                self.commands.put(adaptive_command(adaptive))
+                        if not self.args.capture and not settings_initialized:
                             denoise = self.state['denoise_requested']
                             if denoise is not None:
                                 if not value.get('denoise_capable', False):
@@ -372,7 +332,7 @@ class PreviewWorker(threading.Thread):
                                 reader.in_stream = True
                                 auto_start_pending = False
                             reader.check_control()
-                            threshold_initialized = True
+                            settings_initialized = True
                         if not value['streaming'] and value['init_done']:
                             good_camera_snapshots += 1
                             if good_camera_snapshots >= 2:
@@ -579,8 +539,8 @@ class PreviewWindow:
         denoise_bar = ttk.Frame(self.root, padding=(8, 0, 8, 6))
         denoise_bar.pack(fill='x')
         ttk.Label(denoise_bar, text='板内空间降噪强度（0=关闭）：').pack(side='left')
-        self.denoise = tk.StringVar(value=str(getattr(args, 'denoise_strength', None) or 0))
-        self.denoise_initialized = getattr(args, 'denoise_strength', None) is not None
+        self.denoise = tk.StringVar(value=str(args.denoise_strength or 0))
+        self.denoise_initialized = args.denoise_strength is not None
         self.denoise_entry = ttk.Spinbox(denoise_bar, from_=0, to=255, width=6,
                                         textvariable=self.denoise, state='disabled')
         self.denoise_entry.pack(side='left', padx=4)
@@ -596,7 +556,7 @@ class PreviewWindow:
         preprocess_bar=ttk.Frame(self.root,padding=(8,4))
         preprocess_bar.pack(fill='x')
         ttk.Label(preprocess_bar,text='板内预处理：').pack(side='left')
-        self.preprocess_mode=PREPROCESS_MODES.index(args.preprocess_mode) if getattr(args,'preprocess_mode',None) else 0
+        self.preprocess_mode=PREPROCESS_MODES.index(args.preprocess_mode) if args.preprocess_mode else 0
         self.preprocess_initialized=False
         self.preprocess_buttons=[]
         for mode,label in enumerate(PREPROCESS_LABELS):
@@ -604,10 +564,10 @@ class PreviewWindow:
                               command=lambda mode=mode:self.apply_preprocess(mode))
             button.pack(side='left',padx=2)
             self.preprocess_buttons.append(button)
-        self.binary_threshold=tk.StringVar(value=str(getattr(args,'binary_threshold',None) if
-                                                    getattr(args,'binary_threshold',None) is not None else 128))
-        self.edge_threshold=tk.StringVar(value=str(getattr(args,'edge_threshold',None) if
-                                                  getattr(args,'edge_threshold',None) is not None else 32))
+        self.binary_threshold=tk.StringVar(value=str(args.binary_threshold if
+                                                    args.binary_threshold is not None else 128))
+        self.edge_threshold=tk.StringVar(value=str(args.edge_threshold if
+                                                  args.edge_threshold is not None else 32))
         self.preprocess_entries=[]
         for label,variable in (('亮度阈值',self.binary_threshold),('边缘阈值',self.edge_threshold)):
             ttk.Label(preprocess_bar,text=label).pack(side='left',padx=(6,0))
@@ -860,12 +820,6 @@ class PreviewWindow:
                 text += f"  |  画质 Q{camera['quality']}"
                 if camera['quality_pending']:
                     text += f" → Q{camera['quality_requested']}（等待帧结束）"
-        spatial=state.get('spatial')
-        if spatial:
-            text += (f"  |  空间复用 {spatial['reused']}/{spatial['groups']}"
-                     f"  负载 {spatial['transport_bytes']/1024:.1f} KiB")
-            if 'threshold' in spatial:
-                text += f"  |  {'本帧自适应上限' if spatial.get('adaptive') else '本帧系数阈值'} {spatial['threshold']}"
         requested = state.get('denoise_requested')
         if camera and camera.get('denoise_capable'):
             board_requested = camera['denoise_requested']
@@ -921,10 +875,6 @@ def parse_args(argv=None):
                         default=Path(__file__).resolve().parents[1] / 'reports/ov5640/preview_snapshots')
     parser.add_argument('--headless', action='store_true', help='Receive and independently decode every frame without GUI')
     parser.add_argument('--auto-start', action='store_true', help='Send USB START automatically; default waits for PC button or board KEY0')
-    parser.add_argument('--skip-threshold', type=int, default=None,
-                        help=argparse.SUPPRESS)
-    parser.add_argument('--adaptive', action=argparse.BooleanOptionalAction, default=None,
-                        help=argparse.SUPPRESS)
     parser.add_argument('--denoise-strength', type=int, default=None,
                         help='FPGA current-frame spatial denoise strength 0..255; 0 disables filtering. Omit to retain board setting')
     parser.add_argument('--preprocess-mode',choices=PREPROCESS_MODES,default=None,
@@ -938,12 +888,6 @@ def parse_args(argv=None):
         parser.error('Timeouts must be finite and positive')
     if args.headless and not args.capture and not args.duration:
         parser.error('Live --headless mode requires --duration')
-    if args.skip_threshold is not None and not 0 <= args.skip_threshold <= 255:
-        parser.error('--skip-threshold must be from 0 to 255')
-    if args.capture and args.skip_threshold is not None:
-        parser.error('--skip-threshold cannot alter capture replay')
-    if args.capture and args.adaptive is not None:
-        parser.error('--adaptive cannot alter capture replay')
     if args.denoise_strength is not None and not 0 <= args.denoise_strength <= 255:
         parser.error('--denoise-strength must be from 0 to 255')
     if args.capture and args.denoise_strength is not None:

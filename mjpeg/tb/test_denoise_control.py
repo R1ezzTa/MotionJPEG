@@ -26,7 +26,6 @@ class DenoiseControlTests(unittest.TestCase):
             self.assertEqual(value['denoise_revision'], expected)
             self.assertEqual(value['config_index'], 283)
             self.assertEqual(value['frame_sync_count'], 0x12345678)
-            self.assertFalse(value['threshold_capable'])
             if capable:
                 self.assertEqual(value['denoise_requested'], 255)
 
@@ -57,8 +56,6 @@ class DenoiseControlTests(unittest.TestCase):
         self.assertIsNone(state['error'])
         self.assertEqual(device.sent, [b'N10\n', b'C', b'l', b'S'])
         self.assertTrue(state['camera']['denoise_capable'])
-        self.assertFalse(state['camera']['threshold_capable'])
-        self.assertFalse(state['camera']['adaptive_capable'])
         self.assertEqual(state['camera']['config_index'], 283)
         self.assertEqual(state['camera']['frame_sync_count'], 0x12345678)
 

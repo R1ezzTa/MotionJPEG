@@ -20,7 +20,7 @@ module tb_davinci_mjpeg_sync_test #(parameter PROGRESSIVE=0);
     real tristate_changed=0;
     wire core_clk=dut.core_clk;
     assign data=!oe_n?peer_data:8'bz;
-    davinci_mjpeg_board_test_top #(.CLOCK_HZ(24000),.USB_CLOCK_HZ(14400),
+    davinci_mjpeg_camera_top #(.REAL_CAMERA(0),.CLOCK_HZ(24000),.USB_CLOCK_HZ(14400),
         .VGA_WIDTH(48),.VGA_HEIGHT(16),.HD_WIDTH(64),.HD_HEIGHT(24),.FHD_WIDTH(96),.FHD_HEIGHT(32)) dut(
         .sys_clk(clk),.sys_rst_n(rst_n),.usb_clk_60m(usb_clk),.usb_data(data),
         .usb_rxf_n(rxf_n),.usb_txe_n(txe_n),.usb_rd_n(rd_n),.usb_wr_n(wr_n),

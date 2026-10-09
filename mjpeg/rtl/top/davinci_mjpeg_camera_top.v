@@ -1,6 +1,6 @@
 // Independent-frame camera pipeline. No DDR controller or frame reference.
 module davinci_mjpeg_camera_top #(
-    parameter CLOCK_HZ=100000000,USB_CLOCK_HZ=60000000,SYNC_FIFO=1,USE_MMCM=1,
+    parameter CLOCK_HZ=100000000,USB_CLOCK_HZ=60000000,USE_MMCM=1,
     REAL_CAMERA=1,CAMERA_PROFILE=5,DENOISE_ENABLE=1,PREPROCESS_ENABLE=1,
     CAMERA_WIDTH=(CAMERA_PROFILE>=4)?1920:(CAMERA_PROFILE>=2)?1280:640,
     CAMERA_HEIGHT=(CAMERA_PROFILE>=4)?1080:(CAMERA_PROFILE>=2)?720:480,
@@ -37,7 +37,7 @@ module davinci_mjpeg_camera_top #(
         if (!run_rst_n) reset_pipe<=0;
         else reset_pipe<={reset_pipe[1:0],1'b1};
     assign rst_n=reset_pipe[2];
-    generate if(SYNC_FIFO) begin: synchronous
+    generate begin: synchronous
         wire usb_clk,usb_rst_n;
         BUFG usb_clock_buffer(.I(usb_clk_60m),.O(usb_clk));
         board_test_usb_clock_guard #(.TIMEOUT_CYCLES(USE_MMCM?100000:50000)) clock_guard(
@@ -67,13 +67,6 @@ module davinci_mjpeg_camera_top #(
         board_test_cdc_snapshot stats_mailbox(
             .s_clk(usb_clk),.s_rst_n(usb_rst_n),.s_valid(usb_stats_valid),.s_data(usb_stats_data),
             .m_clk(core_clk),.m_rst_n(rst_n),.m_valid(link_stats_valid),.m_data(link_stats_data));
-    end else begin: asynchronous
-    assign run_rst_n=core_clock_locked;
-    board_test_ft245_async #(.CLOCK_HZ(CLOCK_HZ)) link(
-        .clk(core_clk),.rst_n(rst_n),.usb_data(usb_data),.usb_rxf_n(usb_rxf_n),.usb_txe_n(usb_txe_n),
-        .usb_rd_n(usb_rd_n),.usb_wr_n(usb_wr_n),.usb_oe_n(usb_oe_n),.usb_siwu_n(usb_siwu_n),
-        .rx_data(rx_data),.rx_valid(rx_valid),.tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(tx_ready),
-        .stats_valid(link_stats_valid),.stats_data(link_stats_data));
     end endgenerate
     board_test_block_transport blocks(
         .clk(core_clk),.rst_n(rst_n),.s_data(engine_tx_data),.s_valid(engine_tx_valid),.s_ready(engine_tx_ready),
@@ -95,14 +88,12 @@ module davinci_mjpeg_camera_top #(
     generate if(REAL_CAMERA) begin: real_camera
         wire init_done,init_error,capture_active;
         wire light_requested,light_on,light_error,light_busy;
-        camera_board_controls #(.CLOCK_HZ(CLOCK_HZ),.SPATIAL_COMMANDS(0),
+        camera_board_controls #(.CLOCK_HZ(CLOCK_HZ),
             .DENOISE_COMMANDS(DENOISE_ENABLE && CAMERA_PROFILE==5),.PREPROCESS_COMMANDS(PREPROCESS_ENABLE)) controls(
             .clk(core_clk),.reset_n(core_clock_locked),.key_n(key),.rx_data(rx_data),.rx_valid(rx_valid),
             .streaming(engine_led[1]),.camera_ready(camera_ready),.active_quality(active_quality),
             .light_on(light_on),.fault(init_error || light_error || engine_led[3]),
             .run_requested(run_requested),.quality_requested(quality_requested),
-            .spatial_threshold_requested(),
-            .spatial_adaptive_requested(),
             .denoise_strength_requested(denoise_strength_requested),
             .preprocess_mode_requested(preprocess_mode_requested),
             .binary_threshold_requested(binary_threshold_requested),.edge_threshold_requested(edge_threshold_requested),
@@ -228,16 +219,10 @@ module davinci_mjpeg_camera_top #(
         assign camera_queue_pressure=0;
         assign board_light_start=0;assign board_light_cancel=0;
     end endgenerate
-    mjpeg_board_test_engine #(.CLOCK_HZ(CLOCK_HZ),.SMALL_END(1),.REAL_CAMERA(REAL_CAMERA),.BOARD_CONTROL(REAL_CAMERA),.SPATIAL_SKIP(0),.SPATIAL_THRESHOLD(0),.SPATIAL_DDR(0),.SPATIAL_ADAPTIVE(0),.PREPROCESS_ENABLE(PREPROCESS_ENABLE && REAL_CAMERA),
+    mjpeg_camera_engine #(.CLOCK_HZ(CLOCK_HZ),.SMALL_END(1),.REAL_CAMERA(REAL_CAMERA),.BOARD_CONTROL(REAL_CAMERA),.PREPROCESS_ENABLE(PREPROCESS_ENABLE && REAL_CAMERA),
         .CAMERA_WIDTH(CAMERA_WIDTH),.CAMERA_HEIGHT(CAMERA_HEIGHT),
         .VGA_WIDTH(VGA_WIDTH),.VGA_HEIGHT(VGA_HEIGHT),.HD_WIDTH(HD_WIDTH),.HD_HEIGHT(HD_HEIGHT),
         .FHD_WIDTH(FHD_WIDTH),.FHD_HEIGHT(FHD_HEIGHT)) engine(
-        // The shared codec interface also serves archived experiments.
-        // No application-memory transaction exists in this camera build.
-        .mem_cmd_valid(),.mem_cmd_write(),.mem_cmd_ready(1'b0),.mem_cmd_addr(),
-        .mem_cmd_bytes(),.mem_w_data(),.mem_w_keep(),.mem_w_valid(),
-        .mem_w_last(),.mem_w_ready(1'b0),.mem_r_data(128'd0),.mem_r_valid(1'b0),
-        .mem_r_last(1'b0),.mem_r_ready(),.mem_done(1'b0),.mem_error(1'b0),.mem_fault(),
         .sys_clk(core_clk),.sys_rst_n(run_rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
         .tx_data(engine_tx_data),.tx_valid(engine_tx_valid),.tx_ready(engine_tx_ready),.led(engine_led),
         .camera_pixel(camera_pixel),.camera_valid(camera_valid),.camera_sof(camera_sof),.camera_eol(camera_eol),
@@ -245,8 +230,6 @@ module davinci_mjpeg_camera_top #(
         .camera_admission_enabled(camera_admission_enabled),
         .camera_take(camera_take),.camera_admit(camera_admit),
         .run_requested(run_requested),.quality_requested(quality_requested),.active_quality(active_quality),
-        .spatial_threshold_requested(8'd0),
-        .spatial_adaptive_requested(1'b0),
         .compressed_fps(compressed_fps),.fps_sample_valid(fps_sample_valid));
     davinci_fps_display #(.CLOCK_HZ(CLOCK_HZ)) display(
         .clk(core_clk),.rst_n(rst_n),.fps(compressed_fps),.update_valid(fps_sample_valid),

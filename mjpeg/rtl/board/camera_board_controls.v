@@ -3,15 +3,13 @@
 module camera_board_controls #(
     parameter CLOCK_HZ=100000000, DEBOUNCE_CYCLES=CLOCK_HZ/50,
     COMMAND_TIMEOUT_CYCLES=(CLOCK_HZ<10)?1:CLOCK_HZ/10,
-    SPATIAL_COMMANDS=1,DENOISE_COMMANDS=0,PREPROCESS_COMMANDS=0
+    DENOISE_COMMANDS=0,PREPROCESS_COMMANDS=0
 )(
     input clk,reset_n,input [3:0] key_n,
     input [7:0] rx_data,input rx_valid,
     input streaming,camera_ready,input [1:0] active_quality,
     input light_on,fault,
     output reg run_requested,output reg [1:0] quality_requested,
-    output reg [7:0] spatial_threshold_requested,
-    output reg spatial_adaptive_requested,
     output reg [7:0] denoise_strength_requested,
     output reg [1:0] preprocess_mode_requested,
     output reg [7:0] binary_threshold_requested,edge_threshold_requested,
@@ -40,16 +38,15 @@ module camera_board_controls #(
             end
         end
     end
-    // Txx\n updates the threshold atomically. Payload bytes are never legacy
+    // N/B/M/E commands commit on newline. Payload bytes are never control
     // commands (notably hex C/F and malformed S/L). Malformed input is drained
     // to newline, or abandoned after 100 ms without another byte.
-    localparam CMD_IDLE=0,CMD_HIGH=1,CMD_LOW=2,CMD_END=3,CMD_DRAIN=4,CMD_AUTO=5,CMD_AUTO_END=6;
+    localparam CMD_IDLE=0,CMD_HIGH=1,CMD_LOW=2,CMD_END=3,CMD_DRAIN=4;
     localparam TIMEOUT_BITS=(COMMAND_TIMEOUT_CYCLES<2)?1:$clog2(COMMAND_TIMEOUT_CYCLES);
     reg [2:0] command_state;
     reg [TIMEOUT_BITS-1:0] command_idle_count;
     reg [7:0] pending_threshold;
-    reg [2:0] command_kind; // T, N, B, M, E
-    reg pending_adaptive;
+    reg [2:0] command_kind; // N, B, M, E
     function hex_valid;
         input [7:0] value;
         begin hex_valid=(value>="0" && value<="9") ||
@@ -63,14 +60,13 @@ module camera_board_controls #(
             else hex_value=value-"a"+10;
         end
     endfunction
-    wire legacy_command=rx_valid && command_state==CMD_IDLE && rx_data!="T" && rx_data!="A" && rx_data!="N" && rx_data!="B" && rx_data!="M" && rx_data!="E";
+    wire legacy_command=rx_valid && command_state==CMD_IDLE && rx_data!="N" && rx_data!="B" && rx_data!="M" && rx_data!="E";
     // USB commands remain useful for automated acceptance. Board keys and
     // host commands update the same FPGA state; PC software owns no timer.
     always @(posedge clk or negedge rst_n) begin
         if(!rst_n) begin
             run_requested<=0;quality_requested<=2;light_start<=0;light_cancel<=0;
-            spatial_threshold_requested<=0;pending_threshold<=0;
-            spatial_adaptive_requested<=0;pending_adaptive<=0;
+            pending_threshold<=0;
             denoise_strength_requested<=0;command_kind<=0;
             preprocess_mode_requested<=0;binary_threshold_requested<=128;edge_threshold_requested<=32;
             command_state<=CMD_IDLE;command_idle_count<=0;
@@ -80,25 +76,13 @@ module camera_board_controls #(
                 command_idle_count<=0;
                 case(command_state)
                     CMD_IDLE: begin
-                        if(rx_data=="T" || rx_data=="N" || rx_data=="B" || rx_data=="M" || rx_data=="E") begin
+                        if(rx_data=="N" || rx_data=="B" || rx_data=="M" || rx_data=="E") begin
                             case(rx_data)
-                                "T":command_kind<=0;"N":command_kind<=1;"B":command_kind<=2;
+                                "N":command_kind<=1;"B":command_kind<=2;
                                 "M":command_kind<=3;"E":command_kind<=4;
                             endcase
                             command_state<=CMD_HIGH;
                         end
-                        else if(rx_data=="A") command_state<=CMD_AUTO;
-                    end
-                    CMD_AUTO: begin
-                        if(rx_data=="0" || rx_data=="1") begin
-                            pending_adaptive<=rx_data=="1";command_state<=CMD_AUTO_END;
-                        end else command_state<=(rx_data==8'h0a)?CMD_IDLE:CMD_DRAIN;
-                    end
-                    CMD_AUTO_END: begin
-                        if(rx_data==8'h0a) begin
-                            if(SPATIAL_COMMANDS) spatial_adaptive_requested<=pending_adaptive;
-                            command_state<=CMD_IDLE;
-                        end else command_state<=CMD_DRAIN;
                     end
                     CMD_HIGH: begin
                         if(hex_valid(rx_data)) begin
@@ -113,7 +97,6 @@ module camera_board_controls #(
                     CMD_END: begin
                         if(rx_data==8'h0a) begin
                             case(command_kind)
-                                0:if(SPATIAL_COMMANDS) spatial_threshold_requested<=pending_threshold;
                                 1:if(DENOISE_COMMANDS) denoise_strength_requested<=pending_threshold;
                                 2:if(PREPROCESS_COMMANDS) binary_threshold_requested<=pending_threshold;
                                 3:if(PREPROCESS_COMMANDS && pending_threshold<4) preprocess_mode_requested<=pending_threshold[1:0];

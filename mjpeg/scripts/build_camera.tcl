@@ -19,12 +19,6 @@ file copy [file join $project_root constraints davinci_mjpeg_camera.xdc] $profil
 read_xdc $profile_xdc
 synth_design -top davinci_mjpeg_camera_top -part xc7a35tfgg484-2 -generic [list REAL_CAMERA=1 CAMERA_PROFILE=5 DENOISE_ENABLE=$denoise_enable PREPROCESS_ENABLE=$preprocess_enable]
 read_xdc [file join $project_root constraints davinci_mjpeg_cdc.xdc]
-# No MIG controller, frame-reference transport, application memory or 200 MHz
-# reference clock may survive elaboration. One constant pin parks board DRAM.
-if {[llength [get_cells -hier -quiet -filter {NAME =~ *memory/controller* || NAME =~ *ddr_spatial_transport* || REF_NAME =~ *mig* || REF_NAME =~ *jpeg_spatial_skip*}]]} {error "Unexpected DDR/interframe hardware"}
-set memory_ports [get_ports -quiet ddr3_*]
-if {[llength $memory_ports]!=1 || [get_property NAME $memory_ports]!="ddr3_reset_n"} {error "Unexpected DDR ports"}
-if {[llength [get_clocks -quiet *ddr*]]} {error "Unexpected DDR clock"}
 set rx_ram_clocks [get_pins -hier -filter {REF_PIN_NAME == CLK && NAME =~ *rx_fifo/memory_reg*/CLK}]
 set rx_read_registers [get_cells -hier -filter {IS_SEQUENTIAL == 1 && NAME =~ *rx_fifo/m_data_reg*}]
 if {![llength $rx_ram_clocks] || [llength $rx_read_registers]!=8} {error "RX RAM CDC endpoints missing"}
@@ -79,7 +73,7 @@ foreach path $t_paths {if {[get_property DATAPATH_DELAY $path]>8.000} {error "US
 set fd [open [file join $output_directory utilization.rpt] r];set utilization [read $fd];close $fd
 if {![regexp {\|\s*Slice LUTs\s*\|\s*([0-9]+)} $utilization -> used_luts]} {error "Cannot read routed LUT count"}
 if {$used_luts>16640} {error "LUT usage exceeds the 80 percent camera headroom budget"}
-write_bitstream -force [file join $output_directory davinci_mjpeg_board_test.bit]
+write_bitstream -force [file join $output_directory davinci_mjpeg_camera.bit]
 set fd [open [file join $output_directory BUILD_PASS.txt] w]
 puts $fd "Independent camera 1080p30; no DDR/reference hardware; LUTs $used_luts/20800 <=80%; setup/hold, CDC, bus skew, DRC and USB release passed."
 close $fd

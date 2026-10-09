@@ -1,7 +1,6 @@
 """Strict decoder for the board's 1 KB MBLK transport and link counters."""
 import struct
 from mjpeg_receiver import Frame
-from spatial_jpeg import SpatialDecoder, SPATIAL_MAGICS
 
 class BlockRecords:
     def __init__(self,read_exact,collect_frames=True):
@@ -9,7 +8,6 @@ class BlockRecords:
         self.frames={};self.rates=[];self.timings=[];self.links=[];self.camera_status=[];self.in_stream=False
         self.preprocess_status=[]
         self.payload_blocks=0;self.payload_bytes=0;self.wire_bytes=0
-        self.spatial=SpatialDecoder();self.spatial_stats=None
 
     def next_packet(self): return self.next()
 
@@ -23,7 +21,6 @@ class BlockRecords:
         self.wire_bytes+=8+length
         if kind==6:
             if self.in_stream or self.frames: raise ValueError('Unexpected START block')
-            self.spatial.reset();self.spatial_stats=None
             self.in_stream=True;return 'start',None
         if kind==5:
             if not self.in_stream or self.frames: raise ValueError('END with incomplete frames')
@@ -43,8 +40,7 @@ class BlockRecords:
             if self.collect_frames: frame[0].extend(payload)
             if last:
                 frame[2]=True;frame[3]=abort
-                if self.collect_frames and not abort and not (frame[0].startswith(SPATIAL_MAGICS) or
-                    frame[0].startswith(b'\xff\xd8') and frame[0].endswith(b'\xff\xd9')):
+                if self.collect_frames and not abort and not (frame[0].startswith(b'\xff\xd8') and frame[0].endswith(b'\xff\xd9')):
                     raise ValueError('JPEG boundary')
             self.payload_blocks+=1;self.payload_bytes+=len(payload)
             return 'chunk',None
@@ -70,8 +66,6 @@ class BlockRecords:
             if camera['flags'] & (1<<15):
                 camera['sampling_ready']=bool(camera['flags'] & (1<<14))
             camera['board_controls']=bool(camera['flags'] & (1<<16))
-            camera['adaptive_capable']=camera['board_controls'] and bool(words[2] & (1<<9))
-            camera['adaptive_enabled']=camera['adaptive_capable'] and bool(camera['flags'] & (1<<7))
             camera['denoise_capable']=camera['board_controls'] and bool(words[2] & (1<<10))
             camera['preprocess_capable']=camera['board_controls'] and bool(words[2] & (1<<12))
             # Bit 11 distinguishes robust YUV processing from the first RGB
@@ -79,9 +73,6 @@ class BlockRecords:
             camera['denoise_revision']=(2 if words[2] & (1<<11) else 1) if camera['denoise_capable'] else 0
             if camera['denoise_capable']:
                 camera['denoise_requested']=camera['flags']>>23 & 255
-            camera['threshold_capable']=bool(camera['flags'] & (1<<31))
-            if camera['threshold_capable']:
-                camera['threshold_requested']=camera['flags']>>23 & 255
             if camera['board_controls']:
                 camera['run_requested']=bool(camera['flags'] & (1<<17))
                 levels=(60,75,85)
@@ -109,14 +100,6 @@ class BlockRecords:
             if key not in self.frames or not self.frames[key][2]: raise ValueError('Descriptor before frame end')
             payload,actual,_,aborted=self.frames.pop(key);status=status_word&255
             if actual!=n or bool(status&1)!=aborted: raise ValueError('Descriptor length/abort mismatch')
-            if self.collect_frames and status==0 and payload.startswith(SPATIAL_MAGICS):
-                payload=self.spatial.decode(bytes(payload),frame_id)
-                self.spatial_stats=dict(frame_id=frame_id,**self.spatial.last_stats)
-                if (self.spatial.reference.width,self.spatial.reference.height)!=(dim&65535,dim>>16):
-                    self.spatial.reset();raise ValueError('Spatial JPEG descriptor dimensions')
-                n=len(payload)
-            elif aborted:
-                self.spatial.reset()
             return 'frame',Frame(key[0],frame_id,lo|hi<<32,dim&65535,dim>>16,bool(status_word&256),status,n,
                 bytes(payload) if self.collect_frames and status==0 else None)
         if kind==2:

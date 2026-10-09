@@ -82,7 +82,6 @@ def main(argv=None):
             if kind=='camera':
                 camera=value;cameras.append(dict(value,seconds=now-began))
                 assert value['preprocess_capable'] and value['denoise_capable'],'Wrong firmware capabilities'
-                assert not value['threshold_capable'] and not value['adaptive_capable'],'Interframe firmware active'
                 assert not any(value[name] for name in ('init_error','config_error','light_error','overflow_count')),'Camera error'
                 ready=value['init_done'] and value.get('sampling_ready') and not value['streaming'] and not value['run_requested']
                 if phase is None and ready:
@@ -113,7 +112,7 @@ def main(argv=None):
                 frame=value
                 assert frame.status==0 and frame.jpeg is not None,f'Failed frame {frame.frame_id}, status {frame.status}'
                 assert frame.channel==0 and not frame.gray and (frame.width,frame.height)==(1920,1080),'Wrong descriptor'
-                assert records.spatial_stats is None and frame.jpeg.startswith(b'\xff\xd8'),'Expected independent JPEG'
+                assert frame.jpeg.startswith(b'\xff\xd8'),'Expected independent JPEG'
                 assert next_id is None or frame.frame_id==next_id,'Frame ID gap'
                 assert previous_tick is None or frame.timestamp>previous_tick,'Timestamp order'
                 next_id=(frame.frame_id+1)&0xffffffff;previous_tick=frame.timestamp

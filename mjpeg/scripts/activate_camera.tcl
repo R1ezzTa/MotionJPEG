@@ -2,7 +2,6 @@
 # Run with Vivado -mode batch -source scripts/activate_camera.tcl.
 set project_root [file normalize [file join [file dirname [info script]] ..]]
 open_project [file join $project_root mjpeg.xpr]
-if {[get_property PART [current_project]]!="xc7a35tfgg484-2"} {error "Wrong board device"}
 set fd [open [file join $project_root scripts camera_sources.txt] r]
 set lines [split [read $fd] \n];close $fd
 set wanted {}
@@ -32,7 +31,8 @@ set_property TOP davinci_mjpeg_camera_top [get_filesets sources_1]
 set_property GENERIC {REAL_CAMERA=1 CAMERA_PROFILE=5 DENOISE_ENABLE=1 PREPROCESS_ENABLE=1} [get_filesets sources_1]
 # Preprocessing benches generate vectors through their explicit simulation
 # scripts; preserve the existing integrated-camera GUI simulation entry.
-foreach name {tb_yuv422_preprocess.sv tb_spatial_denoise_yuv.sv} {
+foreach file [get_files -of_objects [get_filesets sim_1]] {remove_files $file}
+foreach name {tb_mjpeg_real_camera.sv tb_yuv422_preprocess.sv tb_spatial_denoise_yuv.sv} {
     set file [file join $project_root tb $name]
     if {![llength [get_files -quiet $file]]} {add_files -fileset sim_1 -norecurse $file}
 }

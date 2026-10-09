@@ -13,7 +13,7 @@ module tb_mjpeg_progressive;
     integer cycles=0,completed=0,capture,trace,marker;
     reg tx_ready=1;
     always @(negedge clk) tx_ready=(cycles%19)<15;
-    mjpeg_board_test_engine #(.CLOCK_HZ(10000),.VGA_WIDTH(48),.VGA_HEIGHT(16),
+    mjpeg_camera_engine #(.CLOCK_HZ(10000),.VGA_WIDTH(48),.VGA_HEIGHT(16),
         .HD_WIDTH(64),.HD_HEIGHT(24),.FHD_WIDTH(96),.FHD_HEIGHT(32)) dut(
         .sys_clk(clk),.sys_rst_n(rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
         .tx_data(tx_data),.tx_valid(tx_valid),.tx_ready(engine_ready),.led(led),.compressed_fps(),.fps_sample_valid());

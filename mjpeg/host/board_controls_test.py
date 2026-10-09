@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from PIL import Image
 from block_records import BlockRecords
-from camera_viewer import d2xx_library, threshold_command, adaptive_command
+from camera_viewer import d2xx_library
 from ftdi_fifo import FtdiFifo
 
 
@@ -29,12 +29,7 @@ def main():
     parser.add_argument('--serial', default='FTB7MA1D')
     parser.add_argument('--library')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--expect-spatial', action='store_true')
-    parser.add_argument('--skip-threshold', type=int, default=None)
-    parser.add_argument('--adaptive', action=argparse.BooleanOptionalAction, default=None)
     args = parser.parse_args()
-    if args.skip_threshold is not None and not 0 <= args.skip_threshold <= 255:
-        parser.error('--skip-threshold must be from 0 to 255')
     args.output.mkdir(parents=True, exist_ok=True)
     tables = quantizers()
     source = None
@@ -102,12 +97,6 @@ def main():
                 if phase == 'initial' and value['init_done'] and value.get('sampling_ready'):
                     assert not value['streaming'] and not value['run_requested'], 'Startup was not stopped'
                     assert value['quality_requested'] == 85, 'Wrong default quality'
-                    if args.skip_threshold is not None:
-                        assert value.get('threshold_capable'), 'Adjustable threshold firmware required'
-                        command(threshold_command(args.skip_threshold))
-                    if args.adaptive is not None:
-                        assert value.get('adaptive_capable'), 'Board adaptive mode firmware required'
-                        command(adaptive_command(args.adaptive))
                     command(b'C');phase = 'qualities';phase_start = now
                 elif phase == 'stopped' and not value['streaming'] and not value['run_requested'] and now-phase_start >= 1:
                     command(b'C');phase = 'restart';phase_start = now;next_action = 0
@@ -136,13 +125,7 @@ def main():
                     (args.output / f'sample_q{quality}.jpg').write_bytes(frame.jpeg)
                 frames.append(dict(frame_id=frame.frame_id, timestamp=frame.timestamp,
                                    bytes=frame.length, quality=quality, session=starts,
-                                   seconds=now-began, phase=phase, spatial=records.spatial_stats))
-                if args.expect_spatial:
-                    assert records.spatial_stats is not None, 'Spatial firmware required'
-                if args.skip_threshold is not None:
-                    assert records.spatial_stats is not None and records.spatial_stats.get('threshold') == args.skip_threshold, 'Wrong active frame threshold'
-                if args.adaptive is not None:
-                    assert records.spatial_stats is not None and records.spatial_stats.get('adaptive', False) == args.adaptive, 'Wrong adaptive mode'
+                                   seconds=now-began, phase=phase))
             for history in (records.rates, records.timings, records.links, records.camera_status):
                 if len(history) > 2:
                     del history[:-2]
@@ -176,19 +159,10 @@ def main():
                                mean_jpeg_bytes=statistics.mean(f['bytes'] for f in selected) if selected else 0,
                                median_fps=100_000_000/statistics.median(delta) if delta else 0)
     report = dict(passed=error is None, error=error, decoded_frames=len(frames),
-                  adaptive=args.adaptive,
-                  skip_threshold=args.skip_threshold,
                   starts=starts, ends=ends, qualities=groups, actions=actions,
                   camera_fifo_overflows=cameras[-1]['overflow_count'] if cameras else None,
                   light_readback_on=light_seen, automatic_off_seen_before_stop=light_off_seen,
                   physical_buttons_tested=False, physical_light_observed=False)
-    if args.expect_spatial:
-        spatial=[f['spatial'] for f in frames]
-        report['spatial']=dict(reconstructed_jpeg_bytes=sum(f['jpeg_bytes'] for f in spatial),
-                               transport_payload_bytes=sum(f['transport_bytes'] for f in spatial),
-                               reused_groups=sum(f['reused'] for f in spatial),
-                               total_groups=sum(f['groups'] for f in spatial),
-                               keyframes=sum(f['keyframe'] for f in spatial))
     for name, value in [('summary.json', report), ('frames.json', frames), ('camera_status.json', cameras)]:
         (args.output / name).write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report, indent=2))

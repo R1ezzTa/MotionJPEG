@@ -23,7 +23,7 @@ module tb_mjpeg_real_camera #(parameter ADMIT_AT_HREF=0);
     wire sample;
     wire [255:0] status={dvp_bytes,overflows,dropped,received,ticks,32'd0,32'h5640,
                         26'd0,1'b0,engine.busy,engine.tables_ready,active,1'b0,1'b1};
-    mjpeg_board_test_engine #(.CLOCK_HZ(20000),.SMALL_END(1),.REAL_CAMERA(1),.CAMERA_WIDTH(48),.CAMERA_HEIGHT(16)) engine(
+    mjpeg_camera_engine #(.CLOCK_HZ(20000),.SMALL_END(1),.REAL_CAMERA(1),.CAMERA_WIDTH(48),.CAMERA_HEIGHT(16)) engine(
         .sys_clk(clk),.sys_rst_n(rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
         .tx_data(legacy_data),.tx_valid(legacy_valid),.tx_ready(legacy_ready),.led(led),
         .compressed_fps(fps),.fps_sample_valid(sample),

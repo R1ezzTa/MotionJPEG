@@ -1,7 +1,7 @@
 param([int]$Width=16,[int]$Height=8,[int]$Frames=3,[switch]$Constant,
     [ValidateSet('BGGR','GRBG','GBRG','RGGB')][string]$Pattern='BGGR',
     [ValidateRange(0,1)][int]$DenoiseEnable=0,[ValidateRange(0,255)][int]$DenoiseStrength=0,
-    [string]$VivadoRoot='F:/Xilinx/Vivado/2020.1')
+    [string]$VivadoRoot='F:/Xilinx/Vivado/2020.1',[string]$Python='python')
 $ErrorActionPreference='Stop'
 $taskRoot=(Resolve-Path "$PSScriptRoot/../..").Path
 . "$PSScriptRoot/vivado_env.ps1" -VivadoRoot $VivadoRoot
@@ -12,7 +12,7 @@ Push-Location $taskSim
 try {
     $taskReferenceArgs=@('--width',$Width,'--height',$Height,'--frames',$Frames,'--pattern',$Pattern,'--output',$taskSim,'--denoise-strength',$DenoiseStrength)
     if($Constant){$taskReferenceArgs+='--constant'}
-    & 'E:/anaconda/123/python.exe' "$taskRoot/mjpeg/tb/make_bayer_reference.py" @taskReferenceArgs
+    & $Python "$taskRoot/mjpeg/tb/make_bayer_reference.py" @taskReferenceArgs
     if($LASTEXITCODE){throw 'Reference generation failed'}
     $taskNrSources=@('spatial_window_3x3.v','spatial_median_yuv_3x3.v','spatial_chroma_yuv_3x3.v','spatial_denoise_yuv.v') | ForEach-Object {"$taskRoot/mjpeg/rtl/camera/$_"}
     & "$VivadoRoot/bin/unwrapped/win64.o/xvlog.exe" --sv @taskNrSources "$taskRoot/mjpeg/rtl/camera/bayer_bggr_to_yuv422.v" "$taskRoot/mjpeg/tb/tb_bayer_bggr.sv"

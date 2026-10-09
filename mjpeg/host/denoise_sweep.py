@@ -109,7 +109,6 @@ def main(argv=None):
                 cameras.append(dict(value, seconds=now - began))
                 assert value.get('denoise_capable'), 'Spatial denoise firmware required'
                 assert args.require_revision is None or value['denoise_revision'] == args.require_revision, 'Wrong denoise firmware revision'
-                assert not value.get('threshold_capable') and not value.get('adaptive_capable'), 'Interframe firmware still active'
                 assert not value['init_error'] and not value['config_error'] and not value['light_error'], 'Camera/control error'
                 assert value['overflow_count'] == 0, 'Camera FIFO overflow'
                 ready = value['init_done'] and value.get('sampling_ready') and not value['streaming'] and not value['run_requested']
@@ -142,7 +141,7 @@ def main(argv=None):
                 frame = value
                 assert frame.status == 0 and frame.jpeg is not None, f'Failed frame {frame.frame_id}'
                 assert frame.channel == 0 and not frame.gray and (frame.width, frame.height) == (1920, 1080), 'Wrong descriptor'
-                assert records.spatial_stats is None and frame.jpeg.startswith(b'\xff\xd8'), 'Expected independent JPEG'
+                assert frame.jpeg.startswith(b'\xff\xd8'), 'Expected independent JPEG'
                 assert next_id is None or frame.frame_id == next_id, 'Frame ID gap'
                 assert previous_tick is None or frame.timestamp > previous_tick, 'Timestamp order'
                 next_id = (frame.frame_id + 1) & 0xffffffff;previous_tick = frame.timestamp

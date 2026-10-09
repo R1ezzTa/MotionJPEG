@@ -1,4 +1,4 @@
-param([string]$VivadoRoot = 'F:/Xilinx/Vivado/2020.1')
+param([string]$VivadoRoot = 'F:/Xilinx/Vivado/2020.1', [switch]$Build)
 $ErrorActionPreference = 'Stop'
 if (!(Test-Path -LiteralPath "$VivadoRoot/bin/unwrapped/win64.o/xvlog.exe")) {
     throw "Vivado installation not found: $VivadoRoot"
@@ -17,3 +17,15 @@ $env:RDI_BASEROOT = Split-Path $VivadoRoot -Parent
 $env:TCL_LIBRARY = "$VivadoRoot/tps/tcl/tcl8.5"
 $env:RDI_JAVAROOT = "$VivadoRoot/tps/win64/jre9.0.4"
 $env:PATH = "$VivadoRoot/lib/win64.o;$VivadoRoot/lib/win64.o/Default;$VivadoRoot/tps/win64/jre9.0.4/bin/server;$VivadoRoot/tps/win64/jre9.0.4/bin;$VivadoRoot/tps/mingw/6.2.0/win64.o/nt/bin;$VivadoRoot/tps/mingw/6.2.0/win64.o/nt/libexec/gcc/x86_64-w64-mingw32/6.2.0;" + $env:PATH
+if($Build) {
+    $taskPython="$VivadoRoot/tps/win64/python-2.7.16"
+    $env:RDI_PYTHONHOME=$taskPython
+    $env:PYTHONHOME=$taskPython
+    $env:PYTHONPATH="$taskPython;$taskPython/lib;$taskPython/DLLs;$taskPython/lib/site-packages"
+    $env:PATH="$VivadoRoot/bin;$taskPython;$taskPython/DLLs;"+$env:PATH
+    $env:RT_LIBPATH="$VivadoRoot/scripts/rt/data"
+    $env:RT_TCL_PATH="$VivadoRoot/scripts/rt/base_tcl/tcl"
+    $env:SYNTH_COMMON=$env:RT_LIBPATH
+    $env:RDI_BUILD='yes'
+    $env:ISL_IOSTREAMS_RSA="$VivadoRoot/tps/isl"
+}

@@ -24,7 +24,7 @@ class PreprocessTests(unittest.TestCase):
             kind,s=BlockRecords(io.BytesIO(camera(enabled)).read).next()
             self.assertEqual(kind,'camera');self.assertEqual(s['preprocess_capable'],enabled)
             self.assertEqual(s['config_index'],283);self.assertEqual(s['frame_sync_count'],0x12345678)
-            self.assertFalse(s['threshold_capable']);self.assertFalse(s['denoise_capable'])
+            self.assertFalse(s['denoise_capable'])
 
     def test_status_word_order_and_extremes(self):
         for mode in range(4):

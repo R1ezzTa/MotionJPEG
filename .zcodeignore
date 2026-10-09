@@ -1,5 +1,8 @@
 # Local scratch files and previews
 /work/
+1/
+xsim.dir/
+*.pb
 **/docs/backups/
 *.bak
 **/tight_setup_hold_pins.txt
@@ -22,16 +25,19 @@
 usage_statistics_webtalk.*
 webtalk*
 
-# Keep report summaries, validation records and example images.
-# Raw captures and generated simulation/build files stay local.
+# Build/capture reports are local; retain only the final hardware baseline.
 **/reports/**
 !**/reports/**/
-!**/reports/**/*.json
-!**/reports/**/*.md
-!**/reports/**/*.txt
-!**/reports/**/*.rpt
-!**/reports/**/*.jpg
-!**/reports/**/*.png
+!mjpeg/reports/camera/full_20260929_170515/**/*.json
+!mjpeg/reports/camera/full_20260929_170515/**/*.txt
+!mjpeg/reports/camera/full_20260929_170515/**/*.rpt
+!mjpeg/reports/camera/full_20260929_170515/**/*.jpg
+!mjpeg/reports/camera/full_20260929_170515/**/*.png
+!mjpeg/reports/camera/acceptance_20260929/**/*.json
+!mjpeg/reports/camera/acceptance_20260929/**/*.txt
+!mjpeg/reports/camera/acceptance_20260929/**/*.rpt
+!mjpeg/reports/camera/acceptance_20260929/**/*.jpg
+!mjpeg/reports/camera/acceptance_20260929/**/*.png
 **/reports/**/xsim.dir/
 **/reports/**/latest*.txt
 

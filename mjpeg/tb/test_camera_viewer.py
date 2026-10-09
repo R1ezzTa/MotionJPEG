@@ -10,7 +10,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'host'))
-from camera_viewer import PreviewPreparation, PreviewWorker, decode_frame, parse_args, threshold_command, adaptive_command
+from camera_viewer import PreviewPreparation, PreviewWorker, decode_frame, parse_args
 from test_camera_receiver import block, frame_blocks, jpeg
 
 
@@ -39,99 +39,11 @@ class FakeDevice:
 
 
 class CameraViewerTests(unittest.TestCase):
-    def test_board_adaptive_capability_and_commands_precede_start(self):
-        flags = 1 | (1 << 12) | (1 << 16) | (1 << 31)
-        status = block(7, struct.pack('<8I', flags, 0x5640, 283 | (1 << 9), 0, 0, 0, 0, 0))
-        device = FakeDevice(status + block(6) + frame_blocks(0, 100, jpeg('red')) + block(5),
-                            lambda: worker.stop.set())
-        worker = PreviewWorker(parse_args(['--headless', '--duration', '2', '--auto-start',
-                                          '--adaptive', '--skip-threshold', '60']), source_factory=lambda: device)
-        worker.run()
-        state = worker.snapshot()[1]
-        self.assertIsNone(state['error'])
-        self.assertTrue(state['camera']['adaptive_capable'])
-        self.assertEqual(state['camera']['config_index'], 283)
-        self.assertEqual(device.sent, [b'T3C\n', b'A1\n', b'C', b'l', b'S'])
-        self.assertEqual(adaptive_command(False), b'A0\n')
-        replay = PreviewWorker(parse_args(['--capture', 'unused.bin']))
-        replay.update(adaptive_capable=True)
-        with self.assertRaises(ValueError):
-            replay.set_adaptive(True)
 
-    def test_adaptive_option_rejects_older_firmware_before_start(self):
-        device = FakeDevice(self.camera_status())
-        worker = PreviewWorker(parse_args(['--headless', '--duration', '2', '--adaptive', '--auto-start']),
-                               source_factory=lambda: device)
-        worker.run()
-        self.assertIn('requires firmware', worker.snapshot()[1]['error'])
-        self.assertNotIn(b'A1\n', device.sent)
-        self.assertNotIn(b'C', device.sent)
 
     @staticmethod
-    def camera_status(capable=True, threshold=0):
-        flags = 1 | ((1 << 31) if capable else 0) | (threshold << 23)
-        return block(7, struct.pack('<8I', flags, 0x5640, 277, 0, 0, 0, 0, 0))
-
-    def test_threshold_atomic_command_and_argument_bounds(self):
-        self.assertEqual(threshold_command(0), b'T00\n')
-        self.assertEqual(threshold_command(207), b'TCF\n')
-        self.assertEqual(threshold_command(255), b'TFF\n')
-        for value in (-1, 256, 1.5, True):
-            with self.assertRaises(ValueError):
-                threshold_command(value)
-        self.assertIsNone(parse_args([]).skip_threshold)
-        self.assertEqual(parse_args(['--skip-threshold', '255']).skip_threshold, 255)
-        for argv in (['--skip-threshold', '-1'], ['--skip-threshold', '256'],
-                     ['--capture', 'test.bin', '--skip-threshold', '4']):
-            with self.assertRaises(SystemExit):
-                parse_args(argv)
-
-    def test_threshold_is_capability_gated_and_precedes_auto_start(self):
-        image = jpeg('red')
-        device = FakeDevice(self.camera_status() + block(6) + frame_blocks(0, 100, image) + block(5),
-                            lambda: worker.stop.set())
-        worker = PreviewWorker(parse_args(['--headless', '--duration', '2', '--auto-start',
-                                          '--skip-threshold', '207']), source_factory=lambda: device)
-        worker.run()
-        self.assertIsNone(worker.snapshot()[1]['error'])
-        self.assertEqual(device.sent, [b'TCF\n', b'C', b'l', b'S'])
-        self.assertEqual(worker.snapshot()[1]['threshold_requested'], 207)
-
-    def test_threshold_reapplies_on_reconnect_without_passive_start(self):
-        image = jpeg('red')
-        old = self.camera_status() + block(6) + frame_blocks(8, 900, image) + b'BADMAGIC'
-        fresh = self.camera_status() + block(6) + frame_blocks(0, 100, image) + block(5)
-        devices = [FakeDevice(old), FakeDevice(fresh, lambda: worker.stop.set())]
-        opened = iter(devices)
-        worker = PreviewWorker(parse_args(['--headless', '--duration', '3', '--skip-threshold', '4']),
-                               source_factory=lambda: next(opened))
-        worker.run()
-        self.assertIsNone(worker.snapshot()[1]['error'])
-        self.assertEqual(worker.snapshot()[1]['recoveries'], 1)
-        self.assertEqual(devices[0].sent, [b'T04\n'])
-        self.assertEqual(devices[1].sent, [b'T04\n', b'l', b'S'])
-
-    def test_threshold_option_rejects_normal_firmware_without_payload_writes(self):
-        device = FakeDevice(self.camera_status(False))
-        worker = PreviewWorker(parse_args(['--headless', '--duration', '2', '--auto-start',
-                                          '--skip-threshold', '207']), source_factory=lambda: device)
-        worker.run()
-        self.assertIn('requires firmware', worker.snapshot()[1]['error'])
-        self.assertNotIn(b'TCF\n', device.sent)
-        self.assertNotIn(b'C', device.sent)
-
-    def test_gui_threshold_requests_use_worker_command_queue(self):
-        worker = PreviewWorker(parse_args([]))
-        with self.assertRaises(ValueError):
-            worker.set_threshold(4)
-        worker.update(threshold_capable=True)
-        worker.set_threshold(4)
-        self.assertEqual(worker.commands.get_nowait(), b'T04\n')
-        self.assertEqual(worker.snapshot()[1]['threshold_requested'], 4)
-        worker = PreviewWorker(parse_args(['--capture', 'unused.bin']))
-        worker.update(threshold_capable=True)
-        with self.assertRaises(ValueError):
-            worker.set_threshold(4)
+    def camera_status():
+        return block(7, struct.pack('<8I', 1, 0x5640, 277, 0, 0, 0, 0, 0))
 
     def test_pc_stop_keeps_connection_and_allows_another_start(self):
         image = jpeg('red')

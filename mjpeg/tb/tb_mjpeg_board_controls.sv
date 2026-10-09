@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 // Entire sensor pixel path, real-camera admission, codec, abort recovery and
 // final MBLK transport. Uses small images to keep the regression quick.
-module tb_mjpeg_board_controls #(parameter SPATIAL_DDR=0,PREPROCESS_ENABLE=0);
+module tb_mjpeg_board_controls #(parameter PREPROCESS_ENABLE=1);
     reg clk=0,pclk=0,rst_n=0,vsync=0,href=0;
     always #5 clk=~clk;
     always #20 pclk=~pclk;
@@ -36,7 +36,7 @@ module tb_mjpeg_board_controls #(parameter SPATIAL_DDR=0,PREPROCESS_ENABLE=0);
                         PREPROCESS_ENABLE?32'h00001000:32'd0,32'h5640,status_flags};
     // Different request/active modes exercise pending status and word order.
     wire [95:0] preprocess_status={32'h12345678,32'h00012080,32'h01032080};
-    mjpeg_board_test_engine #(.CLOCK_HZ(20000),.SMALL_END(1),.REAL_CAMERA(1),.BOARD_CONTROL(1),.SPATIAL_DDR(SPATIAL_DDR),.PREPROCESS_ENABLE(PREPROCESS_ENABLE),.CAMERA_WIDTH(48),.CAMERA_HEIGHT(16)) engine(
+    mjpeg_camera_engine #(.CLOCK_HZ(20000),.SMALL_END(1),.REAL_CAMERA(1),.BOARD_CONTROL(1),.PREPROCESS_ENABLE(PREPROCESS_ENABLE),.CAMERA_WIDTH(48),.CAMERA_HEIGHT(16)) engine(
         .sys_clk(clk),.sys_rst_n(rst_n),.rx_data(rx_data),.rx_valid(rx_valid),
         .tx_data(legacy_data),.tx_valid(legacy_valid),.tx_ready(legacy_ready),.led(led),
         .compressed_fps(fps),.fps_sample_valid(sample),
