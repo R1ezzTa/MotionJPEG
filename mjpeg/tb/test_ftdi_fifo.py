@@ -23,7 +23,8 @@ class FakeD2xx:
         if name=='FT_ReadEE': args[2]._obj.value=0x11
         if name=='FT_EEPROM_Read':
             args[1][35]=b'\x01' if self.fifo else b'\x00'
-            args[1][40]=b'\x01';args[6].value=b'FTB7MA1D'
+            args[1][40]=b'\x01'
+            args[6].value=b'FTB7MA1D'
         return 0
 
 class FifoInitializationTests(unittest.TestCase):
@@ -32,7 +33,8 @@ class FifoInitializationTests(unittest.TestCase):
         with patch(loader,return_value=dll),patch('ftdi_fifo.time.sleep',side_effect=lambda t:dll.events.append(('sleep',(t,)))):
             return FtdiFifo(**kwargs)
     def test_synchronous_clock_loss_flush_and_no_eeprom_write(self):
-        dll=FakeD2xx();stream=self.open(dll,synchronous=True)
+        dll=FakeD2xx()
+        stream=self.open(dll,synchronous=True)
         selected=[e for e in dll.events if e[0] in ('FT_SetBitMode','sleep','FT_Purge')]
         self.assertEqual(selected,[('FT_SetBitMode',(0,0)),('sleep',(0.01,)),
                                    ('FT_Purge',()),('FT_SetBitMode',(255,64)),('sleep',(0.05,))])
@@ -43,9 +45,11 @@ class FifoInitializationTests(unittest.TestCase):
         self.assertFalse(any('WriteEE' in name or 'Program' in name for name,_ in dll.events))
         stream.close()
     def test_factory_async_regression(self):
-        dll=FakeD2xx();stream=self.open(dll)
+        dll=FakeD2xx()
+        stream=self.open(dll)
         self.assertEqual([e for e in dll.events if e[0]=='FT_SetBitMode'],[('FT_SetBitMode',(0,0))])
-        self.assertEqual(stream.eeprom_info['link_clock_hz'],50000000);stream.close()
+        self.assertEqual(stream.eeprom_info['link_clock_hz'],50000000)
+        stream.close()
     def test_invalid_eeprom_never_selects_sync(self):
         dll=FakeD2xx(fifo=False)
         with self.assertRaisesRegex(ValueError,'not configured'): self.open(dll,synchronous=True)

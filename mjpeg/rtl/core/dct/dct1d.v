@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 // Four-stage symmetric constant-matrix 1D DCT; one vector/cycle.
 module dct1d (
     input clk,

@@ -17,7 +17,8 @@ def block(kind,body=b'',flags=0):
 
 
 def jpeg(color,width=16,height=8):
-    output=io.BytesIO();Image.new('RGB',(width,height),color).save(output,format='JPEG')
+    output=io.BytesIO()
+    Image.new('RGB',(width,height),color).save(output,format='JPEG')
     return output.getvalue()
 
 
@@ -46,7 +47,8 @@ class CameraTests(unittest.TestCase):
             data+=block(2,struct.pack('<5I',window,30,30,0,count))
             data+=block(7,struct.pack('<8I',0x1049,(count&0xffff)<<16|0x5640,277,
                                      (4_000_000_000+84_000_000*(window-1))&0xffffffff,count,1,0,100*window))
-        reader=CameraReader(io.BytesIO(data),replay=True);records=BlockRecords(reader.exact)
+        reader=CameraReader(io.BytesIO(data),replay=True)
+        records=BlockRecords(reader.exact)
         for _ in range(120): records.next()
         result=summarize([],records)
         self.assertEqual(result['camera_counter_deltas']['pclk_ticks'],84_000_000*59)
@@ -57,7 +59,8 @@ class CameraTests(unittest.TestCase):
         camera=block(7,struct.pack('<8I',0x3049,0x5640,277,84_000_000,30,1,0,128))
         data=block(6)+camera+frame_blocks(0,1000,jpeg('red'))+block(5)
         reader=CameraReader(io.BytesIO(data),replay=True)
-        records=BlockRecords(reader.exact);frames=CameraFrames(16,8)
+        records=BlockRecords(reader.exact)
+        frames=CameraFrames(16,8)
         read_camera_session(records,frames,reader)
         result=summarize(frames.frames,records)
         self.assertEqual(result['sensor_format'],'RAW8 BGGR')
@@ -97,14 +100,19 @@ class CameraTests(unittest.TestCase):
             def __init__(self): self.sent=[]
             def write(self,data): self.sent.append(data)
             def flush(self): pass
-        stream=Commands();reader=CameraReader(stream,duration=10,light_pulse=True,light_after=2)
-        reader.began-=2.5;reader.check_stop()
+        stream=Commands()
+        reader=CameraReader(stream,duration=10,light_pulse=True,light_after=2)
+        reader.began-=2.5
+        reader.check_stop()
         self.assertEqual(stream.sent,[])
-        reader.seen_frame=True;reader.check_stop()
+        reader.seen_frame=True
+        reader.check_stop()
         self.assertEqual(stream.sent,[b'L'])
-        reader.began-=2.5;reader.check_stop()
+        reader.began-=2.5
+        reader.check_stop()
         self.assertEqual(stream.sent,[b'L'])
-        reader.began-=5;reader.check_stop()
+        reader.began-=5
+        reader.check_stop()
         self.assertEqual(stream.sent,[b'L',b'l',b'S'])
 
     def test_real_frames_decode_without_reference_and_all_telemetry(self):
@@ -114,7 +122,8 @@ class CameraTests(unittest.TestCase):
         link=block(4,struct.pack('<7I',1,100,20,20,20,30,10))
         data=block(6)+camera+frame_blocks(6,1000,jpeg('red'))+timing+fps+link+frame_blocks(7,2000,jpeg('green'))+block(5)
         reader=CameraReader(io.BytesIO(data),replay=True)
-        records=BlockRecords(reader.exact);frames=CameraFrames(16,8)
+        records=BlockRecords(reader.exact)
+        frames=CameraFrames(16,8)
         read_camera_session(records,frames,reader)
         self.assertEqual([f['frame_id'] for f in frames.frames],[6,7])
         self.assertTrue(all(f['decoded'] for f in frames.frames))
@@ -135,7 +144,8 @@ class CameraTests(unittest.TestCase):
         def frame(frame_id=0,width=16,status=0,data=None):
             payload=jpeg('red') if data is None else data
             return Frame(0,frame_id,frame_id+1,width,8,False,status,len(payload),payload)
-        frames=CameraFrames(16,8);frames.accept(frame())
+        frames=CameraFrames(16,8)
+        frames.accept(frame())
         with self.assertRaisesRegex(ValueError,'sequence'): frames.accept(frame(2))
         with self.assertRaisesRegex(ValueError,'format'): CameraFrames(16,8).accept(frame(width=32))
         failed=CameraFrames(16,8)
@@ -150,7 +160,8 @@ class CameraTests(unittest.TestCase):
         reader=CameraReader(io.BytesIO(block(7,struct.pack('<8I',2,0,10,0,0,0,0,0))),replay=True)
         records=BlockRecords(reader.exact)
         kind,status=records.next()
-        self.assertEqual(kind,'camera');self.assertTrue(status['init_error'])
+        self.assertEqual(kind,'camera')
+        self.assertTrue(status['init_error'])
         self.assertEqual(summarize([],records)['decoded_frames'],0)
 
     def test_stop_occurs_while_no_images_are_available(self):
@@ -159,7 +170,8 @@ class CameraTests(unittest.TestCase):
             def write(self,data): self.commands.append(data)
             def flush(self): pass
             def read_chunk(self): return b''
-        stream=NoData();reader=CameraReader(stream,duration=1,drain_timeout=1)
+        stream=NoData()
+        reader=CameraReader(stream,duration=1,drain_timeout=1)
         reader.began-=1.5
         reader.check_stop()
         self.assertEqual(stream.commands,[b'S'])

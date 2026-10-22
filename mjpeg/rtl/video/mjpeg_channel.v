@@ -1,36 +1,47 @@
+`timescale 1ns / 1ps
 // One continuous JPEG channel. Frame completion includes payload acceptance
 // and queuing its descriptor. Abort emits a zero-byte end token; cached
 // quantization entries are replayed after resetting the JPEG core.
 module mjpeg_channel #(
-    parameter MAX_WIDTH = 1920, RESTART_MCUS=0
+    parameter MAX_WIDTH = 1920,
+    RESTART_MCUS = 0
 ) (
     input clk,
     input rst_n,
     input enable,
-    input [15:0] cfg_width, cfg_height,
+    input [15:0] cfg_width,
+    cfg_height,
     input cfg_gray,
     input cfg_q_valid,
     output cfg_q_ready,
     input [6:0] cfg_q_addr,
     input [7:0] cfg_q_value,
     input [20:0] cfg_q_recip,
-    output tables_ready, config_error,
+    output tables_ready,
+    config_error,
     input [15:0] s_data,
     input s_valid,
     output s_ready,
-    input s_sof, s_eol, s_eof, s_abort,
+    input s_sof,
+    s_eol,
+    s_eof,
+    s_abort,
     input [63:0] s_timestamp,
     output [127:0] m_data,
     output [4:0] m_bytes,
-    output m_first, m_last, m_valid,
+    output m_first,
+    m_last,
+    m_valid,
     input m_ready,
     output [31:0] m_frame_id,
     input frame_done,
     output desc_valid,
     input desc_ready,
-    output [31:0] desc_frame_id, desc_length,
+    output [31:0] desc_frame_id,
+    desc_length,
     output [63:0] desc_timestamp,
-    output [15:0] desc_width, desc_height,
+    output [15:0] desc_width,
+    desc_height,
     output desc_gray,
     output [7:0] desc_status,
     output busy
@@ -55,7 +66,7 @@ module mjpeg_channel #(
     wire core_q_ready, core_q_valid, core_tables_ready;
     wire core_s_ready, core_busy, protocol_error, coefficient_error;
     wire [127:0] core_data;
-    wire [4:0] core_bytes;
+    wire [  4:0] core_bytes;
     wire core_valid, core_last;
     wire replay = (recovery == WRITE_TABLE);
     assign cfg_q_ready = core_q_ready && !inflight && (recovery == NORMAL);
@@ -82,7 +93,8 @@ module mjpeg_channel #(
     assign desc_gray = frame_gray;
     assign desc_status = errors;
     jpeg_encoder #(
-        .MAX_WIDTH(MAX_WIDTH),.RESTART_MCUS(RESTART_MCUS)
+        .MAX_WIDTH(MAX_WIDTH),
+        .RESTART_MCUS(RESTART_MCUS)
     ) core (
         .clk              (clk),
         .rst_n            (core_rst_n),

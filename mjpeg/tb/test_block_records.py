@@ -28,18 +28,22 @@ class BlockTests(unittest.TestCase):
 
     def test_rejects_incomplete_frame_at_end(self):
         records=reader(block(6)+block(0,struct.pack('<I',0)+b'\xff\xd8',1)+block(5))
-        records.next();records.next()
+        records.next()
+        records.next()
         with self.assertRaisesRegex(ValueError,'incomplete'): records.next()
 
 def verify_rtl_capture(path):
-    records=reader(path.read_bytes());frames=[]
+    records=reader(path.read_bytes())
+    frames=[]
     while True:
         kind,value=records.next()
         if kind=='frame': frames.append(value)
         if kind=='end': break
     assert len(frames)==3 and [f.frame_id for f in frames]==[0,1,2]
     for frame,length in zip(frames[:2],[1031,2048]):
-        expected=bytearray((i*13+7)&255 for i in range(length));expected[:2]=b'\xff\xd8';expected[-2:]=b'\xff\xd9'
+        expected=bytearray((i*13+7)&255 for i in range(length))
+        expected[:2]=b'\xff\xd8'
+        expected[-2:]=b'\xff\xd9'
         assert frame.jpeg==expected and frame.length==length and frame.status==0
     assert frames[2].length==0 and frames[2].status==1 and frames[2].jpeg is None
     assert [r['window'] for r in records.rates]==[1,2,3,4]

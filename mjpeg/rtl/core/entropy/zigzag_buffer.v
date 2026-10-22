@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module zigzag_buffer (
     input clk,
     input rst_n,
@@ -6,20 +7,22 @@ module zigzag_buffer (
     output s_ready,
     input [1:0] s_component,
     input [4:0] s_pair,
-    input s_frame_start, s_frame_end,
+    input s_frame_start,
+    s_frame_end,
     output reg [31:0] m_data,
     output reg m_valid,
     input m_ready,
     output reg [1:0] m_component,
     output reg [4:0] m_pair,
-    output reg m_frame_start, m_frame_end
+    output reg m_frame_start,
+    m_frame_end
 );
     `include "rtl/generated/zigzag.vh"
-    (* ram_style="distributed" *) reg [15:0] even_mem[0:63],odd_mem[0:63];
-    reg [3:0] meta[0:1];
+    (* ram_style="distributed" *) reg [15:0] even_mem[0:63], odd_mem[0:63];
+    reg [3:0] meta [0:1];
     reg [1:0] full;
     reg wb, rb;
-    reg [4:0] pair;
+    reg [ 4:0] pair;
     // The natural input order always writes one even and one odd coefficient.
     // RAMs retain the original one-clock write delay without 128 FF write decoders.
     reg [31:0] write_data;
@@ -30,15 +33,15 @@ module zigzag_buffer (
     assign s_ready = !full[wb];
     wire ce = !m_valid || m_ready;
     always @(posedge clk) begin
-        if(s_valid && s_ready) write_data<=s_data;
-        if(write_valid) begin
-            even_mem[{write_bank,write_pair}]<=write_data[15:0];
-            odd_mem[{write_bank,write_pair}]<=write_data[31:16];
+        if (s_valid && s_ready) write_data <= s_data;
+        if (write_valid) begin
+            even_mem[{write_bank, write_pair}] <= write_data[15:0];
+            odd_mem[{write_bank, write_pair}]  <= write_data[31:16];
         end
     end
-    wire [5:0] index0=zigzag({pair,1'b0}),index1=zigzag({pair,1'b1});
-    wire [15:0] read0=index0[0]?odd_mem[{rb,index0[5:1]}]:even_mem[{rb,index0[5:1]}];
-    wire [15:0] read1=index1[0]?odd_mem[{rb,index1[5:1]}]:even_mem[{rb,index1[5:1]}];
+    wire [ 5:0] index0 = zigzag({pair, 1'b0}), index1 = zigzag({pair, 1'b1});
+    wire [15:0] read0 = index0[0] ? odd_mem[{rb, index0[5:1]}] : even_mem[{rb, index0[5:1]}];
+    wire [15:0] read1 = index1[0] ? odd_mem[{rb, index1[5:1]}] : even_mem[{rb, index1[5:1]}];
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             full <= 0;
@@ -79,7 +82,7 @@ module zigzag_buffer (
             if (ce) begin
                 m_valid <= full[rb];
                 if (full[rb]) begin
-                    m_data <= {read1,read0};
+                    m_data <= {read1, read0};
                     m_component <= meta[rb][3:2];
                     m_pair <= pair;
                     m_frame_start <= meta[rb][1] && (pair == 0);

@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 // Two sample lanes; 27 compute clocks per block, overlapped with 32-clock I/O.
 module dct8x8 (
     input clk,

@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 // Host supplies q and ceil(2^20/q). Tables are locked throughout each JPEG.
 module quantize (
     input clk,
@@ -17,13 +18,15 @@ module quantize (
     output s_ready,
     input [1:0] s_component,
     input [4:0] s_pair,
-    input s_frame_start, s_frame_end,
+    input s_frame_start,
+    s_frame_end,
     output reg [31:0] m_data,
     output reg m_valid,
     input m_ready,
     output reg [1:0] m_component,
     output reg [4:0] m_pair,
-    output reg m_frame_start, m_frame_end
+    output reg m_frame_start,
+    m_frame_end
 );
     (* ram_style="distributed" *) reg [7:0] qt[0:127];
     (* ram_style="distributed" *) reg [20:0] rt[0:127];
@@ -35,9 +38,9 @@ module quantize (
     // RAM writes must be in a clock-only process. An asynchronous reset process
     // whose table entries merely hold during reset inhibits Vivado RAM inference.
     always @(posedge clk) begin
-        if(rst_n && cfg_valid && cfg_ready && cfg_value!=0 && cfg_recip!=0) begin
-            qt[cfg_addr]<=cfg_value;
-            rt[cfg_addr]<=cfg_recip;
+        if (rst_n && cfg_valid && cfg_ready && cfg_value != 0 && cfg_recip != 0) begin
+            qt[cfg_addr] <= cfg_value;
+            rt[cfg_addr] <= cfg_recip;
         end
     end
     genvar group;
@@ -59,7 +62,7 @@ module quantize (
     reg [20:0] recip1[0:1];
     // ERAM clk-to-output and a split DSP multiply must not share one cycle.
     // Keep a distinct operand register between the table read and multiplier.
-    (* preserve=1 *) reg [20:0] recip2[0:1];
+    (* preserve=1 *)reg [20:0] recip2[0:1];
     reg [7:0] q1[0:1], q2[0:1], q3[0:1], q4[0:1];
     reg neg1[0:1], neg2[0:1], neg3[0:1], neg4[0:1];
     reg [15:0] est[0:1];
@@ -136,13 +139,13 @@ module quantize (
                     if (v2) begin
                         prod[i] <= num2[i] * recip2[i];
                         num3[i] <= num2[i];
-                        q3[i] <= q2[i];
+                        q3[i]   <= q2[i];
                         neg3[i] <= neg2[i];
                     end
                     if (v3) begin
-                        est[i] <= prod[i] >> 20;
+                        est[i]  <= prod[i] >> 20;
                         num4[i] <= num3[i];
-                        q4[i] <= q3[i];
+                        q4[i]   <= q3[i];
                         neg4[i] <= neg3[i];
                     end
                     if (v4) begin

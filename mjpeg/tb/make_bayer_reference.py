@@ -9,7 +9,9 @@ parser.add_argument('--constant',action='store_true')
 parser.add_argument('--denoise-strength',type=int,default=0)
 parser.add_argument('--pattern',choices=('BGGR','GRBG','GBRG','RGGB'),default='BGGR')
 parser.add_argument('--output',type=Path,required=True)
-args=parser.parse_args();W,H=args.width,args.height;root=args.output
+args=parser.parse_args()
+W,H=args.width,args.height
+root=args.output
 pattern={'BGGR':(('B','G'),('G','R')),'GRBG':(('G','R'),('B','G')),
          'GBRG':(('G','B'),('R','G')),'RGGB':(('R','G'),('G','B'))}[args.pattern]
 root.mkdir(parents=True,exist_ok=True)
@@ -27,7 +29,8 @@ if args.constant:
                 src.write((f'{colors[pattern[y%2][0]]:02x}\n{colors[pattern[y%2][1]]:02x}\n'*(W//2)))
                 dst.write((f'{yy|cb<<8:04x}\n{yy|cr<<8:04x}\n'*(W//2)))
     raise SystemExit(0)
-raw=[];expected=[]
+raw=[]
+expected=[]
 for frame in range(args.frames):
     image=[[(x*17+y*29+x*y*3+frame*71+(x*x+13*y*y)*frame)%256 for x in range(W)] for y in range(H)]
     rgb=[]
@@ -38,15 +41,18 @@ for frame in range(args.frames):
     for y in range(H):
         row=[]
         for x in range(W):
-            c=at(x,y);cross=sum(at(x+dx,y+dy) for dx,dy in [(0,-1),(-1,0),(1,0),(0,1)])//4
+            c=at(x,y)
+            cross=sum(at(x+dx,y+dy) for dx,dy in [(0,-1),(-1,0),(1,0),(0,1)])//4
             diag=sum(at(x+dx,y+dy) for dx,dy in [(-1,-1),(1,-1),(-1,1),(1,1)])//4
-            hor=(at(x-1,y)+at(x+1,y))//2;ver=(at(x,y-1)+at(x,y+1))//2
+            hor=(at(x-1,y)+at(x+1,y))//2
+            ver=(at(x,y-1)+at(x,y+1))//2
             color=pattern[y%2][x%2]
             if color=='R': r,g,b=c,cross,diag
             elif color=='B': r,g,b=diag,cross,c
             elif pattern[y%2][(x+1)%2]=='R': r,g,b=hor,c,ver
             else: r,g,b=ver,c,hor
-            row.append((r,g,b));raw.append(c)
+            row.append((r,g,b))
+            raw.append(c)
         rgb.append(row)
     yuv=[]
     for row in rgb:

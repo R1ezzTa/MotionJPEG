@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 // Compatibility interface for the initial grayscale front-end project.
 // The full JPEG core uses raster_to_mcu422 directly, at two samples/cycle.
 module raster_to_block8x8 #(
@@ -6,15 +7,21 @@ module raster_to_block8x8 #(
 ) (
     input clk,
     input rst_n,
-    input [15:0] cfg_width, cfg_height,
+    input [15:0] cfg_width,
+    cfg_height,
     input [7:0] s_data,
     input s_valid,
     output s_ready,
-    input s_sof, s_eol, s_eof,
+    input s_sof,
+    s_eol,
+    s_eof,
     output [7:0] m_data,
     output m_valid,
     input m_ready,
-    output m_block_start, m_block_end, m_frame_start, m_frame_end,
+    output m_block_start,
+    m_block_end,
+    m_frame_start,
+    m_frame_end,
     output protocol_error
 );
     wire [15:0] pair_data;

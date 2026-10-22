@@ -40,7 +40,9 @@ class RecordsTests(unittest.TestCase):
                 class Fragmented(io.BytesIO):
                     def read(self,n=-1): return super().read(min(n,17) if n>=0 else 17)
                 buffered=CaptureReader(Fragmented(data),replay=True)
-                records=BoardRecords(buffered.exact);receiver=Receiver();frames=[]
+                records=BoardRecords(buffered.exact)
+                receiver=Receiver()
+                frames=[]
                 self.assertEqual(records.next_packet()[0],'start')
                 while True:
                     kind,value=records.next_packet()
@@ -55,7 +57,9 @@ class RecordsTests(unittest.TestCase):
                 self.assertEqual(records.next_packet()[1]['total_compressed'],1)
                 self.assertEqual(buffered.offset,len(data))
                 self.assertFalse(receiver.frames or receiver.packet)
-                legacy=reader(data);legacy_receiver=Receiver();legacy_frames=[]
+                legacy=reader(data)
+                legacy_receiver=Receiver()
+                legacy_frames=[]
                 while True:
                     kind,value=legacy.next()
                     if kind=='end': break
@@ -89,7 +93,8 @@ class RecordsTests(unittest.TestCase):
 
     def test_partial_or_out_of_order_snapshot_is_rejected(self):
         with self.assertRaises(EOFError): reader(telemetry(1,0,0)[:-1]).next()
-        data=bytearray(telemetry(1,0,0));data[9]=0x83
+        data=bytearray(telemetry(1,0,0))
+        data[9]=0x83
         with self.assertRaisesRegex(ValueError,'out-of-order'): reader(data).next()
 
     def test_frame_timings_and_explicit_stream_end(self):

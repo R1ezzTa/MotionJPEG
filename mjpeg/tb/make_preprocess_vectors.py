@@ -31,12 +31,14 @@ if __name__=='__main__':
     p.add_argument('--width',type=int,default=16)
     p.add_argument('--height',type=int,default=8)
     p.add_argument('--output',type=Path,required=True)
-    a=p.parse_args();a.output.mkdir(parents=True,exist_ok=True)
+    a=p.parse_args()
+    a.output.mkdir(parents=True,exist_ok=True)
     assert a.width>=4 and a.width%2==0 and a.height>=2
     rng=random.Random(2809)
     configs=[(0,128,32),(1,128,32),(2,128,32),(3,128,32),(2,0,255),
              (2,255,0),(3,128,0),(3,128,255),(0,99,7),(3,128,32),(3,128,64),(3,128,1)]
-    source=[];golden=[]
+    source=[]
+    golden=[]
     for f,(mode,binary,edge) in enumerate(configs):
         image=[]
         for y in range(a.height):

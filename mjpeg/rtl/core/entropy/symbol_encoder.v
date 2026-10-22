@@ -1,6 +1,9 @@
+`timescale 1ns / 1ps
 // DC difference, magnitude/category, then bounded AC run-length coding.
 // Two coefficients can produce up to three ZRLs and two value symbols.
-module symbol_encoder #(parameter RESTART_ENABLE=0) (
+module symbol_encoder #(
+    parameter RESTART_ENABLE = 0
+) (
     input clk,
     input rst_n,
     input [31:0] s_data,
@@ -8,14 +11,16 @@ module symbol_encoder #(parameter RESTART_ENABLE=0) (
     output s_ready,
     input [1:0] s_component,
     input [4:0] s_pair,
-    input s_frame_start, s_frame_end,
+    input s_frame_start,
+    s_frame_end,
     input s_restart,
     output reg [39:0] m_symbols,
     output reg [54:0] m_amplitudes,
     output reg [19:0] m_sizes,
     output reg [4:0] m_dc,
     output reg [2:0] m_count,
-    output reg m_chroma, m_frame_end,
+    output reg m_chroma,
+    m_frame_end,
     output reg m_valid,
     input m_ready,
     output reg coefficient_error
@@ -74,9 +79,9 @@ module symbol_encoder #(parameter RESTART_ENABLE=0) (
     reg [39:0] symbols;
     reg [54:0] amplitudes;
     reg [19:0] sizes;
-    reg [4:0] dc;
-    reg [5:0] pending_run;
-    reg [2:0] cnt;
+    reg [ 4:0] dc;
+    reg [ 5:0] pending_run;
+    reg [ 2:0] cnt;
     integer pos, k, lane2;
     always @* begin
         symbols = 0;

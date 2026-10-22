@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 // Bit buffer, two-stage alignment, FF prefix positions and byte scatter.
 // Each stage can accept one group/cycle; output stalls freeze the pipeline.
 module entropy_packer (

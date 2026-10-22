@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 // Beat-wise round robin, followed by two-entry registered storage. A JPEG
 // frame may interleave with other channels; its tag travels with every beat.
 module mjpeg_arbiter #(

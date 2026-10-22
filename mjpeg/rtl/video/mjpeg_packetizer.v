@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 // Portable 32-bit transport framing. Each payload beat is one tagged packet;
 // descriptors are separate seven-word packets. Low byte is transmitted first.
 module mjpeg_packetizer (
@@ -5,16 +6,20 @@ module mjpeg_packetizer (
     input rst_n,
     input [127:0] s_data,
     input [4:0] s_bytes,
-    input s_first, s_last, s_valid,
+    input s_first,
+    s_last,
+    s_valid,
     output s_ready,
     input [1:0] s_channel,
     input [31:0] s_frame_id,
     input desc_valid,
     output desc_ready,
     input [1:0] desc_channel,
-    input [31:0] desc_frame_id, desc_length,
+    input [31:0] desc_frame_id,
+    desc_length,
     input [63:0] desc_timestamp,
-    input [15:0] desc_width, desc_height,
+    input [15:0] desc_width,
+    desc_height,
     input desc_gray,
     input [7:0] desc_status,
     output reg [31:0] m_data,
@@ -24,9 +29,9 @@ module mjpeg_packetizer (
     output reg m_packet_last
 );
     reg active, is_descriptor, prefer_descriptor;
-    reg [2:0] word_index;
+    reg [  2:0] word_index;
     reg [127:0] data;
-    reg [4:0] bytes;
+    reg [  4:0] bytes;
     reg first, last;
     reg [1:0] channel;
     reg [31:0] frame_id, length;

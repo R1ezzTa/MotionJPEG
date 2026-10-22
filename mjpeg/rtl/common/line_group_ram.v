@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module line_group_ram #(
     parameter DATA_WIDTH = 8,
     DEPTH = 7680,
@@ -11,7 +12,7 @@ module line_group_ram #(
     input [ADDR_WIDTH-1:0] rd_addr,
     output [DATA_WIDTH-1:0] rd_data
 );
-// Infer the block RAM used by the current Xilinx camera pipeline.
+    // Infer the block RAM used by the current Xilinx camera pipeline.
     function integer address_bits;
         input integer depth;
         integer value;

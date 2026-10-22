@@ -1,11 +1,14 @@
+`timescale 1ns / 1ps
 // Baseline sequential JPEG, 8-bit grayscale or full-range YUYV 4:2:2.
 // Byte 0 is m_data[7:0]; m_bytes valid contiguous bytes; m_last carries EOI.
 module jpeg_encoder #(
-    parameter MAX_WIDTH = 1920, RESTART_MCUS=0
+    parameter MAX_WIDTH = 1920,
+    RESTART_MCUS = 0
 ) (
     input clk,
     input rst_n,
-    input [15:0] cfg_width, cfg_height,
+    input [15:0] cfg_width,
+    cfg_height,
     input cfg_gray,
     input cfg_q_valid,
     output cfg_q_ready,
@@ -16,14 +19,18 @@ module jpeg_encoder #(
     input [15:0] s_data,
     input s_valid,
     output s_ready,
-    input s_sof, s_eol, s_eof,
+    input s_sof,
+    s_eol,
+    s_eof,
     output [127:0] m_data,
     output [4:0] m_bytes,
     output m_valid,
     input m_ready,
     output m_last,
     output reg busy,
-    output protocol_error, config_error, coefficient_error
+    output protocol_error,
+    config_error,
+    coefficient_error
 );
     reg [15:0] width, height;
     reg gray, input_done;
@@ -32,30 +39,30 @@ module jpeg_encoder #(
     reg formatter_start;
     wire a_ready, a_valid;
     wire [15:0] a_data;
-    wire [1:0] ac;
-    wire [4:0] ap;
+    wire [ 1:0] ac;
+    wire [ 4:0] ap;
     wire afs, afe;
     wire b_ready, b_valid;
     wire [31:0] b_data;
-    wire [1:0] bc;
-    wire [4:0] bp;
+    wire [ 1:0] bc;
+    wire [ 4:0] bp;
     wire bfs, bfe;
     wire c_ready, c_valid;
     wire [31:0] c_data;
-    wire [1:0] cc;
-    wire [4:0] cp;
+    wire [ 1:0] cc;
+    wire [ 4:0] cp;
     wire cfs, cfe;
     wire d_ready, d_valid;
     wire [31:0] d_data;
-    wire [1:0] dc;
-    wire [4:0] dp;
+    wire [ 1:0] dc;
+    wire [ 4:0] dp;
     wire dfs, dfe;
     wire e_ready, e_valid;
     wire [39:0] symbols;
     wire [54:0] amplitudes;
     wire [19:0] sizes;
-    wire [4:0] flags;
-    wire [2:0] symbol_count;
+    wire [ 4:0] flags;
+    wire [ 2:0] symbol_count;
     wire chroma, efe;
     wire f_ready, f_valid;
     wire [127:0] bits;
@@ -82,10 +89,10 @@ module jpeg_encoder #(
         end else begin
             formatter_start <= start;
             if (start) begin
-                busy <= 1;
-                width <= cfg_width;
+                busy   <= 1;
+                width  <= cfg_width;
                 height <= cfg_height;
-                gray <= cfg_gray;
+                gray   <= cfg_gray;
             end
             if (input_frame_end) input_done <= 1;
             if (m_valid && m_ready && m_last) begin
@@ -188,20 +195,24 @@ module jpeg_encoder #(
     // original SOF remain unchanged; only DC prediction/entropy boundaries reset.
     reg [15:0] interval_mcus;
     reg [1:0] interval_block;
-    wire last_mcu_pair = dp==31 && (gray || interval_block==3);
+    wire last_mcu_pair = dp == 31 && (gray || interval_block == 3);
     wire interval_end = RESTART_MCUS!=0 && last_mcu_pair &&
         (interval_mcus==RESTART_MCUS-1 || dfe);
-    wire interval_start = RESTART_MCUS!=0 && dp==0 && interval_block==0 && interval_mcus==0;
+    wire interval_start = RESTART_MCUS != 0 && dp == 0 && interval_block == 0 && interval_mcus == 0;
     always @(posedge clk or negedge rst_n) begin
-        if(!rst_n) begin interval_mcus<=0;interval_block<=0;end
-        else if(d_valid && d_ready && dp==31) begin
-            if(last_mcu_pair) begin
-                interval_block<=0;
-                interval_mcus<=(interval_end || dfe)?0:interval_mcus+1'b1;
-            end else interval_block<=interval_block+1'b1;
+        if (!rst_n) begin
+            interval_mcus  <= 0;
+            interval_block <= 0;
+        end else if (d_valid && d_ready && dp == 31) begin
+            if (last_mcu_pair) begin
+                interval_block <= 0;
+                interval_mcus  <= (interval_end || dfe) ? 0 : interval_mcus + 1'b1;
+            end else interval_block <= interval_block + 1'b1;
         end
     end
-    symbol_encoder #(.RESTART_ENABLE(RESTART_MCUS!=0)) symbols_core (
+    symbol_encoder #(
+        .RESTART_ENABLE(RESTART_MCUS != 0)
+    ) symbols_core (
         .clk              (clk),
         .rst_n            (rst_n),
         .s_data           (d_data),
@@ -299,7 +310,9 @@ module jpeg_encoder #(
         .m_valid(formatter_input_valid),
         .m_ready(formatter_input_ready)
     );
-    jpeg_formatter #(.RESTART_MCUS(RESTART_MCUS)) format (
+    jpeg_formatter #(
+        .RESTART_MCUS(RESTART_MCUS)
+    ) format (
         .clk         (clk),
         .rst_n       (rst_n),
         .start       (formatter_start),
