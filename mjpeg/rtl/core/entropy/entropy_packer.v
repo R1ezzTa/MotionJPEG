@@ -45,7 +45,7 @@ module entropy_packer (
     reg [7:0] ff3;
     reg [3:0] positions[0:7];
     reg [4:0] bytes4;
-    reg [127:0] packed;
+    reg [127:0] gathered;
     integer i;
     function [3:0] popcount;
         input [7:0] value;
@@ -88,22 +88,22 @@ module entropy_packer (
     // Thus j<=position<=2*j and valid source positions are unique.
     // Gather with OR, avoiding the wide priority scatter mux.
     always @* begin
-        packed = 0;
-        packed[0+:8] = ({8{(n4>4'd0) && (positions[0]==4'd0)}} & raw4[63-:8]);
-        packed[8+:8] = ({8{(n4>4'd1) && (positions[1]==4'd1)}} & raw4[55-:8]);
-        packed[16+:8] = ({8{(n4>4'd1) && (positions[1]==4'd2)}} & raw4[55-:8]) | ({8{(n4>4'd2) && (positions[2]==4'd2)}} & raw4[47-:8]);
-        packed[24+:8] = ({8{(n4>4'd2) && (positions[2]==4'd3)}} & raw4[47-:8]) | ({8{(n4>4'd3) && (positions[3]==4'd3)}} & raw4[39-:8]);
-        packed[32+:8] = ({8{(n4>4'd2) && (positions[2]==4'd4)}} & raw4[47-:8]) | ({8{(n4>4'd3) && (positions[3]==4'd4)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd4)}} & raw4[31-:8]);
-        packed[40+:8] = ({8{(n4>4'd3) && (positions[3]==4'd5)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd5)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd5)}} & raw4[23-:8]);
-        packed[48+:8] = ({8{(n4>4'd3) && (positions[3]==4'd6)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd6)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd6)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd6)}} & raw4[15-:8]);
-        packed[56+:8] = ({8{(n4>4'd4) && (positions[4]==4'd7)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd7)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd7)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd7)}} & raw4[7-:8]);
-        packed[64+:8] = ({8{(n4>4'd4) && (positions[4]==4'd8)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd8)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd8)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd8)}} & raw4[7-:8]);
-        packed[72+:8] = ({8{(n4>4'd5) && (positions[5]==4'd9)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd9)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd9)}} & raw4[7-:8]);
-        packed[80+:8] = ({8{(n4>4'd5) && (positions[5]==4'd10)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd10)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd10)}} & raw4[7-:8]);
-        packed[88+:8] = ({8{(n4>4'd6) && (positions[6]==4'd11)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd11)}} & raw4[7-:8]);
-        packed[96+:8] = ({8{(n4>4'd6) && (positions[6]==4'd12)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd12)}} & raw4[7-:8]);
-        packed[104+:8] = ({8{(n4>4'd7) && (positions[7]==4'd13)}} & raw4[7-:8]);
-        packed[112+:8] = ({8{(n4>4'd7) && (positions[7]==4'd14)}} & raw4[7-:8]);
+        gathered = 0;
+        gathered[0+:8] = ({8{(n4>4'd0) && (positions[0]==4'd0)}} & raw4[63-:8]);
+        gathered[8+:8] = ({8{(n4>4'd1) && (positions[1]==4'd1)}} & raw4[55-:8]);
+        gathered[16+:8] = ({8{(n4>4'd1) && (positions[1]==4'd2)}} & raw4[55-:8]) | ({8{(n4>4'd2) && (positions[2]==4'd2)}} & raw4[47-:8]);
+        gathered[24+:8] = ({8{(n4>4'd2) && (positions[2]==4'd3)}} & raw4[47-:8]) | ({8{(n4>4'd3) && (positions[3]==4'd3)}} & raw4[39-:8]);
+        gathered[32+:8] = ({8{(n4>4'd2) && (positions[2]==4'd4)}} & raw4[47-:8]) | ({8{(n4>4'd3) && (positions[3]==4'd4)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd4)}} & raw4[31-:8]);
+        gathered[40+:8] = ({8{(n4>4'd3) && (positions[3]==4'd5)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd5)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd5)}} & raw4[23-:8]);
+        gathered[48+:8] = ({8{(n4>4'd3) && (positions[3]==4'd6)}} & raw4[39-:8]) | ({8{(n4>4'd4) && (positions[4]==4'd6)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd6)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd6)}} & raw4[15-:8]);
+        gathered[56+:8] = ({8{(n4>4'd4) && (positions[4]==4'd7)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd7)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd7)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd7)}} & raw4[7-:8]);
+        gathered[64+:8] = ({8{(n4>4'd4) && (positions[4]==4'd8)}} & raw4[31-:8]) | ({8{(n4>4'd5) && (positions[5]==4'd8)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd8)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd8)}} & raw4[7-:8]);
+        gathered[72+:8] = ({8{(n4>4'd5) && (positions[5]==4'd9)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd9)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd9)}} & raw4[7-:8]);
+        gathered[80+:8] = ({8{(n4>4'd5) && (positions[5]==4'd10)}} & raw4[23-:8]) | ({8{(n4>4'd6) && (positions[6]==4'd10)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd10)}} & raw4[7-:8]);
+        gathered[88+:8] = ({8{(n4>4'd6) && (positions[6]==4'd11)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd11)}} & raw4[7-:8]);
+        gathered[96+:8] = ({8{(n4>4'd6) && (positions[6]==4'd12)}} & raw4[15-:8]) | ({8{(n4>4'd7) && (positions[7]==4'd12)}} & raw4[7-:8]);
+        gathered[104+:8] = ({8{(n4>4'd7) && (positions[7]==4'd13)}} & raw4[7-:8]);
+        gathered[112+:8] = ({8{(n4>4'd7) && (positions[7]==4'd14)}} & raw4[7-:8]);
     end
     integer j;
     always @(posedge clk or negedge rst_n) begin
@@ -184,7 +184,7 @@ module entropy_packer (
                 for (j = 0; j < 8; j = j + 1) positions[j] <= j + popcount(ff3 & ((8'd1 << j) - 1));
             end
             if (v4) begin
-                m_data <= packed;
+                m_data <= gathered;
                 m_bytes <= bytes4;
             end
         end
