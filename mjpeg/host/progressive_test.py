@@ -10,8 +10,12 @@ CLOCK_HZ=50000000
 
 class CaptureReader:
     def __init__(self,source,capture=None,replay=False):
-        self.source=source;self.capture=capture;self.replay=replay
-        self.block=b'';self.pos=0;self.offset=0
+        self.source=source
+        self.capture=capture
+        self.replay=replay
+        self.block=b''
+        self.pos=0
+        self.offset=0
 
     def exact(self,n):
         if self.pos+n>len(self.block):
@@ -24,18 +28,28 @@ class CaptureReader:
                     continue
                 if self.capture: self.capture.write(data)
                 pending+=data
-            self.block=pending;self.pos=0
+            self.block=pending
+            self.pos=0
         result=self.block[self.pos:self.pos+n];self.pos+=n;self.offset+=n
         return result
 
     def rewind(self,n):
         if not 0<=n<=self.pos: raise ValueError('Invalid buffered capture rewind')
-        self.pos-=n;self.offset-=n
+        self.pos-=n
+        self.offset-=n
 
 def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,replay=False,packet_batches=True,receive_only=False,pixel_cycles=None,link_clock_hz=CLOCK_HZ,core_clock_hz=CLOCK_HZ,scaled_windows=False):
     expected=(ROOT/'data/progressive_test'/f'{w}x{h}.expected.jpg').read_bytes()
-    receiver=Receiver();frames=[];timings=[];started=False;ended=False;stopped=False;idle=0;first_jpeg=None
-    start_offset=reader.offset;rate_start=len(records.rates)
+    receiver=Receiver()
+    frames=[]
+    timings=[]
+    started=False
+    ended=False
+    stopped=False
+    idle=0
+    first_jpeg=None
+    start_offset=reader.offset
+    rate_start=len(records.rates)
     link_start=len(getattr(records,'links',[]))
     began=time.monotonic()
     began_cpu=time.process_time()
@@ -45,7 +59,9 @@ def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,rep
         if not replay and time.monotonic()-began>max(180,seconds*4):
             raise TimeoutError(f'{w}x{h} phase watchdog')
         if not replay and not stopped and len(frames)>=min_frames and time.monotonic()-began>=seconds:
-            stream.write(b'S');stream.flush();stopped=True
+            stream.write(b'S')
+            stream.flush()
+            stopped=True
             print(f'STOP {w}x{h}; drain final frame and wait END1',flush=True)
         kind,value=records.next_packet() if packet_batches else records.next()
         if kind=='start':
@@ -105,7 +121,8 @@ def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,rep
         counted_fps=statistics.mean(r['compressed_fps'] for r in steady_rates)
         if abs(fps-counted_fps)>max(2.0,counted_fps*0.05):
             raise ValueError(f'Timestamp FPS {fps:.3f} differs from FPGA windows {counted_fps:.3f}; check --core-clock-hz')
-    phase_dir=dest/f'{w}x{h}';phase_dir.mkdir(exist_ok=True)
+    phase_dir=dest/f'{w}x{h}'
+    phase_dir.mkdir(exist_ok=True)
     if not receive_only:
         (phase_dir/'first_frame.jpg').write_bytes(first_jpeg)
         with Image.open(io.BytesIO(first_jpeg)) as image: image.save(phase_dir/'first_frame.png')
@@ -147,17 +164,22 @@ def phase(records,reader,stream,w,h,command,first_id,dest,seconds,min_frames,rep
     return result
 
 def main():
-    p=argparse.ArgumentParser();source=p.add_mutually_exclusive_group(required=True)
-    source.add_argument('--ftdi',action='store_true');source.add_argument('--capture',type=Path)
-    p.add_argument('--library');p.add_argument('--simulation',action='store_true')
+    p=argparse.ArgumentParser()
+    source=p.add_mutually_exclusive_group(required=True)
+    source.add_argument('--ftdi',action='store_true')
+    source.add_argument('--capture',type=Path)
+    p.add_argument('--library')
+    p.add_argument('--simulation',action='store_true')
     p.add_argument('--word-records',action='store_true',help='Use the original per-word parser for throughput comparisons')
     p.add_argument('--blocks',action='store_true',help='Decode the 1 KB MBLK board transport')
     p.add_argument('--sync-fifo',action='store_true',help='Select synchronous FT245 (60 MHz link); also use for replay of synchronous captures')
     p.add_argument('--receive-only',action='store_true',help='Capture with framing/metadata only; verify the raw capture offline afterwards')
     p.add_argument('--pixel-cycles',type=int,choices=(1,2),help='Require this many clocks per unstalled pixel; default detects legacy/new cadence')
     p.add_argument('--core-clock-hz',type=int,default=CLOCK_HZ,help='Encoding timestamp clock: 100000000 for current MMCM firmware; default 50000000 preserves legacy captures')
-    p.add_argument('--seconds',type=float,default=30);p.add_argument('--min-frames',type=int,default=6)
-    p.add_argument('--first-id',type=int,default=0);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--seconds',type=float,default=30)
+    p.add_argument('--min-frames',type=int,default=6)
+    p.add_argument('--first-id',type=int,default=0)
+    p.add_argument('--output',type=Path,required=True)
     p.add_argument('--timing-expected',type=Path)
     p.add_argument('--fps-expected',type=Path,help='Compare all snapshots against independent TB frame events')
     p.add_argument('--link-expected',type=Path,help='Compare all snapshots against independent physical CLKOUT/write counts')
@@ -170,7 +192,8 @@ def main():
     if args.capture: stream=args.capture.open('rb');raw=None
     else:
         from ftdi_fifo import FtdiFifo
-        stream=FtdiFifo(library=args.library,synchronous=args.sync_fifo);raw=(args.output/'usb_capture.bin').open('wb')
+        stream=FtdiFifo(library=args.library,synchronous=args.sync_fifo)
+        raw=(args.output/'usb_capture.bin').open('wb')
         (args.output/'ftdi_info.json').write_text(json.dumps(stream.eeprom_info,indent=2))
     reader=CaptureReader(stream,raw,replay=bool(args.capture))
     if args.blocks:
@@ -178,11 +201,13 @@ def main():
         records=BlockRecords(reader.exact,collect_frames=not args.receive_only)
     else: records=BoardRecords(reader.exact)
     plan=[(48,16,b'V'),(64,24,b'H'),(96,32,b'F')] if args.simulation else [(640,480,b'V'),(1280,720,b'H'),(1920,1080,b'F')]
-    results=[];first_id=args.first_id
+    results=[]
+    first_id=args.first_id
     try:
         for w,h,command in plan:
             result=phase(records,reader,stream,w,h,command,first_id,args.output,args.seconds,args.min_frames,replay=bool(args.capture),packet_batches=not args.word_records,receive_only=args.receive_only,pixel_cycles=args.pixel_cycles,link_clock_hz=60000000 if args.sync_fifo else CLOCK_HZ,core_clock_hz=args.core_clock_hz,scaled_windows=args.simulation)
-            results.append(result);first_id+=result['frames']
+            results.append(result)
+            first_id+=result['frames']
             (args.output/'results.json').write_text(json.dumps(results,indent=2))
         if args.capture:
             while reader.pos<len(reader.block) or stream.peek(1):
@@ -198,7 +223,8 @@ def main():
                 if actual!=expected: raise ValueError('Telemetry differs from independent TB events/physical clocks')
     finally:
         if not args.capture:
-            stream.write(b'S');stream.flush()
+            stream.write(b'S')
+            stream.flush()
         stream.close()
         if raw: raw.close()
     marker='CAPTURE_PASS.txt' if args.receive_only else 'VERIFY_PASS.txt'

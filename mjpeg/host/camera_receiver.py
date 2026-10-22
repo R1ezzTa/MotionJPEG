@@ -20,9 +20,13 @@ from block_records import BlockRecords
 class CameraFrames:
     def __init__(self, width=640, height=480, save_count=5, destination=None,
                  first_id=None):
-        self.width=width;self.height=height;self.save_count=save_count
-        self.destination=destination;self.next_id=first_id
-        self.frames=[];self.previous_timestamp=None
+        self.width=width
+        self.height=height
+        self.save_count=save_count
+        self.destination=destination
+        self.next_id=first_id
+        self.frames=[]
+        self.previous_timestamp=None
 
     def accept(self, frame):
         metadata={k:v for k,v in vars(frame).items() if k!='jpeg'}
@@ -133,7 +137,8 @@ def summarize(frames, records, core_clock_hz=100_000_000, target_fps=15):
     if not verified: return result
     sizes=sorted(f['length'] for f in verified)
     raw=sum(f['raw_yuv422_bytes'] for f in verified)
-    jpeg=sum(sizes);mean=statistics.mean(sizes)
+    jpeg=sum(sizes)
+    mean=statistics.mean(sizes)
     raw8=bool(records.camera_status) and records.camera_status[-1].get('raw8',False)
     sensor_raw=raw//2 if raw8 else raw
     p95=sizes[max(0,math.ceil(len(sizes)*0.95)-1)]
@@ -176,14 +181,25 @@ def validate_performance(result, target_fps, require_no_drops=False):
 class CameraReader:
     def __init__(self, source, capture=None, replay=False, duration=10, drain_timeout=30,
                  light_pulse=False,light_after=2):
-        self.source=source;self.capture=capture;self.replay=replay
-        self.buffer=bytearray();self.offset=0;self.stopped=replay
-        self.began=time.monotonic();self.duration=duration;self.drain_timeout=drain_timeout
-        self.light_pulse=light_pulse;self.light_after=light_after
-        self.seen_frame=False;self.light_started=None;self.light_stopped=False;self.light_events=[]
+        self.source=source
+        self.capture=capture
+        self.replay=replay
+        self.buffer=bytearray()
+        self.offset=0
+        self.stopped=replay
+        self.began=time.monotonic()
+        self.duration=duration
+        self.drain_timeout=drain_timeout
+        self.light_pulse=light_pulse
+        self.light_after=light_after
+        self.seen_frame=False
+        self.light_started=None
+        self.light_stopped=False
+        self.light_events=[]
 
     def light_command(self, turn_on):
-        self.source.write(b'L' if turn_on else b'l');self.source.flush()
+        self.source.write(b'L' if turn_on else b'l')
+        self.source.flush()
         self.light_events.append({'command':'L' if turn_on else 'l','elapsed_seconds':time.monotonic()-self.began})
         print('LIGHT pulse requested (hardware limit 2 seconds)' if turn_on else 'LIGHT off requested',flush=True)
 
@@ -192,15 +208,19 @@ class CameraReader:
         elapsed=time.monotonic()-self.began
         if self.light_pulse and not self.stopped:
             if self.light_started is None and self.seen_frame and elapsed>=self.light_after and elapsed<self.duration:
-                self.light_command(True);self.light_started=elapsed
+                self.light_command(True)
+                self.light_started=elapsed
             elif self.light_started is not None and not self.light_stopped and elapsed>=self.light_started+2:
                 # Do not send l here: live telemetry must demonstrate that
                 # the FPGA timer itself turned the light off.
                 self.light_stopped=True
         if not self.stopped and elapsed>=self.duration:
             if self.light_pulse:
-                self.light_command(False);self.light_stopped=True
-            self.source.write(b'S');self.source.flush();self.stopped=True
+                self.light_command(False)
+                self.light_stopped=True
+            self.source.write(b'S')
+            self.source.flush()
+            self.stopped=True
             print('STOP sent; waiting for complete frame and END',flush=True)
         if elapsed>self.duration+self.drain_timeout:
             raise TimeoutError('No complete END after camera stop; inspect camera_status.json')
@@ -278,7 +298,11 @@ def main():
     if args.capture and args.capture.resolve()==(args.output/'usb_capture.bin').resolve():
         parser.error('Replay output must not overwrite input capture')
     frames=CameraFrames(args.width,args.height,args.save_count,args.output,args.first_id)
-    stream=None;capture=None;reader=None;records=None;error=None
+    stream=None
+    capture=None
+    reader=None
+    records=None
+    error=None
     try:
         if args.capture:
             stream=args.capture.open('rb')

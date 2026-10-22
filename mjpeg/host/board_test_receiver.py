@@ -32,7 +32,10 @@ def verify_frame(frame, index, root, dest, session, save=True):
 class BoardRecords:
     """Telemetry is independent of JPEG packet boundaries, never JPEG payload."""
     def __init__(self, read_exact):
-        self.read_exact=read_exact; self.rates=[]; self.timings=[]; self.in_stream=False
+        self.read_exact=read_exact
+        self.rates=[]
+        self.timings=[]
+        self.in_stream=False
         self.packet_events=deque()
         self.buffered_reader=getattr(read_exact,'__self__',None)
 
@@ -44,7 +47,8 @@ class BoardRecords:
         data,nbytes,last=value
         if nbytes!=4 or last or data>>16!=0x4d4a or data>>12&15!=1:
             raise ValueError('Invalid packet header')
-        packet_kind=data>>10&3;count=data&31
+        packet_kind=data>>10&3
+        count=data&31
         if packet_kind>1 or count>16 or packet_kind==1 and count:
             raise ValueError('Invalid packet kind/length')
         length=7 if packet_kind==1 else 2+(count+3)//4
@@ -67,7 +71,9 @@ class BoardRecords:
 
     def next(self):
         if self.in_stream:
-            record=self.read_exact(5); word=record[:4]; flag=record[4]
+            record=self.read_exact(5)
+            word=record[:4]
+            flag=record[4]
         else:
             word=self.read_exact(4)
             if word==b'MJBT':
@@ -119,7 +125,9 @@ def read_session(records, root, dest, session, expected_id):
         if kind in ('fps','link'): continue
         if kind!='start': raise ValueError('Missing MJBT preamble')
         break
-    receiver=Receiver(); metadata=[]; bus_rows=[]
+    receiver=Receiver()
+    metadata=[]
+    bus_rows=[]
     for index in range(9):
         while True:
             kind,value=records.next()
@@ -145,12 +153,18 @@ def read_session(records, root, dest, session, expected_id):
 
 def read_live(records, stream, root, dest, duration, expected_id, capture=False):
     if not capture: stream.write(b'C'); stream.flush()
-    receiver=Receiver(); frames=[]; started=False; stopped=capture; idle_windows=0
+    receiver=Receiver()
+    frames=[]
+    started=False
+    stopped=capture
+    idle_windows=0
     deadline=time.monotonic()+duration
     while True:
         if not capture and time.monotonic()>deadline+30: raise TimeoutError('Continuous camera did not stop and report idle')
         if not stopped and time.monotonic()>=deadline:
-            stream.write(b'S'); stream.flush(); stopped=True
+            stream.write(b'S')
+            stream.flush()
+            stopped=True
             print('STOP sent; waiting for complete frame and zero-FPS windows',flush=True)
         kind,value=records.next()
         if kind=='start':
@@ -177,10 +191,14 @@ def read_live(records, stream, root, dest, duration, expected_id, capture=False)
     return frames
 
 def main():
-    p=argparse.ArgumentParser(); source=p.add_mutually_exclusive_group(required=True)
-    source.add_argument('--port'); source.add_argument('--capture',type=Path)
-    source.add_argument('--ftdi',action='store_true');p.add_argument('--library')
-    p.add_argument('--sessions',type=int,default=3); p.add_argument('--baud',type=int,default=115200)
+    p=argparse.ArgumentParser()
+    source=p.add_mutually_exclusive_group(required=True)
+    source.add_argument('--port')
+    source.add_argument('--capture',type=Path)
+    source.add_argument('--ftdi',action='store_true')
+    p.add_argument('--library')
+    p.add_argument('--sessions',type=int,default=3)
+    p.add_argument('--baud',type=int,default=115200)
     p.add_argument('--live',action='store_true',help='C/S continuous camera mode; verify every frame, save first three images')
     p.add_argument('--duration',type=float,default=10,help='Continuous encoding seconds before S (then wait two idle windows)')
     p.add_argument('--first-id',type=int,default=0)
@@ -188,17 +206,21 @@ def main():
     p.add_argument('--sync-fifo',action='store_true',help='Select volatile FT245 synchronous mode on the data chip')
     p.add_argument('--fps-expected',type=Path,help='Compare every simulated telemetry snapshot against the independent TB trace')
     p.add_argument('--link-expected',type=Path,help='Compare transmitted link counters with independent TB clocks and byte handshakes')
-    p.add_argument('--output',type=Path,required=True); args=p.parse_args()
-    root=Path(__file__).resolve().parents[1]; args.output.mkdir(parents=True,exist_ok=True)
+    p.add_argument('--output',type=Path,required=True)
+    args=p.parse_args()
+    root=Path(__file__).resolve().parents[1]
+    args.output.mkdir(parents=True,exist_ok=True)
     if args.live and (not (args.ftdi or args.capture) or args.duration<=0):
         p.error('--live requires --ftdi or --capture and a positive --duration')
-    raw=bytearray(); all_frames=[]
+    raw=bytearray()
+    all_frames=[]
     if args.capture:
         stream=io.BytesIO(args.capture.read_bytes())
         def read_exact(n):
             data=stream.read(n)
             if len(data)!=n: raise EOFError('Truncated simulation serial capture')
-            raw.extend(data); return data
+            raw.extend(data)
+            return data
     else:
         if args.ftdi:
             from ftdi_fifo import FtdiFifo
@@ -210,10 +232,12 @@ def main():
             stream=serial.Serial(args.port,args.baud,timeout=0.2,rtscts=False,dsrdtr=False)
         stream.reset_input_buffer()
         def read_exact(n):
-            data=bytearray(); deadline=time.monotonic()+30
+            data=bytearray()
+            deadline=time.monotonic()+30
             while len(data)<n and time.monotonic()<deadline: data.extend(stream.read(n-len(data)))
             if len(data)!=n: raise TimeoutError(f'Board read timed out: {len(data)}/{n} bytes')
-            raw.extend(data); return bytes(data)
+            raw.extend(data)
+            return bytes(data)
     if args.blocks:
         from block_records import BlockRecords
         records=BlockRecords(read_exact)
@@ -225,7 +249,9 @@ def main():
         else:
             for session in range(args.sessions):
                 if not args.capture:
-                    time.sleep(0.1); stream.write(b'G'); stream.flush()
+                    time.sleep(0.1)
+                    stream.write(b'G')
+                    stream.flush()
                 frames=read_session(records,root,args.output,session,args.first_id+session*9)
                 all_frames.extend(frames)
                 print(f'SESSION {session} PASS: 9 FPGA JPEGs match references and decode',flush=True)
@@ -242,8 +268,10 @@ def main():
             if records.links!=expected: raise ValueError('USB link snapshots differ from independent simulation clocks/bytes')
     finally:
         if args.live and not args.capture:
-            stream.write(b'S'); stream.flush()
-        stream.close(); (args.output/('usb_capture.bin' if args.ftdi else 'uart_capture.bin')).write_bytes(raw)
+            stream.write(b'S')
+            stream.flush()
+        stream.close()
+        (args.output/('usb_capture.bin' if args.ftdi else 'uart_capture.bin')).write_bytes(raw)
     (args.output/'frames.json').write_text(json.dumps(all_frames,indent=2))
     (args.output/'fps.json').write_text(json.dumps(records.rates,indent=2))
     if hasattr(records,'links'): (args.output/'link_windows.json').write_text(json.dumps(records.links,indent=2))

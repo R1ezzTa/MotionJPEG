@@ -67,9 +67,11 @@ def main():
                     next_action += 1
             if phase == 'restart':
                 if next_action == 0 and now-phase_start >= 2:
-                    command(b'L');next_action = 1
+                    command(b'L')
+                    next_action = 1
                 elif next_action == 1 and now-phase_start >= 7:
-                    command(b'S');next_action = 2
+                    command(b'S')
+                    next_action = 2
             buffer.extend(source.read_chunk())
         value = bytes(buffer[:n])
         del buffer[:n]
@@ -97,9 +99,14 @@ def main():
                 if phase == 'initial' and value['init_done'] and value.get('sampling_ready'):
                     assert not value['streaming'] and not value['run_requested'], 'Startup was not stopped'
                     assert value['quality_requested'] == 85, 'Wrong default quality'
-                    command(b'C');phase = 'qualities';phase_start = now
+                    command(b'C')
+                    phase = 'qualities'
+                    phase_start = now
                 elif phase == 'stopped' and not value['streaming'] and not value['run_requested'] and now-phase_start >= 1:
-                    command(b'C');phase = 'restart';phase_start = now;next_action = 0
+                    command(b'C')
+                    phase = 'restart'
+                    phase_start = now
+                    next_action = 0
                 if phase in ('restart', 'final'):
                     light_seen |= value['light_on']
                     if phase == 'restart' and next_action == 1 and light_seen and not value['light_on'] and not value['light_requested']:
@@ -146,7 +153,9 @@ def main():
         decode_pool.shutdown(wait=True)
         if source is not None:
             try:
-                source.write(b'l');source.write(b'S');source.flush()
+                source.write(b'l')
+                source.write(b'S')
+                source.flush()
             finally:
                 source.close()
     groups = {}

@@ -66,7 +66,8 @@ def main(argv=None):
     pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='denoise-jpeg')
 
     def command(value):
-        source.write(value);source.flush()
+        source.write(value)
+        source.flush()
         actions.append(dict(seconds=time.monotonic() - began, command=value.decode('ascii')))
 
     def check_control():
@@ -76,7 +77,8 @@ def main(argv=None):
         if phase:
             state = phase['state']
             if state == 'running' and now - phase['start_wall'] >= args.seconds:
-                command(b'S');phase.update(state='stopping', stop_wall=now)
+                command(b'S')
+                phase.update(state='stopping', stop_wall=now)
             elif state == 'stopping' and now - phase['stop_wall'] > 5:
                 raise TimeoutError('No END after stop')
             elif state in ('configuring', 'starting') and now - phase['request_wall'] > 10:
@@ -91,7 +93,8 @@ def main(argv=None):
             check_control()
             data = source.read_chunk()
             if data:
-                last_data = time.monotonic();buffer.extend(data)
+                last_data = time.monotonic()
+                buffer.extend(data)
         value = bytes(buffer[:count]);del buffer[:count]
         if capture_file:
             capture_file.write(value)
@@ -100,7 +103,8 @@ def main(argv=None):
     try:
         Image.init()
         source = FtdiFifo(serial=args.serial, library=d2xx_library(args.library), synchronous=True)
-        command(b'l');command(b'S')
+        command(b'l')
+        command(b'S')
         records = BlockRecords(exact)
         while len(phases) < len(strengths):
             kind, value = records.next()
@@ -128,9 +132,11 @@ def main(argv=None):
                     phase = dict(state='configuring', strength=strength, directory=str(directory.resolve()),
                                  request_wall=now, frames=[], starts=0, ends=0, wire_begin=records.wire_bytes)
                     capture_file = (directory / 'usb_capture.bin').open('wb')
-                    command(str(args.quality).encode('ascii'));command(denoise_command(strength))
+                    command(str(args.quality).encode('ascii'))
+                    command(denoise_command(strength))
                 elif phase and phase['state'] == 'configuring' and ready and value['denoise_requested'] == phase['strength']:
-                    command(b'C');phase.update(state='starting', request_wall=now)
+                    command(b'C')
+                    phase.update(state='starting', request_wall=now)
             elif kind == 'start':
                 if phase is None:
                     continue  # Drain a retained RUN session after the initial S.
@@ -144,7 +150,8 @@ def main(argv=None):
                 assert frame.jpeg.startswith(b'\xff\xd8'), 'Expected independent JPEG'
                 assert next_id is None or frame.frame_id == next_id, 'Frame ID gap'
                 assert previous_tick is None or frame.timestamp > previous_tick, 'Timestamp order'
-                next_id = (frame.frame_id + 1) & 0xffffffff;previous_tick = frame.timestamp
+                next_id = (frame.frame_id + 1) & 0xffffffff
+                previous_tick = frame.timestamp
                 if phase is None:
                     continue
                 assert phase['state'] in ('running', 'stopping'), 'Frame before START'
@@ -160,12 +167,14 @@ def main(argv=None):
                                             bytes=frame.length, strength=phase['strength'], status=frame.status))
             elif kind == 'end':
                 if phase is None:
-                    waiting_since = now;continue
+                    waiting_since = now
+                    continue
                 assert phase['state'] == 'stopping' and phase['frames'], 'Premature/empty END'
                 phase['ends'] += 1
                 while pending:
                     pending.popleft().result()
-                capture_file.close();capture_file = None
+                capture_file.close()
+                capture_file = None
                 frames = phase['frames']
                 deltas = [b['timestamp'] - a['timestamp'] for a, b in zip(frames, frames[1:])]
                 assert deltas and max(deltas) < 3_400_000, 'Frame interval exceeded 34 ms'
@@ -183,7 +192,8 @@ def main(argv=None):
                 (directory / 'frames.json').write_text(json.dumps(frames, indent=2) + '\n', encoding='utf-8')
                 phases.append(summary)
                 print(f"Denoise {summary['strength']:3d}: {len(frames)} frames, {fps:.4f} fps, JPEG {summary['jpeg_mb_per_second']:.3f} MB/s", flush=True)
-                phase = None;waiting_since = now
+                phase = None
+                waiting_since = now
             for history in (records.rates, records.timings, records.links, records.camera_status):
                 if len(history) > 2:
                     del history[:-2]
@@ -195,7 +205,8 @@ def main(argv=None):
             capture_file.close()
         if source:
             try:
-                command(b'l');command(b'S')
+                command(b'l')
+                command(b'S')
             finally:
                 source.close()
     report = dict(passed=error is None, error=error, strengths=strengths, seconds_per_strength=args.seconds,
