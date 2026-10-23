@@ -51,3 +51,7 @@ venv/
 !.env.example
 *.pem
 *.key
+
+# Local editor/tooling artifacts
+.vscode/
+uv.lock

@@ -22,7 +22,6 @@ rtl/core/entropy/huffman_encoder.v
 rtl/core/entropy/symbol_encoder.v
 rtl/core/entropy/zigzag_buffer.v
 rtl/core/format/jpeg_formatter.v
-rtl/core/frontend/raster_to_block8x8.v
 rtl/core/frontend/raster_to_mcu422.v
 rtl/core/jpeg_encoder.v
 rtl/core/quant/quantize.v
