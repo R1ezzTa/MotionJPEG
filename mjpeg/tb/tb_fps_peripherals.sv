@@ -46,7 +46,13 @@ module tb_fps_peripherals;
             repeat(7000) begin
                 @(negedge clk);
                 if(sel!=6'b111111) begin
-                    if(!$onehot(~sel)) $fatal(1,"Digit selection collision");
+                // Count selected digits explicitly: ~sel widens to 32 bits in
+                // system-function argument context (iverilog), breaking
+                // $onehot(~sel) and v&(v-1) style one-hot checks.
+                j = 0;
+                for (i = 0; i < 6; i = i + 1)
+                    if (!sel[i]) j = j + 1;
+                if (j != 1) $fatal(1, "Digit selection collision");
                     for(j=0;j<6;j=j+1) if(!sel[j]) begin
                         seen[j]=1;
                         if(segments!==expected_codes[expected[j*4+:4]]) $fatal(1,"Digit order/segment polarity");

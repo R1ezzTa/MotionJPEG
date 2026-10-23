@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 module tb_board_test_async_fifo;
-    reg wclk=0,rclk=0,running=0,rst_n=0,send=0,drain=0;
+    reg wclk=0,rclk=0,running=0,rst_n=1,send=0,drain=0; // 1->0 at t0: a real negedge for simulators without init-value edges
     always #5 wclk=~wclk; // Current board encoding domain: 100MHz.
     always #8.333 if(running) rclk=~rclk;else rclk=0;
     wire ready,valid;
@@ -45,7 +45,7 @@ module tb_board_test_async_fifo;
         end
     end
     initial begin
-        #37;rst_n=1;send=1;
+        rst_n=0;#37;rst_n=1;send=1;
         repeat(100) @(negedge wclk);
         if(ready || produced!=16 || guard_rst_n) $fatal(1,"FIFO fills and guard holds reset without USB clock");
         // Reset a full queue with the reader clock absent: stale bytes vanish.
