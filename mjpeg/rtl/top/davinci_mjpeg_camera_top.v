@@ -4,18 +4,11 @@ module davinci_mjpeg_camera_top #(
     parameter CLOCK_HZ = 100000000,
     USB_CLOCK_HZ = 60000000,
     USE_MMCM = 1,
-    REAL_CAMERA = 1,
     CAMERA_PROFILE = 5,
     DENOISE_ENABLE = 1,
     PREPROCESS_ENABLE = 1,
     CAMERA_WIDTH = (CAMERA_PROFILE >= 4) ? 1920 : (CAMERA_PROFILE >= 2) ? 1280 : 640,
-    CAMERA_HEIGHT = (CAMERA_PROFILE >= 4) ? 1080 : (CAMERA_PROFILE >= 2) ? 720 : 480,
-    VGA_WIDTH = 640,
-    VGA_HEIGHT = 480,
-    HD_WIDTH = 1280,
-    HD_HEIGHT = 720,
-    FHD_WIDTH = 1920,
-    FHD_HEIGHT = 1080
+    CAMERA_HEIGHT = (CAMERA_PROFILE >= 4) ? 1080 : (CAMERA_PROFILE >= 2) ? 720 : 480
 ) (
     input sys_clk,
     sys_rst_n,
@@ -182,7 +175,7 @@ module davinci_mjpeg_camera_top #(
     wire [7:0] binary_threshold_requested, edge_threshold_requested;
     wire [95:0] preprocess_status;
     generate
-        if (REAL_CAMERA) begin : real_camera
+        begin : real_camera
             wire init_done, init_error, capture_active;
             wire light_requested, light_on, light_error, light_busy;
             camera_board_controls #(
@@ -468,47 +461,14 @@ module davinci_mjpeg_camera_top #(
                 init_error,
                 init_done
             };
-        end else begin : simulated_camera
-            assign camera_pixel = 0;
-            assign camera_valid = 0;
-            assign camera_sof = 0;
-            assign camera_eol = 0;
-            assign camera_eof = 0;
-            assign camera_abort = 0;
-            assign camera_ready = 1;
-            assign camera_status = 0;
-            assign camera_admission_enabled = 0;
-            assign cam_rst_n = 0;
-            assign cam_pwdn = 1;
-            assign cam_scl = 1'bz;
-            assign cam_sda = 1'bz;
-            assign led = engine_led;
-            assign run_requested = 0;
-            assign quality_requested = 2;
-            assign denoise_strength_requested = 0;
-            assign preprocess_mode_requested = 0;
-            assign binary_threshold_requested = 128;
-            assign edge_threshold_requested = 32;
-            assign preprocess_status = 0;
-            assign camera_queue_pressure = 0;
-            assign board_light_start = 0;
-            assign board_light_cancel = 0;
         end
     endgenerate
     mjpeg_camera_engine #(
         .CLOCK_HZ(CLOCK_HZ),
-        .SMALL_END(1),
-        .REAL_CAMERA(REAL_CAMERA),
-        .BOARD_CONTROL(REAL_CAMERA),
-        .PREPROCESS_ENABLE(PREPROCESS_ENABLE && REAL_CAMERA),
+        .BOARD_CONTROL(1),
+        .PREPROCESS_ENABLE(PREPROCESS_ENABLE),
         .CAMERA_WIDTH(CAMERA_WIDTH),
-        .CAMERA_HEIGHT(CAMERA_HEIGHT),
-        .VGA_WIDTH(VGA_WIDTH),
-        .VGA_HEIGHT(VGA_HEIGHT),
-        .HD_WIDTH(HD_WIDTH),
-        .HD_HEIGHT(HD_HEIGHT),
-        .FHD_WIDTH(FHD_WIDTH),
-        .FHD_HEIGHT(FHD_HEIGHT)
+        .CAMERA_HEIGHT(CAMERA_HEIGHT)
     ) engine (
         .sys_clk(core_clk),
         .sys_rst_n(run_rst_n),

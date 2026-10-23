@@ -10,7 +10,7 @@ foreach line $lines {
     if {$line=="" || [string match {#*} $line]} {continue}
     lappend wanted [file normalize [file join $project_root $line]]
 }
-foreach name {pixels.mem quant.mem camera_quant.mem} {
+foreach name {camera_quant.mem} {
     lappend wanted [file normalize [file join $project_root data board_test $name]]
 }
 foreach file [get_files -of_objects [get_filesets sources_1]] {
@@ -28,7 +28,7 @@ set_property USED_IN_SYNTHESIS false [get_files $cdc]
 set_property INCLUDE_DIRS [list $project_root [file join $project_root rtl generated]] [get_filesets sources_1]
 set_property TOP_AUTO_SET false [get_filesets sources_1]
 set_property TOP davinci_mjpeg_camera_top [get_filesets sources_1]
-set_property GENERIC {REAL_CAMERA=1 CAMERA_PROFILE=5 DENOISE_ENABLE=1 PREPROCESS_ENABLE=1} [get_filesets sources_1]
+set_property GENERIC {CAMERA_PROFILE=5 DENOISE_ENABLE=1 PREPROCESS_ENABLE=1} [get_filesets sources_1]
 # Preprocessing benches generate vectors through their explicit simulation
 # scripts; preserve the existing integrated-camera GUI simulation entry.
 foreach file [get_files -of_objects [get_filesets sim_1]] {remove_files $file}

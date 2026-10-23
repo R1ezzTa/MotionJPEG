@@ -1,5 +1,6 @@
 """Strict decoder for the board's 1 KB MBLK transport and link counters."""
 import struct
+import time
 from mjpeg_receiver import Frame
 
 class BlockRecords:
@@ -139,3 +140,43 @@ class BlockRecords:
         if self.links and link['window']<=self.links[-1]['window']: raise ValueError('Link window sequence')
         self.links.append(link)
         return 'link',link
+
+
+class CaptureReader:
+    """Byte-source adapter: pulls chunks (live) or reads (replay) into records."""
+
+    def __init__(self, source, capture=None, replay=False):
+        self.source = source
+        self.capture = capture
+        self.replay = replay
+        self.block = b''
+        self.pos = 0
+        self.offset = 0
+
+    def exact(self, n):
+        if self.pos + n > len(self.block):
+            pending = self.block[self.pos:]
+            deadline = time.monotonic() + 30
+            while len(pending) < n:
+                data = self.source.read(65536) if self.replay else self.source.read_chunk()
+                if not data:
+                    if self.replay:
+                        raise EOFError('Capture ended at record boundary' if not pending else 'Partial record')
+                    if time.monotonic() > deadline:
+                        raise TimeoutError('USB data timeout')
+                    continue
+                if self.capture:
+                    self.capture.write(data)
+                pending += data
+            self.block = pending
+            self.pos = 0
+        result = self.block[self.pos:self.pos+n]
+        self.pos += n
+        self.offset += n
+        return result
+
+    def rewind(self, n):
+        if not 0 <= n <= self.pos:
+            raise ValueError('Invalid buffered capture rewind')
+        self.pos -= n
+        self.offset -= n

@@ -45,8 +45,8 @@ python mjpeg/host/camera_receiver.py --ftdi --duration 60 --require-fps 30 --req
 
 - [mjpeg/rtl](mjpeg/README.md)：摄像头、JPEG 编码、控制及同步 USB；实际源集合由 `scripts/camera_sources.txt` 定义。
 - [mjpeg/host](mjpeg/host/README.md)：查看器、严格接收器、预处理与降噪验收工具。
-- [mjpeg/tb](mjpeg/tb/README.md)：当前功能回归、独立像素参考、JPEG 金样及同步 USB 仿真。
+- [mjpeg/tb](mjpeg/tb/README.md)：当前功能回归、独立像素参考与跨时钟 FIFO 仿真。
 - [mjpeg/docs](mjpeg/docs/无DDR3图像链路.md)：当前架构、协议和验证说明。
 - `mjpeg/reports/camera`：最终功能基线的构建与验收证据。
 
-旧 DDR3、同坐标块复用、自适应阈值、首版 RGB 降噪、UART/异步 USB 顶层及过程报告已退出工作树，历史可通过 Git 查询。模拟图案保留用于独立金样回归，综合时选择真实摄像头。Vivado 生成物、原始抓包和临时文件由 `.gitignore` 排除。
+旧 DDR3、同坐标块复用、自适应阈值、首版 RGB 降噪、UART/异步 USB 顶层及过程报告已退出工作树，历史可通过 Git 查询。模拟图案源与板级合成数据流已随本仓库演进移除，历史可通过 Git 查询。Vivado 生成物、原始抓包和临时文件由 `.gitignore` 排除。

@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'host'))
 from board_test_receiver import BoardRecords
 from mjpeg_receiver import Receiver
-from progressive_test import CaptureReader
+from block_records import CaptureReader
 
 def telemetry(window,rate,total):
     values=[0x31535046,window,rate,rate,0,total]

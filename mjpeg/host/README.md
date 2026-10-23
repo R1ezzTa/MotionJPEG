@@ -29,4 +29,4 @@ python mjpeg/host/preprocess_sweep.py --seconds 3 --output mjpeg/reports/camera/
 
 验收检查完整解码、尺寸、帧号、时间戳、FIFO 溢出、编码失败和状态一致性。`--target-fps`只用于码率换算，`--require-fps`指定验收帧率，均不改变传感器寄存器。输出保存 `summary.json`、帧与状态记录、样图及可回放的原始 MBLK 抓包。补光可用 `camera_receiver.py --light-pulse`检查限时开关读回。
 
-当前解包只处理标准 JPEG 和最终 MBLK 协议。模拟金样回归辅助程序为 `board_test_receiver.py`、`progressive_test.py`、`verify_core_throughput.py`；用于 `REAL_CAMERA=0`的仿真，不对应实际摄像头验收。
+当前解包只处理标准 JPEG 和最终 MBLK 协议。抓包回放辅助程序为 `board_test_receiver.py`。
