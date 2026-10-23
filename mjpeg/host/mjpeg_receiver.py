@@ -34,11 +34,11 @@ class Receiver:
 
     def packet_words(self, words):
         if self.packet or not 2 <= len(words) <= 7:
-            raise ValueError('Invalid complete packet boundary')
+            raise ValueError("Invalid complete packet boundary")
         if not words[-1][2] or any(last for _, _, last in words[:-1]):
-            raise ValueError('Invalid packet last flags')
+            raise ValueError("Invalid packet last flags")
         if any(not 0 <= data < 2**32 or not 1 <= nbytes <= 4 for data, nbytes, _ in words):
-            raise ValueError('Invalid bus word')
+            raise ValueError("Invalid bus word")
         return self._decode_packet([(data, nbytes) for data, nbytes, _ in words])
 
     def word(self, data, nbytes, packet_last):
@@ -85,7 +85,7 @@ class Receiver:
             if count == 16:
                 if any(n != 4 for _, n in words[2:]):
                     raise ValueError("Partial payload word")
-                frame[0].extend(struct.pack('<4I', *(data for data, _ in words[2:])))
+                frame[0].extend(struct.pack("<4I", *(data for data, _ in words[2:])))
             else:
                 remaining = count
                 for data, nbytes in words[2:]:

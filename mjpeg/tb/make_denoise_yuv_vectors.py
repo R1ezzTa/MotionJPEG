@@ -5,9 +5,9 @@ from pathlib import Path
 from denoise_yuv_reference import denoise_yuv
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--width', type=int, default=16)
-parser.add_argument('--height', type=int, default=8)
-parser.add_argument('--output', type=Path, required=True)
+parser.add_argument("--width", type=int, default=16)
+parser.add_argument("--height", type=int, default=8)
+parser.add_argument("--output", type=Path, required=True)
 args = parser.parse_args()
 args.output.mkdir(parents=True, exist_ok=True)
 rng = random.Random(6028)
@@ -35,11 +35,14 @@ for frame, strength in enumerate(strengths):
             row.append(pixel)
         image.append(row)
     clean = denoise_yuv(image, strength)
-    source.extend(image);expected.extend(clean)
+    source.extend(image)
+    expected.extend(clean)
 pack = lambda pixel: pixel[0] << 16 | pixel[1] << 8 | pixel[2]
-for name, rows in (('rgb', source), ('golden', expected)):
-    (args.output / (name + '.mem')).write_text(''.join(f'{pack(pixel):06x}\n' for row in rows for pixel in row))
-(args.output / 'strength.mem').write_text(''.join(f'{value:02x}\n' for value in strengths))
+for name, rows in (("rgb", source), ("golden", expected)):
+    (args.output / (name + ".mem")).write_text(
+        "".join(f"{pack(pixel):06x}\n" for row in rows for pixel in row)
+    )
+(args.output / "strength.mem").write_text("".join(f"{value:02x}\n" for value in strengths))
 
 flat = [[tuple(128 + rng.randint(-12, 12) for _ in range(3)) for x in range(32)] for y in range(16)]
 filtered = denoise_yuv(flat, 32)
@@ -61,10 +64,23 @@ for y in range(2, 5):
         blob[y][x] = (120, 168, 88)
 blob_result = denoise_yuv(blob, 32)[3][3]
 assert abs(blob_result[1] - 128) < 40 * 0.6 and abs(blob_result[2] - 128) < 40 * 0.6
-(args.output / 'reference_summary.json').write_text(json.dumps(dict(
-    frames=len(strengths), width=args.width, height=args.height, strengths=strengths,
-    zero_exact=True, constant_exact=True, high_contrast_step_exact_at_16=True,
-    isolated_outlier_removed_at_32=True, correlated_colour_patch_center=blob_result,
-    known_flat_noise_input_mse=[mse(flat, c) for c in range(3)],
-    known_flat_noise_output_mse=[mse(filtered, c) for c in range(3)],
-    note='Known artificial signals, not camera noise measurements.'), indent=2) + '\n')
+(args.output / "reference_summary.json").write_text(
+    json.dumps(
+        dict(
+            frames=len(strengths),
+            width=args.width,
+            height=args.height,
+            strengths=strengths,
+            zero_exact=True,
+            constant_exact=True,
+            high_contrast_step_exact_at_16=True,
+            isolated_outlier_removed_at_32=True,
+            correlated_colour_patch_center=blob_result,
+            known_flat_noise_input_mse=[mse(flat, c) for c in range(3)],
+            known_flat_noise_output_mse=[mse(filtered, c) for c in range(3)],
+            note="Known artificial signals, not camera noise measurements.",
+        ),
+        indent=2,
+    )
+    + "\n"
+)

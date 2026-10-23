@@ -14,11 +14,22 @@ def denoise_yuv(image, strength):
     for y in range(height):
         row = []
         for x in range(width):
-            values = [image[reflected(y + dy, height)][reflected(x + dx, width)]
-                      for dy in (-1, 0, 1) for dx in (-1, 0, 1)]
-            row.append(tuple((image[y][x][channel] * (32 - alpha) +
-                              sorted(pixel[channel] for pixel in values)[4] * alpha + 16) // 32
-                             for channel in range(3)))
+            values = [
+                image[reflected(y + dy, height)][reflected(x + dx, width)]
+                for dy in (-1, 0, 1)
+                for dx in (-1, 0, 1)
+            ]
+            row.append(
+                tuple(
+                    (
+                        image[y][x][channel] * (32 - alpha)
+                        + sorted(pixel[channel] for pixel in values)[4] * alpha
+                        + 16
+                    )
+                    // 32
+                    for channel in range(3)
+                )
+            )
         median.append(row)
     weights = ((1, 2, 1), (2, 4, 2), (1, 2, 1))
     for _ in range(2):

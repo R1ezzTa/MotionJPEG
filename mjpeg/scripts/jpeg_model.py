@@ -184,9 +184,7 @@ BITS = [
 ]
 VALS = [
     list(range(12)),
-    list(
-        bytes.fromhex(
-            """
+    list(bytes.fromhex("""
 01 02 03 00 04 11 05 12 21 31 41 06 13 51 61 07
 22 71 14 32 81 91 A1 08 23 42 B1 C1 15 52 D1 F0
 24 33 62 72 82 09 0A 16 17 18 19 1A 25 26 27 28
@@ -197,13 +195,9 @@ VALS = [
 A8 A9 AA B2 B3 B4 B5 B6 B7 B8 B9 BA C2 C3 C4 C5
 C6 C7 C8 C9 CA D2 D3 D4 D5 D6 D7 D8 D9 DA E1 E2
 E3 E4 E5 E6 E7 E8 E9 EA F1 F2 F3 F4 F5 F6 F7 F8
-F9 FA"""
-        )
-    ),
+F9 FA""")),
     list(range(12)),
-    list(
-        bytes.fromhex(
-            """
+    list(bytes.fromhex("""
 00 01 02 03 11 04 05 21 31 06 12 41 51 07 61 71
 13 22 32 81 08 14 42 91 A1 B1 C1 09 23 33 52 F0
 15 62 72 D1 0A 16 24 34 E1 25 F1 17 18 19 1A 26
@@ -214,9 +208,7 @@ F9 FA"""
 A6 A7 A8 A9 AA B2 B3 B4 B5 B6 B7 B8 B9 BA C2 C3
 C4 C5 C6 C7 C8 C9 CA D2 D3 D4 D5 D6 D7 D8 D9 DA
 E2 E3 E4 E5 E6 E7 E8 E9 EA F2 F3 F4 F5 F6 F7 F8
-F9 FA"""
-        )
-    ),
+F9 FA""")),
 ]
 
 
