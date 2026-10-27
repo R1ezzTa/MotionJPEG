@@ -63,49 +63,39 @@ module ov5640_dvp_capture #(
     wire admit_first = first_href && enable_sync[1] && !ack_sync[1] && !fault_req;
     // RAW8 must enqueue byte zero on the admission edge itself. In YUV mode
     // that same edge latches the first byte, and the next edge emits pixel zero.
-    wire pixel_cycle=(in_frame || admit_first) && !cam_vsync && cam_href && (RAW8 || byte_phase) && x<WIDTH;
+    wire pixel_cycle = (in_frame || admit_first) && !cam_vsync && cam_href && (RAW8 || byte_phase) && x < WIDTH;
     wire overflow_now = pixel_cycle && !fifo_ready;
-    wire format_now=in_frame && (vsync_rise ||
-                    (href_fall && ((!RAW8 && byte_phase) || x!=WIDTH)) ||
-                    (!cam_vsync && cam_href && x>=WIDTH));
+    wire format_now = in_frame &&
+        (vsync_rise || (href_fall && ((!RAW8 && byte_phase) || x != WIDTH)) || (!cam_vsync && cam_href && x >= WIDTH));
     wire fault_now = !fault_req && (overflow_now || format_now);
-    wire [15:0] pixel=RAW8?{8'h80,cam_data}:(YUV_BYTE_ORDER==1)?{first_byte,cam_data}:{cam_data,first_byte};
-    wire [18:0] fifo_input = {
-        y == HEIGHT - 1 && x == WIDTH - 1, x == WIDTH - 1, y == 0 && x == 0, pixel
-    };
+    wire [15:0]
+        pixel = RAW8 ? {8'h80, cam_data} : (YUV_BYTE_ORDER == 1) ? {first_byte, cam_data} : {cam_data, first_byte};
+    wire [18:0] fifo_input = {y == HEIGHT - 1 && x == WIDTH - 1, x == WIDTH - 1, y == 0 && x == 0, pixel};
     wire [18:0] fifo_output;
     camera_pixel_fifo #(
-        .WIDTH(19),
+        .WIDTH       (19),
         .ADDRESS_BITS(FIFO_ADDRESS_BITS)
     ) pixel_fifo (
-        .wclk(sample_clk),
-        .rclk(core_clk),
-        .reset_n(reset_n),
-        .flush(fault_req),
+        .wclk           (sample_clk),
+        .rclk           (core_clk),
+        .reset_n        (reset_n),
+        .flush          (fault_req),
         .wcommon_reset_n(pclk_reset_n),
-        .rflush_active(rflush_active),
-        .s_data(fifo_input),
-        .s_valid(pixel_cycle && !fault_now && !fault_req),
-        .s_ready(fifo_ready),
-        .m_data(fifo_output),
-        .m_valid(s_valid),
-        .m_ready(s_ready),
-        .queue_pressure(queue_pressure)
+        .rflush_active  (rflush_active),
+        .s_data         (fifo_input),
+        .s_valid        (pixel_cycle && !fault_now && !fault_req),
+        .s_ready        (fifo_ready),
+        .m_data         (fifo_output),
+        .m_valid        (s_valid),
+        .m_ready        (s_ready),
+        .queue_pressure (queue_pressure)
     );
     assign {s_eof, s_eol, s_sof, s_data} = fifo_output;
 
     // All diagnostics use source-registered Gray counters. The core sees a
     // coherent delayed sample even when the two clocks are unrelated.
-    reg [31:0]
-        received_bin, dropped_bin, overflow_bin, frames_bin, bytes_bin, pixels_bin, ticks_bin;
-    reg [31:0]
-        received_gray,
-        dropped_gray,
-        overflow_gray,
-        frames_gray,
-        bytes_gray,
-        pixels_gray,
-        ticks_gray;
+    reg [31:0] received_bin, dropped_bin, overflow_bin, frames_bin, bytes_bin, pixels_bin, ticks_bin;
+    reg [31:0] received_gray, dropped_gray, overflow_gray, frames_gray, bytes_gray, pixels_gray, ticks_gray;
     function [31:0] gray_encode;
         input [31:0] value;
         begin
@@ -155,11 +145,11 @@ module ov5640_dvp_capture #(
             ticks_bin <= ticks_bin + 1'b1;
             ticks_gray <= gray_encode(ticks_bin + 1'b1);
             if (cam_href && !cam_vsync) begin
-                bytes_bin  <= bytes_bin + 1'b1;
+                bytes_bin <= bytes_bin + 1'b1;
                 bytes_gray <= gray_encode(bytes_bin + 1'b1);
             end
             if (vsync_fall) begin
-                frames_bin  <= frames_bin + 1'b1;
+                frames_bin <= frames_bin + 1'b1;
                 frames_gray <= gray_encode(frames_bin + 1'b1);
             end
             if (fault_req) begin
@@ -179,7 +169,7 @@ module ov5640_dvp_capture #(
                 dropped_bin <= dropped_bin + 1'b1;
                 dropped_gray <= gray_encode(dropped_bin + 1'b1);
                 if (overflow_now) begin
-                    overflow_bin  <= overflow_bin + 1'b1;
+                    overflow_bin <= overflow_bin + 1'b1;
                     overflow_gray <= gray_encode(overflow_bin + 1'b1);
                 end
             end else if (vsync_fall) begin
@@ -189,14 +179,14 @@ module ov5640_dvp_capture #(
                 admission_pending <= ADMIT_AT_HREF;
                 in_frame <= !ADMIT_AT_HREF && enable_sync[1] && !ack_sync[1];
                 if (!ADMIT_AT_HREF && (!enable_sync[1] || ack_sync[1])) begin
-                    dropped_bin  <= dropped_bin + 1'b1;
+                    dropped_bin <= dropped_bin + 1'b1;
                     dropped_gray <= gray_encode(dropped_bin + 1'b1);
                 end
             end else if (first_href) begin
                 admission_pending <= 0;
                 in_frame <= admit_first;
                 if (!admit_first) begin
-                    dropped_bin  <= dropped_bin + 1'b1;
+                    dropped_bin <= dropped_bin + 1'b1;
                     dropped_gray <= gray_encode(dropped_bin + 1'b1);
                 end else if (RAW8) begin
                     x <= 1;

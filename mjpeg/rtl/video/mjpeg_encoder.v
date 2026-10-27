@@ -8,42 +8,31 @@ module mjpeg_encoder #(
 ) (
     input clk,
     input rst_n,
-    input [CHANNELS-1:0] enable,
-    cfg_gray,
-    input [CHANNELS*16-1:0] cfg_width,
-    cfg_height,
+    input [CHANNELS-1:0] enable, cfg_gray,
+    input [CHANNELS*16-1:0] cfg_width, cfg_height,
     input [CHANNELS-1:0] cfg_q_valid,
     output [CHANNELS-1:0] cfg_q_ready,
     input [CHANNELS*7-1:0] cfg_q_addr,
     input [CHANNELS*8-1:0] cfg_q_value,
     input [CHANNELS*21-1:0] cfg_q_recip,
-    output [CHANNELS-1:0] tables_ready,
-    config_error,
-    busy,
+    output [CHANNELS-1:0] tables_ready, config_error, busy,
     input [CHANNELS*16-1:0] s_data,
     input [CHANNELS-1:0] s_valid,
     output [CHANNELS-1:0] s_ready,
-    input [CHANNELS-1:0] s_sof,
-    s_eol,
-    s_eof,
-    s_abort,
+    input [CHANNELS-1:0] s_sof, s_eol, s_eof, s_abort,
     input [CHANNELS*64-1:0] s_timestamp,
     output [127:0] m_data,
     output [4:0] m_bytes,
-    output m_first,
-    m_last,
-    m_valid,
+    output m_first, m_last, m_valid,
     input m_ready,
     output [1:0] m_channel,
     output [31:0] m_frame_id,
     output desc_valid,
     input desc_ready,
     output [1:0] desc_channel,
-    output [31:0] desc_frame_id,
-    desc_length,
+    output [31:0] desc_frame_id, desc_length,
     output [63:0] desc_timestamp,
-    output [15:0] desc_width,
-    desc_height,
+    output [15:0] desc_width, desc_height,
     output desc_gray,
     output [7:0] desc_status
 );
@@ -56,7 +45,7 @@ module mjpeg_encoder #(
     generate
         for (c = 0; c < CHANNELS; c = c + 1) begin : channels
             wire [127:0] data;
-            wire [  4:0] bytes;
+            wire [4:0] bytes;
             wire first, last;
             wire [166:0] local_payload;
             wire local_valid, local_ready;
@@ -80,11 +69,9 @@ module mjpeg_encoder #(
                 .m_ready(payload_ready[c])
             );
             assign payloads[c*167+:167] = local_payload;
-            assign descriptors[c*169+:169] = {
-                descriptor_id, timestamp, length, width, height, gray, status
-            };
+            assign descriptors[c*169+:169] = {descriptor_id, timestamp, length, width, height, gray, status};
             mjpeg_channel #(
-                .MAX_WIDTH(MAX_WIDTH),
+                .MAX_WIDTH   (MAX_WIDTH),
                 .RESTART_MCUS(RESTART_MCUS)
             ) channel (
                 .clk           (clk),
@@ -156,6 +143,6 @@ module mjpeg_encoder #(
         .m_valid(desc_valid),
         .m_ready(desc_ready)
     );
-    assign {desc_channel, desc_frame_id, desc_timestamp, desc_length, desc_width, desc_height,
-            desc_gray, desc_status} = tagged_descriptor;
+    assign {desc_channel, desc_frame_id, desc_timestamp, desc_length, desc_width, desc_height, desc_gray, desc_status} =
+        tagged_descriptor;
 endmodule

@@ -6,57 +6,50 @@ module spatial_median_yuv_3x3 #(
     parameter WIDTH = 1920,
     HEIGHT = 1080
 ) (
-    input clk,
-    rst_n,
-    abort,
+    input clk, rst_n, abort,
     input [7:0] cfg_strength,
     input [23:0] s_data,
     input s_valid,
     output s_ready,
-    input s_sof,
-    s_eol,
-    s_eof,
+    input s_sof, s_eol, s_eof,
     output [23:0] m_data,
     output reg [7:0] m_strength,
     output reg m_valid,
     input m_ready,
-    output reg m_sof,
-    m_eol,
-    m_eof,
-    m_odd
+    output reg m_sof, m_eol, m_eof, m_odd
 );
     wire [215:0] window;
-    wire [  7:0] strength;
+    wire [7:0] strength;
     wire valid, sof, eol, eof, odd;
     wire ce = !m_valid || m_ready;
     spatial_window_3x3 #(
         .WIDTH (WIDTH),
         .HEIGHT(HEIGHT)
     ) windows (
-        .clk(clk),
-        .rst_n(rst_n),
-        .abort(abort),
+        .clk         (clk),
+        .rst_n       (rst_n),
+        .abort       (abort),
         .cfg_strength(cfg_strength),
-        .s_data(s_data),
-        .s_valid(s_valid),
-        .s_ready(s_ready),
-        .s_sof(s_sof),
-        .s_eol(s_eol),
-        .s_eof(s_eof),
-        .m_window(window),
-        .m_strength(strength),
-        .m_valid(valid),
-        .m_ready(ce),
-        .m_sof(sof),
-        .m_eol(eol),
-        .m_eof(eof),
-        .m_odd(odd)
+        .s_data      (s_data),
+        .s_valid     (s_valid),
+        .s_ready     (s_ready),
+        .s_sof       (s_sof),
+        .s_eol       (s_eol),
+        .s_eof       (s_eof),
+        .m_window    (window),
+        .m_strength  (strength),
+        .m_valid     (valid),
+        .m_ready     (ce),
+        .m_sof       (sof),
+        .m_eol       (eol),
+        .m_eof       (eof),
+        .m_odd       (odd)
     );
     function [7:0] low3;
         input [7:0] a, b, c;
         reg [7:0] ab;
         begin
-            ab   = a < b ? a : b;
+            ab = a < b ? a : b;
             low3 = ab < c ? ab : c;
         end
     endfunction
@@ -126,12 +119,11 @@ module spatial_median_yuv_3x3 #(
     genvar plane;
     generate
         for (plane = 0; plane < 3; plane = plane + 1) begin : channels
-            wire [7:0] p0=window[0*24+plane*8+:8],p1=window[1*24+plane*8+:8],p2=window[2*24+plane*8+:8];
-            wire [7:0] p3=window[3*24+plane*8+:8],p4=window[4*24+plane*8+:8],p5=window[5*24+plane*8+:8];
-            wire [7:0] p6=window[6*24+plane*8+:8],p7=window[7*24+plane*8+:8],p8=window[8*24+plane*8+:8];
+            wire [7:0] p0 = window[0*24+plane*8+:8], p1 = window[1*24+plane*8+:8], p2 = window[2*24+plane*8+:8];
+            wire [7:0] p3 = window[3*24+plane*8+:8], p4 = window[4*24+plane*8+:8], p5 = window[5*24+plane*8+:8];
+            wire [7:0] p6 = window[6*24+plane*8+:8], p7 = window[7*24+plane*8+:8], p8 = window[8*24+plane*8+:8];
             reg [7:0] lo0, lo1, lo2, mid0, mid1, mid2, hi0, hi1, hi2;
-            reg [7:0]
-                low_max, mid_mid, high_min, median, original0, original1, original2, original3;
+            reg [7:0] low_max, mid_mid, high_min, median, original0, original1, original2, original3;
             reg signed [8:0] difference;
             // Keep the three small multiply-adds in DSPs to preserve scarce LUTs.
             (* use_dsp="yes" *) reg signed [15:0] weighted;
@@ -160,11 +152,7 @@ module spatial_median_yuv_3x3 #(
                     // instead of two. All three planes remain parallel, one pixel
                     // per enabled cycle. A separate difference stage bounds timing.
                     difference <= $signed({1'b0, median}) - $signed({1'b0, original2});
-                    weighted <= $signed(
-                        {3'b0, original3, 5'b10000}
-                    ) + difference * $signed(
-                        {1'b0, alpha}
-                    );
+                    weighted <= $signed({3'b0, original3, 5'b10000}) + difference * $signed({1'b0, alpha});
                     result <= weighted[12:5];
                 end
             assign m_data[plane*8+:8] = result;

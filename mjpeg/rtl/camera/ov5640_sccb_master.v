@@ -2,7 +2,7 @@
 // OV5640 16-bit-register SCCB, 7-bit address 0x3c. SDA is open drain.
 // No generated internal clock: all logic runs in clk; tick is a clock enable.
 module ov5640_sccb_master #(
-    parameter integer CLK_HZ  = 100000000,
+    parameter integer CLK_HZ = 100000000,
     parameter integer SCCB_HZ = 100000
 ) (
     input clk,
@@ -24,9 +24,9 @@ module ov5640_sccb_master #(
     reg [2:0] state;
     reg [1:0] phase;
     reg [2:0] bit_index, byte_index;
-    reg [ 7:0] shift;
+    reg [7:0] shift;
     reg [15:0] addr_latched;
-    reg [ 7:0] data_latched;
+    reg [7:0] data_latched;
     reg read_latched, receiving, sda_low;
     reg [31:0] divider;
     (* ASYNC_REG="TRUE" *) reg sda_meta, sda_sync;
@@ -84,15 +84,15 @@ module ov5640_sccb_master #(
                                 phase <= 1;
                             end
                             1: begin
-                                scl   <= 1;
+                                scl <= 1;
                                 phase <= 2;
                             end
                             2: begin
                                 sda_low <= 1;
-                                phase   <= 3;
+                                phase <= 3;
                             end
                             3: begin
-                                scl   <= 0;
+                                scl <= 0;
                                 phase <= 0;
                                 state <= BYTE;
                             end
@@ -106,7 +106,7 @@ module ov5640_sccb_master #(
                                 phase <= 1;
                             end
                             1: begin
-                                scl   <= 1;
+                                scl <= 1;
                                 phase <= 2;
                             end
                             2: begin
@@ -114,7 +114,7 @@ module ov5640_sccb_master #(
                                 phase <= 3;
                             end
                             3: begin
-                                scl   <= 0;
+                                scl <= 0;
                                 phase <= 0;
                                 if (bit_index == 0) state <= ACK;
                                 else bit_index <= bit_index - 1'b1;
@@ -129,7 +129,7 @@ module ov5640_sccb_master #(
                                 phase <= 1;
                             end  // RX sends NACK for single-byte read
                             1: begin
-                                scl   <= 1;
+                                scl <= 1;
                                 phase <= 2;
                             end
                             2: begin
@@ -140,7 +140,7 @@ module ov5640_sccb_master #(
                                 scl <= 0;
                                 phase <= 0;
                                 bit_index <= 7;
-                                if(ack_error || receiving || (!read_latched && byte_index==3)) begin
+                                if (ack_error || receiving || (!read_latched && byte_index == 3)) begin
                                     if (receiving) read_data <= shift;
                                     state <= STOP;
                                 end else begin
@@ -173,16 +173,16 @@ module ov5640_sccb_master #(
                                 phase <= 1;
                             end
                             1: begin
-                                scl   <= 1;
+                                scl <= 1;
                                 phase <= 2;
                             end
                             2: begin
                                 sda_low <= 0;
-                                phase   <= 3;
+                                phase <= 3;
                             end
                             3: begin
-                                busy  <= 0;
-                                done  <= 1;
+                                busy <= 0;
+                                done <= 1;
                                 phase <= 0;
                                 state <= IDLE;
                             end

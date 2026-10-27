@@ -16,18 +16,13 @@ module mjpeg_synth_top #(
     input [CHANNELS*16-1:0] s_data,
     input [CHANNELS-1:0] s_valid,
     output [CHANNELS-1:0] s_ready,
-    input [CHANNELS-1:0] s_sof,
-    s_eol,
-    s_eof,
-    s_abort,
+    input [CHANNELS-1:0] s_sof, s_eol, s_eof, s_abort,
     output [31:0] m_data,
     output [2:0] m_bytes,
     output m_valid,
     input m_ready,
     output m_packet_last,
-    output [CHANNELS-1:0] busy,
-    tables_ready,
-    config_error
+    output [CHANNELS-1:0] busy, tables_ready, config_error
 );
     reg [CHANNELS*16-1:0] widths, heights;
     reg [CHANNELS-1:0] enabled, gray;
@@ -38,8 +33,7 @@ module mjpeg_synth_top #(
     wire [CHANNELS-1:0] config_block, pixel_ready;
     assign s_ready = pixel_ready & ~config_block;
     wire channel_ok = cfg_channel < CHANNELS;
-    assign cfg_ready = channel_ok && !busy[cfg_channel] &&
-        ((cfg_cmd <= 2) || (cfg_cmd == 3 && q_ready[cfg_channel]));
+    assign cfg_ready = channel_ok && !busy[cfg_channel] && ((cfg_cmd <= 2) || (cfg_cmd == 3 && q_ready[cfg_channel]));
     reg [63:0] clock_ticks;
     wire [CHANNELS*64-1:0] timestamps;
     always @(posedge clk or negedge rst_n) begin
@@ -56,7 +50,7 @@ module mjpeg_synth_top #(
             if (cfg_valid && cfg_ready)
                 case (cfg_cmd)
                     0: begin
-                        widths[cfg_channel*16+:16]  <= cfg_data[15:0];
+                        widths[cfg_channel*16+:16] <= cfg_data[15:0];
                         heights[cfg_channel*16+:16] <= cfg_data[31:16];
                     end
                     1: begin
@@ -64,7 +58,7 @@ module mjpeg_synth_top #(
                         gray[cfg_channel] <= cfg_data[1];
                     end
                     2: begin
-                        q_addr[cfg_channel*7+:7]  <= cfg_data[6:0];
+                        q_addr[cfg_channel*7+:7] <= cfg_data[6:0];
                         q_value[cfg_channel*8+:8] <= cfg_data[14:7];
                     end
                     default: begin
@@ -82,7 +76,7 @@ module mjpeg_synth_top #(
         end
     endgenerate
     wire [127:0] payload;
-    wire [  4:0] payload_bytes;
+    wire [4:0] payload_bytes;
     wire payload_first, payload_last, payload_valid, payload_ready;
     wire [1:0] payload_channel, descriptor_channel;
     wire [31:0] payload_id, descriptor_id, descriptor_length;
@@ -91,8 +85,8 @@ module mjpeg_synth_top #(
     wire [15:0] descriptor_width, descriptor_height;
     wire [7:0] descriptor_status;
     mjpeg_encoder #(
-        .CHANNELS(CHANNELS),
-        .MAX_WIDTH(MAX_WIDTH),
+        .CHANNELS    (CHANNELS),
+        .MAX_WIDTH   (MAX_WIDTH),
         .RESTART_MCUS(RESTART_MCUS)
     ) encoder (
         .clk           (clk),
@@ -137,7 +131,7 @@ module mjpeg_synth_top #(
         .desc_status   (descriptor_status)
     );
     wire [127:0] packed_payload;
-    wire [  4:0] packed_bytes;
+    wire [4:0] packed_bytes;
     wire packed_first, packed_last, packed_valid, packed_ready, collector_idle;
     wire [1:0] packed_channel;
     wire [31:0] packed_id;
@@ -146,26 +140,26 @@ module mjpeg_synth_top #(
     generate
         if (COALESCE) begin : aggregate
             mjpeg_payload_coalescer collector (
-                .clk(clk),
-                .rst_n(rst_n),
-                .s_data(payload),
-                .s_bytes(payload_bytes),
-                .s_first(payload_first),
-                .s_last(payload_last),
-                .s_valid(payload_valid),
-                .s_ready(payload_ready),
-                .s_channel(payload_channel),
+                .clk       (clk),
+                .rst_n     (rst_n),
+                .s_data    (payload),
+                .s_bytes   (payload_bytes),
+                .s_first   (payload_first),
+                .s_last    (payload_last),
+                .s_valid   (payload_valid),
+                .s_ready   (payload_ready),
+                .s_channel (payload_channel),
                 .s_frame_id(payload_id),
-                .flush(descriptor_valid),
-                .m_data(packed_payload),
-                .m_bytes(packed_bytes),
-                .m_first(packed_first),
-                .m_last(packed_last),
-                .m_valid(packed_valid),
-                .m_ready(packed_ready),
-                .m_channel(packed_channel),
+                .flush     (descriptor_valid),
+                .m_data    (packed_payload),
+                .m_bytes   (packed_bytes),
+                .m_first   (packed_first),
+                .m_last    (packed_last),
+                .m_valid   (packed_valid),
+                .m_ready   (packed_ready),
+                .m_channel (packed_channel),
                 .m_frame_id(packed_id),
-                .idle(collector_idle)
+                .idle      (collector_idle)
             );
         end else begin : unaggregated
             assign packed_payload = payload;

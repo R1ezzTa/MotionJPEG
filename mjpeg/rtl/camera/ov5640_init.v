@@ -41,10 +41,9 @@ module ov5640_init #(
     output reg [15:0] last_reg_addr
 );
     localparam integer ROM_COUNT = 260 + ((CAMERA_PROFILE >= 4) ? 2 : 0);
-    localparam integer END_INDEX=ROM_COUNT+10+((CAMERA_PROFILE>=1)?7:0)+((CAMERA_PROFILE>=4)?4:0);
-    localparam POWER=0, RELEASE_PWDN=1, RELEASE_RESET=2, ISSUE=3,
-               WAIT_BUS=4, DELAY=5, COMPLETE=6, FAILED=7,
-               LIGHT_ISSUE=8, LIGHT_WAIT=9, LIGHT_READ=10, LIGHT_VERIFY=11;
+    localparam integer END_INDEX = ROM_COUNT + 10 + ((CAMERA_PROFILE >= 1) ? 7 : 0) + ((CAMERA_PROFILE >= 4) ? 4 : 0);
+    localparam POWER = 0, RELEASE_PWDN = 1, RELEASE_RESET = 2, ISSUE = 3, WAIT_BUS = 4, DELAY = 5, COMPLETE = 6,
+        FAILED = 7, LIGHT_ISSUE = 8, LIGHT_WAIT = 9, LIGHT_READ = 10, LIGHT_VERIFY = 11;
     reg [3:0] state, delay_next;
     reg [31:0] wait_count, wait_limit;
     reg [2:0] retries;
@@ -57,23 +56,26 @@ module ov5640_init #(
     reg check_data;
     reg light_target;
     reg [31:0] light_elapsed;
-    assign light_busy=(state==LIGHT_ISSUE || state==LIGHT_WAIT ||
-                       state==LIGHT_READ || state==LIGHT_VERIFY);
+    assign light_busy = (state == LIGHT_ISSUE || state == LIGHT_WAIT || state == LIGHT_READ || state == LIGHT_VERIFY);
     wire [8:0] rom_index = reg_index - 9'd2;
     // 0 VGA15, 1 VGA30, 2 HD15, 3 HD30, 4 FHD15 YUYV, 5 FHD30 RAW8.
     // HD15 keeps its validated 672MHz VCO / 42MHz DVP. Faster profiles
     // use 24MHz / 4 * 100 = 600MHz VCO, 75MHz DVP and shorter blanking.
     // RAW8 fits 1080p30; full-resolution YUYV cannot fit 1080p30.
-    localparam [15:0] PROFILE_WIDTH=(CAMERA_PROFILE>=4)?1920:(CAMERA_PROFILE>=2)?1280:640;
-    localparam [15:0] PROFILE_HEIGHT=(CAMERA_PROFILE>=4)?1080:(CAMERA_PROFILE>=2)?720:480;
-    localparam [15:0] PROFILE_HTS=(CAMERA_PROFILE>=4)?2240:(CAMERA_PROFILE==3)?1690:(CAMERA_PROFILE==2)?1896:1600;
-    localparam [15:0] PROFILE_VTS=(CAMERA_PROFILE>=4)?1116:(CAMERA_PROFILE>=2)?740:1000;
-    localparam [7:0] PROFILE_SYS=(CAMERA_PROFILE==2)?8'h41:(CAMERA_PROFILE==3 || CAMERA_PROFILE==4 || CAMERA_PROFILE==0)?8'h21:8'h11;
-    localparam [7:0] PROFILE_MULT=(CAMERA_PROFILE>=3)?8'h64:(CAMERA_PROFILE==2)?8'h70:8'h3c;
+    localparam [15:0] PROFILE_WIDTH = (CAMERA_PROFILE >= 4) ? 1920 : (CAMERA_PROFILE >= 2) ? 1280 : 640;
+    localparam [15:0] PROFILE_HEIGHT = (CAMERA_PROFILE >= 4) ? 1080 : (CAMERA_PROFILE >= 2) ? 720 : 480;
+    localparam [15:0] PROFILE_HTS = (CAMERA_PROFILE >= 4) ?
+        2240 : (CAMERA_PROFILE == 3) ? 1690 : (CAMERA_PROFILE == 2) ? 1896 : 1600;
+    localparam [15:0] PROFILE_VTS = (CAMERA_PROFILE >= 4) ? 1116 : (CAMERA_PROFILE >= 2) ? 740 : 1000;
+    localparam [7:0] PROFILE_SYS = (CAMERA_PROFILE == 2) ?
+        8'h41 : (CAMERA_PROFILE == 3 || CAMERA_PROFILE == 4 || CAMERA_PROFILE == 0) ? 8'h21 : 8'h11;
+    localparam [7:0] PROFILE_MULT = (CAMERA_PROFILE >= 3) ? 8'h64 : (CAMERA_PROFILE == 2) ? 8'h70 : 8'h3c;
     localparam [7:0] PROFILE_BITS = (CAMERA_PROFILE >= 2) ? 8'h18 : 8'h1a;
     localparam [7:0] PROFILE_PDIV = (CAMERA_PROFILE >= 2 && CAMERA_PROFILE <= 4) ? 1 : 2;
-    localparam [15:0] BAND50=(CAMERA_PROFILE==5)?334:(CAMERA_PROFILE==4)?167:(CAMERA_PROFILE==3)?221:(CAMERA_PROFILE==2)?110:(CAMERA_PROFILE==1)?300:150;
-    localparam [15:0] BAND60=(CAMERA_PROFILE==5)?279:(CAMERA_PROFILE==4)?139:(CAMERA_PROFILE==3)?184:(CAMERA_PROFILE==2)?92:(CAMERA_PROFILE==1)?250:125;
+    localparam [15:0] BAND50 = (CAMERA_PROFILE == 5) ? 334 : (CAMERA_PROFILE == 4) ?
+        167 : (CAMERA_PROFILE == 3) ? 221 : (CAMERA_PROFILE == 2) ? 110 : (CAMERA_PROFILE == 1) ? 300 : 150;
+    localparam [15:0] BAND60 = (CAMERA_PROFILE == 5) ? 279 : (CAMERA_PROFILE == 4) ?
+        139 : (CAMERA_PROFILE == 3) ? 184 : (CAMERA_PROFILE == 2) ? 92 : (CAMERA_PROFILE == 1) ? 250 : 125;
     function [23:0] config_word;
         input [8:0] index;
         begin
@@ -422,7 +424,7 @@ module ov5640_init #(
             check_data = 1;
         end else if (reg_index >= ROM_COUNT + 2) begin
             read_command = 1;
-            check_data   = 1;
+            check_data = 1;
             case (reg_index - (ROM_COUNT + 2))
                 0: begin
                     command = 24'h430000;
@@ -527,19 +529,19 @@ module ov5640_init #(
         .CLK_HZ (CLK_HZ),
         .SCCB_HZ(SCCB_HZ)
     ) u_sccb (
-        .clk(clk),
-        .rst_n(rst_n),
-        .start(bus_start),
+        .clk           (clk),
+        .rst_n         (rst_n),
+        .start         (bus_start),
         .read_not_write(read_command),
-        .reg_addr(command[23:8]),
-        .write_data(command[7:0]),
-        .busy(bus_busy),
-        .done(bus_done),
-        .ack_error(bus_ack_error),
-        .read_data(bus_read_data),
-        .scl(cam_scl),
-        .sda_i(cam_sda_i),
-        .sda_drive_low(cam_sda_drive_low)
+        .reg_addr      (command[23:8]),
+        .write_data    (command[7:0]),
+        .busy          (bus_busy),
+        .done          (bus_done),
+        .ack_error     (bus_ack_error),
+        .read_data     (bus_read_data),
+        .scl           (cam_scl),
+        .sda_i         (cam_sda_i),
+        .sda_drive_low (cam_sda_drive_low)
     );
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -569,14 +571,14 @@ module ov5640_init #(
             // LIGHT_MAX_MS. S/l cancellation has priority over a new request.
             if (light_cancel) begin
                 light_requested <= 0;
-                light_elapsed   <= 0;
+                light_elapsed <= 0;
             end else if (light_start && init_done && !init_error && !light_error) begin
                 light_requested <= 1;
-                light_elapsed   <= 0;
+                light_elapsed <= 0;
             end else if (light_requested) begin
                 if (light_elapsed >= CLK_HZ / 1000 * LIGHT_MAX_MS - 1) begin
                     light_requested <= 0;
-                    light_elapsed   <= 0;
+                    light_elapsed <= 0;
                 end else light_elapsed <= light_elapsed + 1;
             end
             case (state)
@@ -635,7 +637,8 @@ module ov5640_init #(
                             reg_index <= reg_index + 1;
                             if (reg_index == 2 || reg_index == ROM_COUNT + 1) begin
                                 wait_count <= 0;
-                                wait_limit<=CLK_HZ/1000*((reg_index==2) ? SOFT_RESET_DELAY_MS : SETTLE_DELAY_MS);
+                                wait_limit <= CLK_HZ / 1000 *
+                                    ((reg_index == 2) ? SOFT_RESET_DELAY_MS : SETTLE_DELAY_MS);
                                 delay_next <= ISSUE;
                                 state <= DELAY;
                             end else state <= ISSUE;
@@ -694,14 +697,14 @@ module ov5640_init #(
                         state <= FAILED;
                     end else if (state == LIGHT_WAIT) begin
                         retries <= 0;
-                        state   <= LIGHT_READ;
+                        state <= LIGHT_READ;
                     end else begin
                         light_on <= light_target;
                         retries <= 0;
                         state <= COMPLETE;
                     end
                 end
-                FAILED:  init_error <= 1;
+                FAILED: init_error <= 1;
                 default: state <= POWER;
             endcase
         end

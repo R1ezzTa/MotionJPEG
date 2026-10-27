@@ -7,8 +7,7 @@
 // Input is the board's coalesced single-channel stream. EEPROM and the
 // portable codec packet protocol remain unchanged.
 module board_test_block_transport (
-    input clk,
-    rst_n,
+    input clk, rst_n,
     input [7:0] s_data,
     input s_valid,
     output s_ready,
@@ -44,27 +43,27 @@ module board_test_block_transport (
     reg link_pending;
     reg [223:0] link_data;
     localparam OUT_IDLE = 0, OUT_HEADER = 1, OUT_ID = 2, OUT_JPEG = 3, OUT_CONTROL = 4;
-    reg [ 2:0] out_state;
+    reg [2:0] out_state;
     reg [63:0] out_header;
     reg [31:0] out_id, out_word;
     reg [255:0] out_control;
-    reg [ 15:0] out_remaining;
-    reg [  3:0] header_remaining;
-    reg [  2:0] id_remaining;
-    reg [  1:0] byte_index;
+    reg [15:0] out_remaining;
+    reg [3:0] header_remaining;
+    reg [2:0] id_remaining;
+    reg [1:0] byte_index;
     reg out_is_jpeg, out_is_link;
     assign s_ready = !record_pending && !control_pending && !bank_ready[write_bank];
     // Keep the RAM ports outside asynchronous-reset control processes.
     // Contents need no reset: a bank becomes visible only after being filled.
-    wire ram_write=record_pending && !control_pending && !bank_ready[write_bank] &&
-        in_flag[7:4]==0 && packet_index>=2 && !packet_descriptor;
+    wire ram_write = record_pending && !control_pending && !bank_ready[write_bank] && in_flag[7:4] == 0 &&
+        packet_index >= 2 && !packet_descriptor;
     always @(posedge clk) begin
         if (ram_write) ram[{write_bank, word_count[7:0]}] <= in_word;
         ram_q <= ram[{read_bank, read_addr}];
     end
     always @* begin
         m_valid = out_state != OUT_IDLE;
-        m_data  = 0;
+        m_data = 0;
         case (out_state)
             OUT_HEADER: m_data = out_header[7:0];
             OUT_ID: m_data = out_id[7:0];
@@ -148,13 +147,13 @@ module board_test_block_transport (
                     end else if (packet_descriptor) descriptor_data[packet_index*32+:32] <= in_word;
                     else if (packet_index == 1) begin
                         chunk_id <= in_word;
-                        if (word_count == 0)
-                            chunk_flags <= {3'd0, packet_channel, 2'd0, packet_first};
+                        if (word_count == 0) chunk_flags <= {3'd0, packet_channel, 2'd0, packet_first};
                         if (packet_bytes == 0 && in_flag[3]) begin
                             bank_ready[write_bank] <= 1;
                             bank_length[write_bank] <= byte_count;
                             bank_id[write_bank] <= in_word;
-                            bank_flags[write_bank]<=(word_count==0 ? {3'd0,packet_channel,2'd0,packet_first} : chunk_flags)|8'h06;
+                            bank_flags[write_bank] <=
+                                (word_count == 0 ? {3'd0, packet_channel, 2'd0, packet_first} : chunk_flags) | 8'h06;
                             write_bank <= !write_bank;
                             word_count <= 0;
                             byte_count <= 0;
@@ -164,7 +163,7 @@ module board_test_block_transport (
                             bank_ready[write_bank] <= 1;
                             bank_length[write_bank] <= byte_count + in_flag[2:0];
                             bank_id[write_bank] <= chunk_id;
-                            bank_flags[write_bank]<=chunk_flags|((in_flag[3] && packet_last)?8'h02:8'h00);
+                            bank_flags[write_bank] <= chunk_flags | ((in_flag[3] && packet_last) ? 8'h02 : 8'h00);
                             write_bank <= !write_bank;
                             word_count <= 0;
                             byte_count <= 0;
@@ -227,13 +226,7 @@ module board_test_block_transport (
                     header_remaining <= 8;
                     out_state <= OUT_HEADER;
                 end else if (bank_ready[read_bank]) begin
-                    out_header <= {
-                        5'd0,
-                        (bank_length[read_bank] + 11'd4),
-                        bank_flags[read_bank],
-                        8'd0,
-                        32'h4b4c424d
-                    };
+                    out_header <= {5'd0, (bank_length[read_bank] + 11'd4), bank_flags[read_bank], 8'd0, 32'h4b4c424d};
                     out_id <= bank_id[read_bank];
                     out_remaining <= bank_length[read_bank];
                     out_is_jpeg <= 1;
@@ -269,9 +262,9 @@ module board_test_block_transport (
                         out_id <= {8'd0, out_id[31:8]};
                         id_remaining <= id_remaining - 1'b1;
                         if (id_remaining == 1) begin
-                            out_word   <= ram_q;
+                            out_word <= ram_q;
                             byte_index <= 0;
-                            read_addr  <= 1;
+                            read_addr <= 1;
                             if (out_remaining == 0) begin
                                 bank_ready[read_bank] <= 0;
                                 read_bank <= !read_bank;
@@ -283,7 +276,7 @@ module board_test_block_transport (
                         out_remaining <= out_remaining - 1'b1;
                         byte_index <= byte_index + 1'b1;
                         if (byte_index == 3) begin
-                            out_word  <= ram_q;
+                            out_word <= ram_q;
                             read_addr <= read_addr + 1'b1;
                         end
                         if (out_remaining == 1) begin
@@ -293,7 +286,7 @@ module board_test_block_transport (
                         end
                     end
                     OUT_CONTROL: begin
-                        out_control   <= {8'd0, out_control[255:8]};
+                        out_control <= {8'd0, out_control[255:8]};
                         out_remaining <= out_remaining - 1'b1;
                         if (out_remaining == 1) begin
                             if (!out_is_link) control_pending <= 0;

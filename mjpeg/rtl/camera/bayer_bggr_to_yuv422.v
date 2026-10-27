@@ -28,8 +28,8 @@ module bayer_bggr_to_yuv422 #(
     output reg m_eol,
     output reg m_eof
 );
-    (* ram_style="block" *)reg [7:0] even_line[0:WIDTH-1];
-    (* ram_style="block" *)reg [7:0] odd_line [0:WIDTH-1];
+    (* ram_style="block" *) reg [7:0] even_line[0:WIDTH-1];
+    (* ram_style="block" *) reg [7:0] odd_line[0:WIDTH-1];
     localparam ACTIVE = 0, FINISH = 1, BOTTOM = 2, DONE = 3;
     reg [1:0] mode;
     reg [15:0] in_x, in_y, bottom_x;
@@ -54,7 +54,7 @@ module bayer_bggr_to_yuv422 #(
     always @(posedge clk)
         if (ce && token) begin
             even_read <= even_line[token_x];
-            odd_read  <= odd_line[token_x];
+            odd_read <= odd_line[token_x];
             if (!token_y[0]) begin
                 if (real_token) even_line[token_x] <= s_data;
             end else begin
@@ -107,7 +107,8 @@ module bayer_bggr_to_yuv422 #(
     // Keep full Y/Cb/Cr until after denoising so neighbouring U and V samples
     // cannot be mixed by the alternating 4:2:2 byte layout.
     wire [23:0] filtered_data = {rgb_r, rgb_g, rgb_b};
-    wire filtered_valid=rgb_valid,filtered_sof=rgb_sof,filtered_eol=rgb_eol,filtered_eof=rgb_eof,filtered_odd=rgb_odd;
+    wire filtered_valid = rgb_valid, filtered_sof = rgb_sof, filtered_eol = rgb_eol, filtered_eof = rgb_eof,
+        filtered_odd = rgb_odd;
     reg [23:0] yuv_data;
     reg yuv_valid, yuv_sof, yuv_eol, yuv_eof, yuv_odd;
     wire yuv_ready;
@@ -258,34 +259,34 @@ module bayer_bggr_to_yuv422 #(
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             sum_valid <= 0;
-            sum_sof   <= 0;
-            sum_eol   <= 0;
-            sum_eof   <= 0;
-            sum_odd   <= 0;
-            yuv_data  <= 0;
+            sum_sof <= 0;
+            sum_eol <= 0;
+            sum_eof <= 0;
+            sum_odd <= 0;
+            yuv_data <= 0;
             yuv_valid <= 0;
-            yuv_sof   <= 0;
-            yuv_eol   <= 0;
-            yuv_eof   <= 0;
-            yuv_odd   <= 0;
+            yuv_sof <= 0;
+            yuv_eol <= 0;
+            yuv_eof <= 0;
+            yuv_odd <= 0;
         end else if (abort) begin
             sum_valid <= 0;
             yuv_valid <= 0;
-            yuv_sof   <= 0;
-            yuv_eol   <= 0;
-            yuv_eof   <= 0;
+            yuv_sof <= 0;
+            yuv_eol <= 0;
+            yuv_eof <= 0;
         end else if (color_ce) begin
             sum_valid <= filtered_valid;
-            sum_sof   <= filtered_sof;
-            sum_eol   <= filtered_eol;
-            sum_eof   <= filtered_eof;
-            sum_odd   <= filtered_odd;
+            sum_sof <= filtered_sof;
+            sum_eol <= filtered_eol;
+            sum_eof <= filtered_eof;
+            sum_odd <= filtered_odd;
             yuv_valid <= sum_valid;
-            yuv_sof   <= sum_sof;
-            yuv_eol   <= sum_eol;
-            yuv_eof   <= sum_eof;
-            yuv_odd   <= sum_odd;
-            yuv_data  <= {saturate(y_sum), saturate(cb_sum), saturate(cr_sum)};
+            yuv_sof <= sum_sof;
+            yuv_eol <= sum_eol;
+            yuv_eof <= sum_eof;
+            yuv_odd <= sum_odd;
+            yuv_data <= {saturate(y_sum), saturate(cb_sum), saturate(cr_sum)};
         end
     end
     wire [23:0] processed_data;
@@ -297,23 +298,23 @@ module bayer_bggr_to_yuv422 #(
                 .WIDTH (WIDTH),
                 .HEIGHT(HEIGHT)
             ) filter (
-                .clk(clk),
-                .rst_n(rst_n),
-                .abort(abort),
+                .clk         (clk),
+                .rst_n       (rst_n),
+                .abort       (abort),
                 .cfg_strength(cfg_denoise_strength),
-                .s_data(yuv_data),
-                .s_valid(yuv_valid),
-                .s_ready(yuv_ready),
-                .s_sof(yuv_sof),
-                .s_eol(yuv_eol),
-                .s_eof(yuv_eof),
-                .m_data(processed_data),
-                .m_valid(processed_valid),
-                .m_ready(pack_ce),
-                .m_sof(processed_sof),
-                .m_eol(processed_eol),
-                .m_eof(processed_eof),
-                .m_odd(processed_odd)
+                .s_data      (yuv_data),
+                .s_valid     (yuv_valid),
+                .s_ready     (yuv_ready),
+                .s_sof       (yuv_sof),
+                .s_eol       (yuv_eol),
+                .s_eof       (yuv_eof),
+                .m_data      (processed_data),
+                .m_valid     (processed_valid),
+                .m_ready     (pack_ce),
+                .m_sof       (processed_sof),
+                .m_eol       (processed_eol),
+                .m_eof       (processed_eof),
+                .m_odd       (processed_odd)
             );
         end else begin : unfiltered
             assign processed_data = yuv_data;
@@ -327,24 +328,22 @@ module bayer_bggr_to_yuv422 #(
     endgenerate
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            m_data  <= 0;
+            m_data <= 0;
             m_valid <= 0;
-            m_sof   <= 0;
-            m_eol   <= 0;
-            m_eof   <= 0;
+            m_sof <= 0;
+            m_eol <= 0;
+            m_eof <= 0;
         end else if (abort) begin
             m_valid <= 0;
-            m_sof   <= 0;
-            m_eol   <= 0;
-            m_eof   <= 0;
+            m_sof <= 0;
+            m_eol <= 0;
+            m_eof <= 0;
         end else if (pack_ce) begin
             m_valid <= processed_valid;
             m_sof <= processed_sof;
             m_eol <= processed_eol;
             m_eof <= processed_eof;
-            m_data <= {
-                processed_odd ? processed_data[7:0] : processed_data[15:8], processed_data[23:16]
-            };
+            m_data <= {processed_odd ? processed_data[7:0] : processed_data[15:8], processed_data[23:16]};
         end
     end
 endmodule

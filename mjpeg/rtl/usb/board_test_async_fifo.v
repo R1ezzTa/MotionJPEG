@@ -7,13 +7,11 @@ module board_test_async_fifo #(
     ADDRESS_BITS = 13,
     RAM_STYLE = "block"
 ) (
-    input wclk,
-    wrst_n,
+    input wclk, wrst_n,
     input [WIDTH-1:0] s_data,
     input s_valid,
     output s_ready,
-    input rclk,
-    rrst_n,
+    input rclk, rrst_n,
     output reg [WIDTH-1:0] m_data,
     output m_valid,
     input m_ready
@@ -28,7 +26,7 @@ module board_test_async_fifo #(
     wire write_fire = s_valid && s_ready, read_fire = m_valid && m_ready;
     wire [POINTER_BITS-1:0] wnext = wbin + write_fire, rnext = rbin + read_fire;
     wire [POINTER_BITS-1:0] wgray_next = (wnext >> 1) ^ wnext, rgray_next = (rnext >> 1) ^ rnext;
-    wire full_next=wgray_next=={~rgray_w2[POINTER_BITS-1:POINTER_BITS-2],rgray_w2[POINTER_BITS-3:0]};
+    wire full_next = wgray_next == {~rgray_w2[POINTER_BITS-1:POINTER_BITS-2], rgray_w2[POINTER_BITS-3:0]};
     wire empty_next = rgray_next == wgray_r2;
     // No reset on memory ports, so Vivado can infer a true dual-clock BRAM.
     always @(posedge wclk) if (write_fire) memory[wbin[ADDRESS_BITS-1:0]] <= s_data;

@@ -4,17 +4,11 @@
 module frame_rate_meter #(
     parameter CLOCK_HZ = 50000000
 ) (
-    input clk,
-    rst_n,
-    input input_frame,
-    success_frame,
-    failed_frame,
+    input clk, rst_n,
+    input input_frame, success_frame, failed_frame,
     output reg sample_valid,
     output reg [31:0] window_id,
-    output reg [31:0] input_fps,
-    compressed_fps,
-    failed_fps,
-    total_compressed
+    output reg [31:0] input_fps, compressed_fps, failed_fps, total_compressed
 );
     reg [31:0] ticks, input_count, success_count, failed_count, total_count;
     always @(posedge clk or negedge rst_n) begin

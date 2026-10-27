@@ -8,24 +8,19 @@ module camera_board_controls #(
     DENOISE_COMMANDS = 0,
     PREPROCESS_COMMANDS = 0
 ) (
-    input clk,
-    reset_n,
+    input clk, reset_n,
     input [3:0] key_n,
     input [7:0] rx_data,
     input rx_valid,
-    input streaming,
-    camera_ready,
+    input streaming, camera_ready,
     input [1:0] active_quality,
-    input light_on,
-    fault,
+    input light_on, fault,
     output reg run_requested,
     output reg [1:0] quality_requested,
     output reg [7:0] denoise_strength_requested,
     output reg [1:0] preprocess_mode_requested,
-    output reg [7:0] binary_threshold_requested,
-    edge_threshold_requested,
-    output reg light_start,
-    light_cancel,
+    output reg [7:0] binary_threshold_requested, edge_threshold_requested,
+    output reg light_start, light_cancel,
     output [3:0] led
 );
     (* ASYNC_REG="TRUE" *) reg [2:0] reset_pipe = 0;
@@ -42,18 +37,18 @@ module camera_board_controls #(
         if (!rst_n) begin
             key_meta <= 4'hf;
             key_sync <= 4'hf;
-            stable   <= 4'hf;
-            pressed  <= 0;
+            stable <= 4'hf;
+            pressed <= 0;
             for (i = 0; i < 4; i = i + 1) count[i] <= 0;
         end else begin
             key_meta <= key_n;
             key_sync <= key_meta;
-            pressed  <= 0;
+            pressed <= 0;
             for (i = 0; i < 4; i = i + 1) begin
                 if (key_sync[i] == stable[i]) count[i] <= 0;
                 else if (count[i] == DEBOUNCE_CYCLES - 1) begin
-                    count[i]   <= 0;
-                    stable[i]  <= key_sync[i];
+                    count[i] <= 0;
+                    stable[i] <= key_sync[i];
                     pressed[i] <= !key_sync[i];
                 end else count[i] <= count[i] + 1'b1;
             end
@@ -71,8 +66,8 @@ module camera_board_controls #(
     function hex_valid;
         input [7:0] value;
         begin
-            hex_valid=(value>="0" && value<="9") ||
-                        (value>="A" && value<="F") || (value>="a" && value<="f");
+            hex_valid = (value >= "0" && value <= "9") || (value >= "A" && value <= "F") ||
+                (value >= "a" && value <= "f");
         end
     endfunction
     function [3:0] hex_value;
@@ -83,7 +78,8 @@ module camera_board_controls #(
             else hex_value = value - "a" + 10;
         end
     endfunction
-    wire legacy_command=rx_valid && command_state==CMD_IDLE && rx_data!="N" && rx_data!="B" && rx_data!="M" && rx_data!="E";
+    wire legacy_command = rx_valid && command_state == CMD_IDLE && rx_data != "N" && rx_data != "B" && rx_data != "M" &&
+        rx_data != "E";
     // USB commands remain useful for automated acceptance. Board keys and
     // host commands update the same FPGA state; PC software owns no timer.
     always @(posedge clk or negedge rst_n) begin
@@ -101,13 +97,13 @@ module camera_board_controls #(
             command_state <= CMD_IDLE;
             command_idle_count <= 0;
         end else begin
-            light_start  <= 0;
+            light_start <= 0;
             light_cancel <= 0;
             if (rx_valid) begin
                 command_idle_count <= 0;
                 case (command_state)
                     CMD_IDLE: begin
-                        if(rx_data=="N" || rx_data=="B" || rx_data=="M" || rx_data=="E") begin
+                        if (rx_data == "N" || rx_data == "B" || rx_data == "M" || rx_data == "E") begin
                             case (rx_data)
                                 "N": command_kind <= 1;
                                 "B": command_kind <= 2;
@@ -132,24 +128,18 @@ module camera_board_controls #(
                     CMD_END: begin
                         if (rx_data == 8'h0a) begin
                             case (command_kind)
-                                1:
-                                if (DENOISE_COMMANDS)
-                                    denoise_strength_requested <= pending_threshold;
-                                2:
-                                if (PREPROCESS_COMMANDS)
-                                    binary_threshold_requested <= pending_threshold;
+                                1: if (DENOISE_COMMANDS) denoise_strength_requested <= pending_threshold;
+                                2: if (PREPROCESS_COMMANDS) binary_threshold_requested <= pending_threshold;
                                 3:
                                 if (PREPROCESS_COMMANDS && pending_threshold < 4)
                                     preprocess_mode_requested <= pending_threshold[1:0];
-                                4:
-                                if (PREPROCESS_COMMANDS)
-                                    edge_threshold_requested <= pending_threshold;
+                                4: if (PREPROCESS_COMMANDS) edge_threshold_requested <= pending_threshold;
                             endcase
                             command_state <= CMD_IDLE;
                         end else command_state <= CMD_DRAIN;
                     end
                     CMD_DRAIN: if (rx_data == 8'h0a) command_state <= CMD_IDLE;
-                    default:   command_state <= CMD_IDLE;
+                    default: command_state <= CMD_IDLE;
                 endcase
             end else if (command_state != CMD_IDLE) begin
                 if (command_idle_count == COMMAND_TIMEOUT_CYCLES - 1) begin
@@ -161,23 +151,22 @@ module camera_board_controls #(
                 run_requested <= !run_requested;
                 if (run_requested) light_cancel <= 1;
             end
-            if(legacy_command && (rx_data=="C" || rx_data=="G" || rx_data=="V" || rx_data=="H" || rx_data=="F"))
+            if (legacy_command &&
+                (rx_data == "C" || rx_data == "G" || rx_data == "V" || rx_data == "H" || rx_data == "F"))
                 run_requested <= 1;
             if (pressed[1] || (legacy_command && rx_data == "Q"))
                 quality_requested <= (quality_requested == 2) ? 0 : quality_requested + 1'b1;
-            if (legacy_command && rx_data >= "1" && rx_data <= "3")
-                quality_requested <= rx_data - "1";
-            if (camera_ready && (pressed[2] || (legacy_command && rx_data == "L")))
-                light_start <= 1;
+            if (legacy_command && rx_data >= "1" && rx_data <= "3") quality_requested <= rx_data - "1";
+            if (camera_ready && (pressed[2] || (legacy_command && rx_data == "L"))) light_start <= 1;
             if (legacy_command && rx_data == "l") begin
                 light_cancel <= 1;
-                light_start  <= 0;
+                light_start <= 0;
             end
             // STOP wins over simultaneous START, quality or light presses.
-            if(pressed[3] || (legacy_command && rx_data=="S") || (pressed[0] && run_requested)) begin
+            if (pressed[3] || (legacy_command && rx_data == "S") || (pressed[0] && run_requested)) begin
                 run_requested <= 0;
-                light_cancel  <= 1;
-                light_start   <= 0;
+                light_cancel <= 1;
+                light_start <= 0;
             end
         end
     end
@@ -189,20 +178,18 @@ module camera_board_controls #(
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             blink_count <= 0;
-            blink_fast  <= 0;
-            blink_div   <= 0;
+            blink_fast <= 0;
+            blink_div <= 0;
         end else if (blink_count == BLINK_HALF - 1) begin
             blink_count <= 0;
-            blink_fast  <= !blink_fast;
-            blink_div   <= blink_div + 1'b1;
+            blink_fast <= !blink_fast;
+            blink_div <= blink_div + 1'b1;
         end else blink_count <= blink_count + 1'b1;
     end
     // LED1 is the low bit, LED2 the high bit: 00 Q60, 01 Q75, 10 Q85.
     // While stopped, indicate the selection to use on the next start.
     wire [1:0] shown_quality = streaming ? active_quality : quality_requested;
     assign led = {
-        fault ? blink_fast : light_on,
-        shown_quality,
-        (run_requested && !camera_ready) ? blink_div[2] : streaming
+        fault ? blink_fast : light_on, shown_quality, (run_requested && !camera_ready) ? blink_div[2] : streaming
     };
 endmodule

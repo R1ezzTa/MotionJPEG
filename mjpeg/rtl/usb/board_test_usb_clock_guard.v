@@ -6,13 +6,11 @@
 module board_test_usb_clock_guard #(
     parameter TIMEOUT_CYCLES = 50000
 ) (
-    input  sys_clk,
-    usb_clk,
-    sys_rst_n,
+    input sys_clk, usb_clk, sys_rst_n,
     output run_rst_n
 );
     reg [6:0] heartbeat_counter = 0;
-    (* ASYNC_REG="TRUE" *)reg [1:0] heartbeat_sync = 0;
+    (* ASYNC_REG="TRUE" *) reg [1:0] heartbeat_sync = 0;
     reg heartbeat_seen = 0, clock_alive = 0;
     reg [31:0] silent_cycles = 0;
     (* ASYNC_REG="TRUE" *) reg [2:0] sys_reset_pipe = 0, usb_reset_pipe = 0;

@@ -7,27 +7,20 @@ module spatial_window_3x3 #(
     DATA_WIDTH = 24,
     CONFIG_WIDTH = 8
 ) (
-    input clk,
-    rst_n,
-    abort,
+    input clk, rst_n, abort,
     input [CONFIG_WIDTH-1:0] cfg_strength,
     input [DATA_WIDTH-1:0] s_data,
     input s_valid,
     output s_ready,
-    input s_sof,
-    s_eol,
-    s_eof,
+    input s_sof, s_eol, s_eof,
     output reg [9*DATA_WIDTH-1:0] m_window,
     output reg [CONFIG_WIDTH-1:0] m_strength,
     output reg m_valid,
     input m_ready,
-    output reg m_sof,
-    m_eol,
-    m_eof,
-    m_odd
+    output reg m_sof, m_eol, m_eof, m_odd
 );
-    (* ram_style="block" *)reg [DATA_WIDTH-1:0] even_line[0:WIDTH-1];
-    (* ram_style="block" *)reg [DATA_WIDTH-1:0] odd_line [0:WIDTH-1];
+    (* ram_style="block" *) reg [DATA_WIDTH-1:0] even_line[0:WIDTH-1];
+    (* ram_style="block" *) reg [DATA_WIDTH-1:0] odd_line[0:WIDTH-1];
     localparam ACTIVE = 0, FINISH = 1, BOTTOM = 2, DONE = 3;
     reg [1:0] mode;
     reg [15:0] in_x, in_y, bottom_x, a_x, a_y, center_x, center_y;
@@ -46,7 +39,7 @@ module spatial_window_3x3 #(
     always @(posedge clk)
         if (ce && token) begin
             even_read <= even_line[token_x];
-            odd_read  <= odd_line[token_x];
+            odd_read <= odd_line[token_x];
             if (!token_y[0]) begin
                 if (real_token) even_line[token_x] <= s_data;
             end else begin

@@ -4,12 +4,10 @@
 module board_test_cdc_snapshot #(
     parameter WIDTH = 224
 ) (
-    input s_clk,
-    s_rst_n,
+    input s_clk, s_rst_n,
     input s_valid,
     input [WIDTH-1:0] s_data,
-    input m_clk,
-    m_rst_n,
+    input m_clk, m_rst_n,
     output reg m_valid,
     output reg [WIDTH-1:0] m_data
 );
@@ -29,8 +27,8 @@ module board_test_cdc_snapshot #(
             ack_s2 <= ack_s1;
             if (request == ack_s2 && pending) begin
                 held_data <= pending_data;
-                request   <= !request;
-                pending   <= 0;
+                request <= !request;
+                pending <= 0;
             end
             if (s_valid) begin
                 pending_data <= s_data;

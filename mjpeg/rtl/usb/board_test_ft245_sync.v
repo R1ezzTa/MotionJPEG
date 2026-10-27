@@ -7,15 +7,10 @@
 module board_test_ft245_sync #(
     parameter CLOCK_HZ = 60000000
 ) (
-    input clk,
-    rst_n,
+    input clk, rst_n,
     inout [7:0] usb_data,
-    input usb_rxf_n,
-    usb_txe_n,
-    output usb_rd_n,
-    usb_wr_n,
-    usb_oe_n,
-    usb_siwu_n,
+    input usb_rxf_n, usb_txe_n,
+    output usb_rd_n, usb_wr_n, usb_oe_n, usb_siwu_n,
     output reg [7:0] rx_data,
     output reg rx_valid,
     input rx_ready,
@@ -27,7 +22,7 @@ module board_test_ft245_sync #(
 );
     localparam WRITE = 0, RELEASE = 1, OE_SETUP = 2, READ = 3, TURN = 4;
     reg [2:0] state;
-    (* IOB="TRUE" *)reg [7:0] held_data;
+    (* IOB="TRUE" *) reg [7:0] held_data;
     (* IOB="TRUE" *) reg wr_n = 1, rd_n = 1, oe_n = 1;
     // IOB requests one T flop per pin. Do not DONT_TOUCH these registers:
     // synthesis must remove feedback/replicate flops to pack the T outputs.
@@ -43,9 +38,9 @@ module board_test_ft245_sync #(
     endgenerate
     // Initialized/preset I/O flops remain inactive even when CLKOUT is absent.
     // A combinational reset gate here would prevent packing into I/O flops.
-    assign usb_wr_n   = wr_n;
-    assign usb_rd_n   = rd_n;
-    assign usb_oe_n   = oe_n;
+    assign usb_wr_n = wr_n;
+    assign usb_rd_n = rd_n;
+    assign usb_oe_n = oe_n;
     assign usb_siwu_n = 1;
     wire write_fire = state == WRITE && held_valid && !wr_n && !usb_txe_n;
     // Two-byte elastic front: RAM dequeue depends only on registered tail
@@ -78,11 +73,11 @@ module board_test_ft245_sync #(
             held_valid <= next_valid;
             if (replace_head) begin
                 if (tail_valid) begin
-                    held_data  <= tail_data;
+                    held_data <= tail_data;
                     tail_valid <= 0;
                 end else if (take) held_data <= tx_data;
             end else if (take) begin
-                tail_data  <= tx_data;
+                tail_data <= tx_data;
                 tail_valid <= 1;
             end
             if (rx_valid && rx_ready) rx_valid <= 0;
@@ -106,17 +101,17 @@ module board_test_ft245_sync #(
                 RELEASE: begin
                     // FPGA T outputs have settled for an entire clock before
                     // OE# permits FTDI to drive (whose minimum enable is 0ns).
-                    oe_n  <= 0;
+                    oe_n <= 0;
                     state <= OE_SETUP;
                 end
                 OE_SETUP: begin
                     // OE# has been low for a full clock before RD# goes low.
                     if (!usb_rxf_n) begin
-                        oe_n  <= 0;
-                        rd_n  <= 0;
+                        oe_n <= 0;
+                        rd_n <= 0;
                         state <= READ;
                     end else begin
-                        oe_n  <= 1;
+                        oe_n <= 1;
                         state <= TURN;
                     end
                 end
@@ -124,11 +119,11 @@ module board_test_ft245_sync #(
                     // One read per arbitration: room in rx_data was reserved
                     // before OE_SETUP. The command holds until FIFO accepts it.
                     if (!rd_n && !usb_rxf_n) begin
-                        rx_data  <= usb_data;
+                        rx_data <= usb_data;
                         rx_valid <= 1;
                     end
-                    rd_n  <= 1;
-                    oe_n  <= 1;
+                    rd_n <= 1;
+                    oe_n <= 1;
                     state <= TURN;
                 end
                 TURN: begin

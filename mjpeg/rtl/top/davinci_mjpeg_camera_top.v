@@ -10,27 +10,17 @@ module davinci_mjpeg_camera_top #(
     CAMERA_WIDTH = (CAMERA_PROFILE >= 4) ? 1920 : (CAMERA_PROFILE >= 2) ? 1280 : 640,
     CAMERA_HEIGHT = (CAMERA_PROFILE >= 4) ? 1080 : (CAMERA_PROFILE >= 2) ? 720 : 480
 ) (
-    input sys_clk,
-    sys_rst_n,
-    usb_clk_60m,
+    input sys_clk, sys_rst_n, usb_clk_60m,
     input [3:0] key,
     inout [7:0] usb_data,
-    input usb_rxf_n,
-    usb_txe_n,
-    output usb_rd_n,
-    usb_wr_n,
-    usb_oe_n,
-    usb_siwu_n,
+    input usb_rxf_n, usb_txe_n,
+    output usb_rd_n, usb_wr_n, usb_oe_n, usb_siwu_n,
     output [3:0] led,
     output [5:0] seg_sel,
     output [7:0] seg_led,
-    input cam_pclk,
-    cam_vsync,
-    cam_href,
+    input cam_pclk, cam_vsync, cam_href,
     input [7:0] cam_data,
-    output cam_rst_n,
-    cam_pwdn,
-    cam_scl,
+    output cam_rst_n, cam_pwdn, cam_scl,
     inout cam_sda,
     // Park the unused board DRAM in reset (F4, LVCMOS15).
     output ddr3_reset_n
@@ -40,10 +30,10 @@ module davinci_mjpeg_camera_top #(
     generate
         if (USE_MMCM) begin : multiplied_clock
             board_test_core_clock clock_generator (
-                .ref_clk(sys_clk),
-                .rst_n(sys_rst_n),
+                .ref_clk (sys_clk),
+                .rst_n   (sys_rst_n),
                 .core_clk(core_clk),
-                .locked(core_clock_locked)
+                .locked  (core_clock_locked)
             );
         end else begin : bypass_clock
             // Only for legacy simulation with an externally supplied core clock.
@@ -90,52 +80,52 @@ module davinci_mjpeg_camera_top #(
             board_test_async_fifo #(
                 .ADDRESS_BITS(13)
             ) tx_fifo (
-                .wclk(core_clk),
-                .wrst_n(rst_n),
-                .s_data(tx_data),
+                .wclk   (core_clk),
+                .wrst_n (rst_n),
+                .s_data (tx_data),
                 .s_valid(tx_valid),
                 .s_ready(tx_ready),
-                .rclk(usb_clk),
-                .rrst_n(usb_rst_n),
-                .m_data(usb_tx_data),
+                .rclk   (usb_clk),
+                .rrst_n (usb_rst_n),
+                .m_data (usb_tx_data),
                 .m_valid(usb_tx_valid),
                 .m_ready(usb_tx_ready)
             );
             board_test_async_fifo #(
                 .ADDRESS_BITS(8),
-                .RAM_STYLE("distributed")
+                .RAM_STYLE   ("distributed")
             ) rx_fifo (
-                .wclk(usb_clk),
-                .wrst_n(usb_rst_n),
-                .s_data(usb_rx_data),
+                .wclk   (usb_clk),
+                .wrst_n (usb_rst_n),
+                .s_data (usb_rx_data),
                 .s_valid(usb_rx_valid),
                 .s_ready(usb_rx_ready),
-                .rclk(core_clk),
-                .rrst_n(rst_n),
-                .m_data(rx_data),
+                .rclk   (core_clk),
+                .rrst_n (rst_n),
+                .m_data (rx_data),
                 .m_valid(rx_valid),
                 .m_ready(1'b1)
             );
             board_test_ft245_sync #(
                 .CLOCK_HZ(USB_CLOCK_HZ)
             ) link (
-                .clk(usb_clk),
-                .rst_n(usb_rst_n),
-                .usb_data(usb_data),
-                .usb_rxf_n(usb_rxf_n),
-                .usb_txe_n(usb_txe_n),
-                .usb_rd_n(usb_rd_n),
-                .usb_wr_n(usb_wr_n),
-                .usb_oe_n(usb_oe_n),
-                .usb_siwu_n(usb_siwu_n),
-                .rx_data(usb_rx_data),
-                .rx_valid(usb_rx_valid),
-                .rx_ready(usb_rx_ready),
-                .tx_data(usb_tx_data),
-                .tx_valid(usb_tx_valid),
-                .tx_ready(usb_tx_ready),
+                .clk        (usb_clk),
+                .rst_n      (usb_rst_n),
+                .usb_data   (usb_data),
+                .usb_rxf_n  (usb_rxf_n),
+                .usb_txe_n  (usb_txe_n),
+                .usb_rd_n   (usb_rd_n),
+                .usb_wr_n   (usb_wr_n),
+                .usb_oe_n   (usb_oe_n),
+                .usb_siwu_n (usb_siwu_n),
+                .rx_data    (usb_rx_data),
+                .rx_valid   (usb_rx_valid),
+                .rx_ready   (usb_rx_ready),
+                .tx_data    (usb_tx_data),
+                .tx_valid   (usb_tx_valid),
+                .tx_ready   (usb_tx_ready),
                 .stats_valid(usb_stats_valid),
-                .stats_data(usb_stats_data)
+                .stats_data (usb_stats_data)
             );
             board_test_cdc_snapshot stats_mailbox (
                 .s_clk  (usb_clk),
@@ -150,21 +140,22 @@ module davinci_mjpeg_camera_top #(
         end
     endgenerate
     board_test_block_transport blocks (
-        .clk(core_clk),
-        .rst_n(rst_n),
-        .s_data(engine_tx_data),
-        .s_valid(engine_tx_valid),
-        .s_ready(engine_tx_ready),
-        .m_data(tx_data),
-        .m_valid(tx_valid),
-        .m_ready(tx_ready),
+        .clk        (core_clk),
+        .rst_n      (rst_n),
+        .s_data     (engine_tx_data),
+        .s_valid    (engine_tx_valid),
+        .s_ready    (engine_tx_ready),
+        .m_data     (tx_data),
+        .m_valid    (tx_valid),
+        .m_ready    (tx_ready),
         .stats_valid(link_stats_valid),
-        .stats_data(link_stats_data)
+        .stats_data (link_stats_data)
     );
     wire [31:0] compressed_fps;
     wire fps_sample_valid;
     wire [15:0] camera_pixel;
-    wire camera_valid,camera_sof,camera_eol,camera_eof,camera_abort,camera_ready,camera_take,camera_admit,camera_queue_pressure;
+    wire camera_valid, camera_sof, camera_eol, camera_eof, camera_abort, camera_ready, camera_take, camera_admit,
+        camera_queue_pressure;
     wire [255:0] camera_status;
     wire camera_admission_enabled;
     wire [3:0] engine_led;
@@ -179,33 +170,34 @@ module davinci_mjpeg_camera_top #(
             wire init_done, init_error, capture_active;
             wire light_requested, light_on, light_error, light_busy;
             camera_board_controls #(
-                .CLOCK_HZ(CLOCK_HZ),
-                .DENOISE_COMMANDS(DENOISE_ENABLE && CAMERA_PROFILE == 5),
+                .CLOCK_HZ           (CLOCK_HZ),
+                .DENOISE_COMMANDS   (DENOISE_ENABLE && CAMERA_PROFILE == 5),
                 .PREPROCESS_COMMANDS(PREPROCESS_ENABLE)
             ) controls (
-                .clk(core_clk),
-                .reset_n(core_clock_locked),
-                .key_n(key),
-                .rx_data(rx_data),
-                .rx_valid(rx_valid),
-                .streaming(engine_led[1]),
-                .camera_ready(camera_ready),
-                .active_quality(active_quality),
-                .light_on(light_on),
-                .fault(init_error || light_error || engine_led[3]),
-                .run_requested(run_requested),
-                .quality_requested(quality_requested),
+                .clk                       (core_clk),
+                .reset_n                   (core_clock_locked),
+                .key_n                     (key),
+                .rx_data                   (rx_data),
+                .rx_valid                  (rx_valid),
+                .streaming                 (engine_led[1]),
+                .camera_ready              (camera_ready),
+                .active_quality            (active_quality),
+                .light_on                  (light_on),
+                .fault                     (init_error || light_error || engine_led[3]),
+                .run_requested             (run_requested),
+                .quality_requested         (quality_requested),
                 .denoise_strength_requested(denoise_strength_requested),
-                .preprocess_mode_requested(preprocess_mode_requested),
+                .preprocess_mode_requested (preprocess_mode_requested),
                 .binary_threshold_requested(binary_threshold_requested),
-                .edge_threshold_requested(edge_threshold_requested),
-                .light_start(board_light_start),
-                .light_cancel(board_light_cancel),
-                .led(led)
+                .edge_threshold_requested  (edge_threshold_requested),
+                .light_start               (board_light_start),
+                .light_cancel              (board_light_cancel),
+                .led                       (led)
             );
             wire [15:0] chip_id, ack_error_count, last_reg_addr;
             wire [8:0] reg_index;
-            wire [31:0] received_frames,dropped_frames,overflow_count,frame_sync_count,dvp_byte_count,captured_pixels,pclk_ticks;
+            wire [31:0] received_frames, dropped_frames, overflow_count, frame_sync_count, dvp_byte_count,
+                captured_pixels, pclk_ticks;
             wire pclk;
             wire sample_locked;
             wire capture_reset_n;
@@ -236,10 +228,10 @@ module davinci_mjpeg_camera_top #(
                 else admit <= camera_admit;
             if (CAMERA_PROFILE >= 3) begin : phase_clock
                 ov5640_sample_clock sampling_clock (
-                    .pclk(cam_pclk),
-                    .reset(!rst_n || !init_done),
+                    .pclk        (cam_pclk),
+                    .reset       (!rst_n || !init_done),
                     .sample_clock(pclk),
-                    .locked(sample_locked)
+                    .locked      (sample_locked)
                 );
             end else begin : direct_clock
                 BUFG camera_clock_buffer (
@@ -254,15 +246,15 @@ module davinci_mjpeg_camera_top #(
             (* IOB="TRUE" *) reg pin_vsync, pin_href;
             if (CAMERA_PROFILE >= 2) begin : late_sampling
                 always @(negedge pclk) begin
-                    pin_data  <= cam_data;
+                    pin_data <= cam_data;
                     pin_vsync <= cam_vsync;
-                    pin_href  <= cam_href;
+                    pin_href <= cam_href;
                 end
             end else begin : rising_sampling
                 always @(posedge pclk) begin
-                    pin_data  <= cam_data;
+                    pin_data <= cam_data;
                     pin_vsync <= cam_vsync;
-                    pin_href  <= cam_href;
+                    pin_href <= cam_href;
                 end
             end
             IOBUF camera_sda_buffer (
@@ -272,92 +264,92 @@ module davinci_mjpeg_camera_top #(
                 .IO(cam_sda)
             );
             ov5640_init #(
-                .CLK_HZ(CLOCK_HZ),
+                .CLK_HZ        (CLOCK_HZ),
                 .CAMERA_PROFILE(CAMERA_PROFILE)
             ) initialization (
-                .clk(core_clk),
-                .rst_n(rst_n),
-                .cam_rst_n(cam_rst_n),
-                .cam_pwdn(cam_pwdn),
-                .light_start(board_light_start),
-                .light_cancel(board_light_cancel),
-                .light_requested(light_requested),
-                .light_on(light_on),
-                .light_error(light_error),
-                .light_busy(light_busy),
-                .cam_scl(cam_scl),
-                .cam_sda_i(sda_i),
+                .clk              (core_clk),
+                .rst_n            (rst_n),
+                .cam_rst_n        (cam_rst_n),
+                .cam_pwdn         (cam_pwdn),
+                .light_start      (board_light_start),
+                .light_cancel     (board_light_cancel),
+                .light_requested  (light_requested),
+                .light_on         (light_on),
+                .light_error      (light_error),
+                .light_busy       (light_busy),
+                .cam_scl          (cam_scl),
+                .cam_sda_i        (sda_i),
                 .cam_sda_drive_low(sda_drive_low),
-                .init_done(init_done),
-                .init_error(init_error),
-                .chip_id(chip_id),
-                .reg_index(reg_index),
-                .ack_error_count(ack_error_count),
-                .last_reg_addr(last_reg_addr)
+                .init_done        (init_done),
+                .init_error       (init_error),
+                .chip_id          (chip_id),
+                .reg_index        (reg_index),
+                .ack_error_count  (ack_error_count),
+                .last_reg_addr    (last_reg_addr)
             );
             wire [15:0] raw_pixel;
             wire raw_valid, raw_ready, raw_sof, raw_eol, raw_eof, dvp_abort;
             assign camera_abort = dvp_abort || clock_loss_abort;
             ov5640_dvp_capture #(
-                .WIDTH(CAMERA_WIDTH),
-                .HEIGHT(CAMERA_HEIGHT),
+                .WIDTH         (CAMERA_WIDTH),
+                .HEIGHT        (CAMERA_HEIGHT),
                 .YUV_BYTE_ORDER(0),
-                .RAW8(CAMERA_PROFILE == 5),
+                .RAW8          (CAMERA_PROFILE == 5),
                 .SAMPLE_FALLING(CAMERA_PROFILE >= 2),
-                .ADMIT_AT_HREF(1)
+                .ADMIT_AT_HREF (1)
             ) capture (
-                .pclk(pclk),
-                .rst_n(capture_reset_n),
-                .enable(admit),
-                .cam_vsync(pin_vsync),
-                .cam_href(pin_href),
-                .cam_data(pin_data),
-                .core_clk(core_clk),
-                .core_rst_n(capture_reset_n),
-                .s_data(raw_pixel),
-                .s_valid(raw_valid),
-                .s_ready(raw_ready),
-                .s_sof(raw_sof),
-                .s_eol(raw_eol),
-                .s_eof(raw_eof),
-                .s_abort(dvp_abort),
-                .capture_active(capture_active),
+                .pclk             (pclk),
+                .rst_n            (capture_reset_n),
+                .enable           (admit),
+                .cam_vsync        (pin_vsync),
+                .cam_href         (pin_href),
+                .cam_data         (pin_data),
+                .core_clk         (core_clk),
+                .core_rst_n       (capture_reset_n),
+                .s_data           (raw_pixel),
+                .s_valid          (raw_valid),
+                .s_ready          (raw_ready),
+                .s_sof            (raw_sof),
+                .s_eol            (raw_eol),
+                .s_eof            (raw_eof),
+                .s_abort          (dvp_abort),
+                .capture_active   (capture_active),
                 .admission_enabled(camera_admission_enabled),
-                .queue_pressure(camera_queue_pressure),
-                .received_frames(received_frames),
-                .dropped_frames(dropped_frames),
-                .overflow_count(overflow_count),
-                .frame_sync_count(frame_sync_count),
-                .dvp_byte_count(dvp_byte_count),
-                .captured_pixels(captured_pixels),
-                .pclk_ticks(pclk_ticks)
+                .queue_pressure   (camera_queue_pressure),
+                .received_frames  (received_frames),
+                .dropped_frames   (dropped_frames),
+                .overflow_count   (overflow_count),
+                .frame_sync_count (frame_sync_count),
+                .dvp_byte_count   (dvp_byte_count),
+                .captured_pixels  (captured_pixels),
+                .pclk_ticks       (pclk_ticks)
             );
             wire [15:0] converted_pixel;
             wire converted_valid, converted_ready, converted_sof, converted_eol, converted_eof;
             if (CAMERA_PROFILE == 5) begin : raw_processing
                 // Profile-5 3820=42 aligns optical RAW and ISP channels as BGGR.
                 bayer_bggr_to_yuv422 #(
-                    .WIDTH(CAMERA_WIDTH),
-                    .HEIGHT(CAMERA_HEIGHT),
-                    .BAYER_PATTERN(0),
+                    .WIDTH         (CAMERA_WIDTH),
+                    .HEIGHT        (CAMERA_HEIGHT),
+                    .BAYER_PATTERN (0),
                     .DENOISE_ENABLE(DENOISE_ENABLE)
                 ) demosaic (
-                    .clk(core_clk),
-                    .rst_n(capture_reset_n),
-                    .abort(camera_abort),
+                    .clk                 (core_clk),
+                    .rst_n               (capture_reset_n),
+                    .abort               (camera_abort),
                     .cfg_denoise_strength(denoise_strength_requested),
-                    .s_data(raw_pixel[7:0]),
-                    .s_valid(raw_valid),
-                    .s_ready(raw_ready),
-                    .s_sof(raw_sof),
-                    .s_eol(raw_eol),
-                    .s_eof(raw_eof),
-                    .m_data(converted_pixel),
-                    .m_valid(converted_valid),
-                    .m_ready(converted_ready),
-                    .m_sof(converted_sof),
-                    .m_eol(converted_eol),
-                    .m_eof(converted_eof)
+                    .s_data              (raw_pixel[7:0]),
+                    .s_valid             (raw_valid),
+                    .s_ready             (raw_ready),
+                    .s_sof               (raw_sof),
+                    .s_eol               (raw_eol),
+                    .s_eof               (raw_eof),
+                    .m_data              (converted_pixel),
+                    .m_valid             (converted_valid),
+                    .m_ready             (converted_ready),
+                    .m_sof               (converted_sof),
+                    .m_eol               (converted_eol),
+                    .m_eof               (converted_eof)
                 );
             end else begin : yuv_processing
                 assign converted_pixel = raw_pixel;
@@ -375,28 +367,28 @@ module davinci_mjpeg_camera_top #(
                     .WIDTH (CAMERA_WIDTH),
                     .HEIGHT(CAMERA_HEIGHT)
                 ) processor (
-                    .clk(core_clk),
-                    .rst_n(capture_reset_n),
-                    .abort(camera_abort),
-                    .cfg_mode(preprocess_mode_requested),
-                    .cfg_binary_threshold(binary_threshold_requested),
-                    .cfg_edge_threshold(edge_threshold_requested),
-                    .s_data(converted_pixel),
-                    .s_valid(converted_valid),
-                    .s_ready(converted_ready),
-                    .s_sof(converted_sof),
-                    .s_eol(converted_eol),
-                    .s_eof(converted_eof),
-                    .m_data(camera_pixel),
-                    .m_valid(camera_valid),
-                    .m_ready(camera_take),
-                    .m_sof(camera_sof),
-                    .m_eol(camera_eol),
-                    .m_eof(camera_eof),
-                    .active_mode(active_mode),
+                    .clk                    (core_clk),
+                    .rst_n                  (capture_reset_n),
+                    .abort                  (camera_abort),
+                    .cfg_mode               (preprocess_mode_requested),
+                    .cfg_binary_threshold   (binary_threshold_requested),
+                    .cfg_edge_threshold     (edge_threshold_requested),
+                    .s_data                 (converted_pixel),
+                    .s_valid                (converted_valid),
+                    .s_ready                (converted_ready),
+                    .s_sof                  (converted_sof),
+                    .s_eol                  (converted_eol),
+                    .s_eof                  (converted_eof),
+                    .m_data                 (camera_pixel),
+                    .m_valid                (camera_valid),
+                    .m_ready                (camera_take),
+                    .m_sof                  (camera_sof),
+                    .m_eol                  (camera_eol),
+                    .m_eof                  (camera_eof),
+                    .active_mode            (active_mode),
                     .active_binary_threshold(active_binary),
-                    .active_edge_threshold(active_edge),
-                    .frames_started(frames_started)
+                    .active_edge_threshold  (active_edge),
+                    .frames_started         (frames_started)
                 );
                 assign preprocess_status = {
                     frames_started,
@@ -464,48 +456,48 @@ module davinci_mjpeg_camera_top #(
         end
     endgenerate
     mjpeg_camera_engine #(
-        .CLOCK_HZ(CLOCK_HZ),
-        .BOARD_CONTROL(1),
+        .CLOCK_HZ         (CLOCK_HZ),
+        .BOARD_CONTROL    (1),
         .PREPROCESS_ENABLE(PREPROCESS_ENABLE),
-        .CAMERA_WIDTH(CAMERA_WIDTH),
-        .CAMERA_HEIGHT(CAMERA_HEIGHT)
+        .CAMERA_WIDTH     (CAMERA_WIDTH),
+        .CAMERA_HEIGHT    (CAMERA_HEIGHT)
     ) engine (
-        .sys_clk(core_clk),
-        .sys_rst_n(run_rst_n),
-        .rx_data(rx_data),
-        .rx_valid(rx_valid),
-        .tx_data(engine_tx_data),
-        .tx_valid(engine_tx_valid),
-        .tx_ready(engine_tx_ready),
-        .led(engine_led),
-        .camera_pixel(camera_pixel),
-        .camera_valid(camera_valid),
-        .camera_sof(camera_sof),
-        .camera_eol(camera_eol),
-        .camera_eof(camera_eof),
-        .camera_abort(camera_abort),
-        .camera_ready(camera_ready),
-        .camera_queue_pressure(camera_queue_pressure),
-        .camera_status(camera_status),
-        .preprocess_status(preprocess_status),
+        .sys_clk                 (core_clk),
+        .sys_rst_n               (run_rst_n),
+        .rx_data                 (rx_data),
+        .rx_valid                (rx_valid),
+        .tx_data                 (engine_tx_data),
+        .tx_valid                (engine_tx_valid),
+        .tx_ready                (engine_tx_ready),
+        .led                     (engine_led),
+        .camera_pixel            (camera_pixel),
+        .camera_valid            (camera_valid),
+        .camera_sof              (camera_sof),
+        .camera_eol              (camera_eol),
+        .camera_eof              (camera_eof),
+        .camera_abort            (camera_abort),
+        .camera_ready            (camera_ready),
+        .camera_queue_pressure   (camera_queue_pressure),
+        .camera_status           (camera_status),
+        .preprocess_status       (preprocess_status),
         .camera_admission_enabled(camera_admission_enabled),
-        .camera_take(camera_take),
-        .camera_admit(camera_admit),
-        .run_requested(run_requested),
-        .quality_requested(quality_requested),
-        .active_quality(active_quality),
-        .compressed_fps(compressed_fps),
-        .fps_sample_valid(fps_sample_valid)
+        .camera_take             (camera_take),
+        .camera_admit            (camera_admit),
+        .run_requested           (run_requested),
+        .quality_requested       (quality_requested),
+        .active_quality          (active_quality),
+        .compressed_fps          (compressed_fps),
+        .fps_sample_valid        (fps_sample_valid)
     );
     davinci_fps_display #(
         .CLOCK_HZ(CLOCK_HZ)
     ) display (
-        .clk(core_clk),
-        .rst_n(rst_n),
-        .fps(compressed_fps),
+        .clk         (core_clk),
+        .rst_n       (rst_n),
+        .fps         (compressed_fps),
         .update_valid(fps_sample_valid),
-        .seg_sel(seg_sel),
-        .seg_led(seg_led),
-        .bcd_value()
+        .seg_sel     (seg_sel),
+        .seg_led     (seg_led),
+        .bcd_value   ()
     );
 endmodule

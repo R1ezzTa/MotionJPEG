@@ -48,7 +48,6 @@ module mjpeg_arbiter #(
     );
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) next_channel <= 0;
-        else if (found && buffer_ready)
-            next_channel <= selected == CHANNELS - 1 ? 2'd0 : selected + 1'b1;
+        else if (found && buffer_ready) next_channel <= selected == CHANNELS - 1 ? 2'd0 : selected + 1'b1;
     end
 endmodule

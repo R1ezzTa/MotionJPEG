@@ -14,11 +14,11 @@ module jpeg_stream_buffer #(
     output m_valid,
     input m_ready
 );
-    (* preserve=1, max_fanout=16 *)reg [WIDTH-1:0] head;
+    (* preserve=1, max_fanout=16 *) reg [WIDTH-1:0] head;
     reg [WIDTH-1:0] tail;
     reg head_valid, tail_valid;
     assign s_ready = !tail_valid;
-    assign m_data  = head;
+    assign m_data = head;
     assign m_valid = head_valid;
     wire push = s_valid && s_ready;
     wire pop = head_valid && m_ready;
@@ -35,10 +35,12 @@ module jpeg_stream_buffer #(
             case ({
                 push, pop
             })
-                2'b10: if (head_valid) tail_valid <= 1;
- else head_valid <= 1;
-                2'b01: if (tail_valid) tail_valid <= 0;
- else head_valid <= 0;
+                2'b10:
+                if (head_valid) tail_valid <= 1;
+                else head_valid <= 1;
+                2'b01:
+                if (tail_valid) tail_valid <= 0;
+                else head_valid <= 0;
                 default: begin
                 end
             endcase

@@ -11,8 +11,7 @@ module mjpeg_camera_engine #(
     BOARD_CONTROL = 0,
     PREPROCESS_ENABLE = 0
 ) (
-    input sys_clk,
-    sys_rst_n,
+    input sys_clk, sys_rst_n,
     input [7:0] rx_data,
     input rx_valid,
     output reg [7:0] tx_data,
@@ -22,11 +21,7 @@ module mjpeg_camera_engine #(
     output [31:0] compressed_fps,
     output fps_sample_valid,
     input [15:0] camera_pixel,
-    input camera_valid,
-    camera_sof,
-    camera_eol,
-    camera_eof,
-    camera_abort,
+    input camera_valid, camera_sof, camera_eol, camera_eof, camera_abort,
     input camera_ready,
     input camera_admission_enabled,
     input camera_queue_pressure,
@@ -44,10 +39,10 @@ module mjpeg_camera_engine #(
         else reset_pipe <= {reset_pipe[1:0], 1'b1};
     wire rst_n = reset_pipe[2];
 
-    localparam IDLE=0,DIM=1,MODE=2,QREAD=3,QVALUE=4,QRECIP=5,
-               TABLES=6,PSEND=7,WAIT_DESC=8,FINISH=9;
+    localparam IDLE = 0,
+        DIM = 1, MODE = 2, QREAD = 3, QVALUE = 4, QRECIP = 5, TABLES = 6, PSEND = 7, WAIT_DESC = 8, FINISH = 9;
     reg [3:0] state;
-    reg [ 6:0] q_index;
+    reg [6:0] q_index;
     reg done, error_seen, stop_requested, command_pending;
     reg [1:0] loading_quality;
     wire quality_pending = BOARD_CONTROL && quality_requested != active_quality;
@@ -70,66 +65,66 @@ module mjpeg_camera_engine #(
     wire cfg_ready, s_ready, busy, tables_ready, config_error;
     always @* begin
         cfg_valid = 1;
-        cfg_cmd   = 0;
-        cfg_data  = 0;
+        cfg_cmd = 0;
+        cfg_data = 0;
         case (state)
             DIM: begin
-                cfg_cmd  = 0;
+                cfg_cmd = 0;
                 cfg_data = {height, width};
             end
             MODE: begin
-                cfg_cmd  = 1;
+                cfg_cmd = 1;
                 cfg_data = 32'd1;
             end
             QVALUE: begin
-                cfg_cmd  = 2;
+                cfg_cmd = 2;
                 cfg_data = {17'd0, q[7:0], q_index};
             end
             QRECIP: begin
-                cfg_cmd  = 3;
+                cfg_cmd = 3;
                 cfg_data = {11'd0, q[28:8]};
             end
             default: cfg_valid = 0;
         endcase
     end
     wire [31:0] m_data;
-    wire [ 2:0] m_bytes;
+    wire [2:0] m_bytes;
     wire m_valid, m_ready, m_packet_last;
     wire source_valid = state == PSEND && camera_valid;
     wire source_sof = camera_sof;
     wire source_eol = camera_eol;
     wire source_eof = camera_eof;
     assign camera_take = state == PSEND && s_ready;
-    assign camera_admit = state == PSEND && tables_ready && camera_ready && !busy &&
-                        !stop_requested && !stop_now && !quality_pending;
+    assign camera_admit = state == PSEND && tables_ready && camera_ready && !busy && !stop_requested && !stop_now &&
+        !quality_pending;
     mjpeg_synth_top #(
-        .CHANNELS(1),
-        .MAX_WIDTH(CAMERA_WIDTH),
-        .COALESCE(1),
+        .CHANNELS    (1),
+        .MAX_WIDTH   (CAMERA_WIDTH),
+        .COALESCE    (1),
         .RESTART_MCUS(0)
     ) codec (
-        .clk(sys_clk),
-        .rst_n(rst_n),
-        .cfg_cmd(cfg_cmd),
-        .cfg_channel(2'd0),
-        .cfg_data(cfg_data),
-        .cfg_valid(cfg_valid),
-        .cfg_ready(cfg_ready),
-        .s_data(source_pixel),
-        .s_valid(source_valid),
-        .s_ready(s_ready),
-        .s_sof(source_sof),
-        .s_eol(source_eol),
-        .s_eof(source_eof),
-        .s_abort(camera_abort),
-        .m_data(m_data),
-        .m_bytes(m_bytes),
-        .m_valid(m_valid),
-        .m_ready(m_ready),
+        .clk          (sys_clk),
+        .rst_n        (rst_n),
+        .cfg_cmd      (cfg_cmd),
+        .cfg_channel  (2'd0),
+        .cfg_data     (cfg_data),
+        .cfg_valid    (cfg_valid),
+        .cfg_ready    (cfg_ready),
+        .s_data       (source_pixel),
+        .s_valid      (source_valid),
+        .s_ready      (s_ready),
+        .s_sof        (source_sof),
+        .s_eol        (source_eol),
+        .s_eof        (source_eof),
+        .s_abort      (camera_abort),
+        .m_data       (m_data),
+        .m_bytes      (m_bytes),
+        .m_valid      (m_valid),
+        .m_ready      (m_ready),
         .m_packet_last(m_packet_last),
-        .busy(busy),
-        .tables_ready(tables_ready),
-        .config_error(config_error)
+        .busy         (busy),
+        .tables_ready (tables_ready),
+        .config_error (config_error)
     );
 
     // The byte transport stalls this boundary; JPEG bytes are never substituted.
@@ -144,9 +139,8 @@ module mjpeg_camera_engine #(
     reg [255:0] camera_pending_data, camera_active_data;
     reg [95:0] preprocess_pending_data, preprocess_active_data;
     reg end_pending;
-    assign m_ready=(state!=IDLE) && preamble==0 && remaining==0 &&
-                   !telemetry_active && !telemetry_pending && !timing_active && !timing_pending &&
-                   !camera_active && !camera_pending;
+    assign m_ready = (state != IDLE) && preamble == 0 && remaining == 0 && !telemetry_active && !telemetry_pending &&
+        !timing_active && !timing_pending && !camera_active && !camera_pending;
     wire word_taken = m_valid && m_ready;
     wire descriptor_done = word_taken && m_packet_last && descriptor;
     wire input_frame = source_valid && s_ready && source_sof;
@@ -156,21 +150,21 @@ module mjpeg_camera_engine #(
     frame_rate_meter #(
         .CLOCK_HZ(CLOCK_HZ)
     ) meter (
-        .clk(sys_clk),
-        .rst_n(rst_n),
-        .input_frame(input_frame),
-        .success_frame(success_frame),
-        .failed_frame(failed_frame),
-        .sample_valid(fps_sample_valid),
-        .window_id(fps_window_id),
-        .input_fps(input_fps),
-        .compressed_fps(compressed_fps),
-        .failed_fps(failed_fps),
+        .clk             (sys_clk),
+        .rst_n           (rst_n),
+        .input_frame     (input_frame),
+        .success_frame   (success_frame),
+        .failed_frame    (failed_frame),
+        .sample_valid    (fps_sample_valid),
+        .window_id       (fps_window_id),
+        .input_fps       (input_fps),
+        .compressed_fps  (compressed_fps),
+        .failed_fps      (failed_fps),
         .total_compressed(total_compressed)
     );
-    assign start=(state==IDLE) && (BOARD_CONTROL?run_requested:command_pending) && remaining==0 && preamble==0 &&
-                 !telemetry_active && !telemetry_pending && !timing_active && !timing_pending &&
-                 !camera_active && !camera_pending && !end_pending && tx_ready;
+    assign start = (state == IDLE) && (BOARD_CONTROL ? run_requested : command_pending) && remaining == 0 &&
+        preamble == 0 && !telemetry_active && !telemetry_pending && !timing_active && !timing_pending &&
+        !camera_active && !camera_pending && !end_pending && tx_ready;
     reg [2:0] telemetry_index;
     reg [31:0] pending_window, pending_input, pending_fps, pending_failed, pending_total;
     reg [31:0] active_window, active_input, active_fps, active_failed, active_total;
@@ -202,7 +196,8 @@ module mjpeg_camera_engine #(
             active_failed <= 0;
             active_total <= 0;
         end else begin
-            if(!telemetry_active && !timing_active && !camera_active && telemetry_pending && remaining==0 && preamble==0 && !start) begin
+            if (!telemetry_active && !timing_active && !camera_active && telemetry_pending && remaining == 0 &&
+                preamble == 0 && !start) begin
                 telemetry_active <= 1;
                 telemetry_pending <= 0;
                 telemetry_index <= 0;
@@ -215,7 +210,7 @@ module mjpeg_camera_engine #(
             if (telemetry_active && remaining == 0) begin
                 if (telemetry_index == 5) begin
                     telemetry_active <= 0;
-                    telemetry_index  <= 0;
+                    telemetry_index <= 0;
                 end else telemetry_index <= telemetry_index + 1'b1;
             end
             // If USB blocks longer than one second, retain the newest unsent
@@ -232,18 +227,10 @@ module mjpeg_camera_engine #(
     end
     // Frame timings include transport backpressure. They do not measure an
     // isolated encoder running into an always-ready output sink.
-    reg [31:0]
-        timebase,
-        frame_start_tick,
-        feed_ticks,
-        jpeg_ticks,
-        input_wait,
-        output_wait,
-        timing_frame_id;
+    reg [31:0] timebase, frame_start_tick, feed_ticks, jpeg_ticks, input_wait, output_wait, timing_frame_id;
     reg frame_measured, last_payload;
     reg [2:0] timing_index;
-    reg [31:0]
-        report_id, report_feed, report_jpeg, report_total, report_input_wait, report_output_wait;
+    reg [31:0] report_id, report_feed, report_jpeg, report_total, report_input_wait, report_output_wait;
     reg [31:0] timing_data;
     always @* begin
         case (timing_index)
@@ -290,8 +277,7 @@ module mjpeg_camera_engine #(
             if (frame_measured) begin
                 if (source_valid && !s_ready) input_wait <= input_wait + 1'b1;
                 if (m_valid && !m_ready) output_wait <= output_wait + 1'b1;
-                if (source_valid && s_ready && source_eof)
-                    feed_ticks <= timebase - frame_start_tick;
+                if (source_valid && s_ready && source_eof) feed_ticks <= timebase - frame_start_tick;
                 if (word_taken && m_packet_last && !descriptor && last_payload)
                     jpeg_ticks <= timebase - frame_start_tick;
             end
@@ -307,16 +293,16 @@ module mjpeg_camera_engine #(
                 report_input_wait <= input_wait;
                 report_output_wait <= output_wait;
             end
-            if(!timing_active && timing_pending && remaining==0 && preamble==0 &&
-               !telemetry_active && !telemetry_pending && !camera_active && !start) begin
-                timing_active  <= 1;
+            if (!timing_active && timing_pending && remaining == 0 && preamble == 0 && !telemetry_active &&
+                !telemetry_pending && !camera_active && !start) begin
+                timing_active <= 1;
                 timing_pending <= 0;
-                timing_index   <= 0;
+                timing_index <= 0;
             end
             if (timing_active && remaining == 0) begin
                 if (timing_index == 6) begin
                     timing_active <= 0;
-                    timing_index  <= 0;
+                    timing_index <= 0;
                 end else timing_index <= timing_index + 1'b1;
             end
         end
@@ -335,13 +321,11 @@ module mjpeg_camera_engine #(
         end else begin
             if (fps_sample_valid) begin
                 camera_pending <= 1;
-                camera_pending_data <= {
-                    camera_status[255:32], camera_status[31:7], state != IDLE, camera_status[5:0]
-                };
+                camera_pending_data <= {camera_status[255:32], camera_status[31:7], state != IDLE, camera_status[5:0]};
                 if (PREPROCESS_ENABLE) preprocess_pending_data <= preprocess_status;
             end
-            if(!camera_active && camera_pending && remaining==0 && preamble==0 &&
-               !telemetry_active && !telemetry_pending && !timing_active && !timing_pending && !start) begin
+            if (!camera_active && camera_pending && remaining == 0 && preamble == 0 && !telemetry_active &&
+                !telemetry_pending && !timing_active && !timing_pending && !start) begin
                 camera_active <= 1;
                 camera_pending <= 0;
                 camera_index <= 0;
@@ -351,14 +335,14 @@ module mjpeg_camera_engine #(
             if (camera_active && remaining == 0) begin
                 if (camera_index == (PREPROCESS_ENABLE ? 12 : 8)) begin
                     camera_active <= 0;
-                    camera_index  <= 0;
+                    camera_index <= 0;
                 end else camera_index <= camera_index + 1'b1;
             end
         end
     end
     always @* begin
         tx_valid = 0;
-        tx_data  = 0;
+        tx_data = 0;
         if (preamble != 0) begin
             tx_valid = 1;
             case (preamble)
@@ -370,7 +354,7 @@ module mjpeg_camera_engine #(
             endcase
         end else if (remaining != 0) begin
             tx_valid = 1;
-            tx_data  = record[7:0];
+            tx_data = record[7:0];
         end
     end
     always @(posedge sys_clk or negedge rst_n) begin
@@ -411,16 +395,16 @@ module mjpeg_camera_engine #(
             if (camera_active && remaining == 0) begin
                 record <= {
                     (8'hb0 + {4'd0, camera_index}),
-                    camera_index==0?32'h314d4143:
-                    camera_index==9?32'h31505250:camera_index>9?preprocess_active_data[(camera_index-10)*32+:32]:
-                    camera_active_data[(camera_index-1)*32+:32]
+                    camera_index == 0 ? 32'h314d4143 : camera_index == 9 ? 32'h31505250 : camera_index > 9 ?
+                        preprocess_active_data[(camera_index-10)*32+:32] : camera_active_data[(camera_index-1)*32+:32]
                 };
                 remaining <= 5;
             end
-            if(state==FINISH && remaining==0 && tx_ready && !m_valid && !busy &&
-               !telemetry_active && !telemetry_pending && !timing_active && !timing_pending && !camera_active && !camera_pending)
+            if (state == FINISH && remaining == 0 && tx_ready && !m_valid && !busy && !telemetry_active &&
+                !telemetry_pending && !timing_active && !timing_pending && !camera_active && !camera_pending)
                 end_pending <= 1'b1;
-            if(end_pending && remaining==0 && !telemetry_active && !telemetry_pending && !timing_active && !timing_pending && !camera_active && !camera_pending) begin
+            if (end_pending && remaining == 0 && !telemetry_active && !telemetry_pending && !timing_active &&
+                !timing_pending && !camera_active && !camera_pending) begin
                 record <= {8'ha0, 32'h31444e45};
                 remaining <= 5;
                 end_pending <= 0;  // END1
@@ -438,7 +422,7 @@ module mjpeg_camera_engine #(
             active_quality <= 2;
             loading_quality <= 2;
         end else begin
-            if(rx_valid && state==IDLE && rx_data=="C") command_pending <= 1;
+            if (rx_valid && state == IDLE && rx_data == "C") command_pending <= 1;
             if (stop_now && state != IDLE) stop_requested <= 1;
             if (config_error && (state == PSEND || state == WAIT_DESC)) error_seen <= 1;
             if (descriptor_done && m_data[7:0] != 0) error_seen <= 1;
@@ -455,7 +439,7 @@ module mjpeg_camera_engine #(
                 DIM: if (cfg_ready) state <= MODE;
                 MODE:
                 if (cfg_ready) begin
-                    state   <= QREAD;
+                    state <= QREAD;
                     q_index <= 0;
                 end
                 QREAD: state <= QVALUE;
@@ -465,7 +449,7 @@ module mjpeg_camera_engine #(
                     if (q_index == 127) state <= TABLES;
                     else begin
                         q_index <= q_index + 1'b1;
-                        state   <= QREAD;
+                        state <= QREAD;
                     end
                 end
                 TABLES:
@@ -482,8 +466,8 @@ module mjpeg_camera_engine #(
                 end
                 PSEND:
                 if (camera_abort && busy) state <= WAIT_DESC;
-                else if(!busy && !camera_valid && !camera_status[2] && !camera_admission_enabled &&
-                        (stop_requested || stop_now || quality_pending)) begin
+                else if (!busy && !camera_valid && !camera_status[2] && !camera_admission_enabled &&
+                         (stop_requested || stop_now || quality_pending)) begin
                     if (stop_requested || stop_now) state <= FINISH;
                     else begin
                         loading_quality <= quality_requested;
@@ -499,10 +483,10 @@ module mjpeg_camera_engine #(
                     else state <= PSEND;
                 end
                 FINISH:
-                if (remaining==0 && tx_ready && !m_valid && !busy && !telemetry_active && !telemetry_pending &&
-                           !timing_active && !timing_pending && !camera_active && !camera_pending) begin
+                if (remaining == 0 && tx_ready && !m_valid && !busy && !telemetry_active && !telemetry_pending &&
+                    !timing_active && !timing_pending && !camera_active && !camera_pending) begin
                     state <= IDLE;
-                    done  <= 1;
+                    done <= 1;
                 end
                 default: state <= IDLE;
             endcase

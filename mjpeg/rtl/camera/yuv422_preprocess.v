@@ -5,57 +5,49 @@ module yuv422_preprocess #(
     parameter WIDTH = 1920,
     HEIGHT = 1080
 ) (
-    input clk,
-    rst_n,
-    abort,
+    input clk, rst_n, abort,
     input [1:0] cfg_mode,
-    input [7:0] cfg_binary_threshold,
-    cfg_edge_threshold,
+    input [7:0] cfg_binary_threshold, cfg_edge_threshold,
     input [15:0] s_data,
     input s_valid,
     output s_ready,
-    input s_sof,
-    s_eol,
-    s_eof,
+    input s_sof, s_eol, s_eof,
     output reg [15:0] m_data,
     output reg m_valid,
     input m_ready,
-    output reg m_sof,
-    m_eol,
-    m_eof,
+    output reg m_sof, m_eol, m_eof,
     output reg [1:0] active_mode,
-    output reg [7:0] active_binary_threshold,
-    active_edge_threshold,
+    output reg [7:0] active_binary_threshold, active_edge_threshold,
     output reg [31:0] frames_started
 );
     wire [143:0] win;
-    wire [ 17:0] config_word;
+    wire [17:0] config_word;
     wire win_valid, win_sof, win_eol, win_eof;
     wire ce = !m_valid || m_ready;
     spatial_window_3x3 #(
-        .WIDTH(WIDTH),
-        .HEIGHT(HEIGHT),
-        .DATA_WIDTH(16),
+        .WIDTH       (WIDTH),
+        .HEIGHT      (HEIGHT),
+        .DATA_WIDTH  (16),
         .CONFIG_WIDTH(18)
     ) window (
-        .clk(clk),
-        .rst_n(rst_n),
-        .abort(abort),
+        .clk         (clk),
+        .rst_n       (rst_n),
+        .abort       (abort),
         .cfg_strength({cfg_mode, cfg_edge_threshold, cfg_binary_threshold}),
-        .s_data(s_data),
-        .s_valid(s_valid),
-        .s_ready(s_ready),
-        .s_sof(s_sof),
-        .s_eol(s_eol),
-        .s_eof(s_eof),
-        .m_window(win),
-        .m_strength(config_word),
-        .m_valid(win_valid),
-        .m_ready(ce),
-        .m_sof(win_sof),
-        .m_eol(win_eol),
-        .m_eof(win_eof),
-        .m_odd()
+        .s_data      (s_data),
+        .s_valid     (s_valid),
+        .s_ready     (s_ready),
+        .s_sof       (s_sof),
+        .s_eol       (s_eol),
+        .s_eof       (s_eof),
+        .m_window    (win),
+        .m_strength  (config_word),
+        .m_valid     (win_valid),
+        .m_ready     (ce),
+        .m_sof       (win_sof),
+        .m_eol       (win_eol),
+        .m_eof       (win_eof),
+        .m_odd       ()
     );
     // Four pair differences run in parallel. Shared diagonal terms feed both
     // gradients; signed extension precedes the x2 shifts. Five arithmetic
@@ -131,11 +123,9 @@ module yuv422_preprocess #(
                 ay <= gy[10] ? -gy : gy;
                 magnitude <= ax + ay + 11'd2;
                 center_pipe[0] <= win[79:64];
-                for (stage = 1; stage < 4; stage = stage + 1)
-                center_pipe[stage] <= center_pipe[stage-1];
+                for (stage = 1; stage < 4; stage = stage + 1) center_pipe[stage] <= center_pipe[stage-1];
                 config_pipe[0] <= config_word;
-                for (stage = 1; stage < 5; stage = stage + 1)
-                config_pipe[stage] <= config_pipe[stage-1];
+                for (stage = 1; stage < 5; stage = stage + 1) config_pipe[stage] <= config_pipe[stage-1];
                 valid_pipe <= {valid_pipe[2:0], win_valid};
                 m_valid <= valid_pipe[3];
                 sof_pipe <= {sof_pipe[2:0], win_sof};
@@ -147,14 +137,10 @@ module yuv422_preprocess #(
                 case (config_pipe[3][17:16])
                     0: m_data <= center_pipe[3];
                     1: m_data <= {8'd128, center_pipe[3][7:0]};
-                    2:
-                    m_data <= {8'd128, center_pipe[3][7:0] >= config_pipe[3][7:0] ? 8'd255 : 8'd0};
+                    2: m_data <= {8'd128, center_pipe[3][7:0] >= config_pipe[3][7:0] ? 8'd255 : 8'd0};
                     // Preserve edge magnitude instead of amplifying every
                     // weak/noisy edge to a full-contrast white pixel.
-                    3:
-                    m_data <= {
-                        8'd128, edge_strength >= config_pipe[3][15:8] ? edge_strength : 8'd0
-                    };
+                    3: m_data <= {8'd128, edge_strength >= config_pipe[3][15:8] ? edge_strength : 8'd0};
                 endcase
             end
         end

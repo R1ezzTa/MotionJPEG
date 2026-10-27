@@ -41,7 +41,7 @@ module camera_pixel_fifo #(
     // Share each asynchronous source's one synchronizer entrance with the
     // capture controller; do not create parallel chains in the same domain.
     assign wcommon_reset_n = wreset_pipe[2];
-    assign rflush_active   = rflush_pipe[2];
+    assign rflush_active = rflush_pipe[2];
     wire wrst_n = wreset_pipe[2] && !wflush_pipe[2];
     wire rrst_n = rreset_pipe[2] && !rflush_pipe[2];
     (* ram_style="block" *) reg [WIDTH-1:0] memory[0:(1<<ADDRESS_BITS)-1];
@@ -53,7 +53,7 @@ module camera_pixel_fifo #(
     wire write_fire = s_valid && s_ready, read_fire = m_valid && m_ready;
     wire [POINTER_BITS-1:0] wnext = wbin + write_fire, rnext = rbin + read_fire;
     wire [POINTER_BITS-1:0] wgray_next = (wnext >> 1) ^ wnext, rgray_next = (rnext >> 1) ^ rnext;
-    wire full_next=wgray_next=={~rgray_w2[POINTER_BITS-1:POINTER_BITS-2],rgray_w2[POINTER_BITS-3:0]};
+    wire full_next = wgray_next == {~rgray_w2[POINTER_BITS-1:POINTER_BITS-2], rgray_w2[POINTER_BITS-3:0]};
     wire empty_next = rgray_next == wgray_r2;
     function [POINTER_BITS-1:0] gray_binary;
         input [POINTER_BITS-1:0] value;
