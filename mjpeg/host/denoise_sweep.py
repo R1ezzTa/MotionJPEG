@@ -67,7 +67,7 @@ def main(argv=None):
     next_id = previous_tick = None
     began = last_data = waiting_since = time.monotonic()
     probe_before = probe_window = None
-    legacy_probe_passed = False
+    malformed_probe_passed = False
     error = None
     pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix="denoise-jpeg")
 
@@ -136,19 +136,21 @@ def main(argv=None):
                     and not value["run_requested"]
                 )
                 if phase is None and ready:
-                    if not legacy_probe_passed:
+                    if not malformed_probe_passed:
                         if probe_before is None:
                             probe_before, probe_window = value["denoise_requested"], value.get(
                                 "window"
                             )
-                            command(b"TFF\nA1\nNSCL\n")
+                            command(b"NSCL\n")
                             continue
                         if value.get("window") == probe_window:
                             continue
                         assert (
-                            value["denoise_requested"] == probe_before and not value["light_on"]
-                        ), "Removed/malformed command changed controls"
-                        legacy_probe_passed = True
+                            value["denoise_requested"] == probe_before
+                            and not value["light_on"]
+                            and not value["run_requested"]
+                        ), "Malformed denoise command changed controls"
+                        malformed_probe_passed = True
                     strength = strengths[len(phases)]
                     directory = args.output / f"{len(phases):02d}_strength_{strength:03d}"
                     directory.mkdir(parents=True, exist_ok=True)
@@ -288,7 +290,7 @@ def main(argv=None):
         phases=phases,
         independently_decoded_frames=sum(phase["frames"] for phase in phases),
         actions=actions,
-        removed_and_malformed_commands_ignored=legacy_probe_passed,
+        malformed_commands_ignored=malformed_probe_passed,
         comparison_note="Same physical scene captured sequentially, not identical source pixels. JPEG image payload excludes MBLK/USB overhead.",
         physical_motion_quality_verified=False,
     )
