@@ -1,0 +1,15 @@
+# Reproducible LaTeX intermediates; keep the finished main.pdf.
+*.aux
+*.toc
+*.out
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+main.mapped.pdf
+__pycache__/
+
+# Original simulation evidence is part of the complete report archive.
+!evidence/waves/*.log
+!evidence/waves/*.wdb

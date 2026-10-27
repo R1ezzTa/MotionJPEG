@@ -1,0 +1,113 @@
+% !TeX program = xelatex
+% Adapted from nenhang/ZJU-report-templates, latex/group-report.tex.
+% Original template and MIT notice are retained in template/.
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,array,caption,indentfirst,fontspec}
+\newfontfamily\menlo{Consolas}
+\usepackage{geometry,graphicx,listings,multirow,pgfplots,tcolorbox,tikz}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage[UTF8,fontset=fandol,zihao=-4,heading=true]{ctex}
+% Native Unicode fonts preserve Chinese PDF search and copy support.
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage{unicode-math}
+\setmathfont{texgyretermes-math.otf}
+\usepackage{booktabs,tabularx,float,subcaption,xcolor,enumitem,hyperref,xurl}
+\geometry{a4paper,left=2cm,right=2cm,top=1.5cm,bottom=1.5cm}
+\pgfplotsset{width=8cm,compat=1.13}
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta,fit,calc}
+\definecolor{navy}{RGB}{0,0,0}
+\definecolor{teal}{RGB}{0,80,120}
+\definecolor{shade}{rgb}{0.96,0.96,0.96}
+\definecolor{linegray}{rgb}{0.8,0.8,0.8}
+\definecolor{muted}{rgb}{0.30,0.30,0.30}
+\hypersetup{hidelinks,pdftitle={基于FPGA的无DDR3实时图像处理与MJPEG传输系统},pdfauthor={}}
+\urlstyle{tt}
+\linespread{1.18}
+\setlength{\parskip}{4pt}
+\setlength{\textfloatsep}{12pt}
+\setlength{\intextsep}{10pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=2em}
+\renewcommand{\arraystretch}{1.2}
+\captionsetup{font=small,labelfont=bf,labelsep=quad}
+\captionsetup[figure]{name={Fig.}}
+\captionsetup[subfigure]{font=small,labelfont=normalfont}
+\ctexset{section={format=\Large\heiti,beforeskip=12pt,afterskip=8pt},subsection={format=\large\heiti,beforeskip=10pt,afterskip=5pt}}
+\pagestyle{plain}
+\lstdefinestyle{rtl}{language=Verilog,
+    breaklines=true,extendedchars=false,
+    backgroundcolor=\color[rgb]{0.96,0.96,0.96},
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},commentstyle=\color[rgb]{0,0.6,0},
+    stringstyle=\color[rgb]{0.58,0,0.82},showstringspaces=false,
+    numbers=left,numberstyle=\tiny\menlo,numbersep=6pt,
+    basicstyle=\fontsize{8.8}{11.2}\selectfont\menlo,
+    captionpos=t,frame=single,rulecolor=\color[rgb]{0.8,0.8,0.8},
+    columns=fullflexible,keepspaces=true,aboveskip=8pt,belowskip=5pt,
+    xleftmargin=1.5em,framexleftmargin=0.7em}
+\lstset{style=rtl}
+\renewcommand{\lstlistingname}{代码}
+\newcommand{\src}[1]{{\footnotesize\color{muted}源码位置：\nolinkurl{#1}\par}}
+\newcommand{\evid}[1]{\par\begingroup\footnotesize\color{muted}\raggedright 数据来源：\detokenize{#1}\par\endgroup}
+\newcommand{\note}[1]{\par\noindent\colorbox{shade}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\small #1}}\par}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\graphicspath{{images/}}
+\setcounter{tocdepth}{1}
+% Personal information can be filled here without changing the layout.
+\newcommand{\reportname}{\underline{\makebox[3.8cm]{}}}
+\newcommand{\reportstudentid}{\underline{\makebox[3.8cm]{}}}
+\newcommand{\reportgroup}{\underline{\makebox[3.8cm]{}}}
+\begin{document}
+\begin{titlepage}
+    \centering
+    \rule{\textwidth}{0pt}\par
+    \vspace{0.18\textheight}
+    {\Huge\textbf{HDL 课程设计报告}\par}
+    \vspace{0.025\textheight}
+    {\fontsize{30}{42}\selectfont\bfseries
+      基于 FPGA 的无 DDR3\par
+      实时图像处理与\par
+      MJPEG 传输系统\par}
+    \rule{0.83\textwidth}{0pt}
+    \vspace{0.02\textheight}
+    {\Large
+    \renewcommand{\arraystretch}{1.65}
+    \begin{tabular}{rl}
+      姓名： & \reportname\\
+      学号： & \reportstudentid\\
+      组号： & \reportgroup
+    \end{tabular}\par}
+    \vspace{0.06\textheight}
+    {\huge 2026 年 10 月 26 日\par}
+    \vspace{0.08\textheight}
+    \rule{\textwidth}{0pt}
+\end{titlepage}
+
+
+
+
+\section*{摘\quad 要}\addcontentsline{toc}{section}{摘要}
+本项目在 Artix-7 FPGA 上实现单路实时图像采集、预处理、JPEG 压缩与 USB 传输。系统以 OV5640 的 RAW8 数据为输入，依次完成 BGGR 颜色重建、YCbCr 空间降噪、YUV422 预处理和独立 JPEG 编码，再通过 MBLK 分块协议及 FT232H 同步 FIFO 接口传送至 PC。PC 负责协议检查、JPEG 独立解码、预览和参数设置，图像处理与编码在可编程逻辑内完成。
+
+设计采用流式流水线、片上行缓存和异步 FIFO，避免使用 DDR3 整帧缓存。针对摄像头像素时钟、100 MHz 编码时钟和 60 MHz USB 时钟之间的关系，系统使用灰码指针同步、局部复位释放及统计快照。运行请求、三档画质、降噪强度及图像模式通过板载键或 USB 命令设置，关键参数在完整帧边界生效。
+
+项目多次迭代后保留了较多旧接口与实验分支。本次工作围绕最终功能精简源码、构建入口和主机工具，并通过分层回归与重新上板检验功能一致性。精简回归包含 7 项 RTL 仿真、59 项 Python 测试，以及 9 个与金样逐字节匹配的 JPEG。重新实现后的 LUT 占用为 15544/20800，即 74.73\%；最差建立与保持时间裕量分别为 0.050 ns 和 0.015 ns，满足当前约束。
+
+2026 年 10 月 11 日的板卡验收累计独立解码 8033 帧，其中主体功能验收 7916 帧、查看器收流检查 117 帧。持续传输场景帧率约为 30.0019 fps，稳定窗口未发现采集丢帧、FIFO 溢出或编码失败。四种预处理模式、降噪设置、画质切换、启停及补光自动关闭状态读回均通过测试。结果支持当前链路完成预定功能；色彩校准、暗光画质、真实端到端时延和物理交互外观仍需进一步评估。
+
+
+2026 年 10 月 26 日进一步补充实时演示截图：四种图像模式、六档二值化阈值、四档边缘阈值，以及 Q60/Q75/Q85 画质和 Q60 复测。16 个稳定窗口共记录 4360 帧，未观察到编码失败、溢出或板内丢帧增量；当前场景中 Q60 相较 Q85 的 JPEG 载荷率减少约 49.3\%。报告同时给出实际界面、参数读回、带宽统计和压缩比计算口径。
+
+\vspace{4mm}\noindent\textbf{关键词：}FPGA；OV5640；流式图像处理；JPEG；异步 FIFO；FT245 同步 USB
+\vspace{5mm}
+\note{证据范围：正文仿真图为 Vivado 2020.1 打开原始 WDB 后的原生窗口截图或其裁剪；实际运行图为 2026 年 10 月 26 日实时查看器的原生窗口截图，降噪局部图保留历史验收 JPEG。小尺寸仿真、真实 1080p30 运行与历史构建记录分别说明。}
+\clearpage
+\tableofcontents
+\vfill\note{阅读建议：第 2～8 节解释实现，第 9 节分析仿真与波形，第 10～12 节讨论实现资源、实板图像和性能，第 13 节总结。附录包含复现命令及证据索引。}
+\clearpage
+\input{sections/implementation.tex}
+\input{sections/encoding_host.tex}
+\input{sections/verification.tex}
+\input{sections/hardware.tex}
+\input{sections/conclusion.tex}
+\end{document}

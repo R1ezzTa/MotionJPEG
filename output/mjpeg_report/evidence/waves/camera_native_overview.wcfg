@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<wave_config>
+  <wave_state />
+  <db_ref_list>
+    <db_ref path="camera.wdb" id="1">
+      <top_modules>
+        <top_module name="tb_mjpeg_real_camera" />
+      </top_modules>
+    </db_ref>
+  </db_ref_list>
+  <zoom_setting>
+    <ZoomStartTime time="0fs" />
+    <ZoomEndTime time="268620000fs" />
+    <Cursor1Time time="268000000fs" />
+  </zoom_setting>
+  <column_width_setting>
+    <NameColumnWidth column_width="160" />
+    <ValueColumnWidth column_width="65" />
+  </column_width_setting>
+  <WVObjectSize size="7" />
+  <wvobject fp_name="/tb_mjpeg_real_camera/admit" type="logic">
+    <obj_property name="ElementShortName">admit</obj_property>
+    <obj_property name="ObjectShortName">admit</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/active" type="logic">
+    <obj_property name="ElementShortName">active</obj_property>
+    <obj_property name="ObjectShortName">active</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/abort" type="logic">
+    <obj_property name="ElementShortName">abort</obj_property>
+    <obj_property name="ObjectShortName">abort</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/good_frames" type="array">
+    <obj_property name="ElementShortName">good_frames[31:0]</obj_property>
+    <obj_property name="ObjectShortName">good_frames[31:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/bad_frames" type="array">
+    <obj_property name="ElementShortName">bad_frames[31:0]</obj_property>
+    <obj_property name="ObjectShortName">bad_frames[31:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/dropped" type="array">
+    <obj_property name="ElementShortName">dropped[31:0]</obj_property>
+    <obj_property name="ObjectShortName">dropped[31:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/overflows" type="array">
+    <obj_property name="ElementShortName">overflows[31:0]</obj_property>
+    <obj_property name="ObjectShortName">overflows[31:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+</wave_config>

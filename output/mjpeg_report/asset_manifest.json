@@ -1,0 +1,399 @@
+{
+  "images": {
+    "native_camera": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\vivado_camera_overview.png",
+      "bytes": 66796,
+      "dimensions": [
+        1220,
+        721
+      ],
+      "format": "PNG",
+      "sha256": "8523a670ec9ba0d827e1fc25582f86eaffdeb0c29a537be45267bb8250aceeba"
+    },
+    "native_pixels": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\vivado_pixel_handshake.png",
+      "bytes": 65351,
+      "dimensions": [
+        1220,
+        721
+      ],
+      "format": "PNG",
+      "sha256": "58b236b816829d1aea01ad01d90b9b5790c3d9f95c8d2a346a2b5999f32d23af"
+    },
+    "native_controls": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\vivado_board_controls.png",
+      "bytes": 65867,
+      "dimensions": [
+        1220,
+        721
+      ],
+      "format": "PNG",
+      "sha256": "10e14c35e4518db789d0a786371f5b726a1f290e1a329e432be12fed5535887a"
+    },
+    "live_color": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\preprocess\\00_color_b128_e32\\first_frame.jpg",
+      "bytes": 484035,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "JPEG",
+      "sha256": "3d749b69a9b00db6e93aa1d26839e95497460e845012df71fbe0b665e24b9e2a"
+    },
+    "live_gray": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\preprocess\\01_gray_b128_e32\\first_frame.jpg",
+      "bytes": 360707,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "JPEG",
+      "sha256": "4d69a356b4bdc2448a37a57f01de30fb2398fa5904234304add06ff8b2c53a3c"
+    },
+    "live_binary": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\preprocess\\03_binary_b128_e32\\first_frame.jpg",
+      "bytes": 220167,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "JPEG",
+      "sha256": "d6f68a41cb172688c3d5019ba9f2647c3e543684dad56f304e9d76627c8835ec"
+    },
+    "live_sobel": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\preprocess\\05_sobel_b128_e8\\first_frame.jpg",
+      "bytes": 391959,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "JPEG",
+      "sha256": "5092d6c68e80f7a59e590d97c8ff42f16692afcd345eac2b11639ae8c3038987"
+    },
+    "denoise_off": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\denoise_retry\\00_strength_000\\first_frame.jpg",
+      "bytes": 482040,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "JPEG",
+      "sha256": "04a740d410418b09fcda83456d517bdfbd046a6cbdd016390df90d13f946c720"
+    },
+    "denoise_32": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\denoise_retry\\03_strength_032\\first_frame.jpg",
+      "bytes": 327593,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "JPEG",
+      "sha256": "b2c144bad3e3680d3e5ab54e5d7ef7922a857b8c47cd9baef1905aa2c330fe3a"
+    }
+  },
+  "snippets": {
+    "admission": {
+      "source": "mjpeg/rtl/top/mjpeg_camera_engine.v",
+      "first_line": 88,
+      "last_line": 94,
+      "sha256": "5e712581c381cd5d44e3c987b793c8b629fe7ba841e09387ca0e6d1a1683f757"
+    },
+    "fifo_gray": {
+      "source": "mjpeg/rtl/usb/board_test_async_fifo.v",
+      "first_line": 15,
+      "last_line": 21,
+      "sha256": "995bfbe2eb07df4b548ee5c4f7614c935c73ac6e9981095f212023722c47cf62"
+    },
+    "median_mix": {
+      "source": "mjpeg/rtl/camera/spatial_median_yuv_3x3.v",
+      "first_line": 70,
+      "last_line": 73,
+      "sha256": "2a07e26e4f11be1cfc417dc1cf2766e91f769c0837803343961727a60a24108c"
+    },
+    "preprocess_modes": {
+      "source": "mjpeg/rtl/camera/yuv422_preprocess.v",
+      "first_line": 84,
+      "last_line": 91,
+      "sha256": "da15aefce8f1ef5b35c1b708d9178889bfa3bb86f28c48ac75e6e190e5f004aa"
+    },
+    "atomic_config": {
+      "source": "mjpeg/rtl/board/camera_board_controls.v",
+      "first_line": 97,
+      "last_line": 108,
+      "sha256": "2db14f7c8eb2ec452715725a543be5e4d2e342c72e2a97a102b85e792979269a"
+    },
+    "jpeg_decode": {
+      "source": "mjpeg/host/camera_receiver.py",
+      "first_line": 52,
+      "last_line": 61,
+      "sha256": "9f9b16b54cb7180061c9d58cd5f546e98b38fa2ebe67890c2100f183d800296a"
+    },
+    "sim_fault_recovery": {
+      "source": "mjpeg/tb/tb_mjpeg_real_camera.sv",
+      "first_line": 86,
+      "last_line": 92,
+      "sha256": "41e3bb28d95d934d9944e82f87b0e66212c665f966f9d814d5c95bcf3cfe931b"
+    }
+  },
+  "evidence": {
+    "hardware_summary.json": {
+      "source": "mjpeg\\reports\\camera\\cleanup_acceptance_20261011_124020\\hardware_summary.json",
+      "sha256": "77c36aa8f5d89dfa84da4eebdecec74a69ef8d78f51b8c0b8a1ed40e91adf852"
+    },
+    "waveform_summary.json": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\waveform_summary.json",
+      "sha256": "17dc1803b4b4e6ce4859818a27449511350f2aaad8ab126381c05adb4bb2707f"
+    },
+    "native_png_summary.json": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\native_png_summary.json",
+      "sha256": "a2977a7f94067da17dd2eab271705255a60360943613c4d98ec6e790a59529d9"
+    },
+    "精简验证.json": {
+      "source": "mjpeg\\docs\\精简验证.json",
+      "sha256": "be10418bb8850f3b3ac71b2bc93882d246e02920cd3682674a6a1d4401a231c1"
+    },
+    "utilization.rpt": {
+      "source": "mjpeg\\reports\\camera\\full_20261011_123231\\utilization.rpt",
+      "sha256": "42634e8118c60141f6075b6cfe966c997bc503d751461da7a618a62d39c62fa4"
+    },
+    "timing_routed.rpt": {
+      "source": "mjpeg\\reports\\camera\\full_20261011_123231\\timing_routed.rpt",
+      "sha256": "4338faa52f077550304ca86e1fd519152c2a873bc0f1c3385dcba00445a1748e"
+    },
+    "BUILD_PASS.txt": {
+      "source": "mjpeg\\reports\\camera\\full_20261011_123231\\BUILD_PASS.txt",
+      "sha256": "d8e549d11efc40a6c9c587d872a17beb5952873ecd7b0d0e36eccd18edf673f2"
+    },
+    "PROGRAM_PASS.txt": {
+      "source": "mjpeg\\reports\\camera\\full_20261011_123231\\PROGRAM_PASS.txt",
+      "sha256": "8f7caf358e7b51818e5ad4a6aa6835185462b39f3ba4d2461e98cb8ec9ad8bb9"
+    }
+  },
+  "wave_databases": {
+    "camera.wdb": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\camera.wdb",
+      "sha256": "36ec43daf6e4f35dcdce869287ad7f53dfddddb203277f2dc90e7981ca3b32e5"
+    },
+    "controls.wdb": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\controls.wdb",
+      "sha256": "81b245f91be5a24934a5c03d16afb45c3a409fa75c45c52d3a9097818950a974"
+    },
+    "BUTTON_DEBOUNCE_PASS.txt": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\BUTTON_DEBOUNCE_PASS.txt",
+      "sha256": "47978c7dce47b8e55e1eab7133d1955100417d14d6d87fcd19a90be257538ed3"
+    },
+    "REAL_CAMERA_SIM_PASS.txt": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\REAL_CAMERA_SIM_PASS.txt",
+      "sha256": "21614bc170b5d6a9645a64ba96ac42d7e37aa221ea811158489587c3cd3e9ddc"
+    },
+    "camera_xsim.log": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\camera_xsim.log",
+      "sha256": "4debb967c26a21108050b3ebffaa34a5e804f7979e986d8eec3694dfc08d4373"
+    },
+    "controls_xsim.log": {
+      "source": "mjpeg\\reports\\camera\\waveforms_20261025\\controls_xsim.log",
+      "sha256": "22773c3ed6c4c31f799ef299af1ebebac1e7b5394bbc2113912c5e7d6be51dc5"
+    }
+  },
+  "derived_assets": {
+    "native_camera_crop.png": {
+      "original": "native_camera.png",
+      "crop_box": [
+        610,
+        130,
+        1203,
+        433
+      ],
+      "operation": "Native screenshot crop only, no waveform redraw",
+      "sha256": "13ae4abdb85302c67e8cf1f7068698a5e849c1e29d5a31c0e0e125ffd7303210"
+    },
+    "native_pixels_crop.png": {
+      "original": "native_pixels.png",
+      "crop_box": [
+        610,
+        130,
+        1203,
+        433
+      ],
+      "operation": "Native screenshot crop only, no waveform redraw",
+      "sha256": "957de09abfe1b4d9f4ecc5b0d0a11a52bc9944641ed02b1540a4e964fe1f389a"
+    },
+    "native_controls_crop.png": {
+      "original": "native_controls.png",
+      "crop_box": [
+        610,
+        130,
+        1203,
+        433
+      ],
+      "operation": "Native screenshot crop only, no waveform redraw",
+      "sha256": "b38ec3399a7e4520b77876efac0b92b4e9c98845ee3b194eecb6b84cc0428dea"
+    },
+    "denoise_off_roi.png": {
+      "original": "denoise_off.jpg",
+      "crop_box": [
+        500,
+        400,
+        1100,
+        800
+      ],
+      "operation": "Identical image coordinates, no pixel enhancement"
+    },
+    "denoise_32_roi.png": {
+      "original": "denoise_32.jpg",
+      "crop_box": [
+        500,
+        400,
+        1100,
+        800
+      ],
+      "operation": "Identical image coordinates, no pixel enhancement"
+    }
+  },
+  "live_demo_20261026": {
+    "mode_color": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\mode_color_window.png",
+      "report_path": "images/mode_color_window.png",
+      "sha256": "f8e8b07c4fa0e124f9301b9e9e241d4a1dd145b73d8004e2017eda5f2a177e53",
+      "bytes": 833412,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "mode_gray": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\mode_gray_window.png",
+      "report_path": "images/mode_gray_window.png",
+      "sha256": "182d27adefa4bbff01037d57a63afaaa6100ae918ed115e3dbc888b95264c701",
+      "bytes": 383596,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "binary_t064": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t064_window.png",
+      "report_path": "images/binary_t064_window.png",
+      "sha256": "a61c31825d1ede989038dd673c9ea829c60d07fdba990032cdca98132ff91b09",
+      "bytes": 224617,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "binary_t096": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t096_window.png",
+      "report_path": "images/binary_t096_window.png",
+      "sha256": "40ddb76e00d1d16830e783e51f78bf0c3112b93fe93ed8abb0b7d387ebcff50f",
+      "bytes": 239743,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "binary_t128": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t128_window.png",
+      "report_path": "images/binary_t128_window.png",
+      "sha256": "0a4a2b69314d8928920e5e14b2424524fce7f57c3afbff125ee4b72042a163b1",
+      "bytes": 196062,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "binary_t160": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t160_window.png",
+      "report_path": "images/binary_t160_window.png",
+      "sha256": "50f6cb997187cfc35d7e2ab4f23b219e93d033931e0d5da89800fa7cc6339af0",
+      "bytes": 139698,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "binary_t192": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t192_window.png",
+      "report_path": "images/binary_t192_window.png",
+      "sha256": "eef99aee8e1eb080fb92b6c843d61fed3ae74e29382c47cd916422b2627e0ad1",
+      "bytes": 126831,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "binary_t224": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t224_window.png",
+      "report_path": "images/binary_t224_window.png",
+      "sha256": "ecf4296082af2ecd0df51e8fb139dd25525197a1863d3e4f557e5bbbc7aa3d54",
+      "bytes": 73515,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "sobel_t008": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\sobel_t008_window.png",
+      "report_path": "images/sobel_t008_window.png",
+      "sha256": "007cc428f09c5e0bc5d4d33fa0d0545226ca40c837303f5132a66df2f4c04e65",
+      "bytes": 375326,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "sobel_t018": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\sobel_t018_window.png",
+      "report_path": "images/sobel_t018_window.png",
+      "sha256": "1a60211484129c3d14a4d0ade2559c03772fc7c9d4058cf653dcec6877e4c109",
+      "bytes": 246861,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "sobel_t032": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\sobel_t032_window.png",
+      "report_path": "images/sobel_t032_window.png",
+      "sha256": "a891bf6c8f1c40e7442b4f9b78fc287a2a7fdc67d7b4c73402ab475799e07a5d",
+      "bytes": 198653,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "sobel_t064": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\sobel_t064_window.png",
+      "report_path": "images/sobel_t064_window.png",
+      "sha256": "76efa651a2265fcf2094ea84a09c87f2ad8a504061c77b70561ba8520fa24035",
+      "bytes": 101838,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "quality_q60": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\quality_q60_window.png",
+      "report_path": "images/quality_q60_window.png",
+      "sha256": "712fb69d4bd8e4561a5c0fb2a870ec1e69f760f29a7861150552c204afdf9f2a",
+      "bytes": 780037,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "quality_q75": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\quality_q75_window.png",
+      "report_path": "images/quality_q75_window.png",
+      "sha256": "a1d0bc4ae44e2d29bfb1687dbcb9825ee898640aa0e54e2ccd2ad1ce8f52cc95",
+      "bytes": 820503,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "quality_q85": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\quality_q85_window.png",
+      "report_path": "images/quality_q85_window.png",
+      "sha256": "d4a811d1987f2fa7932ae9c546c96f90ee752a951b11ebc7e087e8b2e7224d89",
+      "bytes": 833529,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    },
+    "quality_q60_repeat": {
+      "source": "mjpeg\\reports\\camera\\report_demo_20261026\\quality_q60_repeat_window.png",
+      "report_path": "images/quality_q60_repeat_window.png",
+      "sha256": "3b52969485cca7aec68e9db3014b4298853f27b816ec8e31c3496f48aae19639",
+      "bytes": 778813,
+      "width": 1120,
+      "height": 800,
+      "format": "PNG"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+\section{总结与改进方向}
+本项目实现了从 OV5640 RAW8 采集到 PC JPEG 解码显示的完整链路，在片上行缓存与 FIFO 结构下达到单路 1080p30 目标。设计将像素处理、独立 JPEG、同步 USB 和板卡控制组织为可验证模块，并通过描述符和计数器提供运行可观察性。
+
+精简工作统一了最终源集合和工作流，移除退出链路的实验分支，再通过回归、重新构建与上板检验接口一致性。实板脚本残留命令的问题表明，维护范围应覆盖测试、文档和主机端。JPEG 核建立在已有移植基线上，后续工作包括链路集成、流控与资源时序优化；来源清单保存在仓库中，不能把全部基础核实现视为本次独立原创。
+
+本次演示补充了四模式、二值化及 Sobel 多阈值和三档画质的真实窗口证据。阈值直接改变输出内容及载荷，画质档位则体现细节保留与传输带宽的取舍；所有比较均限定于当前分时采集场景。
+
+后续优先改进三方面：其一，锁定曝光和白平衡，使用受控静态及运动场景评价色彩、暗光噪声和纹理；其二，针对摄像头输入与 USB 小裕量路径优化约束、布局并进行跨板、温压和长时间检查；其三，实测端到端显示时延，补齐物理按钮、灯光外观、复位和重连人工验收。现有结果支持当前配置下功能正常，不代替这些扩展评价。
+
+\appendix
+\section{构建、运行与复现}
+在仓库根目录运行。需要 Vivado 2020.1、Python 3.10+、Pillow、NumPy 与 FTDI D2XX，同一时间只使用一个 USB 接收程序。
+\begin{lstlisting}[language={},numbers=none,basicstyle=\fontsize{8.5}{10.5}\selectfont\ttfamily,caption={当前固件构建与验收命令}]
+./mjpeg/scripts/run_camera_build.ps1 -Action Full
+./mjpeg/scripts/run_camera_program.ps1 -Action Program
+python mjpeg/host/camera_viewer.py
+python -m unittest discover -s mjpeg/tb -p "test_*.py"
+python mjpeg/host/camera_receiver.py --ftdi --duration 60 \
+  --width 1920 --height 1080 --target-fps 30 \
+  --require-fps 30 --require-no-drops --output <new_report_dir>
+\end{lstlisting}
+反斜杠仅表示排版续行；Windows PowerShell 中可合并为一行，或使用其续行语法。编译报告时在本目录执行两次 \texttt{xelatex main.tex}，生成目录与交叉引用。自包含源码和素材可复制到其他位置编译，不依赖仓库之外的本机绝对路径。
+\clearpage
+
+\section{版本、素材与证据索引}
+实板验收基于提交 \texttt{d6549eb2d615814f57a4ce67899e98d9c6fead67} 的 RTL，主机降噪验收脚本随后修正旧命令探测。当前 bitstream 的 SHA-256 为：
+\begin{quote}\small\ttfamily\nolinkurl{671ea1d5852a88fc94425ae3a3242bfe8885ffa734ed8a01d940b8d83ef3df1a}\end{quote}
+LaTeX 工程保存源码节选、原图、完整原生截图及裁剪、数据摘要和素材 SHA-256。清单文件 \nolinkurl{asset_manifest.json} 记录原始路径与源码节选行号。以下证据按相对仓库路径定位：
+
+\begin{table}[H]\centering\caption{关键证据索引}
+\small\begin{tabularx}{\linewidth}{@{}p{37mm}Y@{}}\toprule
+证据 & 相对路径或说明\\\midrule
+精简回归 & \texttt{mjpeg/docs/}精简验证.json\\
+当前完整构建 & \nolinkurl{mjpeg/reports/camera/full_20261011_123231/}\\
+实板汇总 & \nolinkurl{mjpeg/reports/camera/cleanup_acceptance_20261011_124020/hardware_summary.json}\\
+原生数据库 & \nolinkurl{mjpeg/reports/camera/waveforms_20261025/camera.wdb}，同目录 \texttt{controls.wdb}\\
+本次演示截图与统计 & \nolinkurl{mjpeg/reports/camera/report_demo_20261026/summary.json}，同目录 \texttt{*\_window.png} 与分段 JSON\\
+原生截图与配置 & 同目录 \texttt{vivado\_*.png} 与 \texttt{*native*.wcfg}\\
+源码来源 & \nolinkurl{mjpeg/docs/copied_rtl_manifest.json}；\nolinkurl{mjpeg/docs/original_source_snapshot.json}\\\bottomrule
+\end{tabularx}\end{table}
+
+\begin{thebibliography}{9}\small\raggedright
+\bibitem{jpeg} ITU-T. Recommendation T.81: Digital compression and coding of continuous-tone still images -- Requirements and guidelines[S]. 1992. \url{https://www.itu.int/itu-t/recommendations/rec.aspx?id=2633&lang=en}.
+\bibitem{ftdi} FTDI. FT232H Single Channel Hi-Speed USB to Multipurpose UART/FIFO IC Datasheet[EB/OL]. \url{https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232H.pdf}.
+\bibitem{ug900} Xilinx. Vivado Design Suite User Guide: Logic Simulation, UG900, v2020.1[EB/OL]. \url{https://docs.amd.com/v/u/2020.1-English/ug900-vivado-logic-simulation}.
+\bibitem{project} MotionJPEG 项目. 当前 RTL、接口文档、原始仿真输出与实板验收记录[Z]. 本地资料，2026 年 10 月整理。在线资料访问日期：2026-10-25。
+\end{thebibliography}

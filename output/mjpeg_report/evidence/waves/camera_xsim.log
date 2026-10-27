@@ -1,0 +1,74 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sun Oct 25 14:04:15 2026
+# Process ID: 54168
+# Current directory: F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025
+# Command line: xsim.exe -mode tcl -source {xsim.dir/tb_mjpeg_real_camera/xsim_script.tcl}
+# Log file: F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/xsim.log
+# Journal file: F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/tb_mjpeg_real_camera/xsim_script.tcl
+# xsim {tb_mjpeg_real_camera} -wdb {F:/zju/dasanshangkecheng/HDL/mjpeg/reports/camera/waveforms_20261025/camera.wdb} -autoloadwcfg -tclbatch {F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/camera_waves.tcl} -onfinish stop
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+source F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/camera_waves.tcl
+## open_vcd {F:/zju/dasanshangkecheng/HDL/mjpeg/reports/camera/waveforms_20261025/camera.vcd}
+## log_vcd [get_objects {/tb_mjpeg_real_camera/clk}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/clk}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/pclk}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/pclk}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/rst_n}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/rst_n}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/vsync}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/vsync}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/href}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/href}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/camera_data}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/camera_data}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/admit}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/admit}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/active}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/active}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/valid}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/valid}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/take}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/take}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/pixel}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/pixel}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/sof}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/sof}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/eol}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/eol}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/eof}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/eof}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/abort}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/abort}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/wire_valid}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/wire_valid}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/wire_ready}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/wire_ready}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/wire_data}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/wire_data}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/received}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/received}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/dropped}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/dropped}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/overflows}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/overflows}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/good_frames}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/good_frames}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/bad_frames}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/bad_frames}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/aborts}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/aborts}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/engine/success_frame}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/engine/success_frame}]
+## log_vcd [get_objects {/tb_mjpeg_real_camera/engine/failed_frame}]
+## log_wave [get_objects {/tb_mjpeg_real_camera/engine/failed_frame}]
+## run all
+$finish called at time : 268620 ns : File "F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/tb/tb_mjpeg_real_camera.sv" Line 96
+## close_vcd
+## quit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 14:04:20 2026...

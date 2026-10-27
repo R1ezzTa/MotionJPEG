@@ -1,0 +1,112 @@
+[
+  {
+    "path": "rtl/common/jpeg_stream_buffer.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\common\\jpeg_stream_buffer.v",
+    "sha256": "867E64916BFB59D3415C11DEDD6817BEB1501AEF3E26C91C48B21193C1571A0A"
+  },
+  {
+    "path": "rtl/common/line_group_ram.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\common\\line_group_ram.v",
+    "sha256": "9132E494EDEABDB9F8145BCBC9740292ACD630B2E9D1D85556C168DBED760A17"
+  },
+  {
+    "path": "rtl/core/jpeg_encoder.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\jpeg_encoder.v",
+    "sha256": "C4514B6683229A2F20B4A7B43346D66BF0707652902E1E16AD1D57B47045C8B9"
+  },
+  {
+    "path": "rtl/core/jpeg_synth_top.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\jpeg_synth_top.v",
+    "sha256": "8AAB81DD1F1A59CFEC25B7E2B03EE38A2CCCBFF86815160F5B8B55C53AAFA658"
+  },
+  {
+    "path": "rtl/core/dct/dct1d.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\dct\\dct1d.v",
+    "sha256": "1B8B067D0ECDD3D7DC6BE1BB4B77FDBEE90A07E677134F1181B371A59872C377"
+  },
+  {
+    "path": "rtl/core/dct/dct8x8.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\dct\\dct8x8.v",
+    "sha256": "4482D4E34B377141E79089C66CEA3677D599676AE2F37E89525CA291CE4B03C0"
+  },
+  {
+    "path": "rtl/core/entropy/entropy_packer.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\entropy\\entropy_packer.v",
+    "sha256": "026B3116DF91BCBC2C7CB3F7ECC7AF390D41F763E1F587EA67EFE3C291AC4D30"
+  },
+  {
+    "path": "rtl/core/entropy/huffman_encoder.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\entropy\\huffman_encoder.v",
+    "sha256": "B8B00FF596F1A8E4838DC5BA644D86A04D2C3E9D51ED780604D07CA45072EA32"
+  },
+  {
+    "path": "rtl/core/entropy/symbol_encoder.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\entropy\\symbol_encoder.v",
+    "sha256": "589906EA4604FB9217244A8DFD2ADE669617652B1476EA797FEA237AE60B70BB"
+  },
+  {
+    "path": "rtl/core/entropy/zigzag_buffer.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\entropy\\zigzag_buffer.v",
+    "sha256": "59F63DA95490AB8704EBDF58C56F84A72690F5C7D384CEECBA096B188430DA49"
+  },
+  {
+    "path": "rtl/core/format/jpeg_formatter.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\format\\jpeg_formatter.v",
+    "sha256": "8114FF98F914035E7DB6BD697C0C41EF315124C72685A493B44A8971495D0DCE"
+  },
+  {
+    "path": "rtl/core/frontend/raster_to_block8x8.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\frontend\\raster_to_block8x8.v",
+    "sha256": "F0DAE2679064E0E24093DFB23CF1D994106B44B30E9D2EEFE97B3F1FAA357710"
+  },
+  {
+    "path": "rtl/core/frontend/raster_to_mcu422.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\frontend\\raster_to_mcu422.v",
+    "sha256": "02455698EF0D7176A9B7D6D240B466BC88C7198E2ACBF4EFB58B20EA23F276FD"
+  },
+  {
+    "path": "rtl/core/quant/quantize.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\core\\quant\\quantize.v",
+    "sha256": "E043CDCC922DE6C1FA13155566C4491AD71E0DB6959386C90131EEB69B3235B6"
+  },
+  {
+    "path": "rtl/generated/header.vh",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\generated\\header.vh",
+    "sha256": "72D3BC67AABDD6EADB05C1133E1BEA9288874920BC2B58D250C57519F1E916BB"
+  },
+  {
+    "path": "rtl/generated/huffman.vh",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\generated\\huffman.vh",
+    "sha256": "3EEDE7E03CB1C7698838F13C3DA1FF8A2BE22F88530DE309B88EBADA52524781"
+  },
+  {
+    "path": "rtl/generated/zigzag.vh",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\generated\\zigzag.vh",
+    "sha256": "F1038B75FC5DAF6925E995FB0B1AEBA377B0F9E6C11CCFDEC6A6C3972AAF417A"
+  },
+  {
+    "path": "rtl/video/mjpeg_arbiter.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\video\\mjpeg_arbiter.v",
+    "sha256": "5F0A129ED94C52791AFE48B065AD3E7F2189F6339F6AD696533B0EA9BDB76D6A"
+  },
+  {
+    "path": "rtl/video/mjpeg_channel.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\video\\mjpeg_channel.v",
+    "sha256": "893BC21D9BC2EAD18BE23E80E6ED76DC4AB5D85F3A3D3B6D0111931C3DD2A888"
+  },
+  {
+    "path": "rtl/video/mjpeg_encoder.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\video\\mjpeg_encoder.v",
+    "sha256": "52511A3A599F160E80699599114BF0C3097AB4E32F0D4874E6E72A43254C7BA2"
+  },
+  {
+    "path": "rtl/video/mjpeg_packetizer.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\video\\mjpeg_packetizer.v",
+    "sha256": "AA516C28AC63AF708622F5B276E89BDE47C1891EE748B9146876F542BB93B33E"
+  },
+  {
+    "path": "rtl/video/mjpeg_synth_top.v",
+    "source": "F:\\zju\\dasanshangkecheng\\HDL\\xilinx_mjpeg\\rtl\\video\\mjpeg_synth_top.v",
+    "sha256": "1AE86A7BC8F8F72C707C50DD251C0F36077A5A524B47931B421656CB841F682E"
+  }
+]
