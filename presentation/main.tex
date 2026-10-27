@@ -1,0 +1,196 @@
+% !TEX program = xelatex
+% Sources: R1ezzTa/MotionJPEG, remote commit 4c5a664, accessed 2026-10-24.
+% Compile twice. Notes are hidden; uncomment show notes for speaking prompts.
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{Madrid}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath,booktabs,array,graphicx,tikz,listings,appendixnumberbeamer}
+\usetikzlibrary{arrows.meta,positioning,calc,fit}
+\definecolor{navy}{HTML}{262681}
+\definecolor{teal}{HTML}{3333AC}
+\definecolor{ink}{HTML}{111111}
+\definecolor{muted}{HTML}{666666}
+\definecolor{pale}{HTML}{E8E9F1}
+\setbeamercolor{normal text}{fg=ink,bg=white}
+\setbeamercolor{structure}{fg=teal}
+\setbeamercolor{frametitle}{fg=white,bg=teal}
+\setbeamercolor{title}{fg=white,bg=teal}
+\setbeamercolor{block title}{fg=white,bg=teal}
+\setbeamercolor{block body}{fg=ink,bg=pale}
+\setbeamerfont{frametitle}{size=\large,series=\mdseries}
+\setbeamerfont{title}{size=\Large,series=\mdseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+
+\setbeamercolor{author in head/foot}{fg=white,bg=navy}
+\setbeamercolor{title in head/foot}{fg=white,bg=teal}
+\setbeamercolor{date in head/foot}{fg=white,bg=teal!80!black}
+\setbeamerfont{author in head/foot}{size=\fontsize{5.5}{6.5}\selectfont}
+\setbeamerfont{title in head/foot}{size=\fontsize{5.5}{6.5}\selectfont}
+\setbeamerfont{date in head/foot}{size=\fontsize{5.5}{6.5}\selectfont}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.5ex,dp=1.1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.53\paperwidth,ht=2.5ex,dp=1.1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\hypersetup{linkcolor=white}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.27\paperwidth,ht=2.5ex,dp=1.1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortinstitute\hspace{2mm}%
+    \ifnum\value{framenumber}>\inserttotalframenumber\relax
+      附录~\number\numexpr\value{framenumber}-\inserttotalframenumber\relax
+    \else\insertframenumber\,/\,\inserttotalframenumber\fi\hspace{2mm}
+  \end{beamercolorbox}}%
+}
+
+\setlength{\parskip}{4pt}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.23}
+\newcommand{\key}[1]{{\color{teal}\bfseries #1}}
+\newcommand{\source}[1]{\par\vfill{\fontsize{6.8}{8}\selectfont\color{muted}依据：#1\par}}
+\newcommand{\smallnote}[1]{\par{\footnotesize\color{muted}#1\par}}
+\newcommand{\repo}[2]{\href{https://github.com/R1ezzTa/MotionJPEG/blob/4c5a664288e3a78fe1c78c0bbdc8db61b8cb6bdf/#1}{#2}}
+\tikzset{box/.style={draw=teal!65,fill=pale,minimum height=10mm,text width=25mm,align=center,font=\small,inner sep=3pt}, arr/.style={-{Stealth[length=2mm]},thick,draw=navy}, lab/.style={font=\scriptsize,text=muted,align=center}}
+\lstset{language=Verilog,basicstyle=\ttfamily\footnotesize,keywordstyle=\color{teal}\bfseries,commentstyle=\color{muted},backgroundcolor=\color{pale!65},frame=none,columns=fullflexible,keepspaces=true,showstringspaces=false,breaklines=true,aboveskip=6pt,belowskip=6pt}
+\hypersetup{colorlinks=true,urlcolor=teal,linkcolor=navy,pdftitle={MotionJPEG：FPGA实时图像采集与JPEG编码},pdfauthor={任子桐}}
+\title[MotionJPEG：FPGA 实时图像采集与 JPEG 编码]{MotionJPEG}
+\subtitle{无 DDR3 的 FPGA 实时图像采集与 JPEG 编码}
+\author{任子桐}
+\institute[浙江大学]{浙江大学\\硬件描述语言课程项目}
+\date{2026 年 10 月}
+\begin{document}
+\begin{frame}{MotionJPEG：FPGA 实时图像采集与编码}
+\begin{beamercolorbox}[wd=\textwidth,sep=4mm,rounded=true,shadow=true]{title}
+\centering\Large 在片内完成图像处理与 JPEG 编码\par
+\vspace{2mm}\normalsize OV5640 摄像头输入，USB 输出至 PC
+\end{beamercolorbox}
+\vspace{5mm}
+\begin{columns}[T,onlytextwidth]
+\column{.53\textwidth}
+\key{项目功能}\par
+\vspace{1mm}
+彩色、灰度、二值化、Sobel 四种模式\par
+JPEG 质量档位 Q60 / Q75 / Q85\par
+每帧独立编码，PC 接收、解码与显示
+\column{.41\textwidth}
+\key{设计约束}\par
+\vspace{1mm}
+Artix-7 XC7A35T\par
+不使用 DDR3 整帧缓存\par
+采用行缓存、块缓存与流式处理
+\end{columns}
+\vfill
+{\small 任子桐\hfill 硬件描述语言课程项目 · 浙江大学}
+\end{frame}
+
+\begin{frame}{系统架构：数据跨时钟域连续流动}
+\centering
+\begin{tikzpicture}[node distance=9mm and 19mm]
+\node[box,text width=30mm] (a) {摄像头采集\\OV5640 / DVP};
+\node[box,text width=30mm,right=of a] (b) {图像处理\\颜色重建与降噪};
+\node[box,text width=30mm,right=of b] (c) {JPEG 编码\\分块、变换与压缩};
+\node[box,text width=30mm,below=12mm of c] (d) {帧封装\\MBLK 数据包};
+\node[box,text width=30mm,left=of d] (e) {USB 发送\\FT245 接口};
+\node[box,text width=30mm,left=of e] (f) {PC 接收\\解码与显示};
+\draw[arr] (a)--node[above,lab]{异步 FIFO}(b);
+\draw[arr] (b)--(c);\draw[arr] (c)--(d);
+\draw[arr] (d)--node[above,lab]{异步 FIFO}(e);\draw[arr] (e)--(f);
+\node[lab,above=4mm of a]{摄像头时钟域};
+\node[lab,above=4mm of c]{100 MHz 核心域};
+\node[lab,below=3mm of e]{60 MHz USB 域};
+\end{tikzpicture}
+\vspace{4mm}
+\begin{block}{两个接口问题}
+\small
+\key{跨域：}FIFO 的 Gray 指针经过两级同步，数据通过双时钟存储体传递。\par
+\key{停顿：}反压时同步保持数据、有效位和帧标记，避免像素与帧边界错位。
+\end{block}
+\end{frame}
+
+\begin{frame}{关键实现：存储并行化，运算分级寄存}
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\key{1. 像素与系数怎样存}\par
+\small
+光栅输入按存储体分开，支持双样本访问。\par
+Zigzag 通过分布式 RAM 重排系数。
+\vspace{3mm}
+\begin{tikzpicture}[node distance=7mm]
+\node[box,text width=18mm,font=\footnotesize] (a){光栅像素};
+\node[box,text width=18mm,font=\footnotesize,right=of a] (b){分块 RAM};
+\node[box,text width=18mm,font=\footnotesize,below=6mm of b] (c){8$\times$8 块};
+\draw[arr](a)--(b);\draw[arr](b)--(c);
+\end{tikzpicture}
+\column{.49\textwidth}
+\key{2. 组合路径怎样拆}\par
+\small
+\texttt{formatter\_start} 延迟一拍。\par
+DCT 用局部行驱动寄存器分散扇出。\par
+量化用倒数乘法加修正替代直接除法。
+\vspace{3mm}
+\begin{tikzpicture}[node distance=4mm]
+\node[box,text width=16mm,font=\footnotesize] (a){倒数查表};
+\node[box,text width=16mm,font=\footnotesize,right=of a] (b){乘法};
+\node[box,text width=16mm,font=\footnotesize,right=of b] (c){比较修正};
+\draw[arr](a)--(b);\draw[arr](b)--(c);
+\node[lab,below=3mm of b]{各级寄存，控制信号随数据对齐};
+\end{tikzpicture}
+\end{columns}
+\vspace{3mm}
+\begin{block}{3. 系数怎样压缩}
+\small DC 差分表示相邻块变化；AC 零游程表示连续零；EOB 结束块内剩余零。
+\end{block}
+\end{frame}
+
+\begin{frame}{验证结果：功能通过，资源满足器件容量}
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\key{功能验收基线}\par
+{\fontsize{30}{34}\selectfont\color{teal}1080p30}\par
+\small 多项测试累计 \key{3480 帧}独立解码通过\par
+摄像头 FIFO 最大溢出计数：\key{0}\par
+\vspace{2mm}
+Sobel 连续运行 60 s\par
+1800 帧，平均 30.0019 fps
+\column{.46\textwidth}
+\key{实现资源}\par
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+资源 & 使用量 & 占比\\\midrule
+LUT & 15,584 & 74.92\%\\
+FF & 19,533 & 46.95\%\\
+BRAM36 & 36 & 72.00\%\\
+DSP & 46 & 51.11\%\\\bottomrule
+\end{tabular}\par
+\vspace{2mm}
+WNS：$+0.057$ ns\par
+WHS：$+0.023$ ns
+\end{columns}
+\vspace{3mm}
+\begin{block}{验证结论}
+\small 已完成无 DDR3 的实时编码链路；后续精简版本通过回归与综合，仍需重新验收。
+\end{block}
+\source{功能、资源与时序对应 full\_20260929\_170515。3480 帧为多项测试累计，BRAM 按 36 Kb 等效计。}
+\end{frame}
+
+\begin{frame}{项目分工}
+\small
+\renewcommand{\arraystretch}{1.65}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.25cm}>{\raggedright\arraybackslash}p{6.8cm}p{2.5cm}@{}}
+\toprule
+\key{工作方向} & \key{负责内容} & \key{成员}\\\midrule
+采集与处理 & 摄像头初始化、采集、颜色重建与预处理 & 待填写\\
+JPEG 编码 & 分块缓存、DCT、量化与符号编码 & 待填写\\
+传输与上位机 & USB 封包、PC 接收与解码显示 & 待填写\\
+集成与验证 & 顶层联调、仿真回归及验收整理 & 待填写\\\bottomrule
+\end{tabular}
+\vspace{5mm}
+\smallnote{目前按工作方向列出，成员及实际职责待确认后填写。}
+\vfill
+\centering\large\color{teal}谢谢各位老师和同学
+\end{frame}
+\end{document}
