@@ -1,0 +1,123 @@
+\section{项目目标与设计约束}
+\subsection{任务背景与实现范围}
+实时图像系统需要连续处理摄像头像素，并在有限片上资源、外设带宽和时序预算内完成压缩传输。本项目选择独立帧 JPEG 作为输出，使每一帧能够由标准解码器单独恢复，便于故障定位、抓包回放与主机显示。最终系统保留单摄像头、单 JPEG 通道和同步 USB 链路。
+
+\begin{table}[H]\centering\caption{最终系统的设计目标与验收方式}
+\begin{tabularx}{\linewidth}{@{}lYY@{}}\toprule
+项目 & 实现要求 & 验收依据\\\midrule
+输入 & OV5640 RAW8，1080p30 & 芯片 ID、初始化与帧计数\\
+处理 & 四种模式、可调阈值和降噪 & 模式读回、图像与 JPEG 解码\\
+编码 & Baseline JPEG；三档画质 & 量化表、金样与独立解码\\
+传输 & FT245 同步 FIFO；MBLK & 帧号、时间戳与 END 一致性\\
+交互 & 板载键与 PC 设置联动 & 控制状态、启停和关灯读回\\
+实现 & 不使用 DDR3；LUT $\leq80\%$ & 资源、时序、CDC 与 DRC\\\bottomrule
+\end{tabularx}\end{table}
+
+\subsection{数据量与压缩必要性}
+按有效像素估算，RAW8 的有效载荷率为
+\begin{equation}
+B_{\mathrm{RAW8}}=1920\times1080\times30=62.208\ \mathrm{MB/s}.
+\end{equation}
+转为每像素平均 2 字节的 YUV422 后，载荷率为 124.416 MB/s；RGB888 则为 186.624 MB/s。计算采用 $1\,\mathrm{MB}=10^6$ 字节，不含摄像头消隐、USB 协议及状态封包开销。FT232H 的同步接口使用 60 MHz 时钟，数据手册给出的同步 FIFO 传输能力上限约为 40 MB/s\cite{ftdi}，直接传输未压缩图像难以覆盖目标负载。
+
+\subsection{流式实现的取舍}
+本设计使用行缓存、块重排缓存和短时 FIFO 消化局部速率差异，按像素与数据块逐级推进。这有利于控制资源规模并减少整帧存储依赖，同时要求编码器与 USB 的长期平均处理能力足以覆盖输入。FIFO 只能缓解短时背压，不能长期吸收吞吐不足。
+
+摄像头无法随下游任意暂停，持续拥塞或格式错误需要显式终止当前帧。项目因此将完整帧准入、失败描述符和恢复握手作为功能的一部分，避免故障残余字节影响后续图像。报告的核心评价是“给定配置下连续得到完整、可独立解码的帧”，并辅以性能和资源数据。
+\clearpage
+
+\section{系统总体架构}
+\begin{figure}[H]\centering
+\begin{tikzpicture}[font=\small,>=Stealth,box/.style={draw=navy,fill=shade,rounded corners=2pt,align=center,minimum height=12mm,text width=36mm},node distance=8mm and 11mm]
+\node[box] (a) {OV5640\\RAW8 / DVP};
+\node[box,right=of a] (b) {引脚寄存与 DVP 捕获\\像素异步 FIFO};
+\node[box,right=of b] (c) {BGGR 颜色重建\\YCbCr 降噪};
+\node[box,below=of c] (d) {YUV422 预处理\\四模式 / 阈值};
+\node[box,left=of d] (e) {JPEG 编码与帧管理\\量化表 / 描述符};
+\node[box,left=of e] (f) {MBLK 分块\\TX/RX 异步 FIFO};
+\node[box,below=of f] (g) {FT232H\\60 MHz 同步 USB};
+\node[box,right=of g] (h) {PC 接收、校验\\独立解码与预览};
+\node[box,right=of h,draw=teal] (i) {板载键 / USB 命令\\运行、画质、补光};
+\draw[->,thick] (a)--(b);\draw[->,thick] (b)--(c);\draw[->,thick] (c)--(d);\draw[->,thick] (d)--(e);\draw[->,thick] (e)--(f);\draw[->,thick] (f)--(g);\draw[<->,thick] (g)--(h);
+\draw[->,teal,dashed] (i)--(d);\draw[->,teal,dashed] (i.north) to[out=115,in=-50] (e.south east);\draw[->,teal,dashed] (h)--(i);
+\end{tikzpicture}
+\caption{最终系统的流式架构。实线为图像数据通路，虚线为控制关系。}\label{fig:arch}
+\end{figure}
+
+\subsection{顶层组织与时钟域}
+工程顶层为 \texttt{davinci\_mjpeg\_camera\_top}，帧管理引擎为 \texttt{mjpeg\_camera\_engine}。真实构建选择 \texttt{REAL\_CAMERA=1} 和 profile 5。板上 50 MHz 系统时钟经 MMCM 生成 100 MHz 核心时钟，USB CLKOUT 为 60 MHz；摄像头采样 MMCM 处理外部 PCLK 相位关系。本次实板窗口的 PCLK 计数测得约 75 MHz。
+
+\begin{table}[H]\centering\caption{主要模块的职责边界}
+\small\begin{tabularx}{\linewidth}{@{}lY@{}}\toprule
+模块组 & 职责\\\midrule
+\texttt{rtl/camera} & SCCB、DVP、颜色重建、滤波和预处理\\
+\texttt{rtl/core} & 光栅重排、DCT、量化、Zigzag、熵编码和格式化\\
+\texttt{rtl/video} & 通道调度、流缓冲、像素接口和载荷归并\\
+\texttt{rtl/usb} & 同步总线、跨域 FIFO、状态快照和 MBLK\\
+\texttt{rtl/board, top} & 按键与参数、帧生命周期、LED 与 FPS 显示\\\bottomrule
+\end{tabularx}\end{table}
+源集合由 \texttt{camera\_sources.txt} 维护。模拟 ROM 与渐变源用于回归，真实构建通过常量参数选择输入，综合时移除无效分支。板载 DDR3 保持复位，系统不实例化 MIG 或外部帧存储控制器。
+\clearpage
+
+\section{摄像头采集、准入与跨时钟传输}
+\subsection{初始化与完整帧准入}
+SCCB 控制器完成芯片 ID 读取、寄存器配置和读回，采样时钟就绪后才允许像素路径工作。profile 5 使用 RAW8 BGGR 相位，DVP 捕获模块依据 HREF/VSYNC 和行列计数生成 SOF、EOL、EOF。帧准入同时考虑采样准备、量化表状态、编码忙状态和运行请求。
+\lstinputlisting[firstnumber=88,caption={编码引擎的像素握手与帧准入条件},label={lst:admit}]{code/admission.v}
+\src{mjpeg/rtl/top/mjpeg_camera_engine.v:88--94}
+只有 valid 与 ready 同时有效时，数据及伴随标志才推进。准入请求可在编码开始后降低，已接受的帧由采集模块保持。停止或切换画质时禁止新帧进入，当前帧排完后再转换状态，避免半帧采用新参数。
+
+\subsection{异步 FIFO 与背压}
+像素与 USB TX/RX 路径跨越不同时钟域。FIFO 使用二进制地址访问存储器，将灰码指针通过两级同步器送入另一域，并在本地域计算空满。RAM 写口不附加异步复位，便于推断双时钟 BRAM。
+\lstinputlisting[firstnumber=15,caption={异步 FIFO 的接受条件、灰码和空满判断},label={lst:fifo}]{code/fifo_gray.v}
+\src{mjpeg/rtl/usb/board_test_async_fifo.v:15--21}
+灰码减少相邻更新时同时变化的位数，仍需同步器、局部复位释放与物理约束配合。项目同时检查 CDC 和总线偏斜。输出在 \texttt{valid=1, ready=0} 时保持稳定，直到完成握手。
+
+\subsection{异常终止与恢复}
+采集模块识别短行、超长行、意外帧界和溢出。故障请求触发 FIFO 清理，核心域产生一次 \texttt{abort}，再通过应答完成恢复；清理结束前不接受下一帧。故障通过失败描述符与计数器报告给主机，避免残余字节拼入后续帧。
+\clearpage
+
+\section{颜色重建与空间降噪}
+\subsection{RAW8 到 YCbCr 的关系}
+RAW8 每个位置只提供 Bayer 阵列中的一个颜色分量。颜色重建依据 BGGR 相位和邻域形成 RGB，再转换到亮度与色度表示。滤波阶段保留 YCbCr444，随后形成 YUV422，使两个水平相邻像素共享一组 Cb/Cr，从而分别处理亮度细节和色度平滑。
+
+3×3 窗口使用行缓存组织，边界采用反射策略。有效位、帧/行标志及参数与数据同步经过流水线；共同使能在背压时暂停各级，保证窗口和元信息始终对应同一像素。系统只需保存局部邻域，缓存规模随图像宽度而非整帧面积增长。
+
+\subsection{中值混合及强度含义}
+设窗口中值为 $m$，中心原像素为 $p$，用户强度为 $N\in[0,255]$。中值混合部分使用整数系数
+\begin{equation}
+a=\min(N,32),\qquad p'=\left\lfloor\frac{32p+a(m-p)+16}{32}\right\rfloor.\label{eq:median}
+\end{equation}
+$N=0$ 精确保留原像素；8、16、32 对应四分之一、一半和完整中值混合。超过 32 后中值混合系数不再增加，强度继续影响后级亮度引导色度平滑的门限。
+\lstinputlisting[firstnumber=70,caption={每个颜色平面的中值混合乘加节选},label={lst:median}]{code/median_mix.v}
+\src{mjpeg/rtl/camera/spatial_median_yuv_3x3.v:70--73}
+代码把两个加权项改写为“原值加差值乘系数”，每个平面只需一次有符号乘法。三个平面并行，乘加映射至 DSP，以控制 LUT 占用；差值计算单独成级，限制组合路径长度。式\eqref{eq:median}的加 16 对应右移前的舍入项。
+
+\subsection{亮度引导色度平滑}
+中值混合后，系统继续对色度执行两级局部平滑，并使用亮度差异限制跨边缘混合，目标是在抑制暗部色斑的同时保留轮廓。较强滤波可能损失纹理，低照度曝光、白平衡和镜头也会影响观感。因此实拍图仅作定性观察，编码载荷下降不能单独证明画质提升。
+\clearpage
+
+\section{四模式预处理与参数一致性}
+\subsection{模式和数学定义}
+彩色模式保留像素；灰度模式将 Cb/Cr 置为 128；二值化将亮度与 $T_b$ 比较；Sobel 依据 3×3 亮度邻域计算梯度。对标准水平、垂直模板计算的 $G_x,G_y$，实现使用绝对值和近似幅值，并归一化到 8 位：
+\begin{equation}
+E=\min\left(255,\left\lfloor\frac{|G_x|+|G_y|+2}{4}\right\rfloor\right),\quad
+Y_{\mathrm{edge}}=\begin{cases}E,&E\geq T_e,\\0,&E<T_e.\end{cases}
+\end{equation}
+Sobel 保留超过阈值的灰阶边缘幅值，而非把所有有效边缘统一变为白色。其结果需要结合阈值和光照条件解释。
+\lstinputlisting[firstnumber=84,caption={四种输出模式的实际 RTL 分支},label={lst:modes}]{code/preprocess_modes.v}
+\src{mjpeg/rtl/camera/yuv422_preprocess.v:84--91}
+
+\subsection{配置与像素绑定}
+模块把模式、亮度阈值和边缘阈值组合成配置字，随窗口与计算流水线传递。
+\texttt{config\_pipe} 与 \texttt{center\_pipe} 对齐，输出采用当前像素对应的配置。参数在帧首锁定；主机同时读取“请求值”与“活动值”，确认设置是否已应用。
+
+\begin{table}[H]\centering\caption{模式、编码和默认行为}
+\begin{tabularx}{\linewidth}{@{}lcY@{}}\toprule
+模式 & 编码 & 默认行为\\\midrule
+彩色 & 00 & 保留 YUV422\\
+灰度 & 01 & 保留亮度，Cb/Cr 固定为 128\\
+二值化 & 02 & $T_b=128$；亮度达阈值输出 255，否则为 0\\
+Sobel & 03 & $T_e=32$；过滤弱边缘，保留梯度强度\\\bottomrule
+\end{tabularx}\end{table}
+预处理共享有效/就绪流控，在下游暂停时整体保持。灰度、二值化和 Sobel 仍编码为三分量 JPEG；其中性色度使独立解码后的 R、G、B 一致，实板脚本对这一特征进行了检查。
+\clearpage

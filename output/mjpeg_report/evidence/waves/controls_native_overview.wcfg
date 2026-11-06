@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<wave_config>
+  <wave_state />
+  <db_ref_list>
+    <db_ref path="controls.wdb" id="1">
+      <top_modules>
+        <top_module name="tb_camera_board_controls" />
+      </top_modules>
+    </db_ref>
+  </db_ref_list>
+  <zoom_setting>
+    <ZoomStartTime time="0fs" />
+    <ZoomEndTime time="6930000fs" />
+    <Cursor1Time time="6920000fs" />
+  </zoom_setting>
+  <column_width_setting>
+    <NameColumnWidth column_width="160" />
+    <ValueColumnWidth column_width="65" />
+  </column_width_setting>
+  <WVObjectSize size="7" />
+  <wvobject fp_name="/tb_camera_board_controls/keys" type="array">
+    <obj_property name="ElementShortName">keys[3:0]</obj_property>
+    <obj_property name="ObjectShortName">keys[3:0]</obj_property>
+    <obj_property name="Radix">HEX</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_camera_board_controls/run_requested" type="logic">
+    <obj_property name="ElementShortName">run_requested</obj_property>
+    <obj_property name="ObjectShortName">run_requested</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_camera_board_controls/quality" type="array">
+    <obj_property name="ElementShortName">quality[1:0]</obj_property>
+    <obj_property name="ObjectShortName">quality[1:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_camera_board_controls/light_start" type="logic">
+    <obj_property name="ElementShortName">light_start</obj_property>
+    <obj_property name="ObjectShortName">light_start</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_camera_board_controls/denoise" type="array">
+    <obj_property name="ElementShortName">denoise[7:0]</obj_property>
+    <obj_property name="ObjectShortName">denoise[7:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_camera_board_controls/pp_mode" type="array">
+    <obj_property name="ElementShortName">pp_mode[1:0]</obj_property>
+    <obj_property name="ObjectShortName">pp_mode[1:0]</obj_property>
+    <obj_property name="Radix">UNSIGNED</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_camera_board_controls/binary_threshold" type="array">
+    <obj_property name="ElementShortName">binary_threshold[7:0]</obj_property>
+    <obj_property name="ObjectShortName">binary_threshold[7:0]</obj_property>
+    <obj_property name="Radix">HEX</obj_property>
+  </wvobject>
+</wave_config>

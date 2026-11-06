@@ -1,0 +1,80 @@
+\section{综合实现、资源与时序}
+\subsection{当前固件的实现后结果}
+2026 年 10 月 11 日从精简源码重新执行综合、布局布线及 bitstream 生成，构建目录为 \texttt{full\_20261011\_123231}。表\ref{tab:resource}采用实现后数据，避免把早期综合估算与最终资源混用。
+
+\begin{table}[H]\centering\caption{当前固件的实现后资源占用}\label{tab:resource}
+\begin{tabular}{@{}lrrr@{}}\toprule
+资源 & 已使用 & 可用 & 占用率\\\midrule
+Slice LUT & 15544 & 20800 & 74.73\%\\
+Slice Register & 19523 & 41600 & 46.93\%\\
+Block RAM Tile & 36 & 50 & 72.00\%\\
+DSP48E1 & 46 & 90 & 51.11\%\\
+Bonded IOB & 55 & 250 & 22.00\%\\\bottomrule
+\end{tabular}\end{table}
+LUT 低于项目设定的 80\% 上限。BRAM 服务于行组缓存、空间窗口、码流与跨域 FIFO。系统使用片上缓存保持流式访问，当前资源余量仍约束后续扩展。
+
+\begin{table}[H]\centering\caption{最终静态时序及构建检查}
+\begin{tabularx}{\linewidth}{@{}lY@{}}\toprule
+项目 & 结果及解释\\\midrule
+最差建立裕量 & WNS $+0.050$ ns；TNS 为 0，失败端点为 0\\
+最差保持裕量 & WHS $+0.015$ ns；THS 为 0，失败端点为 0\\
+核心时钟域 & 100 MHz core\_raw 域 WNS 为 $+0.440$ ns\\
+USB 时钟域 & usb\_clk 域 WNS 为 $+0.064$ ns\\
+构建检查 & CDC、总线偏斜、DRC 错误、黑盒及 USB 三态释放检查通过\\
+下载检查 & CRC 正常，DONE/EOS 置位，生成 PROGRAM\_PASS\\\bottomrule
+\end{tabularx}\end{table}
+
+\subsection{结果含义与剩余风险}
+最差建立路径跨越外部摄像头输入与采样时钟，正裕量较小；USB 保持裕量也偏小。结果表示满足本次约束与实现条件，不能推断修改引脚、器件或约束后仍有相同余量。DRC 无错误仍保留警告，涉及摄像头非专用时钟布线、RAM 异步控制等，需要结合硬件和复位语义继续审查。一次通过不代表所有温压条件与板间差异均已覆盖。
+
+\evid{full_20261011_123231/utilization.rpt；timing_routed.rpt；BUILD_PASS.txt；PROGRAM_PASS.txt}
+\clearpage
+
+\section{实板运行与验收}
+\subsection{测试条件与验收组成}
+测试使用达芬奇 XC7A35T、OV5640 和 FT232H。经 JTAG 下载重新构建的固件，检查芯片 ID 为 \texttt{0x5640} 和初始化状态，再通过 D2XX 独占数据接口采集。分辨率为 $1920\times1080$、画质默认 Q85、核心域 100 MHz；各阶段改变模式、滤波与运行状态，结束后停止并关灯。
+
+\begin{table}[H]\centering\caption{2026-10-11 实板验收组成}
+\begin{tabularx}{\linewidth}{@{}l r Y@{}}\toprule
+阶段 & 解码帧数 & 主要覆盖项\\\midrule
+板卡控制 & 690 & 三档画质、两次启停、补光限时读回\\
+预处理轮换 & 811 & 四模式及多个亮度/边缘阈值\\
+降噪重测 & 840 & 0、8、16、32、64、255、0 七段切换\\
+降噪与模式组合 & 180 & N32 下 Sobel 与彩色配合\\
+连续彩色 & 1795 & 60 s，N32；严格检查帧率和稳态丢帧\\
+连续 Sobel / 彩色 & 3600 & 各 60 s，N0；各 1800 帧\\\midrule
+主体功能验收 & 7916 & 以上六阶段合计\\
+查看器收流 & 117 & 自动启动、完整解码、正常退出\\\midrule
+总计 & 8033 & 各阶段全部通过\\\bottomrule
+\end{tabularx}\end{table}
+
+\subsection{持续运行与计数解释}
+严格彩色长测得到 30.0019328 fps。输入与压缩窗口统计为 30 fps，59 个有效状态间隔内接收 1770 帧，\texttt{dropped\_frames} 和 \texttt{overflow\_count} 增量均为 0；成功 JPEG 序号 0～1794。1795 帧包含启动和停止时刻的影响，应采用实际接收帧数，不能直接以 $60\times30$ 替代。
+
+查看器及空闲期间可能出现准入跳过，因为停止或准备参数时系统有意拒绝传感器帧。判断链路故障应结合稳定窗口差值和溢出状态，不能把累计 dropped 非零全部理解为传输错误。
+
+\subsection{交互验证边界}
+补光已观察到“开启”和定时“关闭”的寄存器读回。软件控制、按键逻辑仿真和最终停止状态均通过；实板按钮手感、实际灯光亮灭外观尚未由人工确认，保留为待完成的物理观察项。
+\evid{cleanup_acceptance_20261011_124020/hardware_summary.json}
+\clearpage
+
+\input{sections/live_demo.tex}
+
+\section{载荷、压缩效果与降噪观察}
+\input{sections/live_bandwidth.tex}
+\subsection{历史验收的载荷与降噪对照}
+\begin{figure}[H]\centering
+\includegraphics[width=.98\linewidth]{payload_results.pdf}
+\caption{实板 JPEG 载荷。左图来自画质轮换，右图来自降噪重测前六段；均为分时实景统计。}\label{fig:payload}
+\end{figure}
+以下数据来自 2026 年 10 月 11 日的历史验收，场景和设置与本次演示不同。该次三档画质平均 JPEG 大小约为 224.0、317.7、486.1 kB/帧，帧率均约 30.002 fps。降噪重测中 N0 与 N32 载荷率分别约 14.654 MB/s、9.832 MB/s，下降约 32.9\%。抑制高频分量可以减小编码载荷，这种变化不能单独证明画质改善。
+
+\begin{figure}[H]\centering
+\begin{subfigure}{.485\linewidth}\includegraphics[width=\linewidth]{denoise_off_roi.png}\caption{N0：原样保留}\end{subfigure}\hfill
+\begin{subfigure}{.485\linewidth}\includegraphics[width=\linewidth]{denoise_32_roi.png}\caption{N32：完整中值混合}\end{subfigure}
+\caption{实拍局部对照，原图相同位置 $(500,400)$～$(1100,800)$ 裁剪，未锐化。分时采集，不作为相同输入下的定量画质比较。}\label{fig:nr}
+\end{figure}
+局部图中 N32 的墙面与织物色斑更平滑，部分纹理细节也可能减弱。当前缺少无噪声参考、曝光锁定和运动场景，不报告 PSNR、SSIM 或动态画质收益。
+
+严格彩色长测使用 N32，平均 JPEG 为 326776.37 字节、约 9.804 MB/s。以 YUV422 有效载荷为基准，压缩比 12.69:1、载荷减少 92.12\%；以 RAW8 为基准则为 6.35:1、减少 84.24\%。不同原始格式必须标明计算基准，MBLK 和 USB 开销另计。
+\clearpage

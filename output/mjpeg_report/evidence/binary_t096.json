@@ -1,0 +1,1887 @@
+{
+  "name": "binary_t096",
+  "mode": 2,
+  "binary": 96,
+  "edge": 18,
+  "quality": 85,
+  "denoise": 32,
+  "seconds": 8,
+  "captured_at": "2026-10-26T21:57:45.283636+08:00",
+  "elapsed_seconds": 8.061999999999898,
+  "sample_frames": 242,
+  "frame_first": 1151,
+  "frame_last": 1392,
+  "mean_jpeg_bytes": 279406.37190082646,
+  "min_jpeg_bytes": 276222,
+  "max_jpeg_bytes": 281859,
+  "fps_timestamp": 30.001930580661597,
+  "jpeg_MBps": 8.387043165467732,
+  "usb_record_MBps": 8.487666335896908,
+  "yuv422_compression_ratio": 14.842897002621052,
+  "payload_reduction_percent": 93.26277073927405,
+  "encoding_failed_delta": 0,
+  "overflow_delta": 0,
+  "dropped_delta": 0,
+  "screenshot": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t096_window.png",
+  "preview": "work\\image-previews\\binary_t096_preview.jpg",
+  "jpeg": "mjpeg\\reports\\camera\\report_demo_20261026\\binary_t096_frame.jpg",
+  "displayed_frame_id": 1391,
+  "displayed_jpeg_bytes": 279684,
+  "quantization_sha256": "c63867006bdcac34c348e80c6bbaed1868688b50d457570224d725fda5bcc60b",
+  "info_text": "实时预览  |  1920×1080  帧号 1391  JPEG 273.1 KiB  |  JPEG 30.00 fps  |  显示 28.5 fps  |  传输 8.62 MB/s / JPEG 8.52 MB/s  |  收到 1393 帧  |  预览跳过 41 帧  |  编码失败 0",
+  "telemetry_text": "板内输入/压缩/失败 fps：30/30/0  |  RAW8  初始化 完成  累计准入跳帧/丢帧 0  溢出 0  补光 灭  |  画质 Q85  |  稳健降噪 v2 请求强度 32  |  板内二值化（亮度 96 / 边缘 18）",
+  "image_metadata": {
+    "bytes": 239743,
+    "width": 1120,
+    "height": 800,
+    "format": "PNG"
+  },
+  "preview_metadata": {
+    "bytes": 132390,
+    "width": 1120,
+    "height": 800,
+    "format": "JPEG"
+  },
+  "state_start": {
+    "phase": "streaming",
+    "received": 1151,
+    "failed": 0,
+    "decoded": 0,
+    "jpeg_bytes": 332315545,
+    "wire_bytes": 336300417,
+    "fps": 30.001930191976655,
+    "error": null,
+    "camera": {
+      "flags": 271315037,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 2834886002,
+      "received_frames": 1133,
+      "dropped_frames": 0,
+      "overflow_count": 0,
+      "dvp_byte_count": 2351520015,
+      "frame_sync_count": 1134,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "denoise_capable": true,
+      "preprocess_capable": true,
+      "denoise_revision": 2,
+      "denoise_requested": 32,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 38,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": true,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    "rate": {
+      "window": 38,
+      "input_fps": 30,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 1133
+    },
+    "source": "USB_SLAVE",
+    "recoveries": 0,
+    "last_recovery": null,
+    "connection_epoch": 0,
+    "discarded_partial_frames": 0,
+    "denoise_capable": true,
+    "denoise_requested": 32,
+    "preprocess_capable": true,
+    "preprocess": {
+      "revision": 1,
+      "mode_requested": 2,
+      "mode": 2,
+      "binary_threshold_requested": 96,
+      "edge_threshold_requested": 18,
+      "binary_threshold": 96,
+      "edge_threshold": 18,
+      "frames_started": 1134,
+      "window": 38
+    },
+    "mode_requested": 2,
+    "binary_threshold_requested": 96,
+    "edge_threshold_requested": 18
+  },
+  "state_end": {
+    "phase": "streaming",
+    "received": 1393,
+    "failed": 0,
+    "decoded": 0,
+    "jpeg_bytes": 399931887,
+    "wire_bytes": 404727983,
+    "fps": 30.001930954786687,
+    "error": null,
+    "camera": {
+      "flags": 271315037,
+      "chip_id": 22080,
+      "config_index": 283,
+      "pclk_ticks": 3434886210,
+      "received_frames": 1373,
+      "dropped_frames": 0,
+      "overflow_count": 0,
+      "dvp_byte_count": 2849217090,
+      "frame_sync_count": 1374,
+      "raw8": true,
+      "sampling_ready": true,
+      "board_controls": true,
+      "denoise_capable": true,
+      "preprocess_capable": true,
+      "denoise_revision": 2,
+      "denoise_requested": 32,
+      "run_requested": true,
+      "quality": 85,
+      "quality_requested": 85,
+      "quality_pending": false,
+      "window": 46,
+      "init_done": true,
+      "init_error": false,
+      "capture_active": true,
+      "tables_ready": true,
+      "codec_busy": true,
+      "config_error": false,
+      "streaming": true,
+      "light_requested": false,
+      "light_on": false,
+      "light_error": false,
+      "light_busy": false
+    },
+    "rate": {
+      "window": 46,
+      "input_fps": 30,
+      "compressed_fps": 30,
+      "failed_fps": 0,
+      "total_compressed": 1373
+    },
+    "source": "USB_SLAVE",
+    "recoveries": 0,
+    "last_recovery": null,
+    "connection_epoch": 0,
+    "discarded_partial_frames": 0,
+    "denoise_capable": true,
+    "denoise_requested": 32,
+    "preprocess_capable": true,
+    "preprocess": {
+      "revision": 1,
+      "mode_requested": 2,
+      "mode": 2,
+      "binary_threshold_requested": 96,
+      "edge_threshold_requested": 18,
+      "binary_threshold": 96,
+      "edge_threshold": 18,
+      "frames_started": 1374,
+      "window": 46
+    },
+    "mode_requested": 2,
+    "binary_threshold_requested": 96,
+    "edge_threshold_requested": 18
+  },
+  "frames": [
+    {
+      "wall_time": 5407.093,
+      "frame_id": 1151,
+      "timestamp": 3859799183,
+      "bytes": 279955,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.125,
+      "frame_id": 1152,
+      "timestamp": 3863132301,
+      "bytes": 280142,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.156,
+      "frame_id": 1153,
+      "timestamp": 3866465420,
+      "bytes": 279702,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.187,
+      "frame_id": 1154,
+      "timestamp": 3869798539,
+      "bytes": 279670,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.218,
+      "frame_id": 1155,
+      "timestamp": 3873131658,
+      "bytes": 279465,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.265,
+      "frame_id": 1156,
+      "timestamp": 3876464777,
+      "bytes": 278935,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.296,
+      "frame_id": 1157,
+      "timestamp": 3879797896,
+      "bytes": 280879,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.328,
+      "frame_id": 1158,
+      "timestamp": 3883131014,
+      "bytes": 279059,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.359,
+      "frame_id": 1159,
+      "timestamp": 3886464133,
+      "bytes": 279268,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.39,
+      "frame_id": 1160,
+      "timestamp": 3889797252,
+      "bytes": 279191,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.421,
+      "frame_id": 1161,
+      "timestamp": 3893130371,
+      "bytes": 279801,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.468,
+      "frame_id": 1162,
+      "timestamp": 3896463490,
+      "bytes": 280877,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.484,
+      "frame_id": 1163,
+      "timestamp": 3899796608,
+      "bytes": 281422,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.515,
+      "frame_id": 1164,
+      "timestamp": 3903129727,
+      "bytes": 278711,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.562,
+      "frame_id": 1165,
+      "timestamp": 3906462846,
+      "bytes": 279592,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.593,
+      "frame_id": 1166,
+      "timestamp": 3909795965,
+      "bytes": 279999,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.625,
+      "frame_id": 1167,
+      "timestamp": 3913129084,
+      "bytes": 278464,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.656,
+      "frame_id": 1168,
+      "timestamp": 3916462203,
+      "bytes": 279590,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.687,
+      "frame_id": 1169,
+      "timestamp": 3919795322,
+      "bytes": 280053,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.718,
+      "frame_id": 1170,
+      "timestamp": 3923128440,
+      "bytes": 277413,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.765,
+      "frame_id": 1171,
+      "timestamp": 3926461559,
+      "bytes": 280517,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.796,
+      "frame_id": 1172,
+      "timestamp": 3929794678,
+      "bytes": 278965,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.828,
+      "frame_id": 1173,
+      "timestamp": 3933127797,
+      "bytes": 281190,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.859,
+      "frame_id": 1174,
+      "timestamp": 3936460916,
+      "bytes": 279698,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.89,
+      "frame_id": 1175,
+      "timestamp": 3939794035,
+      "bytes": 277895,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.921,
+      "frame_id": 1176,
+      "timestamp": 3943127153,
+      "bytes": 279996,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.953,
+      "frame_id": 1177,
+      "timestamp": 3946460272,
+      "bytes": 277970,
+      "status": 0
+    },
+    {
+      "wall_time": 5407.984,
+      "frame_id": 1178,
+      "timestamp": 3949793391,
+      "bytes": 279858,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.015,
+      "frame_id": 1179,
+      "timestamp": 3953126510,
+      "bytes": 278989,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.062,
+      "frame_id": 1180,
+      "timestamp": 3956459629,
+      "bytes": 280174,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.093,
+      "frame_id": 1181,
+      "timestamp": 3959792748,
+      "bytes": 280444,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.125,
+      "frame_id": 1182,
+      "timestamp": 3963125867,
+      "bytes": 280520,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.156,
+      "frame_id": 1183,
+      "timestamp": 3966458985,
+      "bytes": 280809,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.187,
+      "frame_id": 1184,
+      "timestamp": 3969792104,
+      "bytes": 278962,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.234,
+      "frame_id": 1185,
+      "timestamp": 3973125223,
+      "bytes": 280180,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.265,
+      "frame_id": 1186,
+      "timestamp": 3976458342,
+      "bytes": 278120,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.296,
+      "frame_id": 1187,
+      "timestamp": 3979791461,
+      "bytes": 279531,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.328,
+      "frame_id": 1188,
+      "timestamp": 3983124580,
+      "bytes": 281516,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.359,
+      "frame_id": 1189,
+      "timestamp": 3986457699,
+      "bytes": 280209,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.39,
+      "frame_id": 1190,
+      "timestamp": 3989790818,
+      "bytes": 278521,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.421,
+      "frame_id": 1191,
+      "timestamp": 3993123936,
+      "bytes": 279098,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.468,
+      "frame_id": 1192,
+      "timestamp": 3996457055,
+      "bytes": 279302,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.484,
+      "frame_id": 1193,
+      "timestamp": 3999790174,
+      "bytes": 276222,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.515,
+      "frame_id": 1194,
+      "timestamp": 4003123293,
+      "bytes": 278485,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.562,
+      "frame_id": 1195,
+      "timestamp": 4006456412,
+      "bytes": 278930,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.593,
+      "frame_id": 1196,
+      "timestamp": 4009789531,
+      "bytes": 279948,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.625,
+      "frame_id": 1197,
+      "timestamp": 4013122650,
+      "bytes": 278217,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.656,
+      "frame_id": 1198,
+      "timestamp": 4016455768,
+      "bytes": 280134,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.687,
+      "frame_id": 1199,
+      "timestamp": 4019788887,
+      "bytes": 279989,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.718,
+      "frame_id": 1200,
+      "timestamp": 4023122006,
+      "bytes": 279254,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.75,
+      "frame_id": 1201,
+      "timestamp": 4026455125,
+      "bytes": 276884,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.796,
+      "frame_id": 1202,
+      "timestamp": 4029788244,
+      "bytes": 277414,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.828,
+      "frame_id": 1203,
+      "timestamp": 4033121363,
+      "bytes": 279880,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.859,
+      "frame_id": 1204,
+      "timestamp": 4036454482,
+      "bytes": 280043,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.89,
+      "frame_id": 1205,
+      "timestamp": 4039787600,
+      "bytes": 278242,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.921,
+      "frame_id": 1206,
+      "timestamp": 4043120719,
+      "bytes": 279311,
+      "status": 0
+    },
+    {
+      "wall_time": 5408.953,
+      "frame_id": 1207,
+      "timestamp": 4046453838,
+      "bytes": 280424,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.0,
+      "frame_id": 1208,
+      "timestamp": 4049786957,
+      "bytes": 279378,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.031,
+      "frame_id": 1209,
+      "timestamp": 4053120076,
+      "bytes": 281236,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.062,
+      "frame_id": 1210,
+      "timestamp": 4056453195,
+      "bytes": 279664,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.093,
+      "frame_id": 1211,
+      "timestamp": 4059786314,
+      "bytes": 280372,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.125,
+      "frame_id": 1212,
+      "timestamp": 4063119433,
+      "bytes": 279159,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.156,
+      "frame_id": 1213,
+      "timestamp": 4066452551,
+      "bytes": 280482,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.187,
+      "frame_id": 1214,
+      "timestamp": 4069785670,
+      "bytes": 280215,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.218,
+      "frame_id": 1215,
+      "timestamp": 4073118789,
+      "bytes": 278988,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.25,
+      "frame_id": 1216,
+      "timestamp": 4076451908,
+      "bytes": 279641,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.296,
+      "frame_id": 1217,
+      "timestamp": 4079785027,
+      "bytes": 279183,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.328,
+      "frame_id": 1218,
+      "timestamp": 4083118146,
+      "bytes": 278875,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.359,
+      "frame_id": 1219,
+      "timestamp": 4086451265,
+      "bytes": 280714,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.39,
+      "frame_id": 1220,
+      "timestamp": 4089784384,
+      "bytes": 279157,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.421,
+      "frame_id": 1221,
+      "timestamp": 4093117503,
+      "bytes": 279376,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.453,
+      "frame_id": 1222,
+      "timestamp": 4096450621,
+      "bytes": 280524,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.5,
+      "frame_id": 1223,
+      "timestamp": 4099783740,
+      "bytes": 279399,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.531,
+      "frame_id": 1224,
+      "timestamp": 4103116859,
+      "bytes": 278280,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.562,
+      "frame_id": 1225,
+      "timestamp": 4106449978,
+      "bytes": 279630,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.593,
+      "frame_id": 1226,
+      "timestamp": 4109783097,
+      "bytes": 278655,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.625,
+      "frame_id": 1227,
+      "timestamp": 4113116216,
+      "bytes": 278989,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.656,
+      "frame_id": 1228,
+      "timestamp": 4116449335,
+      "bytes": 280382,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.687,
+      "frame_id": 1229,
+      "timestamp": 4119782454,
+      "bytes": 280489,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.718,
+      "frame_id": 1230,
+      "timestamp": 4123115572,
+      "bytes": 279208,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.75,
+      "frame_id": 1231,
+      "timestamp": 4126448691,
+      "bytes": 280513,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.796,
+      "frame_id": 1232,
+      "timestamp": 4129781810,
+      "bytes": 278568,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.828,
+      "frame_id": 1233,
+      "timestamp": 4133114929,
+      "bytes": 280392,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.859,
+      "frame_id": 1234,
+      "timestamp": 4136448048,
+      "bytes": 279357,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.89,
+      "frame_id": 1235,
+      "timestamp": 4139781167,
+      "bytes": 279714,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.921,
+      "frame_id": 1236,
+      "timestamp": 4143114286,
+      "bytes": 278501,
+      "status": 0
+    },
+    {
+      "wall_time": 5409.953,
+      "frame_id": 1237,
+      "timestamp": 4146447405,
+      "bytes": 279168,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.0,
+      "frame_id": 1238,
+      "timestamp": 4149780523,
+      "bytes": 278463,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.031,
+      "frame_id": 1239,
+      "timestamp": 4153113642,
+      "bytes": 280822,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.046,
+      "frame_id": 1240,
+      "timestamp": 4156446761,
+      "bytes": 280342,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.093,
+      "frame_id": 1241,
+      "timestamp": 4159779880,
+      "bytes": 279670,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.125,
+      "frame_id": 1242,
+      "timestamp": 4163112999,
+      "bytes": 280103,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.156,
+      "frame_id": 1243,
+      "timestamp": 4166446118,
+      "bytes": 281032,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.187,
+      "frame_id": 1244,
+      "timestamp": 4169779236,
+      "bytes": 279163,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.218,
+      "frame_id": 1245,
+      "timestamp": 4173112355,
+      "bytes": 277557,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.25,
+      "frame_id": 1246,
+      "timestamp": 4176445474,
+      "bytes": 280955,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.296,
+      "frame_id": 1247,
+      "timestamp": 4179778593,
+      "bytes": 280133,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.328,
+      "frame_id": 1248,
+      "timestamp": 4183111712,
+      "bytes": 279094,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.359,
+      "frame_id": 1249,
+      "timestamp": 4186444831,
+      "bytes": 277730,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.39,
+      "frame_id": 1250,
+      "timestamp": 4189777950,
+      "bytes": 279777,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.421,
+      "frame_id": 1251,
+      "timestamp": 4193111068,
+      "bytes": 279773,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.453,
+      "frame_id": 1252,
+      "timestamp": 4196444187,
+      "bytes": 280152,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.5,
+      "frame_id": 1253,
+      "timestamp": 4199777306,
+      "bytes": 279843,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.531,
+      "frame_id": 1254,
+      "timestamp": 4203110425,
+      "bytes": 277725,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.562,
+      "frame_id": 1255,
+      "timestamp": 4206443544,
+      "bytes": 281529,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.593,
+      "frame_id": 1256,
+      "timestamp": 4209776663,
+      "bytes": 278588,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.625,
+      "frame_id": 1257,
+      "timestamp": 4213109782,
+      "bytes": 279518,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.656,
+      "frame_id": 1258,
+      "timestamp": 4216442900,
+      "bytes": 281131,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.687,
+      "frame_id": 1259,
+      "timestamp": 4219776019,
+      "bytes": 279904,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.718,
+      "frame_id": 1260,
+      "timestamp": 4223109138,
+      "bytes": 277600,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.75,
+      "frame_id": 1261,
+      "timestamp": 4226442257,
+      "bytes": 277950,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.796,
+      "frame_id": 1262,
+      "timestamp": 4229775376,
+      "bytes": 278553,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.828,
+      "frame_id": 1263,
+      "timestamp": 4233108495,
+      "bytes": 280085,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.859,
+      "frame_id": 1264,
+      "timestamp": 4236441614,
+      "bytes": 278094,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.89,
+      "frame_id": 1265,
+      "timestamp": 4239774732,
+      "bytes": 279435,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.921,
+      "frame_id": 1266,
+      "timestamp": 4243107851,
+      "bytes": 279304,
+      "status": 0
+    },
+    {
+      "wall_time": 5410.953,
+      "frame_id": 1267,
+      "timestamp": 4246440970,
+      "bytes": 278684,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.0,
+      "frame_id": 1268,
+      "timestamp": 4249774089,
+      "bytes": 279776,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.031,
+      "frame_id": 1269,
+      "timestamp": 4253107208,
+      "bytes": 278091,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.062,
+      "frame_id": 1270,
+      "timestamp": 4256440327,
+      "bytes": 277433,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.093,
+      "frame_id": 1271,
+      "timestamp": 4259773446,
+      "bytes": 278623,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.125,
+      "frame_id": 1272,
+      "timestamp": 4263106564,
+      "bytes": 277323,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.156,
+      "frame_id": 1273,
+      "timestamp": 4266439683,
+      "bytes": 281828,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.187,
+      "frame_id": 1274,
+      "timestamp": 4269772802,
+      "bytes": 279601,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.218,
+      "frame_id": 1275,
+      "timestamp": 4273105921,
+      "bytes": 279955,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.25,
+      "frame_id": 1276,
+      "timestamp": 4276439040,
+      "bytes": 277892,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.296,
+      "frame_id": 1277,
+      "timestamp": 4279772159,
+      "bytes": 278134,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.328,
+      "frame_id": 1278,
+      "timestamp": 4283105278,
+      "bytes": 280807,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.359,
+      "frame_id": 1279,
+      "timestamp": 4286438397,
+      "bytes": 281576,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.39,
+      "frame_id": 1280,
+      "timestamp": 4289771515,
+      "bytes": 280847,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.421,
+      "frame_id": 1281,
+      "timestamp": 4293104634,
+      "bytes": 279784,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.453,
+      "frame_id": 1282,
+      "timestamp": 4296437753,
+      "bytes": 278070,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.5,
+      "frame_id": 1283,
+      "timestamp": 4299770872,
+      "bytes": 279159,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.531,
+      "frame_id": 1284,
+      "timestamp": 4303103991,
+      "bytes": 279745,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.562,
+      "frame_id": 1285,
+      "timestamp": 4306437110,
+      "bytes": 278903,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.593,
+      "frame_id": 1286,
+      "timestamp": 4309770229,
+      "bytes": 280065,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.625,
+      "frame_id": 1287,
+      "timestamp": 4313103348,
+      "bytes": 279040,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.656,
+      "frame_id": 1288,
+      "timestamp": 4316436466,
+      "bytes": 279929,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.687,
+      "frame_id": 1289,
+      "timestamp": 4319769585,
+      "bytes": 278105,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.718,
+      "frame_id": 1290,
+      "timestamp": 4323102704,
+      "bytes": 278424,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.75,
+      "frame_id": 1291,
+      "timestamp": 4326435823,
+      "bytes": 278416,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.796,
+      "frame_id": 1292,
+      "timestamp": 4329768942,
+      "bytes": 277544,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.828,
+      "frame_id": 1293,
+      "timestamp": 4333102061,
+      "bytes": 279661,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.859,
+      "frame_id": 1294,
+      "timestamp": 4336435179,
+      "bytes": 278632,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.89,
+      "frame_id": 1295,
+      "timestamp": 4339768298,
+      "bytes": 279259,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.921,
+      "frame_id": 1296,
+      "timestamp": 4343101417,
+      "bytes": 280070,
+      "status": 0
+    },
+    {
+      "wall_time": 5411.953,
+      "frame_id": 1297,
+      "timestamp": 4346434536,
+      "bytes": 281031,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.0,
+      "frame_id": 1298,
+      "timestamp": 4349767655,
+      "bytes": 278860,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.031,
+      "frame_id": 1299,
+      "timestamp": 4353100774,
+      "bytes": 281235,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.062,
+      "frame_id": 1300,
+      "timestamp": 4356433892,
+      "bytes": 280243,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.093,
+      "frame_id": 1301,
+      "timestamp": 4359767011,
+      "bytes": 281310,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.125,
+      "frame_id": 1302,
+      "timestamp": 4363100130,
+      "bytes": 278980,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.156,
+      "frame_id": 1303,
+      "timestamp": 4366433249,
+      "bytes": 280710,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.187,
+      "frame_id": 1304,
+      "timestamp": 4369766368,
+      "bytes": 278270,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.218,
+      "frame_id": 1305,
+      "timestamp": 4373099486,
+      "bytes": 279214,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.25,
+      "frame_id": 1306,
+      "timestamp": 4376432605,
+      "bytes": 279235,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.296,
+      "frame_id": 1307,
+      "timestamp": 4379765724,
+      "bytes": 281859,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.328,
+      "frame_id": 1308,
+      "timestamp": 4383098843,
+      "bytes": 278556,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.359,
+      "frame_id": 1309,
+      "timestamp": 4386431962,
+      "bytes": 277995,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.39,
+      "frame_id": 1310,
+      "timestamp": 4389765081,
+      "bytes": 278206,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.421,
+      "frame_id": 1311,
+      "timestamp": 4393098199,
+      "bytes": 280272,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.453,
+      "frame_id": 1312,
+      "timestamp": 4396431318,
+      "bytes": 279912,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.5,
+      "frame_id": 1313,
+      "timestamp": 4399764437,
+      "bytes": 279512,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.531,
+      "frame_id": 1314,
+      "timestamp": 4403097556,
+      "bytes": 279221,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.562,
+      "frame_id": 1315,
+      "timestamp": 4406430675,
+      "bytes": 279298,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.593,
+      "frame_id": 1316,
+      "timestamp": 4409763794,
+      "bytes": 278930,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.625,
+      "frame_id": 1317,
+      "timestamp": 4413096912,
+      "bytes": 277875,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.656,
+      "frame_id": 1318,
+      "timestamp": 4416430031,
+      "bytes": 280085,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.687,
+      "frame_id": 1319,
+      "timestamp": 4419763150,
+      "bytes": 279762,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.718,
+      "frame_id": 1320,
+      "timestamp": 4423096269,
+      "bytes": 279049,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.75,
+      "frame_id": 1321,
+      "timestamp": 4426429388,
+      "bytes": 279153,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.781,
+      "frame_id": 1322,
+      "timestamp": 4429762507,
+      "bytes": 277563,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.828,
+      "frame_id": 1323,
+      "timestamp": 4433095625,
+      "bytes": 279108,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.859,
+      "frame_id": 1324,
+      "timestamp": 4436428744,
+      "bytes": 279901,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.89,
+      "frame_id": 1325,
+      "timestamp": 4439761863,
+      "bytes": 279077,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.921,
+      "frame_id": 1326,
+      "timestamp": 4443094982,
+      "bytes": 279224,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.953,
+      "frame_id": 1327,
+      "timestamp": 4446428101,
+      "bytes": 279069,
+      "status": 0
+    },
+    {
+      "wall_time": 5412.984,
+      "frame_id": 1328,
+      "timestamp": 4449761220,
+      "bytes": 278656,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.031,
+      "frame_id": 1329,
+      "timestamp": 4453094338,
+      "bytes": 281564,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.062,
+      "frame_id": 1330,
+      "timestamp": 4456427457,
+      "bytes": 280016,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.093,
+      "frame_id": 1331,
+      "timestamp": 4459760576,
+      "bytes": 279675,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.125,
+      "frame_id": 1332,
+      "timestamp": 4463093695,
+      "bytes": 281656,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.156,
+      "frame_id": 1333,
+      "timestamp": 4466426814,
+      "bytes": 278271,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.187,
+      "frame_id": 1334,
+      "timestamp": 4469759933,
+      "bytes": 278332,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.234,
+      "frame_id": 1335,
+      "timestamp": 4473093051,
+      "bytes": 280977,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.265,
+      "frame_id": 1336,
+      "timestamp": 4476426170,
+      "bytes": 279972,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.281,
+      "frame_id": 1337,
+      "timestamp": 4479759289,
+      "bytes": 279776,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.328,
+      "frame_id": 1338,
+      "timestamp": 4483092408,
+      "bytes": 278670,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.359,
+      "frame_id": 1339,
+      "timestamp": 4486425527,
+      "bytes": 279279,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.39,
+      "frame_id": 1340,
+      "timestamp": 4489758646,
+      "bytes": 278672,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.421,
+      "frame_id": 1341,
+      "timestamp": 4493091765,
+      "bytes": 281384,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.453,
+      "frame_id": 1342,
+      "timestamp": 4496424883,
+      "bytes": 277484,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.484,
+      "frame_id": 1343,
+      "timestamp": 4499758002,
+      "bytes": 281251,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.531,
+      "frame_id": 1344,
+      "timestamp": 4503091121,
+      "bytes": 279071,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.562,
+      "frame_id": 1345,
+      "timestamp": 4506424240,
+      "bytes": 279367,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.593,
+      "frame_id": 1346,
+      "timestamp": 4509757359,
+      "bytes": 278827,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.625,
+      "frame_id": 1347,
+      "timestamp": 4513090477,
+      "bytes": 278886,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.656,
+      "frame_id": 1348,
+      "timestamp": 4516423596,
+      "bytes": 279017,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.687,
+      "frame_id": 1349,
+      "timestamp": 4519756715,
+      "bytes": 278265,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.718,
+      "frame_id": 1350,
+      "timestamp": 4523089834,
+      "bytes": 279435,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.765,
+      "frame_id": 1351,
+      "timestamp": 4526422953,
+      "bytes": 280759,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.781,
+      "frame_id": 1352,
+      "timestamp": 4529756072,
+      "bytes": 279403,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.828,
+      "frame_id": 1353,
+      "timestamp": 4533089190,
+      "bytes": 280910,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.859,
+      "frame_id": 1354,
+      "timestamp": 4536422309,
+      "bytes": 277261,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.89,
+      "frame_id": 1355,
+      "timestamp": 4539755428,
+      "bytes": 278870,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.921,
+      "frame_id": 1356,
+      "timestamp": 4543088547,
+      "bytes": 280441,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.953,
+      "frame_id": 1357,
+      "timestamp": 4546421666,
+      "bytes": 279216,
+      "status": 0
+    },
+    {
+      "wall_time": 5413.984,
+      "frame_id": 1358,
+      "timestamp": 4549754784,
+      "bytes": 280103,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.031,
+      "frame_id": 1359,
+      "timestamp": 4553087903,
+      "bytes": 280176,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.062,
+      "frame_id": 1360,
+      "timestamp": 4556421022,
+      "bytes": 276516,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.093,
+      "frame_id": 1361,
+      "timestamp": 4559754141,
+      "bytes": 278859,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.125,
+      "frame_id": 1362,
+      "timestamp": 4563087259,
+      "bytes": 279582,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.156,
+      "frame_id": 1363,
+      "timestamp": 4566420378,
+      "bytes": 279431,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.187,
+      "frame_id": 1364,
+      "timestamp": 4569753497,
+      "bytes": 279155,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.234,
+      "frame_id": 1365,
+      "timestamp": 4573086616,
+      "bytes": 279464,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.25,
+      "frame_id": 1366,
+      "timestamp": 4576419735,
+      "bytes": 278389,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.281,
+      "frame_id": 1367,
+      "timestamp": 4579752853,
+      "bytes": 279486,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.328,
+      "frame_id": 1368,
+      "timestamp": 4583085972,
+      "bytes": 278377,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.359,
+      "frame_id": 1369,
+      "timestamp": 4586419091,
+      "bytes": 280372,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.39,
+      "frame_id": 1370,
+      "timestamp": 4589752210,
+      "bytes": 278229,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.421,
+      "frame_id": 1371,
+      "timestamp": 4593085329,
+      "bytes": 276483,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.453,
+      "frame_id": 1372,
+      "timestamp": 4596418447,
+      "bytes": 279637,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.484,
+      "frame_id": 1373,
+      "timestamp": 4599751566,
+      "bytes": 279382,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.531,
+      "frame_id": 1374,
+      "timestamp": 4603084685,
+      "bytes": 279519,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.562,
+      "frame_id": 1375,
+      "timestamp": 4606417804,
+      "bytes": 279247,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.593,
+      "frame_id": 1376,
+      "timestamp": 4609750922,
+      "bytes": 277627,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.625,
+      "frame_id": 1377,
+      "timestamp": 4613084041,
+      "bytes": 279896,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.656,
+      "frame_id": 1378,
+      "timestamp": 4616417160,
+      "bytes": 280092,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.687,
+      "frame_id": 1379,
+      "timestamp": 4619750279,
+      "bytes": 280942,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.734,
+      "frame_id": 1380,
+      "timestamp": 4623083398,
+      "bytes": 278723,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.75,
+      "frame_id": 1381,
+      "timestamp": 4626416516,
+      "bytes": 280126,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.781,
+      "frame_id": 1382,
+      "timestamp": 4629749635,
+      "bytes": 280748,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.828,
+      "frame_id": 1383,
+      "timestamp": 4633082754,
+      "bytes": 278144,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.859,
+      "frame_id": 1384,
+      "timestamp": 4636415873,
+      "bytes": 278285,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.89,
+      "frame_id": 1385,
+      "timestamp": 4639748991,
+      "bytes": 280959,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.921,
+      "frame_id": 1386,
+      "timestamp": 4643082110,
+      "bytes": 280253,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.953,
+      "frame_id": 1387,
+      "timestamp": 4646415229,
+      "bytes": 279022,
+      "status": 0
+    },
+    {
+      "wall_time": 5414.984,
+      "frame_id": 1388,
+      "timestamp": 4649748348,
+      "bytes": 278105,
+      "status": 0
+    },
+    {
+      "wall_time": 5415.031,
+      "frame_id": 1389,
+      "timestamp": 4653081467,
+      "bytes": 279763,
+      "status": 0
+    },
+    {
+      "wall_time": 5415.062,
+      "frame_id": 1390,
+      "timestamp": 4656414585,
+      "bytes": 279506,
+      "status": 0
+    },
+    {
+      "wall_time": 5415.093,
+      "frame_id": 1391,
+      "timestamp": 4659747704,
+      "bytes": 279684,
+      "status": 0
+    },
+    {
+      "wall_time": 5415.125,
+      "frame_id": 1392,
+      "timestamp": 4663080823,
+      "bytes": 278343,
+      "status": 0
+    }
+  ]
+}

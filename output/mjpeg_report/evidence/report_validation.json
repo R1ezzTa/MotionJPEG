@@ -1,0 +1,132 @@
+{
+  "pages": 32,
+  "compile": "XeLaTeX two passes plus Chinese ToUnicode mapping",
+  "overfull_boxes": 0,
+  "missing_characters": 0,
+  "unresolved_references": 0,
+  "live_screenshots": 16,
+  "stable_sample_frames": 4360,
+  "sample_jpegs_decoded": 16,
+  "every_received_frame_fully_decoded": false,
+  "stable_windows_encoding_failures": 0,
+  "stable_windows_overflows": 0,
+  "stable_windows_drops": 0,
+  "distinct_quality_quantization_tables": 3,
+  "initial_demo_settings_restored": true,
+  "sample_checks": [
+    {
+      "name": "mode_color",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 242,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "mode_gray",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 244,
+      "sample_count_minus_counter_delta": -1
+    },
+    {
+      "name": "binary_t064",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 244,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "binary_t096",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 242,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "binary_t128",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 241,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "binary_t160",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 242,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "binary_t192",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 244,
+      "sample_count_minus_counter_delta": -1
+    },
+    {
+      "name": "binary_t224",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 244,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "sobel_t008",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 240,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "sobel_t018",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 243,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "sobel_t032",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 244,
+      "sample_count_minus_counter_delta": 1
+    },
+    {
+      "name": "sobel_t064",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 240,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "quality_q60",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 362,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "quality_q75",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 361,
+      "sample_count_minus_counter_delta": 0
+    },
+    {
+      "name": "quality_q85",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 364,
+      "sample_count_minus_counter_delta": -1
+    },
+    {
+      "name": "quality_q60_repeat",
+      "frame_sequence": "contiguous",
+      "sample_jpeg": "fully_decoded",
+      "sample_frames": 363,
+      "sample_count_minus_counter_delta": 0
+    }
+  ],
+  "final_pdf_sha256": "28b2e07299ae512793fbb3bead0e6386df05303f263e386a7ab6014b5f1b4022",
+  "visual_review": "Changed pages checked using <=1280 px lightweight previews; visual notes retained in work/report_live_visual_notes.txt."
+}

@@ -1,0 +1,50 @@
+#-----------------------------------------------------------
+# xsim v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sun Oct 25 14:04:05 2026
+# Process ID: 60308
+# Current directory: F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025
+# Command line: xsim.exe -mode tcl -source {xsim.dir/tb_camera_board_controls/xsim_script.tcl}
+# Log file: F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/xsim.log
+# Journal file: F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/tb_camera_board_controls/xsim_script.tcl
+# xsim {tb_camera_board_controls} -wdb {F:/zju/dasanshangkecheng/HDL/mjpeg/reports/camera/waveforms_20261025/controls.wdb} -autoloadwcfg -tclbatch {F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/controls_waves.tcl} -onfinish stop
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+source F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/controls_waves.tcl
+## open_vcd {F:/zju/dasanshangkecheng/HDL/mjpeg/reports/camera/waveforms_20261025/controls.vcd}
+## log_vcd [get_objects {/tb_camera_board_controls/clk}]
+## log_wave [get_objects {/tb_camera_board_controls/clk}]
+## log_vcd [get_objects {/tb_camera_board_controls/rst_n}]
+## log_wave [get_objects {/tb_camera_board_controls/rst_n}]
+## log_vcd [get_objects {/tb_camera_board_controls/keys}]
+## log_wave [get_objects {/tb_camera_board_controls/keys}]
+## log_vcd [get_objects {/tb_camera_board_controls/rx}]
+## log_wave [get_objects {/tb_camera_board_controls/rx}]
+## log_vcd [get_objects {/tb_camera_board_controls/rx_valid}]
+## log_wave [get_objects {/tb_camera_board_controls/rx_valid}]
+## log_vcd [get_objects {/tb_camera_board_controls/run_requested}]
+## log_wave [get_objects {/tb_camera_board_controls/run_requested}]
+## log_vcd [get_objects {/tb_camera_board_controls/quality}]
+## log_wave [get_objects {/tb_camera_board_controls/quality}]
+## log_vcd [get_objects {/tb_camera_board_controls/denoise}]
+## log_wave [get_objects {/tb_camera_board_controls/denoise}]
+## log_vcd [get_objects {/tb_camera_board_controls/pp_mode}]
+## log_wave [get_objects {/tb_camera_board_controls/pp_mode}]
+## log_vcd [get_objects {/tb_camera_board_controls/binary_threshold}]
+## log_wave [get_objects {/tb_camera_board_controls/binary_threshold}]
+## log_vcd [get_objects {/tb_camera_board_controls/edge_threshold}]
+## log_wave [get_objects {/tb_camera_board_controls/edge_threshold}]
+## log_vcd [get_objects {/tb_camera_board_controls/light_start}]
+## log_wave [get_objects {/tb_camera_board_controls/light_start}]
+## log_vcd [get_objects {/tb_camera_board_controls/light_cancel}]
+## log_wave [get_objects {/tb_camera_board_controls/light_cancel}]
+## log_vcd [get_objects {/tb_camera_board_controls/led}]
+## log_wave [get_objects {/tb_camera_board_controls/led}]
+## run all
+$finish called at time : 6930 ns : File "F:/zju/dasanshangkecheng/HDL/work/waveforms_20261025/tb/tb_camera_board_controls.sv" Line 100
+## close_vcd
+## quit
+INFO: [Common 17-206] Exiting xsim at Sun Oct 25 14:04:08 2026...

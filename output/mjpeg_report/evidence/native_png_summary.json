@@ -1,0 +1,21 @@
+{
+  "application": "Vivado 2020.1",
+  "source": "Direct capture of the native Vivado window displaying original XSim WDB files",
+  "format": "PNG",
+  "capture": "Unmodified full application window; waveforms rendered by Vivado",
+  "files": {
+    "vivado_camera_overview.png": {
+      "bytes": 66796,
+      "sha256": "8523a670ec9ba0d827e1fc25582f86eaffdeb0c29a537be45267bb8250aceeba"
+    },
+    "vivado_pixel_handshake.png": {
+      "bytes": 65351,
+      "sha256": "58b236b816829d1aea01ad01d90b9b5790c3d9f95c8d2a346a2b5999f32d23af"
+    },
+    "vivado_board_controls.png": {
+      "bytes": 65867,
+      "sha256": "10e14c35e4518db789d0a786371f5b726a1f290e1a329e432be12fed5535887a"
+    }
+  },
+  "camera_stimulus": "48x16 YUYV RTL simulation; one deliberate short-line abort validates recovery"
+}

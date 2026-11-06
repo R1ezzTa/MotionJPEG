@@ -1,0 +1,63 @@
+\section{独立 JPEG 编码与帧生命周期}
+\subsection{编码步骤与片上缓存}
+JPEG 数据通路包含光栅到 MCU 重排、分块 DCT、量化、Zigzag、DC 差分、AC 游程与 Huffman 编码，以及码流标记和字节封装\cite{jpeg}。当前 YUV422 由水平两个亮度块及对应的色度块组成 MCU；局部行组缓存支撑块访问，不使用前一帧作为参考。
+
+二维 DCT 可分解为两个一维变换。对去直流偏置后的 $8\times8$ 样本块 $f$，概念上有
+\begin{equation}
+F=A f A^{\mathrm T},\qquad \widehat F_{u,v}=\operatorname{round}\!\left(F_{u,v}/Q_{u,v}\right).
+\end{equation}
+实际 RTL 使用定点常量、流水线和配套量化缩放；是否符合预期由金样比较与独立解码共同检验。量化使用预存值与倒数，通过乘法估计和修正避免通用除法器。Zigzag 将低频系数集中到前部，后续零系数游程与 Huffman 编码形成压缩载荷。
+
+\subsection{画质切换和量化表加载}
+系统提供 Q60、Q75、Q85 三组表。运行期间先记录请求；若请求与活动画质不同，禁止接纳新帧，待当前帧结束后加载完整表，再更新活动画质。编码忙期间量化表不可写，避免一个 JPEG 内混合两套 DQT 参数。
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[font=\small,>=Stealth,box/.style={draw=navy,rounded corners,fill=shade,align=center,minimum width=25mm,minimum height=12mm},node distance=6mm]
+\node[box] (a) {IDLE\\等待运行};\node[box,right=of a] (b) {DIM / MODE\\尺寸与模式};\node[box,right=of b] (c) {QREAD\\QVALUE/QRECIP};\node[box,right=of c] (d) {TABLES\\等待表就绪};
+\node[box,below=8mm of d] (e) {PSEND\\像素流};\node[box,left=of e] (f) {WAIT\_DESC\\完成/失败描述符};\node[box,left=of f] (g) {FINISH\\排完并结束};
+\draw[->] (a)--(b);\draw[->] (b)--(c);\draw[->] (c)--(d);\draw[->] (d)--(e);\draw[->] (e)--(f);\draw[->] (f)--(g);\draw[->] (g.west)-| (a.south);\draw[->,teal] (f.south) to[out=-70,in=-110] node[below]{继续运行} (e.south);
+\end{tikzpicture}
+\caption{引擎主要状态关系。实际转移还受握手、停止请求和描述符约束。}
+\end{figure}
+
+\subsection{描述符与停止语义}
+成功和失败均通过描述符结束帧生命周期。\texttt{success\_frame} 和 \texttt{failed\_frame} 来自已接受的最终描述符，不能只统计输入 SOF。停止命令先排完正在处理的帧及输出记录，再发送 END，使主机判断会话是否完整闭合，并区分输入、成功与失败计数。
+\clearpage
+
+\section{同步 USB、MBLK 与板卡控制}
+\subsection{同步总线和分块传输}
+USB 域采用 FT232H 的 60 MHz CLKOUT。写方向的数据、WR\# 与三态输出经过寄存，接受时刻由 TXE\# 与写选通共同判定；读方向通过 RELEASE、OE\_SETUP、READ、TURN 完成总线换向，避免双方同时驱动。两字节弹性前端保存阻塞期间的预取数据，晚到的 TXE\# 不直接进入宽 FIFO 的出队反馈路径。
+
+MBLK 具有 8 字节头部：4 字节标识、kind、flags 与 16 位 body 长度，整数按小端编码。数据块含帧号及至多 1024 字节 JPEG；描述符、FPS、时序、链路和摄像头状态分别发送。描述符包含帧号、64 位时间戳、载荷长度、尺寸及错误状态。归并载荷可降低细粒度封包开销，同时保留完整帧边界。
+
+\begin{table}[H]\centering\caption{主机控制接口节选}
+\small\begin{tabularx}{\linewidth}{@{}lYlY@{}}\toprule
+命令 & 功能 & 命令 & 功能\\\midrule
+\texttt{C / S} & 启动 / 排完后停止 & \texttt{1/2/3} & Q60 / Q75 / Q85\\
+\texttt{L / l} & 两秒补光 / 关闭 & \texttt{Nxx} & 降噪强度 00～FF\\
+\texttt{Bxx} & 二值化阈值 & \texttt{Exx} & Sobel 阈值\\
+\texttt{Mxx} & 00～03 四模式 & 换行 & 提交多字节设置\\\bottomrule
+\end{tabularx}\end{table}
+
+\subsection{原子命令与停止优先级}
+载荷中可能出现十六进制 C/F，畸形输入也可能含 S/L。解析器隔离载荷期间的单字节控制，等换行后统一提交；板载按键仍可响应。
+\lstinputlisting[firstnumber=97,caption={设置命令在换行处原子提交},label={lst:atomic}]{code/atomic_config.v}
+\src{mjpeg/rtl/board/camera_board_controls.v:97--108}
+KEY0 启停、KEY1 切换画质、KEY2 请求补光、KEY3 停止并关灯；同时操作时停止优先。补光定时由 FPGA 管理，PC 停顿不会延长请求的照明时间；LED 与数码管反映运行、画质、灯光和压缩 FPS。
+\clearpage
+
+\section{上位机与工程精简}
+\subsection{接收、独立解码与显示}
+Python 接收器经 D2XX 打开数据芯片，只修改易失 FIFO 模式，不重写 EEPROM。\texttt{block\_records.py} 检查包长、顺序、JPEG 边界及载荷与描述符一致性；严格接收器进一步检查尺寸、帧号和时间戳。Pillow 对成功帧执行完整解压，避免仅凭文件头或 SOI/EOI 判断成功。
+\lstinputlisting[language=Python,firstnumber=52,caption={严格接收器的完整 JPEG 解码节选},label={lst:decode}]{code/jpeg_decode.py}
+\src{mjpeg/host/camera_receiver.py:52--61}
+查看器将解码与缩放放在后台，预览队列只保留最新帧，避免刷新阻塞 USB。预览跳过与板卡采集丢帧分别统计：前者反映主机调度，后者须结合准入和溢出计数解释。
+
+\subsection{精简范围和保留原则}
+工程删除了退出最终链路的 DDR3/MIG 归档、参考块复用、自适应系数阈值、首版 RGB 降噪、UART 和旧板卡顶层，以及过期报告、接口和跨层参数。独立提取摄像头引擎，统一源清单、GUI 工程、构建和编程入口。清理记录共移除 3576 个 Git 跟踪的历史文件，保留 72 个最终功能基线证据文件。
+
+内部确定存在的属性和固定配置可直接使用；外部数据完整性、CDC、FIFO 背压、时序约束和异常恢复仍属于功能要求。项目保留这些机制，以维持对真实链路行为的可观察性。
+
+\subsection{验收脚本的一次残留问题}
+上板时发现降噪脚本仍发送已删除的 T/A 旧命令，其载荷中的 F 被既有单字节兼容命令解释为启动，导致“等待停止”超时。修正移除旧探测，保留当前 N 命令畸形载荷隔离检查。七段重测和 59 项 Python 测试随后通过，汇总保留首轮失败与重测，说明精简需同步维护测试和主机工具。
+\clearpage

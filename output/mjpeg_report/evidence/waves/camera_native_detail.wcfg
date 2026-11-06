@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<wave_config>
+  <wave_state />
+  <db_ref_list>
+    <db_ref path="camera.wdb" id="1">
+      <top_modules>
+        <top_module name="tb_mjpeg_real_camera" />
+      </top_modules>
+    </db_ref>
+  </db_ref_list>
+  <zoom_setting>
+    <ZoomStartTime time="5400000fs" />
+    <ZoomEndTime time="5600000fs" />
+    <Cursor1Time time="5500000fs" />
+  </zoom_setting>
+  <column_width_setting>
+    <NameColumnWidth column_width="160" />
+    <ValueColumnWidth column_width="65" />
+  </column_width_setting>
+  <WVObjectSize size="7" />
+  <wvobject fp_name="/tb_mjpeg_real_camera/pclk" type="logic">
+    <obj_property name="ElementShortName">pclk</obj_property>
+    <obj_property name="ObjectShortName">pclk</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/href" type="logic">
+    <obj_property name="ElementShortName">href</obj_property>
+    <obj_property name="ObjectShortName">href</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/camera_data" type="array">
+    <obj_property name="ElementShortName">camera_data[7:0]</obj_property>
+    <obj_property name="ObjectShortName">camera_data[7:0]</obj_property>
+    <obj_property name="Radix">HEX</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/valid" type="logic">
+    <obj_property name="ElementShortName">valid</obj_property>
+    <obj_property name="ObjectShortName">valid</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/take" type="logic">
+    <obj_property name="ElementShortName">take</obj_property>
+    <obj_property name="ObjectShortName">take</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/pixel" type="array">
+    <obj_property name="ElementShortName">pixel[15:0]</obj_property>
+    <obj_property name="ObjectShortName">pixel[15:0]</obj_property>
+    <obj_property name="Radix">HEX</obj_property>
+  </wvobject>
+  <wvobject fp_name="/tb_mjpeg_real_camera/sof" type="logic">
+    <obj_property name="ElementShortName">sof</obj_property>
+    <obj_property name="ObjectShortName">sof</obj_property>
+  </wvobject>
+</wave_config>
