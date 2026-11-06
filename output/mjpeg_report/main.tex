@@ -3,7 +3,7 @@
 % Original template and MIT notice are retained in template/.
 \documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,array,caption,indentfirst,fontspec}
-\newfontfamily\menlo{Consolas}
+\IfFontExistsTF{Consolas}{\newfontfamily\menlo{Consolas}}{\newfontfamily\menlo{Latin Modern Mono}}
 \usepackage{geometry,graphicx,listings,multirow,pgfplots,tcolorbox,tikz}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage[UTF8,fontset=fandol,zihao=-4,heading=true]{ctex}
