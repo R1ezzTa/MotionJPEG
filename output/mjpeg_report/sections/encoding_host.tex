@@ -1,6 +1,6 @@
 \section{独立 JPEG 编码与帧生命周期}
 \subsection{编码步骤与片上缓存}
-JPEG 数据通路包含光栅到 MCU 重排、分块 DCT、量化、Zigzag、DC 差分、AC 游程与 Huffman 编码，以及码流标记和字节封装\cite{jpeg}。当前 YUV422 由水平两个亮度块及对应的色度块组成 MCU；局部行组缓存支撑块访问，不使用前一帧作为参考。
+JPEG 数据通路包含光栅到 MCU 重排、分块 DCT、量化、Zigzag、DC 差分、AC 游程与 Huffman 编码，以及码流标记和字节封装。当前 YUV422 由水平两个亮度块及对应的色度块组成 MCU；局部行组缓存支撑块访问，不使用前一帧作为参考。
 
 二维 DCT 可分解为两个一维变换。对去直流偏置后的 $8\times8$ 样本块 $f$，概念上有
 \begin{equation}

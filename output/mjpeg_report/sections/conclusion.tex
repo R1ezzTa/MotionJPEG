@@ -10,20 +10,6 @@
 \input{sections/contest_relation.tex}
 
 \appendix
-\section{构建、运行与复现}
-在仓库根目录运行。需要 Vivado 2020.1、Python 3.10+、Pillow、NumPy 与 FTDI D2XX，同一时间只使用一个 USB 接收程序。
-\begin{lstlisting}[language={},numbers=none,basicstyle=\fontsize{8.5}{10.5}\selectfont\ttfamily,caption={当前固件构建与验收命令}]
-./mjpeg/scripts/run_camera_build.ps1 -Action Full
-./mjpeg/scripts/run_camera_program.ps1 -Action Program
-python mjpeg/host/camera_viewer.py
-python -m unittest discover -s mjpeg/tb -p "test_*.py"
-python mjpeg/host/camera_receiver.py --ftdi --duration 60 \
-  --width 1920 --height 1080 --target-fps 30 \
-  --require-fps 30 --require-no-drops --output <new_report_dir>
-\end{lstlisting}
-反斜杠仅表示排版续行；Windows PowerShell 中可合并为一行，或使用其续行语法。编译报告时在本目录执行两次 \texttt{xelatex main.tex}，生成目录与交叉引用。自包含源码和素材可复制到其他位置编译，不依赖仓库之外的本机绝对路径。
-\clearpage
-
 \section{版本、素材与证据索引}
 实板验收基于提交 \texttt{d6549eb2d615814f57a4ce67899e98d9c6fead67} 的 RTL，主机降噪验收脚本随后修正旧命令探测。当前 bitstream 的 SHA-256 为：
 \begin{quote}\small\ttfamily\nolinkurl{671ea1d5852a88fc94425ae3a3242bfe8885ffa734ed8a01d940b8d83ef3df1a}\end{quote}
@@ -40,10 +26,3 @@ LaTeX 工程保存源码节选、原图、完整原生截图及裁剪、数据�
 原生截图与配置 & 同目录 \texttt{vivado\_*.png} 与 \texttt{*native*.wcfg}\\
 源码来源 & \nolinkurl{mjpeg/docs/copied_rtl_manifest.json}；\nolinkurl{mjpeg/docs/original_source_snapshot.json}\\\bottomrule
 \end{tabularx}\end{table}
-
-\begin{thebibliography}{9}\small\raggedright
-\bibitem{jpeg} ITU-T. Recommendation T.81: Digital compression and coding of continuous-tone still images -- Requirements and guidelines[S]. 1992. \url{https://www.itu.int/itu-t/recommendations/rec.aspx?id=2633&lang=en}.
-\bibitem{ftdi} FTDI. FT232H Single Channel Hi-Speed USB to Multipurpose UART/FIFO IC Datasheet[EB/OL]. \url{https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232H.pdf}.
-\bibitem{ug900} Xilinx. Vivado Design Suite User Guide: Logic Simulation, UG900, v2020.1[EB/OL]. \url{https://docs.amd.com/v/u/2020.1-English/ug900-vivado-logic-simulation}.
-\bibitem{project} MotionJPEG 项目. 当前 RTL、接口文档、原始仿真输出与实板验收记录[Z]. 本地资料，2026 年 10 月整理。在线资料访问日期：2026-10-25。
-\end{thebibliography}
