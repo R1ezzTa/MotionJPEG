@@ -8,21 +8,3 @@
 后续优先改进三方面：其一，锁定曝光和白平衡，使用受控静态及运动场景评价色彩、暗光噪声和纹理；其二，针对摄像头输入与 USB 小裕量路径优化约束、布局并进行跨板、温压和长时间检查；其三，实测端到端显示时延，补齐物理按钮、灯光外观、复位和重连人工验收。现有结果支持当前配置下功能正常，不代替这些扩展评价。
 
 \input{sections/contest_relation.tex}
-
-\appendix
-\section{版本、素材与证据索引}
-实板验收基于提交 \texttt{d6549eb2d615814f57a4ce67899e98d9c6fead67} 的 RTL，主机降噪验收脚本随后修正旧命令探测。当前 bitstream 的 SHA-256 为：
-\begin{quote}\small\ttfamily\nolinkurl{671ea1d5852a88fc94425ae3a3242bfe8885ffa734ed8a01d940b8d83ef3df1a}\end{quote}
-LaTeX 工程保存源码节选、原图、完整原生截图及裁剪、数据摘要和素材 SHA-256。清单文件 \nolinkurl{asset_manifest.json} 记录原始路径与源码节选行号。以下证据按相对仓库路径定位：
-
-\begin{table}[H]\centering\caption{关键证据索引}
-\small\begin{tabularx}{\linewidth}{@{}p{37mm}Y@{}}\toprule
-证据 & 相对路径或说明\\\midrule
-精简回归 & \texttt{mjpeg/docs/}精简验证.json\\
-当前完整构建 & \nolinkurl{mjpeg/reports/camera/full_20261011_123231/}\\
-实板汇总 & \nolinkurl{mjpeg/reports/camera/cleanup_acceptance_20261011_124020/hardware_summary.json}\\
-原生数据库 & \nolinkurl{mjpeg/reports/camera/waveforms_20261025/camera.wdb}，同目录 \texttt{controls.wdb}\\
-本次演示截图与统计 & \nolinkurl{mjpeg/reports/camera/report_demo_20261026/summary.json}，同目录 \texttt{*\_window.png} 与分段 JSON\\
-原生截图与配置 & 同目录 \texttt{vivado\_*.png} 与 \texttt{*native*.wcfg}\\
-源码来源 & \nolinkurl{mjpeg/docs/copied_rtl_manifest.json}；\nolinkurl{mjpeg/docs/original_source_snapshot.json}\\\bottomrule
-\end{tabularx}\end{table}
